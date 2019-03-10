@@ -8,7 +8,7 @@ public static class MovementTargets
 {
     public const float Stay = 0.0f;
     public const float SlowWalk = 1.0f;
-    public const float Walk = 1.5f;
+    public const float Walk = 2f;
     public const float Run = 5.0f;
     public const float Sprint = 7.5f;
 }
@@ -75,11 +75,11 @@ public class Walking : MonoBehaviour
         {
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hitFront.distance, Color.blue);
         }
-        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(-0.1f, 0, 1f)), out hitLeftFront, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(-0.2f, 0, 1f)), out hitLeftFront, Mathf.Infinity))
         {
             //Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(-0.05f, 0, 1f)) * hitLeftFront.distance, Color.blue);
         }
-        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(0.1f, 0, 1f)), out hitRightFront, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(0.2f, 0, 1f)), out hitRightFront, Mathf.Infinity))
         {
             //Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(0.05f, 0, 1f)) * hitRightFront.distance, Color.blue);
         }
@@ -128,8 +128,8 @@ public class Walking : MonoBehaviour
         frontDist = Mathf.Min(frontDist, leftFrontDist, rightFrontDist);
 
         //to do 
-        //veryLeftDist = Mathf.Min(leftDist, veryLeftDist);
-        //veryRightDist = Mathf.Min(rightDist, veryRightDist);
+        veryLeftDist = Mathf.Min(leftDist, veryLeftDist);
+        veryRightDist = Mathf.Min(rightDist, veryRightDist);
 
 
         //Debug.Log(String.Format("front: {0} left: {1} veryLeft: {2}, right: {3} veryRight: {4}", frontDist, littleLeftDist, veryLeftDist, littleRightDist, veryRightDist));
