@@ -28,7 +28,17 @@ public class Walking : MonoBehaviour
     private float timer = 0.2f;
     private float timerEdge = 0.2f;
 
+    private float timerRay = 0.1f;
+    private float timerRayEdge = 0.1f;
+
     private float _finalAngle = 0.0f;
+
+    float rightDist;
+    float veryRightDist;
+    float frontDist;
+    float leftDist;
+    float veryLeftDist;
+    bool blocked = false;
 
     //private List<GameObject> pathLocations;
     //private int next = 0;
@@ -41,6 +51,108 @@ public class Walking : MonoBehaviour
         avoidanceSystem.initAvoidanceSystem();
         m_Rigidbody = GetComponent<Rigidbody>();
         //pathLocations = new List<GameObject>(GameObject.FindGameObjectsWithTag("PathLocation"));
+    }
+
+    private void Update()
+    {
+        timerRay += Time.deltaTime;
+        if (timerRay < timerRayEdge) return;
+        else timerRay = 0;
+        RaycastHit hit;
+
+        float angle;
+        Vector3 direction;
+
+        //front----------------------------
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        {
+            frontDist = hit.distance;
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue);
+        }
+        angle = Mathf.Deg2Rad * 85;
+        direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        {
+            frontDist = Mathf.Min(frontDist, hit.distance);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
+        }
+        angle = Mathf.Deg2Rad * 85;
+        direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        {
+            frontDist = Mathf.Min(frontDist, hit.distance);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.black);
+        }
+
+        //left----------------------------
+        angle = Mathf.Deg2Rad * 60;
+        direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        {
+            leftDist = hit.distance;
+            //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
+        }
+
+        angle = Mathf.Deg2Rad * 45;
+        direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        {
+            leftDist = Mathf.Min(leftDist, hit.distance);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
+        }
+        angle = Mathf.Deg2Rad * 25;
+        direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        {
+            veryLeftDist = hit.distance;
+            //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.black);
+        }
+        angle = Mathf.Deg2Rad * 5;
+        direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        {
+            veryLeftDist = Mathf.Min(veryLeftDist, hit.distance);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
+        }
+
+        //right----------------------------
+        angle = Mathf.Deg2Rad * 60;
+        direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        {
+            rightDist = hit.distance;
+            //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
+        }
+        angle = Mathf.Deg2Rad * 45;
+        direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        {
+            rightDist = Mathf.Min(rightDist, hit.distance);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.red);
+        }
+        angle = Mathf.Deg2Rad * 25;
+        direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        {
+            veryRightDist = hit.distance;
+            //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.black);
+        }
+        angle = Mathf.Deg2Rad * 5;
+        direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        {
+            veryRightDist = Mathf.Min(veryRightDist, hit.distance);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.black);
+        }
+
+        frontDist = frontDist > 30 ? 30 : frontDist;
+        rightDist = rightDist > 30 ? 30 : rightDist;
+        veryRightDist = veryRightDist > 30 ? 30 : veryRightDist;
+        leftDist = leftDist > 30 ? 30 : leftDist;
+        veryLeftDist = veryLeftDist > 30 ? 30 : veryLeftDist;
+
+        int layerMask = 1 << 9;
+        blocked = Physics.Linecast(transform.position, TestLocation.transform.position, layerMask);
     }
 
     // Update is called once per frame
@@ -61,80 +173,10 @@ public class Walking : MonoBehaviour
         {
             timer = 0.0f;
         }
-        RaycastHit hitFront;
-        RaycastHit hitLeftFront;
-        RaycastHit hitRightFront;
-        RaycastHit hitRight;
-        RaycastHit hitVeryRight;
-        RaycastHit hitLittleRight;
-        RaycastHit hitLeft;
-        RaycastHit hitVeryLeft;
-        RaycastHit hitLittleLeft;
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitFront, Mathf.Infinity))
-        {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hitFront.distance, Color.blue);
-        }
-        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(-0.2f, 0, 1f)), out hitLeftFront, Mathf.Infinity))
-        {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(-0.05f, 0, 1f)) * hitLeftFront.distance, Color.blue);
-        }
-        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(0.2f, 0, 1f)), out hitRightFront, Mathf.Infinity))
-        {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(0.05f, 0, 1f)) * hitRightFront.distance, Color.blue);
-        }
-        float veryShift = 25.0f / 90.0f;
-        float shift = 60.0f / 90.0f;
-        float littleShift = 140.0f / 90.0f;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(-1.0f, 0, shift)), out hitLeft, Mathf.Infinity))
-        {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(-1.0f, 0, shift)) * hitLeft.distance, Color.yellow);
-        }
-        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(-1.0f, 0, littleShift)), out hitLittleLeft, Mathf.Infinity))
-        {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(-1.0f, 0, littleShift)) * hitLittleLeft.distance, Color.yellow);
-        }
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(1.0f, 0, shift)), out hitRight, Mathf.Infinity))
-        {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(1.0f, 0, shift)) * hitRight.distance, Color.red);
-        }
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(-1.0f, 0, veryShift)), out hitVeryLeft, Mathf.Infinity))
-        {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(-1.0f, 0, veryShift)) * hitVeryLeft.distance, Color.black);
-        }
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(1.0f, 0, veryShift)), out hitVeryRight, Mathf.Infinity))
-        {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(1.0f, 0, veryShift)) * hitVeryRight.distance, Color.black);
-        }
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(1.0f, 0, littleShift)), out hitLittleRight, Mathf.Infinity))
-        {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3(1.0f, 0, littleShift)) * hitLittleRight.distance, Color.yellow);
-        }
-
-        float rightDist = hitRight.distance < 30.0f ? hitRight.distance : 25.0f;
-        float veryRightDist = hitVeryRight.distance < 30.0f ? hitVeryRight.distance : 25.0f;
-        float leftDist = hitLeft.distance < 30.0f ? hitLeft.distance : 25.0f;
-        float veryLeftDist = hitVeryLeft.distance < 30.0f ? hitVeryLeft.distance : 25.0f;
-        float frontDist = hitFront.distance < 30.0f ? hitFront.distance : 25.0f;
-        float leftFrontDist = hitLeftFront.distance < 30.0f ? hitLeftFront.distance : 25.0f;
-        float rightFrontDist = hitRightFront.distance < 30.0f ? hitRightFront.distance : 25.0f;
-        float littleRightDist = hitLittleRight.distance < 30.0f ? hitLittleRight.distance : 25.0f;
-        float littleLeftDist = hitLittleLeft.distance < 30.0f ? hitLittleLeft.distance : 25.0f;
-
-        frontDist = Mathf.Min(frontDist, leftFrontDist, rightFrontDist);
-
-        //to do 
-        veryLeftDist = Mathf.Min(leftDist, veryLeftDist);
-        veryRightDist = Mathf.Min(rightDist, veryRightDist);
-
 
         //Debug.Log(String.Format("front: {0} left: {1} veryLeft: {2}, right: {3} veryRight: {4}", frontDist, littleLeftDist, veryLeftDist, littleRightDist, veryRightDist));
 
-        avoidanceSystem.Calculate(littleRightDist, veryRightDist, littleLeftDist, veryLeftDist, frontDist, Speed, MovementTargets.Run);
+        avoidanceSystem.Calculate(rightDist, veryRightDist, leftDist, veryLeftDist, frontDist, Speed, MovementTargets.Run);
 
         Speed = Speed < 10.0f ? Speed : 10.0f;
         Speed = Speed > 0.0f ? Speed : 0.0f;
@@ -155,7 +197,8 @@ public class Walking : MonoBehaviour
         if (ratio > 1f) ratio = 1f;
         if (ratio < 0f) ratio = 0f;
         //Debug.Log(ratio);
-        ratio = 0.3f;
+        if (blocked) ratio = 0.1f;
+        else ratio = 0.3f;
         float goalWeight = ratio;
         float avoidanceWeight = 1 - ratio;
         if (avoidanceAngle != -999.0f)

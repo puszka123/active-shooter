@@ -40,19 +40,19 @@ public class AvoidanceSystem
         frontDistance.Terms.Add(far);
 
         FuzzyTerm fsVN = new FuzzyTerm("VeryNegative", new TriangularMembershipFunction(
-        -50f, -35f, -25f));
+        -90f, -70f, -50f));
         FuzzyTerm fsN = new FuzzyTerm("Negative", new TriangularMembershipFunction(
-            -35f, -25f, -15f));
+            -60f, -40f, -20f));
         FuzzyTerm fsLN = new FuzzyTerm("LittleNegative", new TriangularMembershipFunction(
-            -15f, -7.5f, -3f));
+            -30f, -15f, 0f));
         FuzzyTerm fsZero = new FuzzyTerm("Zero", new TriangularMembershipFunction(
             -3f, 0f, 3f));
         FuzzyTerm fsLP = new FuzzyTerm("LittlePositive", new TriangularMembershipFunction(
-            3f, 7.5f, 15f));
+            0f, 15f, 30f));
         FuzzyTerm fsP = new FuzzyTerm("Positive", new TriangularMembershipFunction(
-            15f, 25f, 35f));
+            20f, 40f, 60f));
         FuzzyTerm fsVP = new FuzzyTerm("VeryPositive", new TriangularMembershipFunction(
-            25f, 35f, 50f));
+            50f, 70f, 90f));
 
         FuzzyVariable angle = new FuzzyVariable("Angle", -40f, 40f);
         angle.Terms.Add(fsVN);
@@ -63,7 +63,7 @@ public class AvoidanceSystem
         angle.Terms.Add(fsP);
         angle.Terms.Add(fsVP);
 
-        FuzzyTerm slower = new FuzzyTerm("Slower", new TriangularMembershipFunction(-1.0f, -0.5f, 0.0f));
+        FuzzyTerm slower = new FuzzyTerm("Slower", new TriangularMembershipFunction(-2.0f, -1.0f, 0.0f));
         FuzzyTerm fastWalk = new FuzzyTerm("Faster", new TriangularMembershipFunction(0.0f, 0.5f, 1.0f));
 
         FuzzyVariable speedChange = new FuzzyVariable("SpeedChange", -0.2f, 0.2f);
@@ -98,73 +98,7 @@ public class AvoidanceSystem
 
         try
         {
-            //angle
-            MamdaniFuzzyRule rule1 = avoidanceSystem.ParseRule("if (FrontDistance is Far) then (Angle is Zero)");
-
-            MamdaniFuzzyRule rule2 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (LeftDistance is Far) and (VeryLeftDistance is Far) and (RightDistance is Near) and (VeryRightDistance is Far) then (Angle is Negative)");
-            MamdaniFuzzyRule rule3 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (LeftDistance is Far) and (VeryLeftDistance is Far) and (RightDistance is Far) and (VeryRightDistance is Near) then (Angle is LittleNegative)");
-
-            MamdaniFuzzyRule rule4 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Far) and (VeryRightDistance is Far) and (LeftDistance is Near) and (VeryLeftDistance is Far) then (Angle is Positive)");
-            MamdaniFuzzyRule rule5 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Far) and (VeryRightDistance is Far) and (LeftDistance is Far) and (VeryLeftDistance is Near) then (Angle is LittlePositive)");
-
-            MamdaniFuzzyRule rule6 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Far) and (VeryRightDistance is Near) and (LeftDistance is Far) and (VeryLeftDistance is Near) then (Angle is Positive)");
-            MamdaniFuzzyRule rule7 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Near) and (VeryRightDistance is Far) and (LeftDistance is Near) and (VeryLeftDistance is Far) then (Angle is VeryPositive)");
-
-            MamdaniFuzzyRule rule8 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Near) and (VeryRightDistance is Far) and (LeftDistance is Far) and (VeryLeftDistance is Near) then (Angle is LittleNegative)");
-            MamdaniFuzzyRule rule9 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Far) and (VeryRightDistance is Near) and (LeftDistance is Near) and (VeryLeftDistance is Far) then (Angle is LittlePositive)");
-
-            MamdaniFuzzyRule rule10 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Near) and (VeryRightDistance is Near) and (LeftDistance is Far) and (VeryLeftDistance is Far) then (Angle is Negative)");
-            MamdaniFuzzyRule rule11 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Far) and (VeryRightDistance is Far) and (LeftDistance is Near) and (VeryLeftDistance is Near) then (Angle is Positive)");
-
-            MamdaniFuzzyRule rule12 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Near) and (VeryRightDistance is Near) and (LeftDistance is Near) and (VeryLeftDistance is Far) then (Angle is VeryNegative)");
-            MamdaniFuzzyRule rule13 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Near) and (VeryRightDistance is Far) and (LeftDistance is Near) and (VeryLeftDistance is Near) then (Angle is VeryPositive)");
-
-            MamdaniFuzzyRule rule14 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Far) and (VeryRightDistance is Near) and (LeftDistance is Near) and (VeryLeftDistance is Near) then (Angle is LittlePositive)");
-            MamdaniFuzzyRule rule15 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Near) and (VeryRightDistance is Near) and (LeftDistance is Far) and (VeryLeftDistance is Near) then (Angle is LittleNegative)");
-
-            MamdaniFuzzyRule rule16 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Near) and (VeryRightDistance is Near) and (LeftDistance is Near) and (VeryLeftDistance is Near) then (Angle is Zero)");
-
-            //speed
-            MamdaniFuzzyRule rule17 = avoidanceSystem.ParseRule("if ((FrontDistance is Far) or (FrontDistance is slightly Near)) and (CurrentMovement is Stay) and (TargetMovement is Walk) then (SpeedChange is Faster)");
-            MamdaniFuzzyRule rule18 = avoidanceSystem.ParseRule("if ((FrontDistance is Far) or (FrontDistance is slightly Near)) and (CurrentMovement is Stay) and (TargetMovement is Run) then (SpeedChange is Faster)");
-            MamdaniFuzzyRule rule19 = avoidanceSystem.ParseRule("if ((FrontDistance is Far) or (FrontDistance is slightly Near)) and (CurrentMovement is Walk) and (TargetMovement is Run) then (SpeedChange is Faster)");
-
-            MamdaniFuzzyRule rule20 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Run) and (TargetMovement is Walk) then (SpeedChange is Slower)");
-            MamdaniFuzzyRule rule21 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Run) and (TargetMovement is Stay) then (SpeedChange is Slower)");
-            MamdaniFuzzyRule rule22 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Walk) and (TargetMovement is Stay) then (SpeedChange is Slower)");
-
-            MamdaniFuzzyRule rule23 = avoidanceSystem.ParseRule("if (FrontDistance is Near) then (SpeedChange is Slower)");
-
-            MamdaniFuzzyRule rule24 = avoidanceSystem.ParseRule("if (FrontDistance is Far) and (CurrentMovement is slightly Walk) and (TargetMovement is Walk) then (SpeedChange is Faster)");
-
-            MamdaniFuzzyRule rule25 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (LeftDistance is Far) and (VeryLeftDistance is Far) and (RightDistance is Far) and (VeryRightDistance is Far) then (Angle is Positive)");
-
-            avoidanceSystem.Rules.Add(rule1);
-            avoidanceSystem.Rules.Add(rule2);
-            avoidanceSystem.Rules.Add(rule3);
-            avoidanceSystem.Rules.Add(rule4);
-            avoidanceSystem.Rules.Add(rule5);
-            avoidanceSystem.Rules.Add(rule6);
-            avoidanceSystem.Rules.Add(rule7);
-            avoidanceSystem.Rules.Add(rule8);
-            avoidanceSystem.Rules.Add(rule9);
-            avoidanceSystem.Rules.Add(rule10);
-            avoidanceSystem.Rules.Add(rule11);
-            avoidanceSystem.Rules.Add(rule12);
-            avoidanceSystem.Rules.Add(rule13);
-            avoidanceSystem.Rules.Add(rule14);
-            avoidanceSystem.Rules.Add(rule15);
-            avoidanceSystem.Rules.Add(rule16);
-            avoidanceSystem.Rules.Add(rule17);
-            avoidanceSystem.Rules.Add(rule18);
-            avoidanceSystem.Rules.Add(rule19);
-            avoidanceSystem.Rules.Add(rule20);
-            avoidanceSystem.Rules.Add(rule21);
-            avoidanceSystem.Rules.Add(rule22);
-            avoidanceSystem.Rules.Add(rule23);
-            avoidanceSystem.Rules.Add(rule24);
-            avoidanceSystem.Rules.Add(rule25);
-
+            RulesSystem.RulesForCrowdAvoidance(avoidanceSystem);
         }
         catch (Exception ex)
         {
