@@ -15,7 +15,7 @@ public class AvoidanceSystem
         avoidanceSystem = new MamdaniFuzzySystem();
 
         //FuzzyTerm near = new FuzzyTerm("Near", new TrapezoidMembershipFunction(-5.0f, 0.0f, 2.0f, 3.0f));
-        FuzzyTerm near = new FuzzyTerm("Near", new TrapezoidMembershipFunction(-5.0f, 0.0f, 2f, 3.0f));
+        FuzzyTerm near = new FuzzyTerm("Near", new TriangularMembershipFunction(0.0f, 0.0f, 3.0f));
         FuzzyTerm far = new FuzzyTerm("Far", new TrapezoidMembershipFunction(1.0f, 10.0f, 20.0f, 30.0f));
 
         FuzzyVariable rightDistance = new FuzzyVariable("RightDistance", 0.0f, 30.0f);
@@ -40,21 +40,22 @@ public class AvoidanceSystem
         frontDistance.Terms.Add(far);
 
         FuzzyTerm fsVN = new FuzzyTerm("VeryNegative", new TriangularMembershipFunction(
-        -90f, -70f, -50f));
+        -50f, -35f, -25f));
         FuzzyTerm fsN = new FuzzyTerm("Negative", new TriangularMembershipFunction(
-            -60f, -40f, -20f));
+            -35f, -25f, -15f));
         FuzzyTerm fsLN = new FuzzyTerm("LittleNegative", new TriangularMembershipFunction(
-            -30f, -15f, 0f));
+            -15f, -7.5f, -3f));
         FuzzyTerm fsZero = new FuzzyTerm("Zero", new TriangularMembershipFunction(
             -3f, 0f, 3f));
         FuzzyTerm fsLP = new FuzzyTerm("LittlePositive", new TriangularMembershipFunction(
-            0f, 15f, 30f));
+            3f, 7.5f, 15f));
         FuzzyTerm fsP = new FuzzyTerm("Positive", new TriangularMembershipFunction(
-            20f, 40f, 60f));
+            15f, 25f, 35f));
         FuzzyTerm fsVP = new FuzzyTerm("VeryPositive", new TriangularMembershipFunction(
-            50f, 70f, 90f));
+25f, 35f, 50f));
+        FuzzyTerm turnAround = new FuzzyTerm("TurnAround", new TriangularMembershipFunction(90f, 90f, 90f));
 
-        FuzzyVariable angle = new FuzzyVariable("Angle", -40f, 40f);
+        FuzzyVariable angle = new FuzzyVariable("Angle", -59f, 50f);
         angle.Terms.Add(fsVN);
         angle.Terms.Add(fsN);
         angle.Terms.Add(fsLN);
@@ -62,6 +63,7 @@ public class AvoidanceSystem
         angle.Terms.Add(fsLP);
         angle.Terms.Add(fsP);
         angle.Terms.Add(fsVP);
+        angle.Terms.Add(turnAround);
 
         FuzzyTerm slower = new FuzzyTerm("Slower", new TriangularMembershipFunction(-2.0f, -1.0f, 0.0f));
         FuzzyTerm fastWalk = new FuzzyTerm("Faster", new TriangularMembershipFunction(0.0f, 0.5f, 1.0f));
@@ -84,6 +86,10 @@ public class AvoidanceSystem
         targetMovement.Terms.Add(walk);
         targetMovement.Terms.Add(run);
 
+        FuzzyTerm isStatic = new FuzzyTerm("Static", new ConstantMembershipFunction(1.0f));
+        FuzzyVariable colliderType = new FuzzyVariable("ColliderType", 0.0f, 1.0f);
+        colliderType.Terms.Add(isStatic);
+
 
         avoidanceSystem.Input.Add(leftDistance);
         avoidanceSystem.Input.Add(veryLeftDistance);
@@ -92,6 +98,7 @@ public class AvoidanceSystem
         avoidanceSystem.Input.Add(frontDistance);
         avoidanceSystem.Input.Add(movement);
         avoidanceSystem.Input.Add(targetMovement);
+        avoidanceSystem.Input.Add(colliderType);
 
         avoidanceSystem.Output.Add(angle);
         avoidanceSystem.Output.Add(speedChange);
@@ -106,7 +113,7 @@ public class AvoidanceSystem
         }
     }
 
-    public void Calculate(float rightDist, float veryRightDist, float leftDist, float veryLeftDist, float frontDist, float speed, float targetSpeed)
+    public void Calculate(float rightDist, float veryRightDist, float leftDist, float veryLeftDist, float frontDist, float speed, float targetSpeed, bool isStatic = false)
     {
         FuzzyVariable right = avoidanceSystem.InputByName("RightDistance");
         FuzzyVariable veryRight = avoidanceSystem.InputByName("VeryRightDistance");
@@ -115,6 +122,7 @@ public class AvoidanceSystem
         FuzzyVariable front = avoidanceSystem.InputByName("FrontDistance");
         FuzzyVariable currentMovement = avoidanceSystem.InputByName("CurrentMovement");
         FuzzyVariable targetMovement = avoidanceSystem.InputByName("TargetMovement");
+        FuzzyVariable colliderType = avoidanceSystem.InputByName("ColliderType");
 
         Dictionary<FuzzyVariable, double> inputValues = new Dictionary<FuzzyVariable, double>();
         inputValues.Add(right, rightDist);
@@ -124,6 +132,7 @@ public class AvoidanceSystem
         inputValues.Add(front, frontDist);
         inputValues.Add(currentMovement, speed);
         inputValues.Add(targetMovement, targetSpeed);
+        inputValues.Add(colliderType, isStatic ? 1 : 0);
 
         result = avoidanceSystem.Calculate(inputValues);
     }

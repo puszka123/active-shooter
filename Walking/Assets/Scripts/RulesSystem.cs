@@ -33,6 +33,7 @@ public static class RulesSystem
         MamdaniFuzzyRule rule15 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Near) and (VeryRightDistance is Near) and (LeftDistance is Far) and (VeryLeftDistance is Near) then (Angle is LittleNegative)");
 
         MamdaniFuzzyRule rule16 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Near) and (VeryRightDistance is Near) and (LeftDistance is Near) and (VeryLeftDistance is Near) then (Angle is Zero)");
+        //MamdaniFuzzyRule rule26 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (ColliderType is Static) and (RightDistance is extremely Near) and (VeryRightDistance is extremely Near) and (LeftDistance is extremely Near) and (VeryLeftDistance is extremely Near) then (Angle is TurnAround)");
 
         //speed
         MamdaniFuzzyRule rule17 = avoidanceSystem.ParseRule("if ((FrontDistance is Far) or (FrontDistance is slightly Near)) and (CurrentMovement is Stay) and (TargetMovement is Walk) then (SpeedChange is Faster)");
@@ -74,5 +75,6 @@ public static class RulesSystem
         avoidanceSystem.Rules.Add(rule23);
         avoidanceSystem.Rules.Add(rule24);
         avoidanceSystem.Rules.Add(rule25);
+        //avoidanceSystem.Rules.Add(rule26);
     }
 }

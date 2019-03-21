@@ -39,6 +39,7 @@ public class Walking : MonoBehaviour
     float leftDist;
     float veryLeftDist;
     bool blocked = false;
+    bool isStatic = false;
 
     //private List<GameObject> pathLocations;
     //private int next = 0;
@@ -67,12 +68,14 @@ public class Walking : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
             frontDist = hit.distance;
+            isStatic = hit.collider.gameObject.layer == 9;
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue);
         }
         angle = Mathf.Deg2Rad * 85;
         direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
         {
+            if(frontDist < hit.distance) isStatic = hit.collider.gameObject.layer == 9;
             frontDist = Mathf.Min(frontDist, hit.distance);
             //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
         }
@@ -80,6 +83,7 @@ public class Walking : MonoBehaviour
         direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
         {
+            if (frontDist < hit.distance) isStatic = hit.collider.gameObject.layer == 9;
             frontDist = Mathf.Min(frontDist, hit.distance);
             //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.black);
         }
@@ -176,7 +180,7 @@ public class Walking : MonoBehaviour
 
         //Debug.Log(String.Format("front: {0} left: {1} veryLeft: {2}, right: {3} veryRight: {4}", frontDist, littleLeftDist, veryLeftDist, littleRightDist, veryRightDist));
 
-        avoidanceSystem.Calculate(rightDist, veryRightDist, leftDist, veryLeftDist, frontDist, Speed, MovementTargets.Run);
+        avoidanceSystem.Calculate(rightDist, veryRightDist, leftDist, veryLeftDist, frontDist, Speed, MovementTargets.Run, isStatic);
 
         Speed = Speed < 10.0f ? Speed : 10.0f;
         Speed = Speed > 0.0f ? Speed : 0.0f;
@@ -197,7 +201,7 @@ public class Walking : MonoBehaviour
         if (ratio > 1f) ratio = 1f;
         if (ratio < 0f) ratio = 0f;
         //Debug.Log(ratio);
-        if (blocked) ratio = 0.1f;
+        if (isStatic) ratio = 0.2f;
         else ratio = 0.3f;
         float goalWeight = ratio;
         float avoidanceWeight = 1 - ratio;
