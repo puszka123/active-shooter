@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PersonMemory : MonoBehaviour {
-    public List<Node> knownLocations;
+public class PersonMemory {
 
-    Graph graph;
-	// Use this for initialization
-	void Start () {
+    private Graph graph;
+    public Node StartPosition;
+    public Node TargetPosition;
+    public Graph Graph { get { return graph; } }
+
+	public PersonMemory() {
         graph = new Graph();
-        Pathfinder pathfinder = new Pathfinder();
-        Node startPosition, targetPosition;
-        startPosition = targetPosition = null;
+
+        StartPosition = TargetPosition = null;
         foreach (var item in graph.Nodes.Keys)
         {
             if (item == "Door 1")
             {
-                startPosition = graph.GetNode(item);
+                StartPosition = graph.GetNode(item);
             }
             if (item == "Door 6")
             {
-                targetPosition = graph.GetNode(item);
+                TargetPosition = graph.GetNode(item);
             }
         }
-        pathfinder.FindWay(graph, startPosition, targetPosition);
 	}
 }

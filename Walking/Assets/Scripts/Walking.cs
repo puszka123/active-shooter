@@ -15,13 +15,15 @@ public static class MovementTargets
 
 public class Walking : MonoBehaviour
 {
-    public GameObject TestLocation;
+    public List<Node> Path;
+    public int currentNodeIndex;
     public float Speed;
     public float RotationSpeed;
 
     AvoidanceSystem avoidanceSystem;
 
     Pathfinder pathfinder;
+    PersonMemory memory;
 
 
     private Rigidbody m_Rigidbody;
@@ -51,11 +53,16 @@ public class Walking : MonoBehaviour
         avoidanceSystem = new AvoidanceSystem();
         avoidanceSystem.initAvoidanceSystem();
         m_Rigidbody = GetComponent<Rigidbody>();
-        //pathLocations = new List<GameObject>(GameObject.FindGameObjectsWithTag("PathLocation"));
+
+        memory = new PersonMemory();
+        Path = pathfinder.FindWay(memory.Graph, memory.StartPosition, memory.TargetPosition);
+        currentNodeIndex = 0;
     }
 
     private void Update()
     {
+        if (CheckGoal()) return;
+
         timerRay += Time.deltaTime;
         if (timerRay < timerRayEdge) return;
         else timerRay = 0;
@@ -156,12 +163,14 @@ public class Walking : MonoBehaviour
         veryLeftDist = veryLeftDist > 30 ? 30 : veryLeftDist;
 
         int layerMask = 1 << 9;
-        blocked = Physics.Linecast(transform.position, TestLocation.transform.position, layerMask);
+        blocked = Physics.Linecast(transform.position, Path[currentNodeIndex].Position, layerMask);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (CheckGoal()) return;
+
         Vector3 m_EulerAngleVelocity;
         Quaternion deltaRotation;
         if (timer < timerEdge)
@@ -192,17 +201,17 @@ public class Walking : MonoBehaviour
             Speed += aCS;
         }
         if (Speed < 0.0f) Speed = 0.0f;
-        float goalAngle = pathfinder.GetGoalAngle(gameObject, TestLocation.transform.position);
+        float goalAngle = pathfinder.GetGoalAngle(gameObject, Path[currentNodeIndex].Position);
         goalAngle = goalAngle > -5f && goalAngle < 5f ? 0f : goalAngle;
         float avoidanceAngle = avoidanceSystem.GetOutputValue("Angle");
         float avoidanceDist = frontDist;
-        float goalDist = Vector3.Distance(gameObject.transform.position, TestLocation.transform.position);
+        float goalDist = Vector3.Distance(gameObject.transform.position, Path[currentNodeIndex].Position);
         float ratio = avoidanceDist / goalDist;
         if (ratio > 1f) ratio = 1f;
         if (ratio < 0f) ratio = 0f;
         //Debug.Log(ratio);
-        if (isStatic) ratio = 0.2f;
-        else ratio = 0.3f;
+        if (isStatic) ratio = 0.4f;
+        else ratio = 0.4f;
         float goalWeight = ratio;
         float avoidanceWeight = 1 - ratio;
         if (avoidanceAngle != -999.0f)
@@ -215,5 +224,17 @@ public class Walking : MonoBehaviour
         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * deltaRotation);
         m_Rigidbody.isKinematic = true;
         m_Rigidbody.isKinematic = false;
+    }
+
+    private bool CheckGoal()
+    {
+        if (currentNodeIndex >= Path.Count) return true;
+        if (pathfinder.CheckDistance(gameObject, Path[currentNodeIndex]))
+        {
+            if (++currentNodeIndex >= Path.Count) return true;
+            else return false;
+        }
+
+        return false;
     }
 }
