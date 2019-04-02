@@ -6,6 +6,7 @@ public class Graph
 {
     Dictionary<string, Node> allNodes;
     Dictionary<string, List<Node>> nodes;
+    public Dictionary<string, Node> AllNodes { get { return allNodes; } }
     public Dictionary<string, List<Node>> Nodes { get { return nodes; } }
 
     public Graph()
@@ -15,6 +16,7 @@ public class Graph
         GameObject[] pathLocations = GameObject.FindGameObjectsWithTag("PathLocation");
         foreach (GameObject pathLocation in pathLocations)
         {
+            pathLocation.GetComponent<PathLocation>().FindMyNeighbours();
             nodes.Add(pathLocation.name, GetNeighbours(pathLocation.GetComponent<PathLocation>().NearestNeighbours));
         }
     }

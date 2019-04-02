@@ -6,7 +6,7 @@ using Priority_Queue;
 public class Pathfinder {
 
     public const int MAX_NODES_IN_QUEUE = 100;
-    public const float MIN_DISTANCE = 1.5f;
+    public const float MIN_DISTANCE = 0.2f;
 
     public float GetGoalAngle(GameObject person, Vector3 destination)
     {
@@ -24,9 +24,11 @@ public class Pathfinder {
         return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE;
     }
 
+    FastPriorityQueue<Node> frontier = new FastPriorityQueue<Node>(MAX_NODES_IN_QUEUE);
     public List<Node> FindWay(Graph graph, Node startPosition, Node targetPosition)
     {
-        FastPriorityQueue<Node> frontier = new FastPriorityQueue<Node>(MAX_NODES_IN_QUEUE);
+        if (!CheckInputs(graph, startPosition, targetPosition)) return null;
+        frontier.Clear();
         frontier.Enqueue(startPosition, 0);
         Dictionary<string, Node> cameFrom = new Dictionary<string, Node>();
         Dictionary<string, float> costSoFar = new Dictionary<string, float>();
@@ -67,5 +69,10 @@ public class Pathfinder {
         }
         desiredPath.Reverse();
         return desiredPath;
+    }
+
+    private bool CheckInputs(Graph graph, Node startPosition, Node targetPosition)
+    {
+        return !(graph == null || startPosition == null || targetPosition == null);
     }
 }

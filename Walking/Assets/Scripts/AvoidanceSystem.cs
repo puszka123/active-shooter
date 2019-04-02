@@ -15,8 +15,8 @@ public class AvoidanceSystem
         avoidanceSystem = new MamdaniFuzzySystem();
 
         //FuzzyTerm near = new FuzzyTerm("Near", new TrapezoidMembershipFunction(-5.0f, 0.0f, 2.0f, 3.0f));
-        FuzzyTerm near = new FuzzyTerm("Near", new TriangularMembershipFunction(0.0f, 0.0f, 3.0f));
-        FuzzyTerm far = new FuzzyTerm("Far", new TrapezoidMembershipFunction(1.0f, 10.0f, 20.0f, 30.0f));
+        FuzzyTerm near = new FuzzyTerm("Near", new TriangularMembershipFunction(-0.2f, 0.0f, 0.2f));
+        FuzzyTerm far = new FuzzyTerm("Far", new TrapezoidMembershipFunction(0.3f, 10.0f, 20.0f, 30.0f));
 
         FuzzyVariable rightDistance = new FuzzyVariable("RightDistance", 0.0f, 30.0f);
         FuzzyVariable veryRightDistance = new FuzzyVariable("VeryRightDistance", 0.0f, 30.0f);
@@ -40,22 +40,22 @@ public class AvoidanceSystem
         frontDistance.Terms.Add(far);
 
         FuzzyTerm fsVN = new FuzzyTerm("VeryNegative", new TriangularMembershipFunction(
-        -50f, -35f, -25f));
+        -20f, -15f, -10f));
         FuzzyTerm fsN = new FuzzyTerm("Negative", new TriangularMembershipFunction(
-            -35f, -25f, -15f));
+            -15f, -10f, -5f));
         FuzzyTerm fsLN = new FuzzyTerm("LittleNegative", new TriangularMembershipFunction(
-            -15f, -7.5f, -3f));
+            -5f, -2.5f, 0f));
         FuzzyTerm fsZero = new FuzzyTerm("Zero", new TriangularMembershipFunction(
-            -3f, 0f, 3f));
+            -1f, 0f, 1f));
         FuzzyTerm fsLP = new FuzzyTerm("LittlePositive", new TriangularMembershipFunction(
-            3f, 7.5f, 15f));
+            0f, 2.5f, 5f));
         FuzzyTerm fsP = new FuzzyTerm("Positive", new TriangularMembershipFunction(
-            15f, 25f, 35f));
+            5f, 10f, 15f));
         FuzzyTerm fsVP = new FuzzyTerm("VeryPositive", new TriangularMembershipFunction(
-25f, 35f, 50f));
+            10f, 15f, 20f));
         FuzzyTerm turnAround = new FuzzyTerm("TurnAround", new TriangularMembershipFunction(90f, 90f, 90f));
 
-        FuzzyVariable angle = new FuzzyVariable("Angle", -59f, 50f);
+        FuzzyVariable angle = new FuzzyVariable("Angle", -20f, 20f);
         angle.Terms.Add(fsVN);
         angle.Terms.Add(fsN);
         angle.Terms.Add(fsLN);
@@ -65,16 +65,16 @@ public class AvoidanceSystem
         angle.Terms.Add(fsVP);
         angle.Terms.Add(turnAround);
 
-        FuzzyTerm slower = new FuzzyTerm("Slower", new TriangularMembershipFunction(-2.0f, -1.0f, 0.0f));
-        FuzzyTerm fastWalk = new FuzzyTerm("Faster", new TriangularMembershipFunction(0.0f, 0.5f, 1.0f));
+        FuzzyTerm slower = new FuzzyTerm("Slower", new TriangularMembershipFunction(-0.2f, -0.1f, 0.0f));
+        FuzzyTerm fastWalk = new FuzzyTerm("Faster", new TriangularMembershipFunction(0.0f, 0.1f, 0.2f));
 
-        FuzzyVariable speedChange = new FuzzyVariable("SpeedChange", -0.2f, 0.2f);
+        FuzzyVariable speedChange = new FuzzyVariable("SpeedChange", -0.1f, 0.1f);
         speedChange.Terms.Add(slower);
         speedChange.Terms.Add(fastWalk);
 
-        FuzzyTerm stay = new FuzzyTerm("Stay", new TriangularMembershipFunction(-1f, MovementTargets.Stay, 1f));
-        FuzzyTerm walk = new FuzzyTerm("Walk", new TriangularMembershipFunction(0.0f, MovementTargets.Walk, 2.5f));
-        FuzzyTerm run = new FuzzyTerm("Run", new TriangularMembershipFunction(3f, MovementTargets.Run, 7.5f));
+        FuzzyTerm stay = new FuzzyTerm("Stay", new TriangularMembershipFunction(-0.4f, MovementTargets.Stay, 0.4f));
+        FuzzyTerm walk = new FuzzyTerm("Walk", new TriangularMembershipFunction(0.0f, MovementTargets.Walk, 0.4f));
+        FuzzyTerm run = new FuzzyTerm("Run", new TriangularMembershipFunction(0.4f, MovementTargets.Run, 1.5f));
 
         FuzzyVariable movement = new FuzzyVariable("CurrentMovement", 0.0f, 15.0f);
         movement.Terms.Add(stay);
