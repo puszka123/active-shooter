@@ -31,7 +31,7 @@ public class Walking : MonoBehaviour
 
 
     private Rigidbody m_Rigidbody;
-    private float timer = 0.2f;
+    private float timer = 0.1f;
     private float timerEdge = 0.1f;
     private float blockedWayTimeout = 0f; //3f 3 sec
 
@@ -96,12 +96,12 @@ public class Walking : MonoBehaviour
         if (Speed < 0.0f) Speed = 0.0f;
         float goalAngle = pathfinder.GetGoalAngle(gameObject, Path[currentNodeIndex].Position);
         float avoidanceAngle = avoidanceSystem.GetOutputValue("Angle");
-        float ratio = 0.3f;
-        float goalWeight = 0.3f;
-        float avoidanceWeight = 0.3f;
+        float ratio = 0.4f;
+        float goalWeight = 0.5f;
+        float avoidanceWeight = 0.4f;
         if (avoidanceAngle != -999.0f)
         {
-            //if ((avoidanceAngle > 1f || avoidanceAngle < -1f) && transform.name == "Employee (11)") Debug.Log(avoidanceAngle);
+            //if ((avoidanceAngle > 1f || avoidanceAngle < -1f)) Debug.Log(avoidanceAngle);
             _finalAngle = avoidanceWeight * avoidanceAngle + goalWeight * goalAngle;
         }
         m_Rigidbody.MovePosition(transform.position + transform.forward * Speed * Time.deltaTime);

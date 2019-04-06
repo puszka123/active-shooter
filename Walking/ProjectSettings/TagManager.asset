@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PathLocation
+  - Employee
   layers:
   - Default
   - TransparentFX

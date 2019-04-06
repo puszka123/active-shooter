@@ -15,7 +15,7 @@ public class AvoidanceSystem
         avoidanceSystem = new MamdaniFuzzySystem();
 
         //FuzzyTerm near = new FuzzyTerm("Near", new TrapezoidMembershipFunction(-5.0f, 0.0f, 2.0f, 3.0f));
-        FuzzyTerm near = new FuzzyTerm("Near", new TriangularMembershipFunction(-0.2f, 0.0f, 0.2f));
+        FuzzyTerm near = new FuzzyTerm("Near", new TriangularMembershipFunction(-0.3f, 0.0f, 0.3f));
         FuzzyTerm far = new FuzzyTerm("Far", new TrapezoidMembershipFunction(0.3f, 10.0f, 20.0f, 30.0f));
 
         FuzzyVariable rightDistance = new FuzzyVariable("RightDistance", 0.0f, 30.0f);

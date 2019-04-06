@@ -23,6 +23,12 @@ public class CollisionDetection {
         //front----------------------------
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
+            if (hit.transform.tag == "Employee")
+            {
+                //Debug.Log(Vector3.Angle(transform.forward, hit.transform.forward));
+                if (Vector3.Angle(transform.forward, hit.transform.forward) < 90f) hit.distance = 30f;
+            }
+
             frontDist = hit.distance;
             isStatic = hit.collider.gameObject.layer == 9;
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue);
@@ -31,6 +37,10 @@ public class CollisionDetection {
         direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
         {
+            if (hit.transform.tag == "Employee")
+            {
+                if (Vector3.Angle(transform.forward, hit.transform.forward) < 90f) hit.distance = 30f;
+            }
             if (frontDist < hit.distance) isStatic = hit.collider.gameObject.layer == 9;
             frontDist = Mathf.Min(frontDist, hit.distance);
             //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
@@ -39,6 +49,10 @@ public class CollisionDetection {
         direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
         {
+            if (hit.transform.tag == "Employee")
+            {
+                if (Vector3.Angle(transform.forward, hit.transform.forward) < 90f) hit.distance = 30f;
+            }
             if (frontDist < hit.distance) isStatic = hit.collider.gameObject.layer == 9;
             frontDist = Mathf.Min(frontDist, hit.distance);
             //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.black);
@@ -49,6 +63,10 @@ public class CollisionDetection {
         direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
         {
+            if (hit.transform.tag == "Employee")
+            {
+                if (Vector3.Angle(transform.forward, hit.transform.forward) < 90f) hit.distance = 30f;
+            }
             leftDist = hit.distance;
             //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
         }
@@ -57,6 +75,10 @@ public class CollisionDetection {
         direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
         {
+            if (hit.transform.tag == "Employee")
+            {
+                if (Vector3.Angle(transform.forward, hit.transform.forward) < 90f) hit.distance = 30f;
+            }
             leftDist = Mathf.Min(leftDist, hit.distance);
             //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
         }
@@ -64,6 +86,10 @@ public class CollisionDetection {
         direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
         {
+            if (hit.transform.tag == "Employee")
+            {
+                if (Vector3.Angle(transform.forward, hit.transform.forward) < 90f) hit.distance = 30f;
+            }
             veryLeftDist = hit.distance;
             //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.black);
         }
@@ -71,6 +97,10 @@ public class CollisionDetection {
         direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
         {
+            if (hit.transform.tag == "Employee")
+            {
+                if (Vector3.Angle(transform.forward, hit.transform.forward) < 90f) hit.distance = 30f;
+            }
             veryLeftDist = Mathf.Min(veryLeftDist, hit.distance);
             //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
         }
@@ -80,6 +110,10 @@ public class CollisionDetection {
         direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
         {
+            if (hit.transform.tag == "Employee")
+            {
+                if (Vector3.Angle(transform.forward, hit.transform.forward) < 90f) hit.distance = 30f;
+            }
             rightDist = hit.distance;
             //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
         }
@@ -87,6 +121,10 @@ public class CollisionDetection {
         direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
         {
+            if (hit.transform.tag == "Employee")
+            {
+                if (Vector3.Angle(transform.forward, hit.transform.forward) < 90f) hit.distance = 30f;
+            }
             rightDist = Mathf.Min(rightDist, hit.distance);
             //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.red);
         }
@@ -94,6 +132,10 @@ public class CollisionDetection {
         direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
         {
+            if (hit.transform.tag == "Employee")
+            {
+                if (Vector3.Angle(transform.forward, hit.transform.forward) < 90f) hit.distance = 30f;
+            }
             veryRightDist = hit.distance;
             //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.black);
         }
@@ -101,6 +143,10 @@ public class CollisionDetection {
         direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
         {
+            if (hit.transform.tag == "Employee")
+            {
+                if (Vector3.Angle(transform.forward, hit.transform.forward) < 90f) hit.distance = 30f;
+            }
             veryRightDist = Mathf.Min(veryRightDist, hit.distance);
             //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.black);
         }
