@@ -82,7 +82,7 @@ public class Walking : MonoBehaviour
         //Debug.Log(String.Format("front: {0} left: {1} veryLeft: {2}, right: {3} veryRight: {4}", frontDist, littleLeftDist, veryLeftDist, littleRightDist, veryRightDist));
 
         avoidanceSystem.Calculate(collisionDetection.rightDist, collisionDetection.veryRightDist, collisionDetection.leftDist,
-            collisionDetection.veryLeftDist, collisionDetection.frontDist, Speed, MovementTargets.Walk, collisionDetection.isStatic);
+            collisionDetection.veryLeftDist, collisionDetection.frontDist, Speed, MovementTargets.Run, collisionDetection.isStatic);
 
         Speed = Speed < 10.0f ? Speed : 10.0f;
         Speed = Speed > 0.0f ? Speed : 0.0f;
