@@ -15,13 +15,14 @@ public class DoorController : MonoBehaviour
 
     BoxCollider myCollider;
 
-    private
+    Renderer m_renderer;
 
     // Use this for initialization
     void Start()
     {
         doorKey = transform.name;
         BoxCollider[] res = GetComponents<BoxCollider>();
+        m_renderer = GetComponent<Renderer>();
         foreach (var item in res)
         {
             if(!item.isTrigger)
@@ -42,6 +43,7 @@ public class DoorController : MonoBehaviour
             {
                 isOpen = false;
                 myCollider.enabled = true;
+                m_renderer.enabled = true;
             }
             else
             {
@@ -57,11 +59,7 @@ public class DoorController : MonoBehaviour
         {
             closeTime = 1f;
             isOpen = true;
+            m_renderer.enabled = false;
         }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        other.SendMessage("DoorMet", gameObject);
     }
 }

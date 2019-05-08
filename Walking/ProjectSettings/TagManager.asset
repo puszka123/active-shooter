@@ -7,6 +7,7 @@ TagManager:
   - PathLocation
   - Employee
   - Door
+  - SimulationManager
   layers:
   - Default
   - TransparentFX
