@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class PersonDoor : MonoBehaviour {
 
-    public string[] myKeys;
+    public List<string> myKeys;
 
 	// Use this for initialization
 	void Start () {
-        //myKeys = new string[1];
-        //myKeys[0] = "Door";
 	}
 	
 	// Update is called once per frame
@@ -19,6 +17,23 @@ public class PersonDoor : MonoBehaviour {
 
     public void DoorMet(GameObject door)
     {
-        door.SendMessage("TryToOpenDoor", myKeys);
+        door.SendMessage("TryToOpenDoor", myKeys.ToArray());
+    }
+
+    public void AddKey(string key)
+    {
+        if(key == null)
+        {
+            Debug.Log(transform.name + " AddKey: key is null. => return null");
+            return;
+        }
+        if(myKeys == null)
+        {
+            myKeys = new List<string>(new string[] { key });
+        }
+        else
+        {
+            myKeys.Add(key);
+        }
     }
 }
