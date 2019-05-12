@@ -7,6 +7,8 @@ public class Respawn : MonoBehaviour {
 
     public int numberOfSlots;
 
+    public static int nameGenerator = 0;
+
     GameObject objectToInstantiate;
 
 	// Use this for initialization
@@ -20,6 +22,7 @@ public class Respawn : MonoBehaviour {
         for (int i = 0; i < numberOfSlots; i++)
         {
            GameObject employee = Instantiate(objectToInstantiate, transform.position, transform.rotation);
+            employee.name = "employee " + nameGenerator++;
             employee.GetComponent<PersonDoor>().AddKey(doorKey);
         }
 	}

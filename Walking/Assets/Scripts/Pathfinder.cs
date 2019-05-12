@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Priority_Queue;
+using System.Linq;
 
 public class Pathfinder {
 
@@ -25,7 +26,7 @@ public class Pathfinder {
     }
 
     FastPriorityQueue<Node> frontier = new FastPriorityQueue<Node>(MAX_NODES_IN_QUEUE);
-    public List<Node> FindWay(Graph graph, Node startPosition, Node targetPosition)
+    public List<Node> FindWay(Graph graph, Node startPosition, Node targetPosition, PersonMemory personMemory)
     {
         if (!CheckInputs(graph, startPosition, targetPosition)) return null;
         frontier.Clear();
@@ -45,6 +46,12 @@ public class Pathfinder {
 
             foreach(Node next in graph.GetNeighbours(current))
             {
+                //if a node is blocked by a door (a person doesn't have a keys) then d not consider the node and find another way
+                if(personMemory.GetBlockedNodes().Select(node => node.Name).Contains(next.Name))
+                {
+                    //Debug.Log("Pathfinder: " + next.Name + " " + startPosition.Name);
+                    continue;
+                }
                 float newCost = costSoFar[current.Name] + Vector3.Distance(current.Position, next.Position);
                 if (!costSoFar.ContainsKey(next.Name) || newCost < costSoFar[next.Name])
                 {
@@ -53,13 +60,16 @@ public class Pathfinder {
                     frontier.Enqueue(next, priority);
                     if (cameFrom.ContainsKey(next.Name)) cameFrom[next.Name] = current;
                     else cameFrom.Add(next.Name, current);
-                    //Debug.Log(next.Name + " " + cameFrom[next].Name);
                 }
             }
         }
 
         List<Node> desiredPath = new List<Node>();
         desiredPath.Add(targetPosition);
+        if(!cameFrom.ContainsKey(targetPosition.Name))
+        {
+            return desiredPath;
+        }
         Node start = cameFrom[targetPosition.Name];
         while (start != null)
         {

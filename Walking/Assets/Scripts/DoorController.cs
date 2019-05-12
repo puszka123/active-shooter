@@ -53,13 +53,53 @@ public class DoorController : MonoBehaviour
         }
     }
 
-    public void TryToOpenDoor(string[] keys = null)
+    public void TryToOpenDoor(object[] args)
     {
+        string[] keys = (string[])args[0];
+        GameObject person = (GameObject)args[1];
+
         if((keys != null && keys.Contains(doorKey)) || doorKey == null)
         {
             closeTime = 1f;
             isOpen = true;
             m_renderer.enabled = false;
+        }
+        else if(person != null)
+        {
+            Walking walking = person.GetComponent<Walking>();
+            //if (walking == null)
+            //{
+            //    Debug.Log("walking is null");
+            //}
+            //if (walking.Path == null)
+            //{
+            //    Debug.Log("path is null");
+            //}
+            //if (walking.Path[walking.currentNodeIndex] == null)
+            //{
+            //    Debug.Log("path[i] is null");
+            //}
+            bool update = false;
+            //walking.PersonMemory.clearBlockedByDoors();
+            foreach (var item in walking.Path)
+            {
+                LayerMask layerMask = LayerMask.GetMask("Door");
+                RaycastHit hit;
+                bool blocked = Physics.Linecast(person.transform.position, item.Position, out hit, layerMask);
+                LayerMask layerMask1 = LayerMask.GetMask("Wall");
+                bool wall = Physics.Linecast(transform.position, item.Position, layerMask1);
+                if (blocked && !wall && hit.collider.gameObject.name == gameObject.name)
+                {
+                    //if(person.name == "employee 29")
+                    //Debug.Log(transform.name + " " + person.name + " " + item.Name);
+                    update = true;
+                    walking.PersonMemory.AddBlockedNode(item);
+                }
+            }
+            if (update)
+            {
+                walking.UpdatePathAfterBlockedNode();
+            }
         }
     }
 }

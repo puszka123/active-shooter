@@ -27,6 +27,7 @@ public class Walking : MonoBehaviour
 
     Pathfinder pathfinder;
     PersonMemory memory;
+    public PersonMemory PersonMemory { get { return memory; } }
     CollisionDetection collisionDetection;
 
 
@@ -52,7 +53,7 @@ public class Walking : MonoBehaviour
         memory = new PersonMemory();
         memory.setStartPosition(StartPosition.name);
         memory.setTargetPosition(TargetPosition.name);
-        Path = pathfinder.FindWay(memory.Graph, memory.StartPosition, memory.TargetPosition);
+        Path = pathfinder.FindWay(memory.Graph, memory.StartPosition, memory.TargetPosition, memory);
         currentNodeIndex = 0;
     }
 
@@ -124,7 +125,7 @@ public class Walking : MonoBehaviour
             memory.FindNearestLocation(transform.position);
             if (memory.StartPosition != null)
             {
-                Path = pathfinder.FindWay(memory.Graph, memory.StartPosition, memory.TargetPosition);
+                Path = pathfinder.FindWay(memory.Graph, memory.StartPosition, memory.TargetPosition, memory);
                 currentNodeIndex = 0;
                 return false;
             }
@@ -151,5 +152,24 @@ public class Walking : MonoBehaviour
     public bool IsNegative(float number)
     {
         return number < 0;
+    }
+
+    public void UpdatePathAfterBlockedNode()
+    {
+        blockedWayTimeout = 0f;
+        memory.FindNearestLocation(transform.position);
+        if (memory.StartPosition != null)
+        {
+            Path = pathfinder.FindWay(memory.Graph, memory.StartPosition, memory.TargetPosition, memory);
+            //Debug.Log("START------------------------ " + transform.name + " ------------------------START");
+            //Debug.Log("Start position: " + memory.StartPosition.Name);
+            //Debug.Log("target position: " + memory.TargetPosition.Name);
+            //foreach (var item in Path)
+            //{
+            //    Debug.Log(item.Name);
+            //}
+            //Debug.Log("END------------------------END");
+            currentNodeIndex = 0;
+        }
     }
 }
