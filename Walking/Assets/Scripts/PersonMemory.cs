@@ -7,35 +7,48 @@ public class PersonMemory
 {
     public Node StartPosition;
     public Node TargetPosition;
-    public Graph Graph { get; private set; }
+    public Dictionary<int, Graph> Graph { get; private set; }
+    System.Random rand;
+    public int CurrentFloor;
+
 
     List<Node> blockedByDoor;
 
     public PersonMemory()
     {
-        Graph = new Graph();
+        rand = new System.Random();
+        Graph = new Dictionary<int, Graph>();
+        CurrentFloor = 1;
 
         StartPosition = TargetPosition = null;
     }
 
+    public void Init(int floor, Vector3 position)
+    {
+        CurrentFloor = floor;
+        Graph.Add(CurrentFloor, new Graph(CurrentFloor));
+        FindNearestLocation(position);
+        setTargetPosition(RandomTarget().Name);
+    }
+
     public void setStartPosition(string name)
     {
-        foreach (var item in Graph.Nodes.Keys)
+        foreach (var item in Graph[CurrentFloor].Nodes.Keys)
         {
             if (item == name)
             {
-                StartPosition = Graph.GetNode(item);
+                StartPosition = Graph[CurrentFloor].GetNode(item);
             }
         }
     }
 
     public void setTargetPosition(string name)
     {
-        foreach (var item in Graph.Nodes.Keys)
+        foreach (var item in Graph[CurrentFloor].Nodes.Keys)
         {
             if (item == name)
             {
-                TargetPosition = Graph.GetNode(item);
+                TargetPosition = Graph[CurrentFloor].GetNode(item);
             }
         }
     }
@@ -43,7 +56,7 @@ public class PersonMemory
     public void FindNearestLocation(Vector3 position)
     {
         Node node = null;
-        foreach (KeyValuePair<string, Node> entry in Graph.AllNodes)
+        foreach (KeyValuePair<string, Node> entry in Graph[CurrentFloor].AllNodes)
         {
             int layerMask = 1 << 9;
             if (!Physics.Linecast(position, entry.Value.Position, layerMask))
@@ -96,5 +109,11 @@ public class PersonMemory
     public void clearBlockedByDoors()
     {
         blockedByDoor = null;
+    }
+
+    public Node RandomTarget()
+    {
+        int nodeIndex = rand.Next(Graph[CurrentFloor].AllNodes.Count);
+        return Graph[CurrentFloor].AllNodes.ElementAt(nodeIndex).Value;
     }
 }

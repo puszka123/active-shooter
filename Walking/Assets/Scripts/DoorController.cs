@@ -8,9 +8,10 @@ public class DoorController : MonoBehaviour
 
     private bool isOpen = false;
     public bool IsLockable = true;
+    public bool IsToilet = false;
     private string doorKey;
 
-    private float closeTime = 0.25f;
+    private float closeTime = 1f;
 
     public bool IsOpen { get { return isOpen; } }
 
@@ -61,7 +62,7 @@ public class DoorController : MonoBehaviour
 
         if((keys != null && keys.Contains(doorKey)) || doorKey == null)
         {
-            closeTime = 0.25f;
+            closeTime = 1f;
             isOpen = true;
             m_renderer.enabled = false;
         }

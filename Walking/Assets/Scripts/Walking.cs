@@ -13,6 +13,7 @@ public class Walking : MonoBehaviour
 
     public GameObject StartPosition;
     public GameObject TargetPosition;
+    public float CurrentSpeed;
 
     AvoidanceSystem avoidanceSystem;
 
@@ -35,23 +36,30 @@ public class Walking : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        
+    }
+
+    public void Init(int floor)
+    {
+        CurrentSpeed = Resources.Walk;
         pathfinder = new Pathfinder();
         avoidanceSystem = new AvoidanceSystem();
         avoidanceSystem.initAvoidanceSystem();
         m_Rigidbody = GetComponent<Rigidbody>();
         collisionDetection = new CollisionDetection();
-
         memory = new PersonMemory();
-        memory.setStartPosition(StartPosition.name);
-        memory.setTargetPosition(TargetPosition.name);
-        Path = pathfinder.FindWay(memory.Graph, memory.StartPosition, memory.TargetPosition, memory);
+        memory.Init(floor, transform.position);
+        Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
         currentNodeIndex = 0;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (CheckGoal()) return;
+        if (CheckGoal() || memory == null)
+        {
+            return;
+        }
 
         Vector3 m_EulerAngleVelocity;
         Quaternion deltaRotation;
@@ -74,7 +82,7 @@ public class Walking : MonoBehaviour
         //Debug.Log(String.Format("front: {0} left: {1} veryLeft: {2}, right: {3} veryRight: {4}", frontDist, littleLeftDist, veryLeftDist, littleRightDist, veryRightDist));
 
         avoidanceSystem.Calculate(collisionDetection.rightDist, collisionDetection.veryRightDist, collisionDetection.leftDist,
-            collisionDetection.veryLeftDist, collisionDetection.frontDist, Speed, Resources.Run, collisionDetection.isStatic);
+            collisionDetection.veryLeftDist, collisionDetection.frontDist, Speed, CurrentSpeed, collisionDetection.isStatic);
 
    
         float aCS = avoidanceSystem.GetOutputValue("SpeedChange");
@@ -116,7 +124,7 @@ public class Walking : MonoBehaviour
             memory.FindNearestLocation(transform.position);
             if (memory.StartPosition != null)
             {
-                Path = pathfinder.FindWay(memory.Graph, memory.StartPosition, memory.TargetPosition, memory);
+                Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
                 currentNodeIndex = 0;
                 return false;
             }
@@ -151,15 +159,7 @@ public class Walking : MonoBehaviour
         memory.FindNearestLocation(transform.position);
         if (memory.StartPosition != null)
         {
-            Path = pathfinder.FindWay(memory.Graph, memory.StartPosition, memory.TargetPosition, memory);
-            //Debug.Log("START------------------------ " + transform.name + " ------------------------START");
-            //Debug.Log("Start position: " + memory.StartPosition.Name);
-            //Debug.Log("target position: " + memory.TargetPosition.Name);
-            //foreach (var item in Path)
-            //{
-            //    Debug.Log(item.Name);
-            //}
-            //Debug.Log("END------------------------END");
+            Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
             currentNodeIndex = 0;
         }
     }

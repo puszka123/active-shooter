@@ -8,6 +8,7 @@ TagManager:
   - Employee
   - Door
   - SimulationManager
+  - Floor
   layers:
   - Default
   - TransparentFX

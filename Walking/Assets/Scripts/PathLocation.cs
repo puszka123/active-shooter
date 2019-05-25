@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PathLocation : MonoBehaviour {
     public List<GameObject> NearestNeighbours;
+    public bool IsStairs = false;
+    public string StairsDirection = "";
+    public int Floor;
 
     public void FindMyNeighbours()
     {
@@ -18,5 +21,10 @@ public class PathLocation : MonoBehaviour {
             }
 
         }
+    }
+
+    public void InitFloor()
+    {
+        Floor = int.Parse(transform.parent.name.Split(' ')[1]);
     }
 }
