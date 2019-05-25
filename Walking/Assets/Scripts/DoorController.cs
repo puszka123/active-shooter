@@ -7,9 +7,10 @@ public class DoorController : MonoBehaviour
 {
 
     private bool isOpen = false;
+    public bool IsLockable = true;
     private string doorKey;
 
-    private float closeTime = 1f;
+    private float closeTime = 0.25f;
 
     public bool IsOpen { get { return isOpen; } }
 
@@ -20,7 +21,7 @@ public class DoorController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        doorKey = transform.name;
+        doorKey = IsLockable ? transform.name : null;
         BoxCollider[] res = GetComponents<BoxCollider>();
         m_renderer = GetComponent<Renderer>();
         foreach (var item in res)
@@ -60,27 +61,14 @@ public class DoorController : MonoBehaviour
 
         if((keys != null && keys.Contains(doorKey)) || doorKey == null)
         {
-            closeTime = 1f;
+            closeTime = 0.25f;
             isOpen = true;
             m_renderer.enabled = false;
         }
         else if(person != null)
         {
             Walking walking = person.GetComponent<Walking>();
-            //if (walking == null)
-            //{
-            //    Debug.Log("walking is null");
-            //}
-            //if (walking.Path == null)
-            //{
-            //    Debug.Log("path is null");
-            //}
-            //if (walking.Path[walking.currentNodeIndex] == null)
-            //{
-            //    Debug.Log("path[i] is null");
-            //}
             bool update = false;
-            //walking.PersonMemory.clearBlockedByDoors();
             foreach (var item in walking.Path)
             {
                 LayerMask layerMask = LayerMask.GetMask("Door");
@@ -90,8 +78,6 @@ public class DoorController : MonoBehaviour
                 bool wall = Physics.Linecast(transform.position, item.Position, layerMask1);
                 if (blocked && !wall && hit.collider.gameObject.name == gameObject.name)
                 {
-                    //if(person.name == "employee 29")
-                    //Debug.Log(transform.name + " " + person.name + " " + item.Name);
                     update = true;
                     walking.PersonMemory.AddBlockedNode(item);
                 }

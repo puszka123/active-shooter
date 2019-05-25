@@ -3,31 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Respawn : MonoBehaviour {
+public class Respawn : MonoBehaviour
+{
 
     public int numberOfSlots;
 
     public static int nameGenerator = 0;
 
     GameObject objectToInstantiate;
+    public string DoorKey;
 
-	// Use this for initialization
-	void Awake () {
+
+    float timer = 0.0f;
+
+    // Use this for initialization
+    void Awake()
+    {
         objectToInstantiate = GameObject.Find("Employee Origin");
-        string doorKey = GetDoorKeyForRespawn();
-        if(objectToInstantiate == null)
+        DoorKey = GetDoorKeyForRespawn();
+        if (objectToInstantiate == null)
         {
             Debug.Log(transform.name + ": can't find an employee for instantiating");
         }
-        for (int i = 0; i < numberOfSlots; i++)
+    }
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer >= 1f && numberOfSlots > 0)
         {
-           GameObject employee = Instantiate(objectToInstantiate, transform.position, transform.rotation);
+            GameObject employee = Instantiate(objectToInstantiate, transform.position, transform.rotation);
             employee.name = "employee " + nameGenerator++;
-            employee.GetComponent<PersonDoor>().AddKey(doorKey);
+            employee.GetComponent<PersonDoor>().AddKey(DoorKey);
+            timer = 0f;
+            --numberOfSlots;
         }
-	}
-	
-	public string GetDoorKeyForRespawn()
+
+    }
+
+    public string GetDoorKeyForRespawn()
     {
         string doorKey = null;
         float distance = 9999999f;

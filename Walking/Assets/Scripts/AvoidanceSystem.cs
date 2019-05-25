@@ -65,26 +65,32 @@ public class AvoidanceSystem
         angle.Terms.Add(fsVP);
         angle.Terms.Add(turnAround);
 
-        FuzzyTerm slower = new FuzzyTerm("Slower", new TriangularMembershipFunction(-0.2f, -0.1f, 0.0f));
+        FuzzyTerm slower = new FuzzyTerm("Slower", new TriangularMembershipFunction(-0.35f, -0.3f, -0.25f));
         FuzzyTerm fastWalk = new FuzzyTerm("Faster", new TriangularMembershipFunction(0.0f, 0.1f, 0.2f));
 
-        FuzzyVariable speedChange = new FuzzyVariable("SpeedChange", -0.1f, 0.1f);
+        FuzzyVariable speedChange = new FuzzyVariable("SpeedChange", -1.5f, 1.5f);
         speedChange.Terms.Add(slower);
         speedChange.Terms.Add(fastWalk);
 
-        FuzzyTerm stay = new FuzzyTerm("Stay", new TriangularMembershipFunction(-0.4f, MovementTargets.Stay, 0.4f));
-        FuzzyTerm walk = new FuzzyTerm("Walk", new TriangularMembershipFunction(0.0f, MovementTargets.Walk, 0.4f));
-        FuzzyTerm run = new FuzzyTerm("Run", new TriangularMembershipFunction(0.4f, MovementTargets.Run, 1.5f));
+        FuzzyTerm stay = new FuzzyTerm("Stay", new TriangularMembershipFunction(-0.001f, Resources.Stay, 0.001f));
+        FuzzyTerm slowWalk = new FuzzyTerm("SlowWalk", new TriangularMembershipFunction(0.0f, Resources.SlowWalk, Resources.Walk));
+        FuzzyTerm walk = new FuzzyTerm("Walk", new TriangularMembershipFunction(Resources.SlowWalk, Resources.Walk, Resources.MaxWalk));
+        FuzzyTerm run = new FuzzyTerm("Run", new TriangularMembershipFunction(Resources.MaxWalk, Resources.Run, Resources.MaxRun));
+        FuzzyTerm sprint = new FuzzyTerm("Sprint", new TriangularMembershipFunction(Resources.MaxRun, Resources.Sprint, Resources.MaxSprint));
 
         FuzzyVariable movement = new FuzzyVariable("CurrentMovement", 0.0f, 15.0f);
         movement.Terms.Add(stay);
+        movement.Terms.Add(slowWalk);
         movement.Terms.Add(walk);
         movement.Terms.Add(run);
+        movement.Terms.Add(sprint);
 
         FuzzyVariable targetMovement = new FuzzyVariable("TargetMovement", 0.0f, 15.0f);
         targetMovement.Terms.Add(stay);
+        targetMovement.Terms.Add(slowWalk);
         targetMovement.Terms.Add(walk);
         targetMovement.Terms.Add(run);
+        targetMovement.Terms.Add(sprint);
 
         FuzzyTerm isStatic = new FuzzyTerm("Static", new ConstantMembershipFunction(1.0f));
         FuzzyVariable colliderType = new FuzzyVariable("ColliderType", 0.0f, 1.0f);

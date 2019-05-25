@@ -19,9 +19,10 @@ public class CollisionDetection {
 
         float angle;
         Vector3 direction;
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Employee");
 
         //front----------------------------
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
             if (hit.transform.tag == "Employee")
             {
@@ -35,7 +36,7 @@ public class CollisionDetection {
         }
         angle = Mathf.Deg2Rad * 75;
         direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
         {
             if (hit.transform.tag == "Employee")
             {
@@ -47,7 +48,7 @@ public class CollisionDetection {
         }
         angle = Mathf.Deg2Rad * 75;
         direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
         {
             if (hit.transform.tag == "Employee")
             {
@@ -61,7 +62,7 @@ public class CollisionDetection {
         //left----------------------------
         angle = Mathf.Deg2Rad * 60;
         direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
         {
             if (hit.transform.tag == "Employee")
             {
@@ -73,7 +74,7 @@ public class CollisionDetection {
 
         angle = Mathf.Deg2Rad * 45;
         direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
         {
             if (hit.transform.tag == "Employee")
             {
@@ -84,7 +85,7 @@ public class CollisionDetection {
         }
         angle = Mathf.Deg2Rad * 25;
         direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
         {
             if (hit.transform.tag == "Employee")
             {
@@ -95,7 +96,7 @@ public class CollisionDetection {
         }
         angle = Mathf.Deg2Rad * 5;
         direction = new Vector3(-Mathf.Cos(angle), 0, Mathf.Sin(angle));
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
         {
             if (hit.transform.tag == "Employee")
             {
@@ -108,7 +109,7 @@ public class CollisionDetection {
         //right----------------------------
         angle = Mathf.Deg2Rad * 60;
         direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
         {
             if (hit.transform.tag == "Employee")
             {
@@ -119,7 +120,7 @@ public class CollisionDetection {
         }
         angle = Mathf.Deg2Rad * 45;
         direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
         {
             if (hit.transform.tag == "Employee")
             {
@@ -130,7 +131,7 @@ public class CollisionDetection {
         }
         angle = Mathf.Deg2Rad * 25;
         direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
         {
             if (hit.transform.tag == "Employee")
             {
@@ -141,7 +142,7 @@ public class CollisionDetection {
         }
         angle = Mathf.Deg2Rad * 5;
         direction = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
         {
             if (hit.transform.tag == "Employee")
             {
@@ -157,7 +158,7 @@ public class CollisionDetection {
         leftDist = leftDist > 30 ? 30 : leftDist;
         veryLeftDist = veryLeftDist > 30 ? 30 : veryLeftDist;
 
-        int layerMask = 1 << 9;
-        blocked = Physics.Linecast(transform.position, goalLocation, layerMask);
+        int layerMask1 = 1 << 9;
+        blocked = Physics.Linecast(transform.position, goalLocation, layerMask1);
     }
 }

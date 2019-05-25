@@ -34,21 +34,26 @@ public static class RulesSystem
 
         MamdaniFuzzyRule rule16 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (RightDistance is Near) and (VeryRightDistance is Near) and (LeftDistance is Near) and (VeryLeftDistance is Near) then (Angle is Zero)");
         //MamdaniFuzzyRule rule26 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (ColliderType is Static) and (RightDistance is extremely Near) and (VeryRightDistance is extremely Near) and (LeftDistance is extremely Near) and (VeryLeftDistance is extremely Near) then (Angle is TurnAround)");
+        MamdaniFuzzyRule rule17 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (LeftDistance is Far) and (VeryLeftDistance is Far) and (RightDistance is Far) and (VeryRightDistance is Far) then (Angle is Positive)");
 
         //speed
-        MamdaniFuzzyRule rule17 = avoidanceSystem.ParseRule("if ((FrontDistance is Far) or (FrontDistance is slightly Near)) and (CurrentMovement is Stay) and (TargetMovement is Walk) then (SpeedChange is Faster)");
-        MamdaniFuzzyRule rule18 = avoidanceSystem.ParseRule("if ((FrontDistance is Far) or (FrontDistance is slightly Near)) and (CurrentMovement is Stay) and (TargetMovement is Run) then (SpeedChange is Faster)");
-        MamdaniFuzzyRule rule19 = avoidanceSystem.ParseRule("if ((FrontDistance is Far) or (FrontDistance is slightly Near)) and (CurrentMovement is Walk) and (TargetMovement is Run) then (SpeedChange is Faster)");
+        MamdaniFuzzyRule rule18 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Stay) and ((TargetMovement is Walk) or (TargetMovement is Run)  or (TargetMovement is Sprint)) then (SpeedChange is Faster)");
+        MamdaniFuzzyRule rule19 = avoidanceSystem.ParseRule("if (FrontDistance is Far) and (CurrentMovement is SlowWalk) and ((TargetMovement is Walk) or (TargetMovement is Run)  or (TargetMovement is Sprint)) then (SpeedChange is Faster)");
+        MamdaniFuzzyRule rule20 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Walk) and ((TargetMovement is Run) or (TargetMovement is Sprint)) then (SpeedChange is Faster)");
+        MamdaniFuzzyRule rule21 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Run) and ((TargetMovement is Sprint)) then (SpeedChange is Faster)");
 
-        MamdaniFuzzyRule rule20 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Run) and (TargetMovement is Walk) then (SpeedChange is Slower)");
-        MamdaniFuzzyRule rule21 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Run) and (TargetMovement is Stay) then (SpeedChange is Slower)");
-        MamdaniFuzzyRule rule22 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Walk) and (TargetMovement is Stay) then (SpeedChange is Slower)");
+        MamdaniFuzzyRule rule22 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Sprint) and (TargetMovement is Stay) then (SpeedChange is Slower)");
+        MamdaniFuzzyRule rule23 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Sprint) and (TargetMovement is Walk) then (SpeedChange is Slower)");
+        MamdaniFuzzyRule rule24 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Sprint) and (TargetMovement is Run) then (SpeedChange is Slower)");
+        MamdaniFuzzyRule rule25 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Run) and (TargetMovement is Walk) then (SpeedChange is Slower)");
+        MamdaniFuzzyRule rule26 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Run) and (TargetMovement is Stay) then (SpeedChange is Slower)");
+        MamdaniFuzzyRule rule27 = avoidanceSystem.ParseRule("if ((FrontDistance is Far)) and (CurrentMovement is Walk) and (TargetMovement is Stay) then (SpeedChange is Slower)");
 
-        MamdaniFuzzyRule rule23 = avoidanceSystem.ParseRule("if (FrontDistance is Near) then (SpeedChange is Slower)");
+        MamdaniFuzzyRule rule28 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and ((CurrentMovement is Walk) or (CurrentMovement is Run) or (CurrentMovement is Sprint)) then (SpeedChange is Slower)");
+        MamdaniFuzzyRule rule29 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (CurrentMovement is Stay) then (SpeedChange is Faster)");
 
-        MamdaniFuzzyRule rule24 = avoidanceSystem.ParseRule("if (FrontDistance is Far) and (CurrentMovement is slightly Walk) and (TargetMovement is Walk) then (SpeedChange is Faster)");
 
-        MamdaniFuzzyRule rule25 = avoidanceSystem.ParseRule("if (FrontDistance is Near) and (LeftDistance is Far) and (VeryLeftDistance is Far) and (RightDistance is Far) and (VeryRightDistance is Far) then (Angle is Positive)");
+        
 
         avoidanceSystem.Rules.Add(rule1);
         avoidanceSystem.Rules.Add(rule2);
@@ -75,6 +80,8 @@ public static class RulesSystem
         avoidanceSystem.Rules.Add(rule23);
         avoidanceSystem.Rules.Add(rule24);
         avoidanceSystem.Rules.Add(rule25);
-        //avoidanceSystem.Rules.Add(rule26);
+        avoidanceSystem.Rules.Add(rule27);
+        avoidanceSystem.Rules.Add(rule28);
+        avoidanceSystem.Rules.Add(rule29);
     }
 }

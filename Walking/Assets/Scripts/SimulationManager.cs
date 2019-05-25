@@ -8,7 +8,7 @@ public class SimulationManager : MonoBehaviour {
 	void Start () {
         foreach (var item in GameObject.FindGameObjectsWithTag("Respawn"))
         {
-            item.SetActive(true);
+            item.GetComponent<Respawn>().enabled = true;
         }
 	}
 	

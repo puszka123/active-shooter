@@ -4,15 +4,6 @@ using UnityEngine;
 using AI.Fuzzy.Library;
 using System;
 
-public static class MovementTargets
-{
-    public const float Stay = 0.0f;
-    public const float SlowWalk = 1.0f;
-    public const float Walk = 0.2f;
-    public const float Run = 0.75f;
-    public const float Sprint = 7.5f;
-}
-
 public class Walking : MonoBehaviour
 {
     public List<Node> Path;
@@ -83,10 +74,9 @@ public class Walking : MonoBehaviour
         //Debug.Log(String.Format("front: {0} left: {1} veryLeft: {2}, right: {3} veryRight: {4}", frontDist, littleLeftDist, veryLeftDist, littleRightDist, veryRightDist));
 
         avoidanceSystem.Calculate(collisionDetection.rightDist, collisionDetection.veryRightDist, collisionDetection.leftDist,
-            collisionDetection.veryLeftDist, collisionDetection.frontDist, Speed, MovementTargets.Run, collisionDetection.isStatic);
+            collisionDetection.veryLeftDist, collisionDetection.frontDist, Speed, Resources.Run, collisionDetection.isStatic);
 
-        Speed = Speed < 10.0f ? Speed : 10.0f;
-        Speed = Speed > 0.0f ? Speed : 0.0f;
+   
         float aCS = avoidanceSystem.GetOutputValue("SpeedChange");
 
 
@@ -95,11 +85,12 @@ public class Walking : MonoBehaviour
             Speed += aCS;
         }
         if (Speed < 0.0f) Speed = 0.0f;
+        if (Speed > 2.0f) Speed = 2.0f;
         float goalAngle = pathfinder.GetGoalAngle(gameObject, Path[currentNodeIndex].Position);
         float avoidanceAngle = avoidanceSystem.GetOutputValue("Angle");
         float ratio = 0.4f;
         float goalWeight = 0.5f;
-        float avoidanceWeight = 0.4f;
+        float avoidanceWeight = 0.5f;
         if (avoidanceAngle != -999.0f)
         {
             //if ((avoidanceAngle > 1f || avoidanceAngle < -1f)) Debug.Log(avoidanceAngle);
@@ -119,7 +110,7 @@ public class Walking : MonoBehaviour
         if (currentNodeIndex >= Path.Count) return true;
         int layerMask = 1 << 9;
         RaycastHit hit;
-        if (Physics.Linecast(transform.position, Path[currentNodeIndex].Position, out hit, layerMask) && blockedWayTimeout >= 2f)
+        if (Physics.Linecast(transform.position, Path[currentNodeIndex].Position, out hit, layerMask) && blockedWayTimeout >= 3f)
         {
             blockedWayTimeout = 0f;
             memory.FindNearestLocation(transform.position);
