@@ -14,3 +14,8 @@ public static class Resources {
     public const float Sprint = 5.56f * scale;
     public const float MaxSprint = 6.94f * scale;
 }
+
+public enum Goal
+{
+    GO_UP, GO_DOWN
+}

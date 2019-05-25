@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using AI.Fuzzy.Library;
 using System;
+using System.Linq;
 
 public class Walking : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Walking : MonoBehaviour
     PersonMemory memory;
     public PersonMemory PersonMemory { get { return memory; } }
     CollisionDetection collisionDetection;
+    public PersonGoal goal;
 
 
     private Rigidbody m_Rigidbody;
@@ -41,6 +43,8 @@ public class Walking : MonoBehaviour
 
     public void Init(int floor)
     {
+        goal = new PersonGoal();
+        goal.SetCurrentGoal(Goal.GO_UP);
         CurrentSpeed = Resources.Walk;
         pathfinder = new Pathfinder();
         avoidanceSystem = new AvoidanceSystem();
@@ -49,6 +53,7 @@ public class Walking : MonoBehaviour
         collisionDetection = new CollisionDetection();
         memory = new PersonMemory();
         memory.Init(floor, transform.position);
+        GetTargetByGoal();
         Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
         currentNodeIndex = 0;
     }
@@ -58,6 +63,24 @@ public class Walking : MonoBehaviour
     {
         if (CheckGoal() || memory == null)
         {
+            if (memory != null)
+            {
+                switch (goal.MyCurrentGoal)
+                {
+                    case Goal.GO_UP:
+                        TryToGoUp();
+                        break;
+                    case Goal.GO_DOWN:
+                        TryToGoDown();
+                        break;
+                    default:
+                        memory.FindNearestLocation(transform.position);
+                        memory.setTargetPosition(memory.RandomTarget().Name);
+                        Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
+                        currentNodeIndex = 0;
+                        break;
+                }
+            }
             return;
         }
 
@@ -162,5 +185,86 @@ public class Walking : MonoBehaviour
             Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
             currentNodeIndex = 0;
         }
+    }
+
+    public void TryToGoUp()
+    {
+        GameObject.Find(memory.TargetPosition.Name).SendMessage("TeleportMePls", gameObject);
+    }
+
+    public void TryToGoDown()
+    {
+        GameObject.Find(memory.TargetPosition.Name).SendMessage("TeleportMePls", gameObject);
+    }
+
+    public void GetTargetByGoal()
+    {
+        switch (goal.MyCurrentGoal)
+        {
+            case Goal.GO_UP:
+                memory.FindNearestLocation(transform.position);
+                memory.setTargetPosition(NearestUpStairs());
+                Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
+                currentNodeIndex = 0;
+                break;
+            case Goal.GO_DOWN:
+                memory.FindNearestLocation(transform.position);
+                memory.setTargetPosition(NearestDownStairs());
+                Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
+                currentNodeIndex = 0;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public string NearestUpStairs()
+    {
+        GameObject location = GameObject.Find("Checkpoints "+memory.CurrentFloor);
+        List<GameObject> stairs = new List<GameObject>();
+        foreach (Transform item in location.transform)
+        {
+            if(item.GetComponent<Stairs>() != null && item.GetComponent<PathLocation>().StairsDirection == "UP")
+            {
+                stairs.Add(item.gameObject);
+            }
+            if (stairs.Count >= 2) break;
+        }
+        GameObject nearestStairs = stairs[0];
+        foreach (var item in stairs)
+        {
+            if (Vector3.Distance(transform.position, nearestStairs.transform.position) 
+                > 
+                Vector3.Distance(transform.position, item.transform.position))
+            {
+                nearestStairs = item;
+            }
+        }
+        return nearestStairs.name;
+    }
+
+    public string NearestDownStairs()
+    {
+        GameObject location = GameObject.Find("Checkpoints " + memory.CurrentFloor);
+        List<GameObject> stairs = new List<GameObject>();
+        foreach (Transform item in location.transform)
+        {
+            if (item.GetComponent<Stairs>() != null && item.GetComponent<PathLocation>().StairsDirection == "DOWN")
+            {
+                stairs.Add(item.gameObject);
+            }
+            if (stairs.Count >= 2) break;
+        }
+        GameObject nearestStairs = stairs[0];
+        foreach (var item in stairs)
+        {
+            if (Vector3.Distance(transform.position, nearestStairs.transform.position)
+                >
+                Vector3.Distance(transform.position, item.transform.position))
+            {
+                nearestStairs = item;
+            }
+        }
+        return nearestStairs.name;
     }
 }

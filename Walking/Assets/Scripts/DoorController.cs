@@ -22,7 +22,6 @@ public class DoorController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        doorKey = IsLockable ? transform.name : null;
         BoxCollider[] res = GetComponents<BoxCollider>();
         m_renderer = GetComponent<Renderer>();
         foreach (var item in res)
@@ -88,5 +87,10 @@ public class DoorController : MonoBehaviour
                 walking.UpdatePathAfterBlockedNode();
             }
         }
+    }
+
+    public void SetDoorKey(string key)
+    {
+        doorKey = IsLockable ? key : null;
     }
 }

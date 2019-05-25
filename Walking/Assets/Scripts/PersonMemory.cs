@@ -25,8 +25,13 @@ public class PersonMemory
 
     public void Init(int floor, Vector3 position)
     {
+
         CurrentFloor = floor;
-        Graph.Add(CurrentFloor, new Graph(CurrentFloor));
+        foreach (var item in GameObject.FindGameObjectsWithTag("Floor"))
+        {
+            int f = int.Parse(item.name.Split(' ')[1]);
+            Graph.Add(f, new Graph(f));
+        }
         FindNearestLocation(position);
         setTargetPosition(RandomTarget().Name);
     }

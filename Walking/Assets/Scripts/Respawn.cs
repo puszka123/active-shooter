@@ -20,7 +20,6 @@ public class Respawn : MonoBehaviour
     void Awake()
     {
         objectToInstantiate = GameObject.Find("Employee Origin");
-        DoorKey = GetDoorKeyForRespawn();
         if (objectToInstantiate == null)
         {
             Debug.Log(transform.name + ": can't find an employee for instantiating");
@@ -35,6 +34,7 @@ public class Respawn : MonoBehaviour
             GameObject employee = Instantiate(objectToInstantiate, transform.position, transform.rotation);
             employee.GetComponent<Walking>().Init(int.Parse(transform.parent.name.Split(' ')[1]));
             employee.name = "employee " + nameGenerator++;
+            DoorKey = GetDoorKeyForRespawn();
             employee.GetComponent<PersonDoor>().AddKey(DoorKey);
             timer = 0f;
             --numberOfSlots;

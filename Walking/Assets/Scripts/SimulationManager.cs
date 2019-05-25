@@ -16,6 +16,7 @@ public class SimulationManager : MonoBehaviour {
         foreach (var item in GameObject.FindGameObjectsWithTag("Door"))
         {
             item.name = "Door " + doorNameGenerator++;
+            item.GetComponent<DoorController>().SetDoorKey(item.name);
         }
         foreach (var item in GameObject.FindGameObjectsWithTag("Respawn"))
         {
