@@ -16,8 +16,7 @@ public class Stairs : MonoBehaviour {
         agent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX 
             | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY;
         agent.GetComponent<Rigidbody>().isKinematic = false;
-        agent.GetComponent<Walking>().PersonMemory.CurrentFloor = int.Parse(NextLocation.transform.parent.name.Split(' ')[1]);
-        agent.GetComponent<Walking>().GetTargetByGoal();
+        agent.GetComponent<Person>().PersonMemory.CurrentFloor = int.Parse(NextLocation.transform.parent.name.Split(' ')[1]);
     }
 
     public void TeleportMePls(Object obj)
@@ -26,13 +25,6 @@ public class Stairs : MonoBehaviour {
         if (NextLocation != null)
         {
             MoveAgent(agent);
-        }
-        else
-        {
-            if(agent.GetComponent<Walking>().goal.MyCurrentGoal == Goal.GO_DOWN)
-            agent.GetComponent<Walking>().goal.MyCurrentGoal = Goal.GO_UP;
-            else agent.GetComponent<Walking>().goal.MyCurrentGoal = Goal.GO_DOWN;
-            agent.GetComponent<Walking>().GetTargetByGoal();
         }
     }
 }

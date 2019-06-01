@@ -57,7 +57,7 @@ public class DoorController : MonoBehaviour
     public void TryToOpenDoor(object[] args)
     {
         string[] keys = (string[])args[0];
-        GameObject person = (GameObject)args[1];
+        GameObject gObject = (GameObject)args[1];
 
         if((keys != null && keys.Contains(doorKey)) || doorKey == null)
         {
@@ -65,11 +65,11 @@ public class DoorController : MonoBehaviour
             isOpen = true;
             m_renderer.enabled = false;
         }
-        else if(person != null)
+        else if(gObject != null)
         {
-            Walking walking = person.GetComponent<Walking>();
+            Person person = gObject.GetComponent<Person>();
             bool update = false;
-            foreach (var item in walking.Path)
+            foreach (var item in person.walkingModule.Path)
             {
                 LayerMask layerMask = LayerMask.GetMask("Door");
                 RaycastHit hit;
@@ -79,12 +79,12 @@ public class DoorController : MonoBehaviour
                 if (blocked && !wall && hit.collider.gameObject.name == gameObject.name)
                 {
                     update = true;
-                    walking.PersonMemory.AddBlockedNode(item);
+                    person.PersonMemory.AddBlockedNode(item);
                 }
             }
             if (update)
             {
-                walking.UpdatePathAfterBlockedNode();
+                person.walkingModule.UpdatePathAfterBlockedNode(gObject.transform, person.PersonMemory);
             }
         }
     }

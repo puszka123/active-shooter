@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PersonGoal {
-
+public class Action {
+    public Command Command;
+    public Condition Condition;
 }

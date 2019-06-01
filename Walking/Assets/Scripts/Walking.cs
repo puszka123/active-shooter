@@ -5,109 +5,116 @@ using AI.Fuzzy.Library;
 using System;
 using System.Linq;
 
-public class Walking : MonoBehaviour
+public class Walking
 {
     public List<Node> Path;
     public int currentNodeIndex;
     public float Speed;
     public float RotationSpeed;
-
-    public GameObject StartPosition;
-    public GameObject TargetPosition;
     public float CurrentSpeed;
 
     AvoidanceSystem avoidanceSystem;
 
     Pathfinder pathfinder;
-    PersonMemory memory;
-    public PersonMemory PersonMemory { get { return memory; } }
     CollisionDetection collisionDetection;
     public PersonGoal goal;
 
 
     private Rigidbody m_Rigidbody;
-    private float timer = 0.1f;
-    private float timerEdge = 0.1f;
     private float blockedWayTimeout = 0f; //3f 3 sec
 
     private float _finalAngle = 0.0f;
 
-    //private List<GameObject> pathLocations;
-    //private int next = 0;
+    public bool Executing;
+    public Command? CommandToExecute;
 
-    // Use this for initialization
-    void Start()
+    public Walking(Rigidbody rigidbody)
     {
-        
-    }
-
-    public void Init(int floor)
-    {
-        goal = new PersonGoal();
-        goal.SetCurrentGoal(Goal.GO_UP);
+        RotationSpeed = 10f;
+        Speed = 0f;
+        CurrentSpeed = 0f;
+        m_Rigidbody = rigidbody;
+        collisionDetection = new CollisionDetection();
         CurrentSpeed = Resources.Walk;
         pathfinder = new Pathfinder();
         avoidanceSystem = new AvoidanceSystem();
         avoidanceSystem.initAvoidanceSystem();
-        m_Rigidbody = GetComponent<Rigidbody>();
-        collisionDetection = new CollisionDetection();
-        memory = new PersonMemory();
-        memory.Init(floor, transform.position);
-        GetTargetByGoal();
+        CommandToExecute = null;
+    }
+
+    public void InitPath(PersonMemory memory)
+    {
         Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
         currentNodeIndex = 0;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    public void ExecuteCommand(Command cmd, PersonMemory memory, Transform transform)
     {
-        if (CheckGoal() || memory == null)
+        CommandToExecute = cmd;
+        switch (cmd)
         {
-            if (memory != null)
-            {
-                switch (goal.MyCurrentGoal)
-                {
-                    case Goal.GO_UP:
-                        TryToGoUp();
-                        break;
-                    case Goal.GO_DOWN:
-                        TryToGoDown();
-                        break;
-                    default:
-                        memory.FindNearestLocation(transform.position);
-                        memory.setTargetPosition(memory.RandomTarget().Name);
-                        Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
-                        currentNodeIndex = 0;
-                        break;
-                }
-            }
-            return;
+            case Command.GO_UP:
+                memory.FindNearestLocation(transform.position);
+                memory.setTargetPosition(NearestStairs("UP", transform, memory));
+                InitPath(memory);
+                Executing = true;
+                break;
+            case Command.GO_DOWN:
+                memory.FindNearestLocation(transform.position);
+                memory.setTargetPosition(NearestStairs("DOWN", transform, memory));
+                InitPath(memory);
+                Executing = true;
+                break;
+            case Command.EXIT_BUILDING:
+                memory.FindNearestLocation(transform.position);
+                memory.setTargetPosition(NearestExit(transform, memory));
+                InitPath(memory);
+                Executing = true;
+                break;
         }
+    }
 
-        Vector3 m_EulerAngleVelocity;
-        Quaternion deltaRotation;
-        if (timer < timerEdge)
+    public void MakeMove(Transform transform, PersonMemory memory)
+    {
+        Executing = !CheckGoal(transform, memory);
+        if (Executing)
         {
+            Vector3 m_EulerAngleVelocity;
+            Quaternion deltaRotation;
             m_Rigidbody.MovePosition(transform.position + transform.forward * Speed * Time.deltaTime);
             m_EulerAngleVelocity = new Vector3(0, _finalAngle, 0);
             deltaRotation = Quaternion.Euler(m_EulerAngleVelocity * RotationSpeed * Time.deltaTime);
             m_Rigidbody.MoveRotation(m_Rigidbody.rotation * deltaRotation);
-            timer += Time.deltaTime;
-            return;
+            m_Rigidbody.isKinematic = true;
+            m_Rigidbody.isKinematic = false;
         }
         else
         {
-            timer = 0.0f;
+            switch (CommandToExecute)
+            {
+                case Command.GO_UP:
+                    TryToGoStairs(transform.gameObject, memory);
+                    break;
+                case Command.GO_DOWN:
+                    TryToGoStairs(transform.gameObject, memory);
+                    break;
+                case Command.EXIT_BUILDING:
+                    transform.gameObject.SetActive(false);
+                    break;
+                default:
+                    break;
+            }
         }
+    }
 
+    public void CalculateMovement(Transform transform)
+    {
         collisionDetection.UpdateCollisions(transform, Path[currentNodeIndex].Position);
-
-        //Debug.Log(String.Format("front: {0} left: {1} veryLeft: {2}, right: {3} veryRight: {4}", frontDist, littleLeftDist, veryLeftDist, littleRightDist, veryRightDist));
 
         avoidanceSystem.Calculate(collisionDetection.rightDist, collisionDetection.veryRightDist, collisionDetection.leftDist,
             collisionDetection.veryLeftDist, collisionDetection.frontDist, Speed, CurrentSpeed, collisionDetection.isStatic);
 
-   
+
         float aCS = avoidanceSystem.GetOutputValue("SpeedChange");
 
 
@@ -117,25 +124,18 @@ public class Walking : MonoBehaviour
         }
         if (Speed < 0.0f) Speed = 0.0f;
         if (Speed > 2.0f) Speed = 2.0f;
-        float goalAngle = pathfinder.GetGoalAngle(gameObject, Path[currentNodeIndex].Position);
+        float goalAngle = pathfinder.GetGoalAngle(transform.gameObject, Path[currentNodeIndex].Position);
         float avoidanceAngle = avoidanceSystem.GetOutputValue("Angle");
         float ratio = 0.4f;
         float goalWeight = 0.5f;
         float avoidanceWeight = 0.5f;
         if (avoidanceAngle != -999.0f)
         {
-            //if ((avoidanceAngle > 1f || avoidanceAngle < -1f)) Debug.Log(avoidanceAngle);
             _finalAngle = avoidanceWeight * avoidanceAngle + goalWeight * goalAngle;
         }
-        m_Rigidbody.MovePosition(transform.position + transform.forward * Speed * Time.deltaTime);
-        m_EulerAngleVelocity = new Vector3(0, _finalAngle, 0);
-        deltaRotation = Quaternion.Euler(m_EulerAngleVelocity * RotationSpeed * Time.deltaTime);
-        m_Rigidbody.MoveRotation(m_Rigidbody.rotation * deltaRotation);
-        m_Rigidbody.isKinematic = true;
-        m_Rigidbody.isKinematic = false;
     }
 
-    private bool CheckGoal()
+    private bool CheckGoal(Transform transform, PersonMemory memory)
     {
         if (Path == null) return true;
         if (currentNodeIndex >= Path.Count) return true;
@@ -157,7 +157,7 @@ public class Walking : MonoBehaviour
         {
             blockedWayTimeout += Time.deltaTime;
         }
-        if (pathfinder.CheckDistance(gameObject, Path[currentNodeIndex]))
+        if (pathfinder.CheckDistance(transform.gameObject, Path[currentNodeIndex]))
         {
             if (++currentNodeIndex >= Path.Count) return true;
             else return false;
@@ -176,7 +176,7 @@ public class Walking : MonoBehaviour
         return number < 0;
     }
 
-    public void UpdatePathAfterBlockedNode()
+    public void UpdatePathAfterBlockedNode(Transform transform, PersonMemory memory)
     {
         blockedWayTimeout = 0f;
         memory.FindNearestLocation(transform.position);
@@ -187,69 +187,19 @@ public class Walking : MonoBehaviour
         }
     }
 
-    public void TryToGoUp()
+    public void TryToGoStairs(GameObject gameObject, PersonMemory memory)
     {
         GameObject.Find(memory.TargetPosition.Name).SendMessage("TeleportMePls", gameObject);
     }
 
-    public void TryToGoDown()
-    {
-        GameObject.Find(memory.TargetPosition.Name).SendMessage("TeleportMePls", gameObject);
-    }
 
-    public void GetTargetByGoal()
-    {
-        switch (goal.MyCurrentGoal)
-        {
-            case Goal.GO_UP:
-                memory.FindNearestLocation(transform.position);
-                memory.setTargetPosition(NearestUpStairs());
-                Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
-                currentNodeIndex = 0;
-                break;
-            case Goal.GO_DOWN:
-                memory.FindNearestLocation(transform.position);
-                memory.setTargetPosition(NearestDownStairs());
-                Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
-                currentNodeIndex = 0;
-                break;
-            default:
-                break;
-        }
-    }
-
-    public string NearestUpStairs()
-    {
-        GameObject location = GameObject.Find("Checkpoints "+memory.CurrentFloor);
-        List<GameObject> stairs = new List<GameObject>();
-        foreach (Transform item in location.transform)
-        {
-            if(item.GetComponent<Stairs>() != null && item.GetComponent<PathLocation>().StairsDirection == "UP")
-            {
-                stairs.Add(item.gameObject);
-            }
-            if (stairs.Count >= 2) break;
-        }
-        GameObject nearestStairs = stairs[0];
-        foreach (var item in stairs)
-        {
-            if (Vector3.Distance(transform.position, nearestStairs.transform.position) 
-                > 
-                Vector3.Distance(transform.position, item.transform.position))
-            {
-                nearestStairs = item;
-            }
-        }
-        return nearestStairs.name;
-    }
-
-    public string NearestDownStairs()
+    public string NearestStairs(string stairsType, Transform transform, PersonMemory memory)
     {
         GameObject location = GameObject.Find("Checkpoints " + memory.CurrentFloor);
         List<GameObject> stairs = new List<GameObject>();
         foreach (Transform item in location.transform)
         {
-            if (item.GetComponent<Stairs>() != null && item.GetComponent<PathLocation>().StairsDirection == "DOWN")
+            if (item.GetComponent<Stairs>() != null && item.GetComponent<PathLocation>().StairsDirection == stairsType)
             {
                 stairs.Add(item.gameObject);
             }
@@ -266,5 +216,30 @@ public class Walking : MonoBehaviour
             }
         }
         return nearestStairs.name;
+    }
+
+    public string NearestExit(Transform transform, PersonMemory memory)
+    {
+        GameObject location = GameObject.Find("Checkpoints " + memory.CurrentFloor);
+        List<GameObject> exits = new List<GameObject>();
+        foreach (Transform item in location.transform)
+        {
+            if (item.GetComponent<PathLocation>().IsExit)
+            {
+                exits.Add(item.gameObject);
+            }
+            if (exits.Count >= 2) break;
+        }
+        GameObject nearestExits = exits[0];
+        foreach (var item in exits)
+        {
+            if (Vector3.Distance(transform.position, nearestExits.transform.position)
+                >
+                Vector3.Distance(transform.position, item.transform.position))
+            {
+                nearestExits = item;
+            }
+        }
+        return nearestExits.name;
     }
 }

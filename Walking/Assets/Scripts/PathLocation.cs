@@ -7,6 +7,7 @@ public class PathLocation : MonoBehaviour {
     public bool IsStairs = false;
     public string StairsDirection = "";
     public int Floor;
+    public bool IsExit = false;
 
     public void FindMyNeighbours()
     {

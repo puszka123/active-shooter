@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33636485876686264}
   - component: {fileID: 23160226355741488}
   - component: {fileID: 136033733192427174}
-  - component: {fileID: 114159067905027702}
   - component: {fileID: 54648385371523096}
-  m_Layer: 0
+  - component: {fileID: 114546645984719468}
+  - component: {fileID: 114778694033796470}
+  m_Layer: 11
   m_Name: Employee 2
   m_TagString: Employee
   m_Icon: {fileID: 0}
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1531717540930292}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.25, y: 0.19077766, z: -0.7519385}
+  m_LocalPosition: {x: -4.059, y: -0.89, z: -1.203}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,7 +60,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: a7f5a5b0cc773664283973afd0d71c7a, type: 2}
+  - {fileID: 2100000, guid: 31797a3a7089c71458667425877bd2a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,7 +102,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &114159067905027702
+--- !u!114 &114546645984719468
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,14 +110,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1531717540930292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c131b0cbc08afe47a11b4f1dbd85839, type: 3}
+  m_Script: {fileID: 11500000, guid: 524127c1094733843b7c1ebd09efd14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentNodeIndex: 0
-  Speed: 0.3
-  RotationSpeed: 5
-  StartPosition: {fileID: 0}
-  TargetPosition: {fileID: 0}
+  myKeys: []
+--- !u!114 &114778694033796470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531717540930292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d959b3127c6165243a41d6eb65210685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136033733192427174
 CapsuleCollider:
   m_ObjectHideFlags: 1

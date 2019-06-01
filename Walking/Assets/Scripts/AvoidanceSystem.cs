@@ -73,8 +73,8 @@ public class AvoidanceSystem
         speedChange.Terms.Add(fastWalk);
 
         FuzzyTerm stay = new FuzzyTerm("Stay", new TriangularMembershipFunction(-0.001f, Resources.Stay, 0.001f));
-        FuzzyTerm slowWalk = new FuzzyTerm("SlowWalk", new TriangularMembershipFunction(0.0f, Resources.SlowWalk, Resources.Walk));
-        FuzzyTerm walk = new FuzzyTerm("Walk", new TriangularMembershipFunction(Resources.SlowWalk, Resources.Walk, Resources.MaxWalk));
+        FuzzyTerm slowWalk = new FuzzyTerm("SlowWalk", new TriangularMembershipFunction(0f, Resources.SlowWalk, Resources.Walk));
+        FuzzyTerm walk = new FuzzyTerm("Walk", new TriangularMembershipFunction(Resources.Walk, Resources.Walk, Resources.MaxWalk));
         FuzzyTerm run = new FuzzyTerm("Run", new TriangularMembershipFunction(Resources.MaxWalk, Resources.Run, Resources.MaxRun));
         FuzzyTerm sprint = new FuzzyTerm("Sprint", new TriangularMembershipFunction(Resources.MaxRun, Resources.Sprint, Resources.MaxSprint));
 

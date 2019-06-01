@@ -32,7 +32,7 @@ public class Respawn : MonoBehaviour
         if (timer >= 1f && numberOfSlots > 0)
         {
             GameObject employee = Instantiate(objectToInstantiate, transform.position, transform.rotation);
-            employee.GetComponent<Walking>().Init(int.Parse(transform.parent.name.Split(' ')[1]));
+            employee.GetComponent<Person>().Init(int.Parse(transform.parent.name.Split(' ')[1]));
             employee.name = "employee " + nameGenerator++;
             DoorKey = GetDoorKeyForRespawn();
             employee.GetComponent<PersonDoor>().AddKey(DoorKey);

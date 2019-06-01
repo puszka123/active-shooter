@@ -10,7 +10,7 @@ public class PersonMemory
     public Dictionary<int, Graph> Graph { get; private set; }
     System.Random rand;
     public int CurrentFloor;
-
+    public PersonBehaviours MyBehaviours;
 
     List<Node> blockedByDoor;
 
@@ -21,6 +21,11 @@ public class PersonMemory
         CurrentFloor = 1;
 
         StartPosition = TargetPosition = null;
+
+        MyBehaviours = new PersonBehaviours();
+        Behaviour behaviour = new Behaviour();
+        behaviour.RunToExitBehaviour();
+        MyBehaviours.AddBehaviour(behaviour);
     }
 
     public void Init(int floor, Vector3 position)
