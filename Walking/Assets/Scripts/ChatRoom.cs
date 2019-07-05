@@ -19,6 +19,8 @@ public class ChatRoom {
 
     List<GameObject> members;
 
+    Negotiation doorOpenNegotiation;
+
     public List<GameObject> Members
     {
         get
@@ -28,9 +30,10 @@ public class ChatRoom {
     }
 
 
-    public void InitChatRoom()
+    public ChatRoom()
     {
         Id = ++IdGenerator;
+        members = new List<GameObject>();
     }
 
     public void AddMember(GameObject member)
@@ -56,11 +59,11 @@ public class ChatRoom {
         }
     }
 
-    public void SendRequest(ChatRequest request, GameObject sender)
+    public void SendRequest(ChatRequest request, GameObject sender, object param = null)
     {
         foreach (var member in GetOtherMembers(sender))
         {
-            object[] requestParams = new object[] { this, request, sender };
+            object[] requestParams = new object[] { this, request, sender, param };
             member.SendMessage("ChatRequest", requestParams);
         }
     }
@@ -74,5 +77,15 @@ public class ChatRoom {
     {
         object[] responseParams = new object[] { this, response, sender };
         receiver.SendMessage("ChatResponse", responseParams);
+    }
+
+    public void SelectMemberToOpenDoor(GameObject sender, GameObject door)
+    {
+        if(doorOpenNegotiation == null)
+        {
+            doorOpenNegotiation = new Negotiation();
+            GameObject memberToOpenDoor = doorOpenNegotiation.PersonToOpenDoor(door, members.Where(m => m.name != sender.name).ToArray());
+            memberToOpenDoor.SendMessage("OpenDoor", door);
+        }
     }
 }

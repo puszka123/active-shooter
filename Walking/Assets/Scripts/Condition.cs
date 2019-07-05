@@ -17,6 +17,7 @@ public class Limit
 
     public string LocationId;
     public Room FoundRoom;
+    public GameObject DoorToOpen;
 }
 
 //public class Condition {

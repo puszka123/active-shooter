@@ -34,6 +34,9 @@ public class MyChat : MonoBehaviour {
         ChatRoom chatRoom = (ChatRoom)args[0];
         ChatRequest request = (ChatRequest)args[1];
         GameObject sender = (GameObject)args[2];
+        object param = args[3];
+
+        HandleRequest(request, chatRoom, sender, param);
     }
 
     public void ChatResponse(object[] args) //chatRoom, response, sender
@@ -43,11 +46,12 @@ public class MyChat : MonoBehaviour {
         GameObject sender = (GameObject)args[2];
     }
 
-    public void HandleRequest(ChatRequest request, ChatRoom chatRoom, GameObject sender)
+    public void HandleRequest(ChatRequest request, ChatRoom chatRoom, GameObject sender, object param)
     {
         switch (request)
         {
             case global::ChatRequest.OPEN_DOOR:
+                chatRoom.SelectMemberToOpenDoor(sender, (GameObject)param);
                 break;
             default:
                 break;

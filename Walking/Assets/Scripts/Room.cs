@@ -4,4 +4,6 @@ using UnityEngine;
 
 public class Room {
     public string Id;
+    public GameObject Door;
+    public GameObject[] Employees;
 }

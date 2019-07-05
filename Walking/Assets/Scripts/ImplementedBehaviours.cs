@@ -156,13 +156,13 @@ public static class ImplementedBehaviours
                     Where(action => action.Command == Command.GO_TO_ROOM).
                     ToArray()[0].
                     Limits.
-                    Add(new Limit { LocationId = memory.FoundRoom.Id });               
+                    Add(new Limit { LocationId = memory.FoundRoom.Id });
 
-                //Actions.
-                //    Where(action => action.Command == Command.KNOCK).
-                //    ToArray()[0].
-                //    Limits.
-                //    Add(new Limit { FoundRoom = memory.FoundRoom });
+                Actions.
+                    Where(action => action.Command == Command.KNOCK).
+                    ToArray()[0].
+                    Limits.
+                    Add(new Limit { FoundRoom = memory.FoundRoom });
             }
         }
     }

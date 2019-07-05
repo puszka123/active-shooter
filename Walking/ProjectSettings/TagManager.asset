@@ -9,6 +9,7 @@ TagManager:
   - Door
   - SimulationManager
   - Floor
+  - ChatRoomManager
   layers:
   - Default
   - TransparentFX

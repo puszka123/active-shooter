@@ -55,7 +55,10 @@ public class Finder {
                 nearestRoom = item;
             }
         }
-        return new Room() { Id = nearestRoom.name };
+        return new Room() { Id = nearestRoom.name,
+            Door = nearestRoom.GetComponent<PathLocation>().RoomDoor,
+            Employees = nearestRoom.GetComponent<PathLocation>().RoomEmployees.ToArray()
+        };
     }
 
     public void SaveRoomInMemory(Room room)

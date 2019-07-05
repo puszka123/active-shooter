@@ -67,4 +67,20 @@ public class PersonDoor : MonoBehaviour
             return false;
         }
     }
+
+    public void OpenDoor(GameObject door)
+    {
+        Action gotoDoor = new Action();
+        gotoDoor.Command = Command.GO_TO_DOOR;
+        gotoDoor.Limits = new List<Limit>() { new Limit() { DoorToOpen = door } };
+        gotoDoor.Type = ActionType.MOVEMENT;
+        gotoDoor.RequiredActions = new List<Action>();
+        GetComponent<Person>().waitingActions.AddAction(gotoDoor);
+        //Action openDoor = new Action();
+        //openDoor.Command = Command.OPEN_DOOR;
+        //openDoor.Limits = new List<Limit>() { new Limit() { DoorToOpen = door } };
+        //openDoor.Type = ActionType.DOOR;
+        //openDoor.RequiredActions = new List<Action>();
+        //GetComponent<Person>().waitingActions.AddAction(openDoor);
+    }
 }

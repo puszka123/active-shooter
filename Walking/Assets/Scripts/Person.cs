@@ -6,12 +6,15 @@ public class Person : MonoBehaviour
 {
     public Walking walkingModule;
     public Finder finderModule;
+    public DoorExecutor doorExecutor;
     PersonMemory memory;
     public PersonMemory PersonMemory { get { return memory; } }
     private float timer = 0.1f;
     private float timerEdge = 0.1f;
     public Behaviour CurrentBehaviour;
     BehaviourExecutor behaviourExecutor;
+
+    public ActionsQueue waitingActions;
 
     bool init = false;
 
@@ -22,10 +25,12 @@ public class Person : MonoBehaviour
         memory.SetMyRoom(myRoomId);
         walkingModule = new Walking(GetComponent<Rigidbody>());
         finderModule = new Finder(memory);
-        behaviourExecutor = new BehaviourExecutor(walkingModule, memory, transform, finderModule);
+        doorExecutor = new DoorExecutor(GetComponent<PersonDoor>(), GetComponent<MyChat>(), gameObject);
+        behaviourExecutor = new BehaviourExecutor(walkingModule, memory, transform, finderModule, doorExecutor);
         CurrentBehaviour = memory.MyBehaviours.GetBehaviourByIndex(0);
         behaviourExecutor.ExecuteBehaviour(ref CurrentBehaviour);
         init = true;
+        waitingActions = new ActionsQueue();
     }
 
     private void FixedUpdate()
@@ -41,7 +46,14 @@ public class Person : MonoBehaviour
         {
             walkingModule.MakeMove(transform, memory);
         }
-        behaviourExecutor.ExecuteBehaviour(ref CurrentBehaviour);
+        if (waitingActions.Actions.Count > 0 && waitingActions.WaitingActionIsExecuted())
+        {
+            behaviourExecutor.ExecuteSingleAction(waitingActions.GetActionToExecute());
+        }
+        else if(waitingActions.WaitingActionIsExecuted())
+        {
+            behaviourExecutor.ExecuteBehaviour(ref CurrentBehaviour);
+        }
         
     }
 }

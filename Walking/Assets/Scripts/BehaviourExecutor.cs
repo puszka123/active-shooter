@@ -7,13 +7,16 @@ public class BehaviourExecutor
 {
     Walking movementExecutor;
     Finder finderExecutor;
+    DoorExecutor doorExecutor;
     Behaviour behaviourToExecute;
     Transform transform;
     PersonMemory memory;
 
-    public BehaviourExecutor(Walking walkingModule, PersonMemory memory, Transform transform, Finder finderExecutor)
+    public BehaviourExecutor(Walking walkingModule, PersonMemory memory, Transform transform, 
+        Finder finderExecutor, DoorExecutor doorExecutor)
     {
         movementExecutor = walkingModule;
+        this.doorExecutor = doorExecutor;
         this.finderExecutor = finderExecutor;
         this.transform = transform;
         this.memory = memory;
@@ -51,11 +54,33 @@ public class BehaviourExecutor
                         finderExecutor.ExecuteAction(item, transform);
                         break;
                     case ActionType.DOOR:
+                        doorExecutor.ExecuteAction(item, transform);
                         break;
                     default:
                         break;
                 }
             }
+        }
+    }
+
+    public void ExecuteSingleAction(Action action)
+    {
+        switch (action.Type)
+        {
+            case ActionType.MOVEMENT:
+                movementExecutor.ExecuteAction(action, memory, transform);
+                break;
+            case ActionType.TALK:
+                break;
+            case ActionType.OTHER:
+                break;
+            case ActionType.FINDER:
+                finderExecutor.ExecuteAction(action, transform);
+                break;
+            case ActionType.DOOR:
+                break;
+            default:
+                break;
         }
     }
 }

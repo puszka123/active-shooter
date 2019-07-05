@@ -48,6 +48,12 @@ public class Walking
         currentNodeIndex = 0;
     }
 
+    public void InitPath(GameObject gameObject)
+    {
+        Path = new List<Node>() { new Node() { Name = gameObject.name, Position = gameObject.transform.position } };
+        currentNodeIndex = 0;
+    }
+
     public void ExecuteAction(Action action, PersonMemory memory, Transform transform)
     {
         if (IsActionExecuting(action)) return; //don't do that again!
@@ -79,6 +85,14 @@ public class Walking
                     Where(id => !String.IsNullOrEmpty(id)).ToArray()[0]);
                 Executing = true;
                 InitPath(memory);
+                break;
+            case Command.GO_TO_DOOR:
+                GameObject doorToOpen = action.Limits.
+                    Select(limit => limit.DoorToOpen).
+                    Where(door => door != null).ToArray()[0];
+                InitPath(doorToOpen);
+                CurrentSpeed = Resources.Walk;
+                Executing = true;
                 break;
             case Command.STAY:
                 Path = new List<Node>();

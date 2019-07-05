@@ -14,10 +14,9 @@ public class ChatRoomManager : MonoBehaviour {
 
     public void AddChatRoom(ChatRoom chatRoom)
     {
-        if(ChatRooms == null)
+        if (ChatRooms == null)
         {
             ChatRooms = new Dictionary<int, ChatRoom>();
-            ChatRooms.Add(chatRoom.Id, chatRoom);
         }
         ChatRooms.Add(chatRoom.Id, chatRoom);
     } 
