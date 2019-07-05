@@ -68,7 +68,7 @@ public class Pathfinder {
         desiredPath.Add(targetPosition);
         if(!cameFrom.ContainsKey(targetPosition.Name))
         {
-            return desiredPath;
+            return new List<Node>();
         }
         Node start = cameFrom[targetPosition.Name];
         while (start != null)

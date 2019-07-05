@@ -3099,6 +3099,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.020000031, y: 0.024791684, z: 0.02}
   m_Center: {x: -0.0000000027602973, y: -0.00031435443, z: 1.501691e-12}
+--- !u!1 &10127838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
+    type: 2}
+  m_PrefabInternal: {fileID: 574670693}
+--- !u!4 &10127839 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b,
+    type: 2}
+  m_PrefabInternal: {fileID: 574670693}
+--- !u!114 &10127840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10127838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec1916e26e7776419f41a1c6f4836cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NearestNeighbours: []
+  IsStairs: 0
+  StairsDirection: UP
+  Floor: 0
+  IsExit: 0
+  IsRoom: 0
 --- !u!1 &10200044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -3125,6 +3152,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &14644374
 Prefab:
   m_ObjectHideFlags: 0
@@ -3299,6 +3327,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &21495064
 Prefab:
   m_ObjectHideFlags: 0
@@ -3397,6 +3426,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &23304608
 Prefab:
   m_ObjectHideFlags: 0
@@ -3468,6 +3498,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc,
     type: 2}
   m_PrefabInternal: {fileID: 23304608}
+--- !u!1001 &25639184
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4813850074118538, guid: 492204a7b2139f44d9e712d5eacaa90b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 18.019112
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813850074118538, guid: 492204a7b2139f44d9e712d5eacaa90b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.296315
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813850074118538, guid: 492204a7b2139f44d9e712d5eacaa90b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2.0096917
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813850074118538, guid: 492204a7b2139f44d9e712d5eacaa90b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813850074118538, guid: 492204a7b2139f44d9e712d5eacaa90b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813850074118538, guid: 492204a7b2139f44d9e712d5eacaa90b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813850074118538, guid: 492204a7b2139f44d9e712d5eacaa90b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813850074118538, guid: 492204a7b2139f44d9e712d5eacaa90b, type: 2}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792197161400182, guid: 492204a7b2139f44d9e712d5eacaa90b, type: 2}
+      propertyPath: m_Name
+      value: Chat Room Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 492204a7b2139f44d9e712d5eacaa90b, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1 &25639185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1792197161400182, guid: 492204a7b2139f44d9e712d5eacaa90b,
+    type: 2}
+  m_PrefabInternal: {fileID: 25639184}
+--- !u!114 &25639186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 25639185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07972f53dbbfe4947b375b99d2c223e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &26959648 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100068, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -3658,6 +3750,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!114 &27661323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3808,7 +3901,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -3926,6 +4019,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &30075034
 Prefab:
   m_ObjectHideFlags: 0
@@ -4024,6 +4118,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &30480170 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -4045,6 +4140,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &31087654 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -4066,6 +4162,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &32515288
 Prefab:
   m_ObjectHideFlags: 0
@@ -4103,7 +4200,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 42
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -4334,6 +4431,106 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
+--- !u!1001 &40000882
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1336324329}
+    m_Modifications:
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5.1450005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.0472312
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.611
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_RootOrder
+      value: 111
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_Name
+      value: Check Point (113)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_TagString
+      value: PathLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23398358615463506, guid: 644730d1b58cab241af4a2d80d14a28b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 136011556874941850, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &40000883 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b,
+    type: 2}
+  m_PrefabInternal: {fileID: 40000882}
+--- !u!1 &40000884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
+    type: 2}
+  m_PrefabInternal: {fileID: 40000882}
+--- !u!114 &40000885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 40000884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec1916e26e7776419f41a1c6f4836cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NearestNeighbours: []
+  IsStairs: 0
+  StairsDirection: UP
+  Floor: 0
+  IsExit: 0
+  IsRoom: 0
 --- !u!1001 &45836147
 Prefab:
   m_ObjectHideFlags: 0
@@ -4432,6 +4629,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &46268944 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -4453,6 +4651,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &50599424
 Prefab:
   m_ObjectHideFlags: 0
@@ -4551,6 +4750,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &51287109 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -4577,6 +4777,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &56201680
 Prefab:
   m_ObjectHideFlags: 0
@@ -4716,7 +4917,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -4873,7 +5074,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -4991,6 +5192,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &61688645 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -5012,6 +5214,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &63285339 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -5050,6 +5253,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &64316078
 Prefab:
   m_ObjectHideFlags: 0
@@ -5240,6 +5444,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &75928234
 Prefab:
   m_ObjectHideFlags: 0
@@ -5338,6 +5543,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &77929342
 Prefab:
   m_ObjectHideFlags: 0
@@ -5795,6 +6001,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &109646618
 Prefab:
   m_ObjectHideFlags: 0
@@ -5893,6 +6100,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &109844269 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100106, guid: 01095faf123f73143860973525fc4d87,
@@ -6151,7 +6359,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -6269,6 +6477,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &121475246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100236, guid: 01095faf123f73143860973525fc4d87,
@@ -6348,7 +6557,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -6394,6 +6603,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &129911396
 Prefab:
   m_ObjectHideFlags: 0
@@ -6500,6 +6710,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &136061203 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100152, guid: 01095faf123f73143860973525fc4d87,
@@ -6656,7 +6867,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -6713,7 +6924,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -6998,6 +7209,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!114 &150354119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7318,7 +7530,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -7359,6 +7571,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &162475705
 Prefab:
   m_ObjectHideFlags: 0
@@ -7457,6 +7670,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &165970270
 Prefab:
   m_ObjectHideFlags: 0
@@ -7707,6 +7921,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &177238956
 GameObject:
   m_ObjectHideFlags: 0
@@ -7754,7 +7969,6 @@ Transform:
   - {fileID: 893687477}
   - {fileID: 317905901}
   - {fileID: 103547264}
-  - {fileID: 1950221044}
   - {fileID: 1004772953}
   - {fileID: 1439178823}
   - {fileID: 143609335}
@@ -7777,6 +7991,7 @@ Transform:
   - {fileID: 32515289}
   - {fileID: 768341397}
   - {fileID: 1268276340}
+  - {fileID: 1950221044}
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7818,6 +8033,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &184907092
 Prefab:
   m_ObjectHideFlags: 0
@@ -7988,6 +8204,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &187959304 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100250, guid: 01095faf123f73143860973525fc4d87,
@@ -8212,6 +8429,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &205454523 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -8250,6 +8468,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &205929302
 Prefab:
   m_ObjectHideFlags: 0
@@ -8348,6 +8567,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &210093762 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100076, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -8479,7 +8699,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 38
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -8567,7 +8787,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 39
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -8884,6 +9104,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &240496181 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -8910,6 +9131,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &243101759 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100128, guid: 01095faf123f73143860973525fc4d87,
@@ -9025,6 +9247,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &247599554
 Prefab:
   m_ObjectHideFlags: 0
@@ -9123,6 +9346,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &251740371
 Prefab:
   m_ObjectHideFlags: 0
@@ -9298,6 +9522,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &253983043
 Prefab:
   m_ObjectHideFlags: 0
@@ -9396,6 +9621,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &254518694
 Prefab:
   m_ObjectHideFlags: 0
@@ -9494,6 +9720,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &256842408 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -9515,6 +9742,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &262018149
 Prefab:
   m_ObjectHideFlags: 0
@@ -9617,6 +9845,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &266275732
 Prefab:
   m_ObjectHideFlags: 0
@@ -9715,6 +9944,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &267937370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -9741,6 +9971,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &270242638
 Prefab:
   m_ObjectHideFlags: 0
@@ -9849,6 +10080,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &270970604
 Prefab:
   m_ObjectHideFlags: 0
@@ -10198,6 +10430,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &272649958
 Prefab:
   m_ObjectHideFlags: 0
@@ -10373,6 +10606,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &280161177
 Prefab:
   m_ObjectHideFlags: 0
@@ -10543,6 +10777,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &284401009
 Prefab:
   m_ObjectHideFlags: 0
@@ -10605,7 +10840,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -10646,6 +10881,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &286988951
 Prefab:
   m_ObjectHideFlags: 0
@@ -10744,6 +10980,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &287631825 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100212, guid: 01095faf123f73143860973525fc4d87,
@@ -10878,7 +11115,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 36
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -11164,6 +11401,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &311398998 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -11190,6 +11428,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &311928871
 Prefab:
   m_ObjectHideFlags: 0
@@ -11437,6 +11676,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &313339813 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100046, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -11552,6 +11792,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &317905900
 Prefab:
   m_ObjectHideFlags: 0
@@ -11725,6 +11966,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &320825991
 Prefab:
   m_ObjectHideFlags: 0
@@ -11898,6 +12140,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &327220280
 Prefab:
   m_ObjectHideFlags: 0
@@ -12073,6 +12316,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &335091192
 Prefab:
   m_ObjectHideFlags: 0
@@ -12207,7 +12451,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -12270,6 +12514,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &346716326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -12291,6 +12536,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &346981208 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -12312,6 +12558,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &347231378
 Prefab:
   m_ObjectHideFlags: 0
@@ -12410,6 +12657,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &347994204
 Prefab:
   m_ObjectHideFlags: 0
@@ -12511,6 +12759,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &351656041
 Prefab:
   m_ObjectHideFlags: 0
@@ -12696,6 +12945,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &358527604
 GameObject:
   m_ObjectHideFlags: 0
@@ -12929,6 +13179,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &361086113
 Prefab:
   m_ObjectHideFlags: 0
@@ -13116,6 +13367,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!114 &363409584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13400,6 +13652,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &368167084
 Prefab:
   m_ObjectHideFlags: 0
@@ -13609,7 +13862,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -13821,6 +14074,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &381140604
 GameObject:
   m_ObjectHideFlags: 0
@@ -13987,7 +14241,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -14128,6 +14382,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &395944759 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100030, guid: 01095faf123f73143860973525fc4d87,
@@ -14243,6 +14498,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &410043624
 Prefab:
   m_ObjectHideFlags: 0
@@ -14285,7 +14541,7 @@ Prefab:
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
       propertyPath: numberOfSlots
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
@@ -14330,6 +14586,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &415060346
 Prefab:
   m_ObjectHideFlags: 0
@@ -14433,6 +14690,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &424613771 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100056, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -14548,6 +14806,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &426065422
 Prefab:
   m_ObjectHideFlags: 0
@@ -14809,6 +15068,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &435023515
 Prefab:
   m_ObjectHideFlags: 0
@@ -14907,6 +15167,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &436098870 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100234, guid: 01095faf123f73143860973525fc4d87,
@@ -15100,6 +15361,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &450102136
 Prefab:
   m_ObjectHideFlags: 0
@@ -15270,6 +15532,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &451977007
 Prefab:
   m_ObjectHideFlags: 0
@@ -15327,7 +15590,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -15490,7 +15753,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 28
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -15701,6 +15964,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &465120954 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100034, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -15898,6 +16162,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &472150220
 Prefab:
   m_ObjectHideFlags: 0
@@ -15996,6 +16261,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &473174674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100226, guid: 01095faf123f73143860973525fc4d87,
@@ -19059,6 +19325,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &492132841 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100046, guid: 01095faf123f73143860973525fc4d87,
@@ -19114,6 +19381,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &505907896
 Prefab:
   m_ObjectHideFlags: 0
@@ -19431,6 +19699,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &510419700
 Prefab:
   m_ObjectHideFlags: 0
@@ -19529,6 +19798,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &512801762
 Prefab:
   m_ObjectHideFlags: 0
@@ -19627,6 +19897,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &514098380
 Prefab:
   m_ObjectHideFlags: 0
@@ -19872,6 +20143,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &516828882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100074, guid: 01095faf123f73143860973525fc4d87,
@@ -20079,6 +20351,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &520695551 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100086, guid: 01095faf123f73143860973525fc4d87,
@@ -20307,7 +20580,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -20442,6 +20715,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &533679169
 Prefab:
   m_ObjectHideFlags: 0
@@ -20540,6 +20814,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &547398152
 Prefab:
   m_ObjectHideFlags: 0
@@ -20638,6 +20913,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &548388854
 Prefab:
   m_ObjectHideFlags: 0
@@ -20675,7 +20951,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 34
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -20750,7 +21026,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 33
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -20863,6 +21139,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc,
     type: 2}
   m_PrefabInternal: {fileID: 551121143}
+--- !u!1001 &552074805
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4184084951972084, guid: a8212a30b98748b498a29bdea52bb71f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 17.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184084951972084, guid: a8212a30b98748b498a29bdea52bb71f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184084951972084, guid: a8212a30b98748b498a29bdea52bb71f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.878
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184084951972084, guid: a8212a30b98748b498a29bdea52bb71f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184084951972084, guid: a8212a30b98748b498a29bdea52bb71f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184084951972084, guid: a8212a30b98748b498a29bdea52bb71f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184084951972084, guid: a8212a30b98748b498a29bdea52bb71f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184084951972084, guid: a8212a30b98748b498a29bdea52bb71f, type: 2}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531717540930292, guid: a8212a30b98748b498a29bdea52bb71f, type: 2}
+      propertyPath: m_Name
+      value: Informer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531717540930292, guid: a8212a30b98748b498a29bdea52bb71f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a8212a30b98748b498a29bdea52bb71f, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &558775348 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -20889,6 +21215,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &559226389 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100128, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -21077,7 +21404,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -21195,6 +21522,79 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
+--- !u!1001 &574670693
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1336324329}
+    m_Modifications:
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5.1450005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.0472312
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_RootOrder
+      value: 109
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_Name
+      value: Check Point (111)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_TagString
+      value: PathLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23398358615463506, guid: 644730d1b58cab241af4a2d80d14a28b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 136011556874941850, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &575939555 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100162, guid: 01095faf123f73143860973525fc4d87,
@@ -21274,7 +21674,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -21373,7 +21773,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -21607,6 +22007,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &606582025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -21633,6 +22034,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &607680290
 Prefab:
   m_ObjectHideFlags: 0
@@ -21731,6 +22133,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &610819614
 Prefab:
   m_ObjectHideFlags: 0
@@ -21768,7 +22171,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 35
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -21904,6 +22307,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &619651433 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -21930,6 +22334,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &620407519 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100014, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -22045,6 +22450,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &626570523
 Prefab:
   m_ObjectHideFlags: 0
@@ -22143,6 +22549,34 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
+--- !u!1 &626972483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
+    type: 2}
+  m_PrefabInternal: {fileID: 896694499}
+--- !u!4 &626972484 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b,
+    type: 2}
+  m_PrefabInternal: {fileID: 896694499}
+--- !u!114 &626972485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 626972483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec1916e26e7776419f41a1c6f4836cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NearestNeighbours: []
+  IsStairs: 0
+  StairsDirection: UP
+  Floor: 0
+  IsExit: 0
+  IsRoom: 1
 --- !u!1001 &627590563
 Prefab:
   m_ObjectHideFlags: 0
@@ -22417,6 +22851,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &628131475
 Prefab:
   m_ObjectHideFlags: 0
@@ -22515,6 +22950,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &629847971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -22536,6 +22972,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &634695596 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100124, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -22668,6 +23105,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &639488810
 Prefab:
   m_ObjectHideFlags: 0
@@ -22884,7 +23322,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -23022,7 +23460,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -23079,7 +23517,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -23251,7 +23689,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -23374,6 +23812,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &663305151
 Prefab:
   m_ObjectHideFlags: 0
@@ -23658,6 +24097,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &668736106 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -23679,6 +24119,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &670285058
 Prefab:
   m_ObjectHideFlags: 0
@@ -23777,6 +24218,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &674407454 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -23798,6 +24240,34 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
+--- !u!1 &675286945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
+    type: 2}
+  m_PrefabInternal: {fileID: 897259105}
+--- !u!4 &675286946 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b,
+    type: 2}
+  m_PrefabInternal: {fileID: 897259105}
+--- !u!114 &675286947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 675286945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec1916e26e7776419f41a1c6f4836cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NearestNeighbours: []
+  IsStairs: 0
+  StairsDirection: UP
+  Floor: 0
+  IsExit: 0
+  IsRoom: 1
 --- !u!1 &675653653 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -23819,6 +24289,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &678238177
 Prefab:
   m_ObjectHideFlags: 0
@@ -23917,6 +24388,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &679476332
 Prefab:
   m_ObjectHideFlags: 0
@@ -24122,7 +24594,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -24367,6 +24839,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &707856789
 Prefab:
   m_ObjectHideFlags: 0
@@ -24465,6 +24938,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &708126769 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -24486,6 +24960,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &710372430
 Prefab:
   m_ObjectHideFlags: 0
@@ -24654,6 +25129,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &713109117
 Prefab:
   m_ObjectHideFlags: 0
@@ -24752,6 +25228,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &713896356
 Prefab:
   m_ObjectHideFlags: 0
@@ -24997,6 +25474,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &720663600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -25023,6 +25501,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &721294509
 Prefab:
   m_ObjectHideFlags: 0
@@ -25270,6 +25749,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &722525630
 Prefab:
   m_ObjectHideFlags: 0
@@ -25368,6 +25848,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &727169869 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100060, guid: 01095faf123f73143860973525fc4d87,
@@ -25493,6 +25974,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &733517301 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100146, guid: 01095faf123f73143860973525fc4d87,
@@ -25547,7 +26029,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 30
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -25606,6 +26088,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &752642510
 Prefab:
   m_ObjectHideFlags: 0
@@ -25643,7 +26126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -25738,7 +26221,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -25820,7 +26303,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -26085,6 +26568,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &765252312 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -26106,6 +26590,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &766617920 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -26127,6 +26612,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &766837044
 Prefab:
   m_ObjectHideFlags: 0
@@ -26297,6 +26783,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &768341396
 Prefab:
   m_ObjectHideFlags: 0
@@ -26334,7 +26821,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 43
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -26488,6 +26975,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &780813797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100084, guid: 01095faf123f73143860973525fc4d87,
@@ -26603,6 +27091,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &786238202
 Prefab:
   m_ObjectHideFlags: 0
@@ -26701,6 +27190,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &786735287
 Prefab:
   m_ObjectHideFlags: 0
@@ -26940,6 +27430,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &801091541
 Prefab:
   m_ObjectHideFlags: 0
@@ -27002,7 +27493,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -27269,6 +27760,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &805570422
 Prefab:
   m_ObjectHideFlags: 0
@@ -27367,6 +27859,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &808422497
 Prefab:
   m_ObjectHideFlags: 0
@@ -27465,6 +27958,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &813114623
 Prefab:
   m_ObjectHideFlags: 0
@@ -27668,7 +28162,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 27
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -27804,6 +28298,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &819451398
 Prefab:
   m_ObjectHideFlags: 0
@@ -27902,6 +28397,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &828978037
 Prefab:
   m_ObjectHideFlags: 0
@@ -28234,6 +28730,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &840766078
 Prefab:
   m_ObjectHideFlags: 0
@@ -28427,6 +28924,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &850353011
 Prefab:
   m_ObjectHideFlags: 0
@@ -28819,6 +29317,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &866429198 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -28840,6 +29339,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &870293072 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100040, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -29054,6 +29554,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &876685914
 Prefab:
   m_ObjectHideFlags: 0
@@ -29116,7 +29617,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -29244,6 +29745,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &881573054
 Prefab:
   m_ObjectHideFlags: 0
@@ -29306,7 +29808,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -29383,7 +29885,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -29434,6 +29936,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 1
+  IsRoom: 0
 --- !u!1001 &883878163
 Prefab:
   m_ObjectHideFlags: 0
@@ -29609,6 +30112,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &889852652
 Prefab:
   m_ObjectHideFlags: 0
@@ -29707,6 +30211,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &889993328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -29728,6 +30233,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &891023878
 Prefab:
   m_ObjectHideFlags: 0
@@ -29826,6 +30332,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!114 &891023882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30100,6 +30607,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &895259636 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100192, guid: 01095faf123f73143860973525fc4d87,
@@ -30117,6 +30625,150 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.020000078, y: 0.011154356, z: 0.020000001}
   m_Center: {x: -0.000000024680048, y: 0.0010504618, z: 1.5443745e-10}
+--- !u!1001 &896694499
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1336324329}
+    m_Modifications:
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4400005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.0472312
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2.677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_RootOrder
+      value: 107
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_Name
+      value: Check Point (97)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_TagString
+      value: PathLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23398358615463506, guid: 644730d1b58cab241af4a2d80d14a28b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 136011556874941850, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1001 &897259105
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1336324329}
+    m_Modifications:
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.769001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.0472312
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2.694
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_RootOrder
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_Name
+      value: Check Point (99)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_TagString
+      value: PathLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23398358615463506, guid: 644730d1b58cab241af4a2d80d14a28b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 136011556874941850, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &898988314 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100026, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -30155,6 +30807,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &903926306
 Prefab:
   m_ObjectHideFlags: 0
@@ -30253,6 +30906,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &903932089
 Prefab:
   m_ObjectHideFlags: 0
@@ -30433,6 +31087,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &907598650 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100098, guid: 01095faf123f73143860973525fc4d87,
@@ -30563,6 +31218,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &910118117
 Prefab:
   m_ObjectHideFlags: 0
@@ -30661,6 +31317,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &915915018 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100166, guid: 01095faf123f73143860973525fc4d87,
@@ -31188,6 +31845,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &942293114
 Prefab:
   m_ObjectHideFlags: 0
@@ -31281,6 +31939,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &946365505
 Prefab:
   m_ObjectHideFlags: 0
@@ -31454,6 +32113,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &948570757
 Prefab:
   m_ObjectHideFlags: 0
@@ -31552,6 +32212,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &952747001
 Prefab:
   m_ObjectHideFlags: 0
@@ -31732,6 +32393,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &956930817
 Prefab:
   m_ObjectHideFlags: 0
@@ -32055,6 +32717,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &975214339
 Prefab:
   m_ObjectHideFlags: 0
@@ -32153,6 +32816,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &982702820
 Prefab:
   m_ObjectHideFlags: 0
@@ -32239,6 +32903,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &982929298 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -32265,6 +32930,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &984139272 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100092, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -32532,6 +33198,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &989752157 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -32558,6 +33225,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &992567940
 Prefab:
   m_ObjectHideFlags: 0
@@ -32656,6 +33324,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &995558446
 Prefab:
   m_ObjectHideFlags: 0
@@ -32754,6 +33423,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &997935288
 Prefab:
   m_ObjectHideFlags: 0
@@ -32816,7 +33486,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -32898,7 +33568,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -33016,6 +33686,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1004060890
 Prefab:
   m_ObjectHideFlags: 0
@@ -33130,7 +33801,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -33266,6 +33937,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &1008223399 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -33287,6 +33959,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1011347488
 Prefab:
   m_ObjectHideFlags: 0
@@ -33385,6 +34058,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &1014111023
 Prefab:
   m_ObjectHideFlags: 0
@@ -33478,6 +34152,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1020344776 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -33499,6 +34174,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1023251835
 Prefab:
   m_ObjectHideFlags: 0
@@ -33597,6 +34273,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1024813063
 Prefab:
   m_ObjectHideFlags: 0
@@ -33689,6 +34366,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1036166268 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -33715,6 +34393,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1037930671
 Prefab:
   m_ObjectHideFlags: 0
@@ -33889,6 +34568,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1043958662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100030, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -34634,7 +35314,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -34697,6 +35377,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!114 &1060003976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34783,7 +35464,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -35058,6 +35739,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1081691405
 Prefab:
   m_ObjectHideFlags: 0
@@ -35233,6 +35915,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &1083282983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100244, guid: 01095faf123f73143860973525fc4d87,
@@ -35276,6 +35959,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1085954486
 Prefab:
   m_ObjectHideFlags: 0
@@ -35451,6 +36135,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1089142311
 Prefab:
   m_ObjectHideFlags: 0
@@ -35513,7 +36198,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -35703,6 +36388,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1096661869
 Prefab:
   m_ObjectHideFlags: 0
@@ -35876,6 +36562,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1103478409
 Prefab:
   m_ObjectHideFlags: 0
@@ -35974,6 +36661,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1110632040
 Prefab:
   m_ObjectHideFlags: 0
@@ -36072,6 +36760,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1112357595 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -36093,6 +36782,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1112732403 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100168, guid: 01095faf123f73143860973525fc4d87,
@@ -36208,6 +36898,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1117664228 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -36229,6 +36920,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1118019708
 Prefab:
   m_ObjectHideFlags: 0
@@ -36327,6 +37019,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &1118593562
 Prefab:
   m_ObjectHideFlags: 0
@@ -36403,6 +37096,78 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc,
     type: 2}
   m_PrefabInternal: {fileID: 1118593562}
+--- !u!1001 &1119726055
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1336324329}
+    m_Modifications:
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4.794
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.0472312
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_RootOrder
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_Name
+      value: Check Point (112)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_TagString
+      value: PathLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23398358615463506, guid: 644730d1b58cab241af4a2d80d14a28b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 136011556874941850, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &1119995467
 Prefab:
   m_ObjectHideFlags: 0
@@ -36901,6 +37666,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1131866683
 Prefab:
   m_ObjectHideFlags: 0
@@ -37168,6 +37934,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1139205091 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -37189,6 +37956,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1139214579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -37210,6 +37978,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1139321627
 Prefab:
   m_ObjectHideFlags: 0
@@ -37308,6 +38077,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1140799247
 Prefab:
   m_ObjectHideFlags: 0
@@ -37406,6 +38176,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1142075400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100062, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -37521,6 +38292,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1142982767
 Prefab:
   m_ObjectHideFlags: 0
@@ -37619,6 +38391,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!114 &1142982771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37717,6 +38490,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1151879168
 Prefab:
   m_ObjectHideFlags: 0
@@ -37907,6 +38681,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1154135206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -37928,6 +38703,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1155180243
 Prefab:
   m_ObjectHideFlags: 0
@@ -38217,6 +38993,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1167577646 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100094, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -38260,6 +39037,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1172050069
 Prefab:
   m_ObjectHideFlags: 0
@@ -38435,6 +39213,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &1173814927
 Prefab:
   m_ObjectHideFlags: 0
@@ -38625,6 +39404,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1180455256 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100048, guid: 01095faf123f73143860973525fc4d87,
@@ -38663,6 +39443,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1183299652
 Prefab:
   m_ObjectHideFlags: 0
@@ -38778,6 +39559,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1184062967 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -38799,6 +39581,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1186325281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -38820,6 +39603,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1186836804
 GameObject:
   m_ObjectHideFlags: 0
@@ -38944,6 +39728,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1189642221
 Prefab:
   m_ObjectHideFlags: 0
@@ -39042,6 +39827,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &1195606584 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100054, guid: 01095faf123f73143860973525fc4d87,
@@ -39157,6 +39943,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1199879809 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -39178,6 +39965,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1200065709 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100044, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -39293,6 +40081,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1201599162 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -39319,6 +40108,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1202205716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -39345,6 +40135,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1205104656
 Prefab:
   m_ObjectHideFlags: 0
@@ -39477,6 +40268,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1212281554 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100208, guid: 01095faf123f73143860973525fc4d87,
@@ -39787,6 +40579,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1231143581
 Prefab:
   m_ObjectHideFlags: 0
@@ -42693,7 +43486,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -42734,6 +43527,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1242535722 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -42755,6 +43549,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1243682425
 Prefab:
   m_ObjectHideFlags: 0
@@ -42853,6 +43648,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1244451640
 Prefab:
   m_ObjectHideFlags: 0
@@ -42910,7 +43706,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -42961,6 +43757,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1253326942 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100120, guid: 01095faf123f73143860973525fc4d87,
@@ -43393,7 +44190,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 44
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -43470,6 +44267,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1271994205 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100238, guid: 01095faf123f73143860973525fc4d87,
@@ -43585,6 +44383,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1274965356 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100214, guid: 01095faf123f73143860973525fc4d87,
@@ -43700,6 +44499,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1279230432
 Prefab:
   m_ObjectHideFlags: 0
@@ -43762,7 +44562,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -43974,6 +44774,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1282205975
 Prefab:
   m_ObjectHideFlags: 0
@@ -44072,6 +44873,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &1285873189
 Prefab:
   m_ObjectHideFlags: 0
@@ -44170,6 +44972,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1292136559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -44191,6 +44994,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1292499762 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100108, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -44229,6 +45033,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1296706872
 Prefab:
   m_ObjectHideFlags: 0
@@ -44327,6 +45132,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1297593970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -44348,6 +45154,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1310820008
 Prefab:
   m_ObjectHideFlags: 0
@@ -44446,6 +45253,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1315140049
 Prefab:
   m_ObjectHideFlags: 0
@@ -44650,6 +45458,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1324214686 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100038, guid: 01095faf123f73143860973525fc4d87,
@@ -44765,6 +45574,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1326455724
 Prefab:
   m_ObjectHideFlags: 0
@@ -44863,6 +45673,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &1326706985
 Prefab:
   m_ObjectHideFlags: 0
@@ -45154,6 +45965,11 @@ Transform:
   - {fileID: 1626267939}
   - {fileID: 1381618205}
   - {fileID: 27661320}
+  - {fileID: 626972484}
+  - {fileID: 675286946}
+  - {fileID: 10127839}
+  - {fileID: 1626541494}
+  - {fileID: 40000883}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45255,6 +46071,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1338923348 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -45276,6 +46093,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1338954739
 Prefab:
   m_ObjectHideFlags: 0
@@ -45374,6 +46192,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1340860285
 Prefab:
   m_ObjectHideFlags: 0
@@ -45472,6 +46291,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1342166091
 Prefab:
   m_ObjectHideFlags: 0
@@ -45570,6 +46390,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1343765248
 Prefab:
   m_ObjectHideFlags: 0
@@ -45668,6 +46489,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1351672686 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100080, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -45856,7 +46678,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -45938,7 +46760,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -46144,6 +46966,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1381618204
 Prefab:
   m_ObjectHideFlags: 0
@@ -46242,6 +47065,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!114 &1381618208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46427,6 +47251,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1387086383
 GameObject:
   m_ObjectHideFlags: 0
@@ -46508,6 +47333,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1393649054
 Prefab:
   m_ObjectHideFlags: 0
@@ -46606,6 +47432,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1396703478
 Prefab:
   m_ObjectHideFlags: 0
@@ -46704,6 +47531,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1397094752
 Prefab:
   m_ObjectHideFlags: 0
@@ -46802,6 +47630,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &1397861021
 Prefab:
   m_ObjectHideFlags: 0
@@ -46975,6 +47804,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1400863212
 Prefab:
   m_ObjectHideFlags: 0
@@ -47220,6 +48050,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1410930463
 GameObject:
   m_ObjectHideFlags: 0
@@ -47391,6 +48222,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1411047333
 Prefab:
   m_ObjectHideFlags: 0
@@ -47812,6 +48644,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1438952023
 Prefab:
   m_ObjectHideFlags: 0
@@ -47874,7 +48707,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -47931,7 +48764,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -48144,6 +48977,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1454500020 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100124, guid: 01095faf123f73143860973525fc4d87,
@@ -48372,7 +49206,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -48490,6 +49324,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1462303710
 Prefab:
   m_ObjectHideFlags: 0
@@ -48586,6 +49421,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1466211969 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -48612,6 +49448,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1468579054 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -48633,6 +49470,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1471485297 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -48654,6 +49492,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1472265162
 Prefab:
   m_ObjectHideFlags: 0
@@ -48901,6 +49740,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!114 &1478091973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49028,6 +49868,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1483965592
 Prefab:
   m_ObjectHideFlags: 0
@@ -49126,6 +49967,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1484934282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100156, guid: 01095faf123f73143860973525fc4d87,
@@ -49258,6 +50100,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &1490195341 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100224, guid: 01095faf123f73143860973525fc4d87,
@@ -49373,6 +50216,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1494371897 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100086, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -49447,7 +50291,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -49587,6 +50431,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1503802598 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100020, guid: 01095faf123f73143860973525fc4d87,
@@ -49702,6 +50547,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1505981986
 Prefab:
   m_ObjectHideFlags: 0
@@ -49870,6 +50716,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1511286061
 Prefab:
   m_ObjectHideFlags: 0
@@ -50160,7 +51007,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -50295,6 +51142,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!114 &1537701630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50333,6 +51181,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1539979074 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100154, guid: 01095faf123f73143860973525fc4d87,
@@ -50465,6 +51314,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &1557078506
 GameObject:
   m_ObjectHideFlags: 0
@@ -50501,6 +51351,7 @@ Transform:
   - {fileID: 132645800}
   - {fileID: 1902601630}
   - {fileID: 883081600}
+  - {fileID: 205454524}
   - {fileID: 847819410}
   - {fileID: 240496182}
   - {fileID: 1538632072}
@@ -50517,6 +51368,7 @@ Transform:
   - {fileID: 880671839}
   - {fileID: 1201599163}
   - {fileID: 1085869826}
+  - {fileID: 1171418971}
   - {fileID: 1580742058}
   - {fileID: 1870805141}
   - {fileID: 1466211970}
@@ -50528,7 +51380,7 @@ Transform:
   - {fileID: 128904736}
   - {fileID: 982929299}
   - {fileID: 10200045}
-  - {fileID: 1171418971}
+  - {fileID: 1649266567}
   - {fileID: 989752158}
   - {fileID: 1844116391}
   - {fileID: 270790585}
@@ -50540,8 +51392,6 @@ Transform:
   - {fileID: 606582026}
   - {fileID: 1960351803}
   - {fileID: 63285340}
-  - {fileID: 205454524}
-  - {fileID: 1649266567}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50699,7 +51549,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -50781,7 +51631,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -50827,6 +51677,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1571954993 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100042, guid: 01095faf123f73143860973525fc4d87,
@@ -51096,6 +51947,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1580620921
 Prefab:
   m_ObjectHideFlags: 0
@@ -51194,6 +52046,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1580742057 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -51220,6 +52073,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1581794949
 Prefab:
   m_ObjectHideFlags: 0
@@ -51417,6 +52271,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1583363794
 Prefab:
   m_ObjectHideFlags: 0
@@ -51631,7 +52486,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -51677,6 +52532,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!4 &1591229132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc,
@@ -51720,6 +52576,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1595022836 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100090, guid: 01095faf123f73143860973525fc4d87,
@@ -51838,6 +52695,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1598176511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100110, guid: 01095faf123f73143860973525fc4d87,
@@ -51934,7 +52792,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -51985,7 +52843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1602923466
 Transform:
   m_ObjectHideFlags: 0
@@ -52201,6 +53059,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &1611957979
 Prefab:
   m_ObjectHideFlags: 0
@@ -52449,6 +53308,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1624170984
 Prefab:
   m_ObjectHideFlags: 0
@@ -52547,6 +53407,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1626267938
 Prefab:
   m_ObjectHideFlags: 0
@@ -52645,6 +53506,34 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
+--- !u!1 &1626541493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1119726055}
+--- !u!4 &1626541494 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1119726055}
+--- !u!114 &1626541495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1626541493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec1916e26e7776419f41a1c6f4836cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NearestNeighbours: []
+  IsStairs: 0
+  StairsDirection: UP
+  Floor: 0
+  IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1628373352
 Prefab:
   m_ObjectHideFlags: 0
@@ -52832,6 +53721,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1636170753 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -52853,6 +53743,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1637186742
 Prefab:
   m_ObjectHideFlags: 0
@@ -53026,6 +53917,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1638588057
 Prefab:
   m_ObjectHideFlags: 0
@@ -53218,6 +54110,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1644863022 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -53239,6 +54132,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1645897213
 Prefab:
   m_ObjectHideFlags: 0
@@ -53337,6 +54231,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1649266566 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -53375,6 +54270,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1653528546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -53396,6 +54292,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1654546688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -53417,6 +54314,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1654643438
 Prefab:
   m_ObjectHideFlags: 0
@@ -53515,6 +54413,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1658971623
 Prefab:
   m_ObjectHideFlags: 0
@@ -53767,6 +54666,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1673617494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -53788,6 +54688,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1675181779 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 01095faf123f73143860973525fc4d87,
@@ -53903,6 +54804,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1684618813 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100186, guid: 01095faf123f73143860973525fc4d87,
@@ -53982,7 +54884,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -54023,6 +54925,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1687700577
 Prefab:
   m_ObjectHideFlags: 0
@@ -54121,6 +55024,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1688417205
 Prefab:
   m_ObjectHideFlags: 0
@@ -54219,6 +55123,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1689500994
 Prefab:
   m_ObjectHideFlags: 0
@@ -54317,6 +55222,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1689861268 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -54343,6 +55249,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 1
+  IsRoom: 0
 --- !u!1001 &1691373967
 Prefab:
   m_ObjectHideFlags: 0
@@ -54518,6 +55425,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1697322923
 Prefab:
   m_ObjectHideFlags: 0
@@ -54924,6 +55832,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1709871908
 Prefab:
   m_ObjectHideFlags: 0
@@ -55022,6 +55931,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &1716686944
 Prefab:
   m_ObjectHideFlags: 0
@@ -55192,6 +56102,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1718885308
 Prefab:
   m_ObjectHideFlags: 0
@@ -55362,6 +56273,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1725892451 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100028, guid: 01095faf123f73143860973525fc4d87,
@@ -55494,6 +56406,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1728792511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100028, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -55762,6 +56675,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1734431034 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100016, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -55800,6 +56714,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1739359602
 Prefab:
   m_ObjectHideFlags: 0
@@ -55898,6 +56813,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1739869671
 Prefab:
   m_ObjectHideFlags: 0
@@ -55996,6 +56912,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1739913778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -56017,6 +56934,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1739921930
 Prefab:
   m_ObjectHideFlags: 0
@@ -56115,6 +57033,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1741967859
 Prefab:
   m_ObjectHideFlags: 0
@@ -56288,6 +57207,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1742824450
 Prefab:
   m_ObjectHideFlags: 0
@@ -56386,6 +57306,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1751165505 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -56407,6 +57328,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1752875162
 Prefab:
   m_ObjectHideFlags: 0
@@ -56718,6 +57640,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1761708987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -56739,6 +57662,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1765719895
 Prefab:
   m_ObjectHideFlags: 0
@@ -57078,6 +58002,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1786768222
 Prefab:
   m_ObjectHideFlags: 0
@@ -57176,6 +58101,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1794130482
 Prefab:
   m_ObjectHideFlags: 0
@@ -57274,6 +58200,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1797738112
 Prefab:
   m_ObjectHideFlags: 0
@@ -57372,6 +58299,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1799648449 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100136, guid: 01095faf123f73143860973525fc4d87,
@@ -57468,7 +58396,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -57752,6 +58680,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1815308405
 Prefab:
   m_ObjectHideFlags: 0
@@ -57850,6 +58779,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1816676186
 Prefab:
   m_ObjectHideFlags: 0
@@ -58095,6 +59025,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &1822799810
 Prefab:
   m_ObjectHideFlags: 0
@@ -58152,7 +59083,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -58427,6 +59358,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1828312161
 Prefab:
   m_ObjectHideFlags: 0
@@ -58489,7 +59421,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -58684,6 +59616,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1835424686
 Prefab:
   m_ObjectHideFlags: 0
@@ -58891,6 +59824,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1842477626 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -58912,6 +59846,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1844116390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -58938,6 +59873,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1848485808
 Prefab:
   m_ObjectHideFlags: 0
@@ -59185,6 +60121,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!114 &1853980520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59295,6 +60232,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &1863414600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100116, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -59572,6 +60510,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1870846609
 Prefab:
   m_ObjectHideFlags: 0
@@ -59670,6 +60609,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1872498499
 Prefab:
   m_ObjectHideFlags: 0
@@ -59790,6 +60730,7 @@ MonoBehaviour:
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1876152059
 Prefab:
   m_ObjectHideFlags: 0
@@ -59888,6 +60829,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1877688749
 Prefab:
   m_ObjectHideFlags: 0
@@ -59945,7 +60887,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -60100,6 +61042,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1888915269 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -60121,6 +61064,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1889272878
 Prefab:
   m_ObjectHideFlags: 0
@@ -60219,6 +61163,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1889861800
 Prefab:
   m_ObjectHideFlags: 0
@@ -60315,6 +61260,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1892930005
 Prefab:
   m_ObjectHideFlags: 0
@@ -60421,6 +61367,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1895080036
 Prefab:
   m_ObjectHideFlags: 0
@@ -60683,6 +61630,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &1900974171 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -60704,6 +61652,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1902601629 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -60730,6 +61679,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1905580326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100050, guid: 01095faf123f73143860973525fc4d87,
@@ -60768,6 +61718,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1906118733
 Prefab:
   m_ObjectHideFlags: 0
@@ -60866,6 +61817,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1907049592
 Prefab:
   m_ObjectHideFlags: 0
@@ -60903,7 +61855,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 31
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -61039,6 +61991,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1909162648
 Prefab:
   m_ObjectHideFlags: 0
@@ -61137,6 +62090,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1909214793
 Prefab:
   m_ObjectHideFlags: 0
@@ -61235,6 +62189,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1909909317
 Prefab:
   m_ObjectHideFlags: 0
@@ -61333,6 +62288,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &1912894113
 Prefab:
   m_ObjectHideFlags: 0
@@ -61431,6 +62387,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1913765492
 Prefab:
   m_ObjectHideFlags: 0
@@ -61604,6 +62561,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1 &1914753577 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100174, guid: 01095faf123f73143860973525fc4d87,
@@ -61719,6 +62677,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1920082174
 Prefab:
   m_ObjectHideFlags: 0
@@ -61817,6 +62776,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!114 &1920082178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61925,6 +62885,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1926659976
 Prefab:
   m_ObjectHideFlags: 0
@@ -62737,6 +63698,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1945861918 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -62763,6 +63725,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1950221043
 Prefab:
   m_ObjectHideFlags: 0
@@ -62800,7 +63763,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 22
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -62829,6 +63792,24 @@ Prefab:
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 65753524012337552, guid: 037e5e744374c794e97be1586bb49fdc,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450304114086566, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65854407630050260, guid: 037e5e744374c794e97be1586bb49fdc,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522377492782066, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
@@ -62936,6 +63917,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1960351802 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -62962,6 +63944,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1961830624
 Prefab:
   m_ObjectHideFlags: 0
@@ -63060,6 +64043,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1963990831
 Prefab:
   m_ObjectHideFlags: 0
@@ -63158,6 +64142,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1967862546
 Prefab:
   m_ObjectHideFlags: 0
@@ -63256,6 +64241,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &1969720842
 Prefab:
   m_ObjectHideFlags: 0
@@ -63475,7 +64461,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -63557,7 +64543,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -63639,7 +64625,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -63757,6 +64743,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &1979744651
 Prefab:
   m_ObjectHideFlags: 0
@@ -63794,7 +64781,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 41
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -64013,6 +65000,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1985918827 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -64034,6 +65022,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1990288056 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -64060,6 +65049,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1992200163 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100104, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -64098,6 +65088,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1997796064 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -64119,6 +65110,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &1998109856 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100228, guid: 01095faf123f73143860973525fc4d87,
@@ -64162,6 +65154,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &2001051579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100196, guid: 01095faf123f73143860973525fc4d87,
@@ -64277,6 +65270,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &2009308245 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100120, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -64503,6 +65497,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &2018015113
 Prefab:
   m_ObjectHideFlags: 0
@@ -64642,7 +65637,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -65002,6 +65997,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &2026412188
 Prefab:
   m_ObjectHideFlags: 0
@@ -65064,7 +66060,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866394495063772, guid: c96aa9b38ee01b94f90fcaf05d8f4211, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114467628522906926, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
         type: 2}
@@ -65587,6 +66583,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 1
 --- !u!1001 &2075867377
 Prefab:
   m_ObjectHideFlags: 0
@@ -65757,6 +66754,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1 &2081585800 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100254, guid: 01095faf123f73143860973525fc4d87,
@@ -66118,6 +67116,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &2112179471
 Prefab:
   m_ObjectHideFlags: 0
@@ -66216,6 +67215,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &2114058444
 Prefab:
   m_ObjectHideFlags: 0
@@ -66396,6 +67396,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!1001 &2118477477
 Prefab:
   m_ObjectHideFlags: 0
@@ -66687,6 +67688,7 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0
 --- !u!114 &2124889687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66887,7 +67889,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 37
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -66984,7 +67986,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 40
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 1699685632030186, guid: 037e5e744374c794e97be1586bb49fdc, type: 2}
       propertyPath: m_IsActive
@@ -67276,3 +68278,4 @@ MonoBehaviour:
   StairsDirection: UP
   Floor: 0
   IsExit: 0
+  IsRoom: 0

@@ -14,6 +14,9 @@ public class DoorController : MonoBehaviour
     private float closeTime = 1f;
 
     public bool IsOpen { get { return isOpen; } }
+    public bool IsLocked { get; set; }
+
+    public List<GameObject> peopleToInform;
 
     BoxCollider myCollider;
 
@@ -22,6 +25,8 @@ public class DoorController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        peopleToInform = new List<GameObject>();
+        IsLocked = true; //TEST
         BoxCollider[] res = GetComponents<BoxCollider>();
         m_renderer = GetComponent<Renderer>();
         foreach (var item in res)
@@ -56,14 +61,16 @@ public class DoorController : MonoBehaviour
 
     public void TryToOpenDoor(object[] args)
     {
-        string[] keys = (string[])args[0];
         GameObject gObject = (GameObject)args[1];
+        if (!IsLocked)
+        {
+            OpenDoor();
+        }
+        string[] keys = (string[])args[0];
 
         if((keys != null && keys.Contains(doorKey)) || doorKey == null)
         {
-            closeTime = 1f;
-            isOpen = true;
-            m_renderer.enabled = false;
+            OpenDoor();
         }
         else if(gObject != null)
         {
@@ -92,5 +99,13 @@ public class DoorController : MonoBehaviour
     public void SetDoorKey(string key)
     {
         doorKey = IsLockable ? key : null;
+    }
+
+    public void OpenDoor()
+    {
+        closeTime = 1f;
+        isOpen = true;
+        m_renderer.enabled = false;
+        IsLocked = false;
     }
 }

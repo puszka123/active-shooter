@@ -5,21 +5,26 @@ using UnityEngine;
 public class Person : MonoBehaviour
 {
     public Walking walkingModule;
+    public Finder finderModule;
     PersonMemory memory;
     public PersonMemory PersonMemory { get { return memory; } }
     private float timer = 0.1f;
     private float timerEdge = 0.1f;
     public Behaviour CurrentBehaviour;
+    BehaviourExecutor behaviourExecutor;
 
     bool init = false;
 
-    public void Init(int floor)
+    public void Init(int floor, string myRoomId)
     {
         memory = new PersonMemory();
-        memory.Init(floor, transform.position);
+        memory.Init(floor, transform);
+        memory.SetMyRoom(myRoomId);
         walkingModule = new Walking(GetComponent<Rigidbody>());
+        finderModule = new Finder(memory);
+        behaviourExecutor = new BehaviourExecutor(walkingModule, memory, transform, finderModule);
         CurrentBehaviour = memory.MyBehaviours.GetBehaviourByIndex(0);
-        ExecuteBehaviour();
+        behaviourExecutor.ExecuteBehaviour(ref CurrentBehaviour);
         init = true;
     }
 
@@ -36,40 +41,7 @@ public class Person : MonoBehaviour
         {
             walkingModule.MakeMove(transform, memory);
         }
-        else
-        {
-            ExecuteBehaviour();
-        }
-    }
-
-    public void ExecuteBehaviour()
-    {
-        foreach (var item in CurrentBehaviour.Actions)
-        {
-            if (ConditionIsMet(item.Condition.Limit))
-            {
-                walkingModule.ExecuteCommand(item.Command, memory, transform);
-            }
-        }
-    }
-
-    public bool ConditionIsMet(string condition)
-    {
-        string[] elements = condition.Split(' ');
-        if (elements[0] != "if") Debug.Log("Invalid condition - no 'if'");
-        if (elements[1] == "floor")
-        {
-            if (elements[2] != "is") Debug.Log("Invalid condition - no 'is'");
-            bool not = false;
-            int floor = -999;
-            if (!int.TryParse(elements[3], out floor))
-            {
-                if (!int.TryParse(elements[4], out floor)) Debug.Log("Invalid condition - floor number is invalid");
-                if (elements[3] == "not") not = true;
-            }
-            return !not ? memory.CurrentFloor == floor : memory.CurrentFloor != floor;
-        }
-        Debug.Log("Condition is not recognized");
-        return false;
+        behaviourExecutor.ExecuteBehaviour(ref CurrentBehaviour);
+        
     }
 }

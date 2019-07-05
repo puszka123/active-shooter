@@ -26,20 +26,20 @@ public class Walking
     private float _finalAngle = 0.0f;
 
     public bool Executing;
-    public Command? CommandToExecute;
+    public Action ActionToExecute;
 
     public Walking(Rigidbody rigidbody)
     {
-        RotationSpeed = 10f;
+        RotationSpeed = 7.5f;
         Speed = 0f;
         CurrentSpeed = 0f;
         m_Rigidbody = rigidbody;
         collisionDetection = new CollisionDetection();
-        CurrentSpeed = Resources.Walk;
+        CurrentSpeed = Resources.Run;
         pathfinder = new Pathfinder();
         avoidanceSystem = new AvoidanceSystem();
         avoidanceSystem.initAvoidanceSystem();
-        CommandToExecute = null;
+        ActionToExecute = null;
     }
 
     public void InitPath(PersonMemory memory)
@@ -48,10 +48,11 @@ public class Walking
         currentNodeIndex = 0;
     }
 
-    public void ExecuteCommand(Command cmd, PersonMemory memory, Transform transform)
+    public void ExecuteAction(Action action, PersonMemory memory, Transform transform)
     {
-        CommandToExecute = cmd;
-        switch (cmd)
+        if (IsActionExecuting(action)) return; //don't do that again!
+
+        switch (action.Command)
         {
             case Command.GO_UP:
                 memory.FindNearestLocation(transform.position);
@@ -71,7 +72,28 @@ public class Walking
                 InitPath(memory);
                 Executing = true;
                 break;
+            case Command.GO_TO_ROOM:
+                memory.FindNearestLocation(transform.position);
+                memory.setTargetPosition(action.Limits.
+                    Select(limit => limit.LocationId).
+                    Where(id => !String.IsNullOrEmpty(id)).ToArray()[0]);
+                Executing = true;
+                InitPath(memory);
+                break;
+            case Command.STAY:
+                Path = new List<Node>();
+                memory.setStartPosition("");
+                memory.setTargetPosition("");
+                Executing = false;
+                CurrentSpeed = Resources.Stay;
+                break;
         }
+        ActionToExecute = action;
+    }
+
+    public bool IsActionExecuting(Action action)
+    {
+        return (ActionToExecute != null && action.Command == ActionToExecute.Command && Executing);
     }
 
     public void MakeMove(Transform transform, PersonMemory memory)
@@ -90,25 +112,36 @@ public class Walking
         }
         else
         {
-            switch (CommandToExecute)
+            switch (ActionToExecute.Command)
             {
                 case Command.GO_UP:
-                    TryToGoStairs(transform.gameObject, memory);
+                    if (pathfinder.CheckDistance(transform.gameObject, memory.TargetPosition))
+                    {
+                        TryToGoStairs(transform.gameObject, memory);
+                    }
                     break;
                 case Command.GO_DOWN:
-                    TryToGoStairs(transform.gameObject, memory);
+                    if (pathfinder.CheckDistance(transform.gameObject, memory.TargetPosition))
+                    {
+                        TryToGoStairs(transform.gameObject, memory);
+                    }
                     break;
                 case Command.EXIT_BUILDING:
-                    transform.gameObject.SetActive(false);
+                    if (NearestExit(transform, memory) != null)
+                    {
+                        transform.gameObject.SetActive(false);
+                    }
                     break;
                 default:
                     break;
             }
+            ActionToExecute.IsDone = true;
         }
     }
 
     public void CalculateMovement(Transform transform)
     {
+        if (Path == null || currentNodeIndex >= Path.Count) return;
         collisionDetection.UpdateCollisions(transform, Path[currentNodeIndex].Position);
 
         avoidanceSystem.Calculate(collisionDetection.rightDist, collisionDetection.veryRightDist, collisionDetection.leftDist,
@@ -128,7 +161,7 @@ public class Walking
         float avoidanceAngle = avoidanceSystem.GetOutputValue("Angle");
         float ratio = 0.4f;
         float goalWeight = 0.5f;
-        float avoidanceWeight = 0.5f;
+        float avoidanceWeight = 0.7f;
         if (avoidanceAngle != -999.0f)
         {
             _finalAngle = avoidanceWeight * avoidanceAngle + goalWeight * goalAngle;
@@ -137,11 +170,11 @@ public class Walking
 
     private bool CheckGoal(Transform transform, PersonMemory memory)
     {
-        if (Path == null) return true;
+        if (Path == null || Path.Count == 0) return true;
         if (currentNodeIndex >= Path.Count) return true;
         int layerMask = 1 << 9;
         RaycastHit hit;
-        if (Physics.Linecast(transform.position, Path[currentNodeIndex].Position, out hit, layerMask) && blockedWayTimeout >= 3f)
+        if (Physics.Linecast(transform.position, Path[currentNodeIndex].Position, out hit, layerMask) && blockedWayTimeout >= 2f)
         {
             blockedWayTimeout = 0f;
             memory.FindNearestLocation(transform.position);
@@ -155,7 +188,7 @@ public class Walking
         }
         else
         {
-            blockedWayTimeout += Time.deltaTime;
+            blockedWayTimeout += Time.deltaTime + 0.1f;
         }
         if (pathfinder.CheckDistance(transform.gameObject, Path[currentNodeIndex]))
         {
@@ -184,6 +217,11 @@ public class Walking
         {
             Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
             currentNodeIndex = 0;
+            if(Path.Count == 0)
+            {
+                ActionToExecute.IsDone = true;
+                Executing = false;
+            }
         }
     }
 
@@ -230,6 +268,7 @@ public class Walking
             }
             if (exits.Count >= 2) break;
         }
+        if (exits.Count == 0) return null;
         GameObject nearestExits = exits[0];
         foreach (var item in exits)
         {

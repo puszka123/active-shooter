@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54648385371523096}
   - component: {fileID: 114546645984719468}
   - component: {fileID: 114778694033796470}
+  - component: {fileID: 114943548488074182}
   m_Layer: 11
   m_Name: Employee 2
   m_TagString: Employee
@@ -114,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myKeys: []
+  door: {fileID: 0}
 --- !u!114 &114778694033796470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,6 +125,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d959b3127c6165243a41d6eb65210685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114943548488074182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531717540930292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460359386d2c70245985daf295a273d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &136033733192427174

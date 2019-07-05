@@ -210,6 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54eb5be812e52346902a7676202fa2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLockable: 1
+  IsToilet: 0
 --- !u!114 &114780583229314626
 MonoBehaviour:
   m_ObjectHideFlags: 1
