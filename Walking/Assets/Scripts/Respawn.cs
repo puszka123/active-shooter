@@ -14,12 +14,21 @@ public class Respawn : MonoBehaviour
     GameObject objectToInstantiate;
     public string DoorKey;
     public string RoomId;
+    public GameObject room;
+    public GameObject door;
 
 
     float timer = 0.0f;
     float testTimer = 0.0f;
     static bool testOnly = true;
     // Use this for initialization
+    private void Start()
+    {
+        door = GetDoorForRespawn();
+        room = GetRoomForRespawn();
+        room.GetComponent<PathLocation>().SetRoomDoor(door);
+    }
+
     void Awake()
     {
         objectToInstantiate = GameObject.Find("Employee Origin");
@@ -36,13 +45,11 @@ public class Respawn : MonoBehaviour
         if (timer >= 1f && numberOfSlots > 0)
         {
             GameObject employee = Instantiate(objectToInstantiate, transform.position, transform.rotation);
-            GameObject room = GetRoomForRespawn();
+            
             employee.GetComponent<Person>().Init(int.Parse(transform.parent.name.Split(' ')[1]), room.name);
             room.GetComponent<PathLocation>().AddRoomEmployee(employee);
             employee.name = "employee " + nameGenerator++;
-            GameObject door = GetDoorForRespawn();
             DoorKey = door.name;
-            room.GetComponent<PathLocation>().SetRoomDoor(door);
             employee.GetComponent<PersonDoor>().AddKey(DoorKey);
             timer = 0f;
             --numberOfSlots;

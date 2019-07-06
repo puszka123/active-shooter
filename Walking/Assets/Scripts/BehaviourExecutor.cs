@@ -54,6 +54,7 @@ public class BehaviourExecutor
                         finderExecutor.ExecuteAction(item, transform);
                         break;
                     case ActionType.DOOR:
+                        doorExecutor.CheckDoor(doorExecutor.GetRoom(item)?.Door);
                         doorExecutor.ExecuteAction(item, transform);
                         break;
                     default:

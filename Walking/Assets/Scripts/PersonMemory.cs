@@ -192,6 +192,11 @@ public class PersonMemory
         return deletedRoom;
     }
 
+    public void DeleteInformedRooms()
+    {
+        InformedRooms = null;
+    }
+
     public List<Room> GetInformedRooms()
     {
         List<Room> informedRooms = new List<Room>();
@@ -206,5 +211,16 @@ public class PersonMemory
     public void SaveFoundRoom(Room room)
     {
         FoundRoom = room;
+    }
+
+    public bool InformedRoom(GameObject room)
+    {
+        if (InformedRooms == null) return false;
+        return InformedRooms.Select(r => r.Id).Contains(room.name);
+    }
+
+    public void ClearFoundRoom()
+    {
+        FoundRoom = null;
     }
 }

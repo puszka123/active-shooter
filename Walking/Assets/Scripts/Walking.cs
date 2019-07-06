@@ -81,10 +81,12 @@ public class Walking
             case Command.GO_TO_ROOM:
                 memory.FindNearestLocation(transform.position);
                 memory.setTargetPosition(action.Limits.
-                    Select(limit => limit.LocationId).
+                    Select(limit => limit.FoundRoom.Id).
                     Where(id => !String.IsNullOrEmpty(id)).ToArray()[0]);
                 Executing = true;
                 InitPath(memory);
+                //Debug.Log(memory.StartPosition.Name);
+                //Debug.Log(memory.TargetPosition.Name);
                 break;
             case Command.GO_TO_DOOR:
                 GameObject doorToOpen = action.Limits.
@@ -113,6 +115,11 @@ public class Walking
     public void MakeMove(Transform transform, PersonMemory memory)
     {
         Executing = !CheckGoal(transform, memory);
+        if (transform.name == "Informer")
+        {
+           // Debug.Log(Speed);
+           // Debug.Log(Executing);
+        }
         if (Executing)
         {
             Vector3 m_EulerAngleVelocity;

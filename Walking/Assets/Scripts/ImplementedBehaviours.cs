@@ -152,17 +152,39 @@ public static class ImplementedBehaviours
         {
             if (memory.FoundRoom != null)
             {
-                Actions.
-                    Where(action => action.Command == Command.GO_TO_ROOM).
-                    ToArray()[0].
-                    Limits.
-                    Add(new Limit { LocationId = memory.FoundRoom.Id });
+                Action action = Actions.
+                    Where(a => a.Command == Command.GO_TO_ROOM).
+                    ToArray()?[0];
+                Limit[] limits = action?.Limits.Where(l => l.FoundRoom != null).ToArray();
+                Limit limit = null;
+                if (limits.Length > 0) limit = limits[0];
+                if(limit != null)
+                {
+                    limit.FoundRoom = memory.FoundRoom;
+                }
+                else
+                {
+                    action.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
+                }
 
-                Actions.
-                    Where(action => action.Command == Command.KNOCK).
-                    ToArray()[0].
-                    Limits.
-                    Add(new Limit { FoundRoom = memory.FoundRoom });
+                action = null;
+                limit = null;
+                limits = null;
+
+                action = Actions.
+                    Where(a => a.Command == Command.KNOCK).
+                    ToArray()?[0];
+                limits = action?.Limits.Where(l => l.FoundRoom != null).ToArray();
+                limit = null;
+                if (limits.Length > 0) limit = limits[0];
+                if (limit != null)
+                {
+                    limit.FoundRoom = memory.FoundRoom;
+                }
+                else
+                {
+                    action.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
+                }
             }
         }
     }

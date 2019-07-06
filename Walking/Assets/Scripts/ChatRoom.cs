@@ -73,9 +73,9 @@ public class ChatRoom {
         return members.Where(member => member.name != sender.name).ToArray();
     }
 
-    public void SendResponse(ChatResponse response, GameObject sender, GameObject receiver)
+    public void SendResponse(ChatResponse response, GameObject sender, GameObject receiver, ChatRequest request)
     {
-        object[] responseParams = new object[] { this, response, sender };
+        object[] responseParams = new object[] { this, response, sender, request };
         receiver.SendMessage("ChatResponse", responseParams);
     }
 
@@ -86,6 +86,7 @@ public class ChatRoom {
             doorOpenNegotiation = new Negotiation();
             GameObject memberToOpenDoor = doorOpenNegotiation.PersonToOpenDoor(door, members.Where(m => m.name != sender.name).ToArray());
             memberToOpenDoor.SendMessage("OpenDoor", door);
+            SendResponse(ChatResponse.OK, memberToOpenDoor, sender, ChatRequest.OPEN_DOOR);
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MyChat : MonoBehaviour {
     public GameObject CurrentSender;
     public List<ChatRoom> MyChatRooms;
+    public ChatRequest RequestToProcess;
 
 	// Update is called once per frame
 	void Update () {
@@ -44,6 +45,8 @@ public class MyChat : MonoBehaviour {
         ChatRoom chatRoom = (ChatRoom)args[0];
         ChatResponse response = (ChatResponse)args[1];
         GameObject sender = (GameObject)args[2];
+        ChatRequest request = (ChatRequest)args[3];
+        HandleResponse(response, chatRoom, sender, request);
     }
 
     public void HandleRequest(ChatRequest request, ChatRoom chatRoom, GameObject sender, object param)
@@ -58,13 +61,26 @@ public class MyChat : MonoBehaviour {
         }
     }
 
-    public void HandleResponse(ChatResponse response, ChatRoom chatRoom, GameObject sender)
+    public void HandleResponse(ChatResponse response, ChatRoom chatRoom, GameObject sender, ChatRequest request)
     {
         switch (response)
         {
             case global::ChatResponse.OK:
+                HandleOK(request);
                 break;
             case global::ChatResponse.NO:
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void HandleOK(ChatRequest request)
+    {
+        switch (request)
+        {
+            case global::ChatRequest.OPEN_DOOR:
+                GetComponent<Person>().doorExecutor.DoorWillOpen();
                 break;
             default:
                 break;

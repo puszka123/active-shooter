@@ -36,7 +36,9 @@ public class Person : MonoBehaviour
     private void FixedUpdate()
     {
         if (!init) return;
+
         timer += Time.deltaTime;
+        doorExecutor.UpdateTimer(Time.deltaTime);
         if (timer >= timerEdge && walkingModule.Executing)
         {
             timer = 0f;

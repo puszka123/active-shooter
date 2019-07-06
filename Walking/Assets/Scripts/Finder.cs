@@ -21,7 +21,8 @@ public class Finder {
         switch (action.Command)
         {
             case Command.FIND_ROOM:
-                Room room = FindNearestRoom(memory.CurrentFloor, transform);
+                Room room = FindNearestNotInformedRoom(memory.CurrentFloor, transform);
+                if (room == null) return;
                 SaveRoomInMemory(room);
                 action.IsDone = true;
                 Executing = false;
@@ -56,6 +57,36 @@ public class Finder {
             }
         }
         return new Room() { Id = nearestRoom.name,
+            Door = nearestRoom.GetComponent<PathLocation>().RoomDoor,
+            Employees = nearestRoom.GetComponent<PathLocation>().RoomEmployees.ToArray()
+        };
+    }
+
+    public Room FindNearestNotInformedRoom(int floor, Transform transform)
+    {
+        GameObject location = GameObject.Find("Checkpoints " + floor);
+        List<GameObject> rooms = new List<GameObject>();
+        foreach (Transform item in location.transform)
+        {
+            if (item.GetComponent<PathLocation>().IsRoom && !memory.InformedRoom(item.gameObject))
+            {
+                rooms.Add(item.gameObject);
+            }
+        }
+        if (rooms.Count == 0) return null;
+        GameObject nearestRoom = rooms[0];
+        foreach (var item in rooms)
+        {
+            if (Vector3.Distance(transform.position, nearestRoom.transform.position)
+                >
+                Vector3.Distance(transform.position, item.transform.position))
+            {
+                nearestRoom = item;
+            }
+        }
+        return new Room()
+        {
+            Id = nearestRoom.name,
             Door = nearestRoom.GetComponent<PathLocation>().RoomDoor,
             Employees = nearestRoom.GetComponent<PathLocation>().RoomEmployees.ToArray()
         };
