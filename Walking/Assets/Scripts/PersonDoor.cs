@@ -104,4 +104,22 @@ public class PersonDoor : MonoBehaviour
         closeDoor.RequiredActions = new List<Action>();
         GetComponent<Person>().waitingActions.AddAction(closeDoor);
     }
+
+    public void YouEnterRoom(GameObject door)
+    {
+        GameObject room = door.GetComponent<DoorController>().MyRoom;
+        if (room!= null)
+        {
+            GetComponent<Person>().PersonMemory.SaveCurrentRoom(room);
+        }
+    }
+
+    public void YouExitRoom(GameObject door)
+    {
+        GameObject room = door.GetComponent<DoorController>().MyRoom;
+        if (room != null)
+        {
+            GetComponent<Person>().PersonMemory.ClearCurrentRoom();
+        }
+    }
 }

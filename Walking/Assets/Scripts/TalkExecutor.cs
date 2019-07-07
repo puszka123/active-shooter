@@ -30,8 +30,6 @@ public class TalkExecutor {
         {
             case Command.TELL_ABOUT_SHOOTER:
                 InitChat();
-                SendInfoAboutShooter();
-                PretendTalking();
                 break;
         }
     }
@@ -52,8 +50,25 @@ public class TalkExecutor {
         }
     }
 
+    public void CanTalk()
+    {
+        switch (ActionToExecute.Command)
+        {
+            case Command.TELL_ABOUT_SHOOTER:
+                TellAboutShooter();
+                break;
+        }
+    }
+
+    public void TellAboutShooter()
+    {
+        SendInfoAboutShooter();
+        PretendTalking();
+    }
+
     public void FinishTalk()
     {
+        time = 0f;
         Executing = false;
         ActionToExecute.IsDone = true;
     }
@@ -63,20 +78,17 @@ public class TalkExecutor {
         return (ActionToExecute != null && action.Command == ActionToExecute.Command && Executing);
     }
 
-    public Room GetRoom(Action action)
-    {
-        Room room = action.Limits.
-                    Select(limit => limit.FoundRoom).
-                    Where(r => r != null).ToArray()?[0];
-        return room;
-    }
-
     public void InitChat()
     {
-        Room room = GetRoom(ActionToExecute);
-        if (room == null) return;
-        chatRoom = chatRoomManager.CreateChatRoom();
-        chatRoom.InviteMembers(room.Employees);
+        GameObject[] members = GetMembers();
+        if (members == null)
+        {
+            FinishTalk();
+            return;
+        }
+        members = FilterMembers(members);
+        chatRoom = chatRoomManager.CreateChatRoom(this);
+        chatRoom.InviteMembers(members);
         chatRoom.InviteMember(Person.gameObject);
     }
 
@@ -88,5 +100,42 @@ public class TalkExecutor {
     public void PretendTalking()
     {
         time = 0f;
+    }
+
+    public GameObject[] GetMembers()
+    {
+        GameObject[] members = null;
+        Room room = Utils.GetRoom(ActionToExecute);
+        if (room == null)
+        {
+            members = Utils.GetEmployees(ActionToExecute);
+        }
+        else
+        {
+            members = room.Employees;
+        }
+        return members;
+    }
+
+    public GameObject[] FilterMembers(GameObject[] members)
+    {
+        List<GameObject> filtered = new List<GameObject>();
+        foreach (var member in members)
+        {
+            if(CanHear(Person.gameObject, member))
+            {
+                filtered.Add(member);
+            }
+        }
+        return filtered.ToArray();
+    }
+
+    //Currently they can talk if no doors or wall is between them!
+    public bool CanHear(GameObject person1, GameObject person2)
+    {
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Door");
+        bool blocked = Physics.Linecast(person1.transform.position, person2.transform.position, layerMask);
+
+        return !blocked;
     }
 }

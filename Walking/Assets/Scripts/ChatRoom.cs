@@ -16,6 +16,10 @@ public enum ChatResponse
 public class ChatRoom {
     public static int IdGenerator = 0;
     public int Id;
+    public float Timer = 0f;
+    public float TimeThreshold = 0f;
+    public object Initializer;
+    public bool IsInitiated;
 
     List<GameObject> members;
 
@@ -31,10 +35,14 @@ public class ChatRoom {
     }
 
 
-    public ChatRoom()
+    public ChatRoom(object initializer, float timerThreshold = 1.0f)
     {
         Id = ++IdGenerator;
         members = new List<GameObject>();
+        TimeThreshold = timerThreshold;
+        Timer = 0f;
+        Initializer = initializer;
+        IsInitiated = false;
     }
 
     public void AddMember(GameObject member)
@@ -62,6 +70,7 @@ public class ChatRoom {
 
     public void SendRequest(ChatRequest request, GameObject sender, object param = null)
     {
+        //Debug.Log(request + " sender: " + sender);
         foreach (var member in GetOtherMembers(sender))
         {
             object[] requestParams = new object[] { this, request, sender, param };
@@ -100,5 +109,34 @@ public class ChatRoom {
             memberToCloseDoor.SendMessage("CloseDoor", door);
             SendResponse(ChatResponse.OK, memberToCloseDoor, sender, ChatRequest.CLOSE_DOOR);
         }
+    }
+
+    public void UpdateTimer(float time)
+    {
+        Timer += time;
+        CheckThreshold();
+    }
+
+    public void CheckThreshold()
+    {
+        if (Timer >= TimeThreshold && !IsInitiated)
+        {
+            IsInitiated = true;
+            SendCanTalk();
+        }
+    }
+
+    public void SendCanTalk()
+    {
+        if (Initializer.GetType() == typeof(TalkExecutor))
+        {
+            TalkExecutor talkExecutor = (TalkExecutor)Initializer;
+            talkExecutor.CanTalk();
+        }
+    }
+
+    public bool CanSendRequests()
+    {
+        return Timer >= TimeThreshold;
     }
 }

@@ -174,6 +174,10 @@ public class PersonMemory
 
     public void AddInformedRoom(Room room)
     {
+        if(room == null)
+        {
+            return;
+        }
         if(InformedRooms == null)
         {
             InformedRooms = new List<Room>() { room };
@@ -223,5 +227,23 @@ public class PersonMemory
     public void ClearFoundRoom()
     {
         FoundRoom = null;
+    }
+
+    public void SaveCurrentRoom(GameObject room)
+    {
+        CurrentRoom = new Room
+        {
+            Id = room.name,
+            Door = room.GetComponent<PathLocation>().RoomDoor,
+            Employees = room.GetComponent<PathLocation>().RoomEmployees.ToArray(),
+            Reference = room
+        };
+        Debug.Log(CurrentRoom.Id);
+    }
+
+    public void ClearCurrentRoom()
+    {
+        CurrentRoom = null;
+        Debug.Log(CurrentRoom);
     }
 }

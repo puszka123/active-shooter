@@ -19,6 +19,7 @@ public class Limit
     public Room FoundRoom;
     public GameObject DoorToOpen;
     public ChatRoom chatRoom;
+    public GameObject[] Employees;
 }
 
 //public class Condition {

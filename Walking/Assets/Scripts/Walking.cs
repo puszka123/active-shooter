@@ -63,48 +63,55 @@ public class Walking
     public void ExecuteAction(Action action, PersonMemory memory, Transform transform)
     {
         if (IsActionExecuting(action)) return; //don't do that again!
-
+        ActionToExecute = action;
         switch (action.Command)
         {
             case Command.GO_UP:
                 memory.FindNearestLocation(transform.position);
-                memory.setTargetPosition(NearestStairs("UP", transform, memory));
+                memory.setTargetPosition(Utils.NearestStairs("UP", transform, memory));
                 InitPath(memory);
                 Executing = true;
                 break;
             case Command.GO_DOWN:
                 memory.FindNearestLocation(transform.position);
-                memory.setTargetPosition(NearestStairs("DOWN", transform, memory));
+                memory.setTargetPosition(Utils.NearestStairs("DOWN", transform, memory));
                 InitPath(memory);
                 Executing = true;
                 break;
             case Command.EXIT_BUILDING:
                 memory.FindNearestLocation(transform.position);
-                memory.setTargetPosition(NearestExit(transform, memory));
+                memory.setTargetPosition(Utils.NearestExit(transform, memory));
                 InitPath(memory);
                 Executing = true;
                 break;
             case Command.GO_TO_ROOM:
                 memory.FindNearestLocation(transform.position);
-                memory.setTargetPosition(action.Limits.
-                    Select(limit => limit.FoundRoom.Id).
-                    Where(id => !String.IsNullOrEmpty(id)).ToArray()[0]);
-                Executing = true;
+                Room room1 = Utils.GetRoom(action);
+                if(room1 == null)
+                {
+                    FinishWalking();
+                }
+                memory.setTargetPosition(room1.Id);
                 InitPath(memory);
+                Executing = true;
                 break;
             case Command.GO_TO_DOOR:
-                GameObject doorToOpen = action.Limits.
-                    Select(limit => limit.DoorToOpen).
-                    Where(door => door != null).ToArray()[0];
+                GameObject doorToOpen = Utils.GetDoor(action);
+                if(doorToOpen == null)
+                {
+                    FinishWalking();
+                }
                 InitPath(doorToOpen);
                 CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
             case Command.ENTER_ROOM:
-                Room room = action.Limits.
-                    Select(limit => limit.FoundRoom).
-                    Where(r => r != null).ToArray()[0];
-                InitPath(room);
+                Room room2 = Utils.GetRoom(action);
+                if (room2 == null)
+                {
+                    FinishWalking();
+                }
+                InitPath(room2);
                 CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
@@ -116,7 +123,6 @@ public class Walking
                 CurrentSpeed = Resources.Stay;
                 break;
         }
-        ActionToExecute = action;
     }
 
     public bool IsActionExecuting(Action action)
@@ -127,11 +133,6 @@ public class Walking
     public void MakeMove(Transform transform, PersonMemory memory)
     {
         Executing = !CheckGoal(transform, memory);
-        if (transform.name == "Informer")
-        {
-           // Debug.Log(Speed);
-           // Debug.Log(Executing);
-        }
         if (Executing)
         {
             Vector3 m_EulerAngleVelocity;
@@ -160,7 +161,7 @@ public class Walking
                     }
                     break;
                 case Command.EXIT_BUILDING:
-                    if (NearestExit(transform, memory) != null)
+                    if (Utils.NearestExit(transform, memory) != null)
                     {
                         transform.gameObject.SetActive(false);
                     }
@@ -213,11 +214,13 @@ public class Walking
             memory.FindNearestLocation(transform.position);
             if (memory.StartPosition != null)
             {
-                Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
-                currentNodeIndex = 0;
+                InitPath(memory);
                 return false;
             }
-            else return true;
+            else
+            {
+                return true;
+            }
         }
         else
         {
@@ -248,12 +251,10 @@ public class Walking
         memory.FindNearestLocation(transform.position);
         if (memory.StartPosition != null)
         {
-            Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
-            currentNodeIndex = 0;
+            InitPath(memory);
             if(Path.Count == 0)
             {
-                ActionToExecute.IsDone = true;
-                Executing = false;
+                FinishWalking();
             }
         }
     }
@@ -264,54 +265,12 @@ public class Walking
     }
 
 
-    public string NearestStairs(string stairsType, Transform transform, PersonMemory memory)
-    {
-        GameObject location = GameObject.Find("Checkpoints " + memory.CurrentFloor);
-        List<GameObject> stairs = new List<GameObject>();
-        foreach (Transform item in location.transform)
-        {
-            if (item.GetComponent<Stairs>() != null && item.GetComponent<PathLocation>().StairsDirection == stairsType)
-            {
-                stairs.Add(item.gameObject);
-            }
-            if (stairs.Count >= 2) break;
-        }
-        GameObject nearestStairs = stairs[0];
-        foreach (var item in stairs)
-        {
-            if (Vector3.Distance(transform.position, nearestStairs.transform.position)
-                >
-                Vector3.Distance(transform.position, item.transform.position))
-            {
-                nearestStairs = item;
-            }
-        }
-        return nearestStairs.name;
-    }
+    
 
-    public string NearestExit(Transform transform, PersonMemory memory)
+    public void FinishWalking()
     {
-        GameObject location = GameObject.Find("Checkpoints " + memory.CurrentFloor);
-        List<GameObject> exits = new List<GameObject>();
-        foreach (Transform item in location.transform)
-        {
-            if (item.GetComponent<PathLocation>().IsExit)
-            {
-                exits.Add(item.gameObject);
-            }
-            if (exits.Count >= 2) break;
-        }
-        if (exits.Count == 0) return null;
-        GameObject nearestExits = exits[0];
-        foreach (var item in exits)
-        {
-            if (Vector3.Distance(transform.position, nearestExits.transform.position)
-                >
-                Vector3.Distance(transform.position, item.transform.position))
-            {
-                nearestExits = item;
-            }
-        }
-        return nearestExits.name;
+        ActionToExecute.IsDone = true;
+        Executing = false;
+        Path = null;
     }
 }

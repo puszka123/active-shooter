@@ -27,6 +27,7 @@ public class Respawn : MonoBehaviour
         door = GetDoorForRespawn();
         room = GetRoomForRespawn();
         room.GetComponent<PathLocation>().SetRoomDoor(door);
+        door.GetComponent<DoorController>().SetRoom(room);
     }
 
     void Awake()
@@ -56,7 +57,7 @@ public class Respawn : MonoBehaviour
         }
 
         //test
-        if(testOnly && testTimer >= 2f)
+        if(testOnly && testTimer >= 3f)
         {
             testOnly = false;
             GameObject informer = GameObject.Find("Informer");

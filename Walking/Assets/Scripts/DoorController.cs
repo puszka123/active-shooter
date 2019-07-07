@@ -10,6 +10,7 @@ public class DoorController : MonoBehaviour
     public bool IsLockable = true;
     public bool IsToilet = false;
     private string doorKey;
+    public GameObject MyRoom;
 
     private float closeTime = 1f;
 
@@ -65,6 +66,7 @@ public class DoorController : MonoBehaviour
         if (!IsLocked)
         {
             OpenDoor();
+            return;
         }
         string[] keys = (string[])args[0];
 
@@ -123,6 +125,11 @@ public class DoorController : MonoBehaviour
     public void CloseDoor()
     {
         closeTime = 0f;
+    }
+
+    public void SetRoom(GameObject room)
+    {
+        MyRoom = room;
     }
 
 }

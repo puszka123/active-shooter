@@ -35,9 +35,13 @@ public class DoorExecutor {
             case Command.KNOCK:
                 timer = 0.0f;
                 WaitForOpenDoor = true;
-                Room room = GetRoom(action);
-                if (room == null) return;
-                chatRoom = chatRoomManager.CreateChatRoom();
+                Room room = Utils.GetRoom(action);
+                if (room == null || Utils.ToFar(room.Door, Me, 2)) //null or to far from door
+                {
+                    FinishKnockAction();
+                    return;
+                }
+                chatRoom = chatRoomManager.CreateChatRoom(this);
                 foreach (var employee in room.Employees)
                 {
                     chatRoom.InviteMember(employee);
@@ -46,13 +50,25 @@ public class DoorExecutor {
                 chatRoom.SendRequest(ChatRequest.OPEN_DOOR, Me, room.Door);
                 break;
             case Command.OPEN_DOOR:
-                PersonDoor.TryToOpenDoor(GetDoor(action));
+                GameObject door2 = Utils.GetDoor(action);
+                if (door2 == null || Utils.ToFar(door2, Me, 2)) //null or to far from door
+                {
+                    FinishKnockAction();
+                    return;
+                }
+                PersonDoor.TryToOpenDoor(door2);
                 break;
             case Command.CLOSE_DOOR:
-                PersonDoor.TryToCloseDoor(GetDoor(action));
+                GameObject door1 = Utils.GetDoor(action);
+                if (door1 == null || Utils.ToFar(door1, Me, 2)) //null or to far from door
+                {
+                    FinishKnockAction();
+                    return;
+                }
+                PersonDoor.TryToCloseDoor(door1);
                 break;
             case Command.ASK_CLOSE_DOOR:
-                chatRoom.SendRequest(ChatRequest.CLOSE_DOOR, Me, GetRoom(action).Door);
+                chatRoom.SendRequest(ChatRequest.CLOSE_DOOR, Me, Utils.GetRoom(action).Door);
                 FinishAskCloseDoor();
                 break;
         }
@@ -61,22 +77,6 @@ public class DoorExecutor {
     public bool IsActionExecuting(Action action)
     {
         return (ActionToExecute != null && action.Command == ActionToExecute.Command && Executing);
-    }
-
-    public Room GetRoom(Action action)
-    {
-        Room room = action.Limits.
-                    Select(limit => limit.FoundRoom).
-                    Where(r => r != null).ToArray()?[0];
-        return room;
-    }
-
-    public GameObject GetDoor(Action action)
-    {
-        GameObject door = action.Limits.
-                    Select(limit => limit.DoorToOpen).
-                    Where(d => d != null).ToArray()?[0];
-        return door;
     }
 
     public void DoorWillOpen()
@@ -99,12 +99,12 @@ public class DoorExecutor {
         switch (ActionToExecute.Command)
         {
             case Command.KNOCK:
-                door = GetRoom(action)?.Door;
+                door = Utils.GetRoom(action)?.Door;
                 if (door == null) return;
                 KnockCheck(door);
                 break;
             case Command.OPEN_DOOR:
-                door = GetDoor(action);
+                door = Utils.GetDoor(action);
                 if (door == null) return;
                 OpenDoorCheck(door);
                 break;
@@ -140,7 +140,7 @@ public class DoorExecutor {
 
     public void FinishKnockAction()
     {
-        Me.GetComponent<Person>().PersonMemory.AddInformedRoom(GetRoom(ActionToExecute));
+        Me.GetComponent<Person>().PersonMemory.AddInformedRoom(Utils.GetRoom(ActionToExecute));
         timer = 0;
         WaitForOpenDoor = false;
         Executing = false;
