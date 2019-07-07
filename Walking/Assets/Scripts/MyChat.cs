@@ -56,6 +56,13 @@ public class MyChat : MonoBehaviour {
             case global::ChatRequest.OPEN_DOOR:
                 chatRoom.SelectMemberToOpenDoor(sender, (GameObject)param);
                 break;
+            case global::ChatRequest.CLOSE_DOOR:
+                chatRoom.SelectMemberToCloseDoor(sender, (GameObject)param);
+                break;
+            case global::ChatRequest.INFO_ABOUT_SHOOTER:
+                ShooterInfo shooterInfo = (ShooterInfo)param;
+                Debug.Log(shooterInfo.Name + " " + gameObject);
+                break;
             default:
                 break;
         }

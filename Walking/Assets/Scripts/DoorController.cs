@@ -96,6 +96,17 @@ public class DoorController : MonoBehaviour
         }
     }
 
+    public void TryToCloseDoor(object[] args)
+    {
+        GameObject gObject = (GameObject)args[1];
+        string[] keys = (string[])args[0];
+
+        if ((keys != null && keys.Contains(doorKey)) || doorKey == null)
+        {
+            CloseDoor();
+        }
+    }
+
     public void SetDoorKey(string key)
     {
         doorKey = IsLockable ? key : null;
@@ -108,4 +119,10 @@ public class DoorController : MonoBehaviour
         m_renderer.enabled = false;
         IsLocked = false;
     }
+
+    public void CloseDoor()
+    {
+        closeTime = 0f;
+    }
+
 }

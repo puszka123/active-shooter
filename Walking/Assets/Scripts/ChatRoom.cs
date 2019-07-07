@@ -5,7 +5,7 @@ using System.Linq;
 
 public enum ChatRequest
 {
-    OPEN_DOOR
+    OPEN_DOOR, CLOSE_DOOR, INFO_ABOUT_SHOOTER
 }
 
 public enum ChatResponse
@@ -20,6 +20,7 @@ public class ChatRoom {
     List<GameObject> members;
 
     Negotiation doorOpenNegotiation;
+    Negotiation doorCloseNegotiation;
 
     public List<GameObject> Members
     {
@@ -84,9 +85,20 @@ public class ChatRoom {
         if(doorOpenNegotiation == null)
         {
             doorOpenNegotiation = new Negotiation();
-            GameObject memberToOpenDoor = doorOpenNegotiation.PersonToOpenDoor(door, members.Where(m => m.name != sender.name).ToArray());
+            GameObject memberToOpenDoor = doorOpenNegotiation.PersonNearestDoor(door, members.Where(m => m.name != sender.name).ToArray());
             memberToOpenDoor.SendMessage("OpenDoor", door);
             SendResponse(ChatResponse.OK, memberToOpenDoor, sender, ChatRequest.OPEN_DOOR);
+        }
+    }
+
+    public void SelectMemberToCloseDoor(GameObject sender, GameObject door)
+    {
+        if (doorCloseNegotiation == null)
+        {
+            doorCloseNegotiation = new Negotiation();
+            GameObject memberToCloseDoor = doorCloseNegotiation.PersonNearestDoor(door, members.Where(m => m.name != sender.name).ToArray());
+            memberToCloseDoor.SendMessage("CloseDoor", door);
+            SendResponse(ChatResponse.OK, memberToCloseDoor, sender, ChatRequest.CLOSE_DOOR);
         }
     }
 }

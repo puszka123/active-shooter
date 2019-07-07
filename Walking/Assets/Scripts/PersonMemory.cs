@@ -16,6 +16,7 @@ public class PersonMemory
     public PersonBehaviours MyBehaviours;
     private List<Room> InformedRooms;
     Transform transform; //for testing!!!
+    public ShooterInfo ShooterInfo;
 
     List<Node> blockedByDoor;
 
@@ -26,7 +27,7 @@ public class PersonMemory
         CurrentFloor = 1;
 
         StartPosition = TargetPosition = null;
-
+        ShooterInfo = new ShooterInfo(); //test
         //MyBehaviours = new PersonBehaviours();
         //Behaviour behaviour = new Behaviour();
         //behaviour.WorkBehaviour(MyRoom.Id);

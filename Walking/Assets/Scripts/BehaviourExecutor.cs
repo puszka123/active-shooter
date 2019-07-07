@@ -11,29 +11,26 @@ public class BehaviourExecutor
     Behaviour behaviourToExecute;
     Transform transform;
     PersonMemory memory;
+    TalkExecutor talkExecutor;
 
     public BehaviourExecutor(Walking walkingModule, PersonMemory memory, Transform transform, 
-        Finder finderExecutor, DoorExecutor doorExecutor)
+        Finder finderExecutor, DoorExecutor doorExecutor, TalkExecutor talkExecutor)
     {
         movementExecutor = walkingModule;
         this.doorExecutor = doorExecutor;
         this.finderExecutor = finderExecutor;
         this.transform = transform;
         this.memory = memory;
+        this.talkExecutor = talkExecutor;
     }
 
     public void ExecuteBehaviour(ref Behaviour behaviourToExecute)
     {
+        //test
         if (behaviourToExecute.Actions.Where(a => a.IsDone).ToArray().Length == behaviourToExecute.Actions.Count)
         {
-            //to do select a new behaviour
-            //now we select the same behaviour all the time
             behaviourToExecute.Actions.ForEach(a => a.IsDone = false);
         }
-        //if (memory.CurrentFloor == 0 && !(behaviourToExecute is ImplementedBehaviours.HideInMyRoom))
-        //{
-        //    behaviourToExecute = new ImplementedBehaviours.HideInMyRoom(memory.MyRoom.Id);
-        //}
 
         behaviourToExecute.ActionsCleaner(memory);
         foreach (var item in behaviourToExecute.Actions)
@@ -47,6 +44,8 @@ public class BehaviourExecutor
                         movementExecutor.ExecuteAction(item, memory, transform);
                         break;
                     case ActionType.TALK:
+                        talkExecutor.CheckTalking();
+                        talkExecutor.ExecuteAction(item);
                         break;
                     case ActionType.OTHER:
                         break;
@@ -54,7 +53,8 @@ public class BehaviourExecutor
                         finderExecutor.ExecuteAction(item, transform);
                         break;
                     case ActionType.DOOR:
-                        doorExecutor.CheckDoor(doorExecutor.GetRoom(item)?.Door);
+                       // doorExecutor.CheckDoor(doorExecutor.GetRoom(item)?.Door);
+                        doorExecutor.CheckDoor(item);
                         doorExecutor.ExecuteAction(item, transform);
                         break;
                     default:
@@ -66,22 +66,28 @@ public class BehaviourExecutor
 
     public void ExecuteSingleAction(Action action)
     {
-        switch (action.Type)
+        if (action.CanBeExecuted(memory) && !action.IsDone)
         {
-            case ActionType.MOVEMENT:
-                movementExecutor.ExecuteAction(action, memory, transform);
-                break;
-            case ActionType.TALK:
-                break;
-            case ActionType.OTHER:
-                break;
-            case ActionType.FINDER:
-                finderExecutor.ExecuteAction(action, transform);
-                break;
-            case ActionType.DOOR:
-                break;
-            default:
-                break;
+            switch (action.Type)
+            {
+                case ActionType.MOVEMENT:
+                    movementExecutor.ExecuteAction(action, memory, transform);
+                    break;
+                case ActionType.TALK:
+                    break;
+                case ActionType.OTHER:
+                    break;
+                case ActionType.FINDER:
+                    finderExecutor.ExecuteAction(action, transform);
+                    break;
+                case ActionType.DOOR:
+                    //doorExecutor.CheckDoor(doorExecutor.GetRoom(action)?.Door);
+                    doorExecutor.CheckDoor(action);
+                    doorExecutor.ExecuteAction(action, transform);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

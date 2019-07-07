@@ -13,11 +13,15 @@ public class DoorExecutor {
     public float timer = 0.0f;
     public float MaxTimeWait = 3f;
 
+    ChatRoom chatRoom;
+    ChatRoomManager chatRoomManager;
+
     public DoorExecutor(PersonDoor personDoor, MyChat myChat, GameObject me)
     {
         PersonDoor = personDoor;
         MyChat = myChat;
         Me = me;
+        chatRoomManager = GameObject.FindGameObjectWithTag("ChatRoomManager").GetComponent<ChatRoomManager>();
     }
 
     public void ExecuteAction(Action action, Transform transform)
@@ -33,14 +37,23 @@ public class DoorExecutor {
                 WaitForOpenDoor = true;
                 Room room = GetRoom(action);
                 if (room == null) return;
-                ChatRoomManager chatRoomManager = GameObject.FindGameObjectWithTag("ChatRoomManager").GetComponent<ChatRoomManager>();
-                ChatRoom chatRoom = chatRoomManager.CreateChatRoom();
+                chatRoom = chatRoomManager.CreateChatRoom();
                 foreach (var employee in room.Employees)
                 {
                     chatRoom.InviteMember(employee);
                 }
                 chatRoom.InviteMember(Me);
                 chatRoom.SendRequest(ChatRequest.OPEN_DOOR, Me, room.Door);
+                break;
+            case Command.OPEN_DOOR:
+                PersonDoor.TryToOpenDoor(GetDoor(action));
+                break;
+            case Command.CLOSE_DOOR:
+                PersonDoor.TryToCloseDoor(GetDoor(action));
+                break;
+            case Command.ASK_CLOSE_DOOR:
+                chatRoom.SendRequest(ChatRequest.CLOSE_DOOR, Me, GetRoom(action).Door);
+                FinishAskCloseDoor();
                 break;
         }
     }
@@ -58,6 +71,14 @@ public class DoorExecutor {
         return room;
     }
 
+    public GameObject GetDoor(Action action)
+    {
+        GameObject door = action.Limits.
+                    Select(limit => limit.DoorToOpen).
+                    Where(d => d != null).ToArray()?[0];
+        return door;
+    }
+
     public void DoorWillOpen()
     {
         timer = 0.0f;
@@ -71,16 +92,34 @@ public class DoorExecutor {
         }
     }
 
-    public void CheckDoor(GameObject door)
+    public void CheckDoor(Action action)
     {
-        if (door == null) return;
-        if(WaitForOpenDoor 
-            && !door.GetComponent<DoorController>().IsOpen 
+        if (ActionToExecute == null) return;
+        GameObject door = null;
+        switch (ActionToExecute.Command)
+        {
+            case Command.KNOCK:
+                door = GetRoom(action)?.Door;
+                if (door == null) return;
+                KnockCheck(door);
+                break;
+            case Command.OPEN_DOOR:
+                door = GetDoor(action);
+                if (door == null) return;
+                OpenDoorCheck(door);
+                break;
+        }
+    }
+
+    private void KnockCheck(GameObject door)
+    {
+        if (WaitForOpenDoor
+            && !door.GetComponent<DoorController>().IsOpen
             && timer >= MaxTimeWait)
         {
             FinishKnockAction();
         }
-        if(door.GetComponent<DoorController>().IsOpen)
+        if (door.GetComponent<DoorController>().IsOpen)
         {
             FinishKnockAction();
         }
@@ -91,14 +130,35 @@ public class DoorExecutor {
         }
     }
 
+    private void OpenDoorCheck(GameObject door)
+    {
+        if(door.GetComponent<DoorController>().IsOpen)
+        {
+            FinishDoorOpenAction();
+        }
+    }
+
     public void FinishKnockAction()
     {
-        //Debug.Log(timer);
         Me.GetComponent<Person>().PersonMemory.AddInformedRoom(GetRoom(ActionToExecute));
         timer = 0;
         WaitForOpenDoor = false;
         Executing = false;
-        Me.GetComponent<Person>().PersonMemory.ClearFoundRoom();
+        //close chat room related to this action
+        ActionToExecute.IsDone = true;
+    }
+
+    public void FinishDoorOpenAction()
+    {
+        timer = 0;
+        Executing = false;
+        //close chat room related to this action
+        ActionToExecute.IsDone = true;
+    }
+
+    public void FinishAskCloseDoor()
+    {
+        Executing = false;
         //close chat room related to this action
         ActionToExecute.IsDone = true;
     }

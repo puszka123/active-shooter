@@ -140,7 +140,26 @@ public static class ImplementedBehaviours
             knockDoor.Type = ActionType.DOOR;
             knockDoor.RequiredActions = new List<Action>() { goToRoom };
 
-            Actions = new List<Action>(new Action[] { findRoom, goToRoom, knockDoor });
+            Action enterRoom = new Action();
+            enterRoom.Command = Command.ENTER_ROOM;
+            enterRoom.Limits = new List<Limit>();
+            enterRoom.Type = ActionType.MOVEMENT;
+            enterRoom.RequiredActions = new List<Action>() { knockDoor };
+
+            Action askCloseDoor = new Action();
+            askCloseDoor.Command = Command.ASK_CLOSE_DOOR;
+            askCloseDoor.Limits = new List<Limit>();
+            askCloseDoor.Type = ActionType.DOOR;
+            askCloseDoor.RequiredActions = new List<Action>() { enterRoom };
+
+            Action tellAboutShooter = new Action();
+            tellAboutShooter.Command = Command.TELL_ABOUT_SHOOTER;
+            tellAboutShooter.Limits = new List<Limit>();
+            tellAboutShooter.Type = ActionType.TALK;
+            tellAboutShooter.RequiredActions = new List<Action>() { askCloseDoor };
+
+
+            Actions = new List<Action>(new Action[] { findRoom, goToRoom, knockDoor, enterRoom, askCloseDoor, tellAboutShooter });
         }
 
         public override void ActionsCleaner(PersonMemory memory)
@@ -173,6 +192,63 @@ public static class ImplementedBehaviours
 
                 action = Actions.
                     Where(a => a.Command == Command.KNOCK).
+                    ToArray()?[0];
+                limits = action?.Limits.Where(l => l.FoundRoom != null).ToArray();
+                limit = null;
+                if (limits.Length > 0) limit = limits[0];
+                if (limit != null)
+                {
+                    limit.FoundRoom = memory.FoundRoom;
+                }
+                else
+                {
+                    action.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
+                }
+
+                action = null;
+                limit = null;
+                limits = null;
+
+                action = Actions.
+                    Where(a => a.Command == Command.ENTER_ROOM).
+                    ToArray()?[0];
+                limits = action?.Limits.Where(l => l.FoundRoom != null).ToArray();
+                limit = null;
+                if (limits.Length > 0) limit = limits[0];
+                if (limit != null)
+                {
+                    limit.FoundRoom = memory.FoundRoom;
+                }
+                else
+                {
+                    action.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
+                }
+
+                action = null;
+                limit = null;
+                limits = null;
+
+                action = Actions.
+                    Where(a => a.Command == Command.ASK_CLOSE_DOOR).
+                    ToArray()?[0];
+                limits = action?.Limits.Where(l => l.FoundRoom != null).ToArray();
+                limit = null;
+                if (limits.Length > 0) limit = limits[0];
+                if (limit != null)
+                {
+                    limit.FoundRoom = memory.FoundRoom;
+                }
+                else
+                {
+                    action.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
+                }
+
+                action = null;
+                limit = null;
+                limits = null;
+
+                action = Actions.
+                    Where(a => a.Command == Command.TELL_ABOUT_SHOOTER).
                     ToArray()?[0];
                 limits = action?.Limits.Where(l => l.FoundRoom != null).ToArray();
                 limit = null;

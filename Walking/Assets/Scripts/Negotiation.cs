@@ -6,7 +6,7 @@ public class Negotiation
 {
     //public List<GameObject> members;
 
-    public GameObject PersonToOpenDoor(GameObject door, GameObject[] members)
+    public GameObject PersonNearestDoor(GameObject door, GameObject[] members)
     {
         GameObject selectedMember = members[0];
         float minDistance = GetDistance(selectedMember, door);

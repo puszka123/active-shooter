@@ -6,4 +6,5 @@ public class Room {
     public string Id;
     public GameObject Door;
     public GameObject[] Employees;
+    public GameObject Reference;
 }

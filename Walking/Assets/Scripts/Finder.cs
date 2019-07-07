@@ -58,7 +58,8 @@ public class Finder {
         }
         return new Room() { Id = nearestRoom.name,
             Door = nearestRoom.GetComponent<PathLocation>().RoomDoor,
-            Employees = nearestRoom.GetComponent<PathLocation>().RoomEmployees.ToArray()
+            Employees = nearestRoom.GetComponent<PathLocation>().RoomEmployees.ToArray(),
+            Reference = nearestRoom
         };
     }
 
@@ -88,7 +89,8 @@ public class Finder {
         {
             Id = nearestRoom.name,
             Door = nearestRoom.GetComponent<PathLocation>().RoomDoor,
-            Employees = nearestRoom.GetComponent<PathLocation>().RoomEmployees.ToArray()
+            Employees = nearestRoom.GetComponent<PathLocation>().RoomEmployees.ToArray(),
+            Reference = nearestRoom
         };
     }
 

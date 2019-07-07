@@ -23,6 +23,16 @@ public class PersonDoor : MonoBehaviour
         door.SendMessage("TryToOpenDoor", new object[] { myKeys.ToArray(), gameObject });
     }
 
+    public void TryToOpenDoor(GameObject door)
+    {
+        door.SendMessage("TryToOpenDoor", new object[] { myKeys.ToArray(), gameObject });
+    }
+
+    public void TryToCloseDoor(GameObject door)
+    {
+        door.SendMessage("TryToCloseDoor", new object[] { myKeys.ToArray(), gameObject });
+    }
+
     public void AddKey(string key)
     {
         if (key == null)
@@ -76,11 +86,22 @@ public class PersonDoor : MonoBehaviour
         gotoDoor.Type = ActionType.MOVEMENT;
         gotoDoor.RequiredActions = new List<Action>();
         GetComponent<Person>().waitingActions.AddAction(gotoDoor);
-        //Action openDoor = new Action();
-        //openDoor.Command = Command.OPEN_DOOR;
-        //openDoor.Limits = new List<Limit>() { new Limit() { DoorToOpen = door } };
-        //openDoor.Type = ActionType.DOOR;
-        //openDoor.RequiredActions = new List<Action>();
-        //GetComponent<Person>().waitingActions.AddAction(openDoor);
+
+        Action openDoor = new Action();
+        openDoor.Command = Command.OPEN_DOOR;
+        openDoor.Limits = new List<Limit>() { new Limit() { DoorToOpen = door } };
+        openDoor.Type = ActionType.DOOR;
+        openDoor.RequiredActions = new List<Action>() { gotoDoor };
+        GetComponent<Person>().waitingActions.AddAction(openDoor);
+    }
+
+    public void CloseDoor(GameObject door)
+    {
+        Action closeDoor = new Action();
+        closeDoor.Command = Command.CLOSE_DOOR;
+        closeDoor.Limits = new List<Limit>() { new Limit() { DoorToOpen = door } };
+        closeDoor.Type = ActionType.DOOR;
+        closeDoor.RequiredActions = new List<Action>();
+        GetComponent<Person>().waitingActions.AddAction(closeDoor);
     }
 }
