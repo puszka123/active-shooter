@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Behaviour {
-    public List<Action> Actions;
+public enum TaskType  {
+    MOVEMENT, TALK, OTHER, FINDER, DOOR
 }

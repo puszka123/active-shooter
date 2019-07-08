@@ -1,267 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
-public static class ImplementedBehaviours
-{
-    public class RunToExit : Behaviour
+public static class ImplementedBehaviours {
+    
+    public class Evacuate : Behaviour {
+        public Evacuate()
+        {
+            //add all evacuate actions here
+        }
+    }
+
+    public class Hide : Behaviour
     {
-        public RunToExit()
+        public Hide()
         {
-            Action action1 = new Action();
-            action1.Command = Command.GO_DOWN;
-            action1.Type = ActionType.MOVEMENT;
-            action1.RequiredActions = new List<Action>();
-
-            Action action2 = new Action();
-            action2.Command = Command.EXIT_BUILDING;
-            action2.Type = ActionType.MOVEMENT;
-            action2.RequiredActions = new List<Action> { action1 };
-
-            Actions = new List<Action>(new Action[] { action1, action2 });
+            //add all hide actions here
         }
+    }
 
-        public override void ActionsCleaner(PersonMemory memory)
+    public class Fight : Behaviour
+    {
+        public Fight()
         {
-            List<Action> actionsToDelete = Actions.
-                FindAll(action => memory.IsOnTheFloor(0) ?
-                action.Command == Command.GO_DOWN : false).ToList();
-            if (actionsToDelete.Count == 0) return;
-            Command commandToDelete = actionsToDelete[0].Command;
-            Action goToExit = Actions.Where(action => action.Command == Command.EXIT_BUILDING).ToList()[0];
-            goToExit.RequiredActions = goToExit.RequiredActions.Where(action => action.Command != commandToDelete).ToList();
-            Actions = Actions.Where(action => action.Command != commandToDelete).ToList();
-        }
-
-        public override void UpdateActionsLimits(PersonMemory memory)
-        {
-            
+            //add all fight actions here
         }
     }
 
     public class Work : Behaviour
     {
-        public Work(string myRoomId)
+        public Work()
         {
-            Action action1 = new Action();
-            action1.Command = Command.STAY;
-            action1.Type = ActionType.MOVEMENT;
-
-            Action action2 = new Action();
-            action2.Command = Command.GO_TO_ROOM;
-            action2.Limits = new List<Limit>() { new Limit() { LocationId = myRoomId } };
-            action2.Type = ActionType.MOVEMENT;
-            action2.RequiredActions = new List<Action>();
-            action1.RequiredActions = new List<Action> { action2 };
-
-            Actions = new List<Action>(new Action[] { action2, action1 });
-        }
-
-        public override void ActionsCleaner(PersonMemory memory)
-        {
-            List<Action> actionsToDelete = Actions.
-                FindAll(action => memory.IsInMyRoom() ?
-                action.Command == Command.GO_TO_ROOM : false).ToList();
-            if (actionsToDelete.Count == 0) return;
-            Command commandToDelete = actionsToDelete[0].Command;
-            Action stayInRoom = Actions.Where(action => action.Command == Command.STAY).ToList()[0];
-            stayInRoom.RequiredActions = stayInRoom.RequiredActions.Where(action => action.Command != commandToDelete).ToList();
-            Actions = Actions.Where(action => action.Command != commandToDelete).ToList();
-        }
-
-        public override void UpdateActionsLimits(PersonMemory memory)
-        {
-
-        }
-    }
-
-    public class HideInMyRoom : Behaviour
-    {
-        public HideInMyRoom(string myRoomId)
-        {
-            Action goUp = new Action();
-            goUp.Command = Command.GO_UP;
-            goUp.Type = ActionType.MOVEMENT;
-            goUp.RequiredActions = new List<Action>();
-
-            Action goDown = new Action();
-            goDown.Command = Command.GO_DOWN;
-            goDown.Type = ActionType.MOVEMENT;
-            goDown.RequiredActions = new List<Action>();
-
-            Action goToRoom = new Action();
-            goToRoom.Command = Command.GO_TO_ROOM;
-            goToRoom.Limits = new List<Limit>() { new Limit() { LocationId = myRoomId } };
-            goToRoom.Type = ActionType.MOVEMENT;
-            goToRoom.RequiredActions = new List<Action>() { goUp, goDown };
-
-            Actions = new List<Action>(new Action[] { goUp, goDown, goToRoom });
-        }
-
-        public override void ActionsCleaner(PersonMemory memory)
-        {
-            List<Action> actionsToDelete = Actions.
-                FindAll(action => memory.MyRoomIsAboveMe() ? 
-                action.Command == Command.GO_DOWN 
-                : action.Command == Command.GO_UP).ToList();
-            if (actionsToDelete.Count == 0) return;
-            Command commandToDelete = actionsToDelete[0].Command;
-            Action goToRoom = Actions.Where(action => action.Command == Command.GO_TO_ROOM).ToList()[0];
-            goToRoom.RequiredActions = goToRoom.RequiredActions.Where(action => action.Command != commandToDelete).ToList();
-            Actions = Actions.Where(action => action.Command != commandToDelete).ToList();
-        }
-
-        public override void UpdateActionsLimits(PersonMemory memory)
-        {
-
-        }
-    }
-
-    public class InformRoom : Behaviour
-    {
-        public InformRoom()
-        {
-            Action findRoom = new Action();
-            findRoom.Command = Command.FIND_ROOM;
-            findRoom.Limits = new List<Limit>();
-            findRoom.Type = ActionType.FINDER;
-            findRoom.RequiredActions = new List<Action>();
-
-            Action goToRoom = new Action();
-            goToRoom.Command = Command.GO_TO_ROOM;
-            goToRoom.Limits = new List<Limit>();
-            goToRoom.Type = ActionType.MOVEMENT;
-            goToRoom.RequiredActions = new List<Action>() { findRoom };
-
-            Action knockDoor = new Action();
-            knockDoor.Command = Command.KNOCK;
-            knockDoor.Limits = new List<Limit>();
-            knockDoor.Type = ActionType.DOOR;
-            knockDoor.RequiredActions = new List<Action>() { goToRoom };
-
-            Action enterRoom = new Action();
-            enterRoom.Command = Command.ENTER_ROOM;
-            enterRoom.Limits = new List<Limit>();
-            enterRoom.Type = ActionType.MOVEMENT;
-            enterRoom.RequiredActions = new List<Action>() { knockDoor };
-
-            Action askCloseDoor = new Action();
-            askCloseDoor.Command = Command.ASK_CLOSE_DOOR;
-            askCloseDoor.Limits = new List<Limit>();
-            askCloseDoor.Type = ActionType.DOOR;
-            askCloseDoor.RequiredActions = new List<Action>() { enterRoom };
-
-            Action tellAboutShooter = new Action();
-            tellAboutShooter.Command = Command.TELL_ABOUT_SHOOTER;
-            tellAboutShooter.Limits = new List<Limit>();
-            tellAboutShooter.Type = ActionType.TALK;
-            tellAboutShooter.RequiredActions = new List<Action>() { askCloseDoor };
-
-
-            Actions = new List<Action>(new Action[] { findRoom, goToRoom, knockDoor, enterRoom, askCloseDoor, tellAboutShooter });
-        }
-
-        public override void ActionsCleaner(PersonMemory memory)
-        {
-            
-        }
-
-        public override void UpdateActionsLimits(PersonMemory memory)
-        {
-            if (memory.FoundRoom != null)
-            {
-                Action action = Actions.
-                    Where(a => a.Command == Command.GO_TO_ROOM).
-                    ToArray()?[0];
-                Limit[] limits = action?.Limits.Where(l => l.FoundRoom != null).ToArray();
-                Limit limit = null;
-                if (limits.Length > 0) limit = limits[0];
-                if(limit != null)
-                {
-                    limit.FoundRoom = memory.FoundRoom;
-                }
-                else
-                {
-                    action.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
-                }
-
-                action = null;
-                limit = null;
-                limits = null;
-
-                action = Actions.
-                    Where(a => a.Command == Command.KNOCK).
-                    ToArray()?[0];
-                limits = action?.Limits.Where(l => l.FoundRoom != null).ToArray();
-                limit = null;
-                if (limits.Length > 0) limit = limits[0];
-                if (limit != null)
-                {
-                    limit.FoundRoom = memory.FoundRoom;
-                }
-                else
-                {
-                    action.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
-                }
-
-                action = null;
-                limit = null;
-                limits = null;
-
-                action = Actions.
-                    Where(a => a.Command == Command.ENTER_ROOM).
-                    ToArray()?[0];
-                limits = action?.Limits.Where(l => l.FoundRoom != null).ToArray();
-                limit = null;
-                if (limits.Length > 0) limit = limits[0];
-                if (limit != null)
-                {
-                    limit.FoundRoom = memory.FoundRoom;
-                }
-                else
-                {
-                    action.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
-                }
-
-                action = null;
-                limit = null;
-                limits = null;
-
-                action = Actions.
-                    Where(a => a.Command == Command.ASK_CLOSE_DOOR).
-                    ToArray()?[0];
-                limits = action?.Limits.Where(l => l.FoundRoom != null).ToArray();
-                limit = null;
-                if (limits.Length > 0) limit = limits[0];
-                if (limit != null)
-                {
-                    limit.FoundRoom = memory.FoundRoom;
-                }
-                else
-                {
-                    action.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
-                }
-
-                action = null;
-                limit = null;
-                limits = null;
-
-                action = Actions.
-                    Where(a => a.Command == Command.TELL_ABOUT_SHOOTER).
-                    ToArray()?[0];
-                limits = action?.Limits.Where(l => l.FoundRoom != null).ToArray();
-                limit = null;
-                if (limits.Length > 0) limit = limits[0];
-                if (limit != null)
-                {
-                    limit.FoundRoom = memory.FoundRoom;
-                }
-                else
-                {
-                    action.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
-                }
-            }
+            //add all work actions here
         }
     }
 }

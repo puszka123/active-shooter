@@ -28,6 +28,9 @@ public class Pathfinder {
     FastPriorityQueue<Node> frontier = new FastPriorityQueue<Node>(MAX_NODES_IN_QUEUE);
     public List<Node> FindWay(Graph graph, Node startPosition, Node targetPosition, PersonMemory personMemory)
     {
+        //first check if blocked nodes are still blocked!!!
+        personMemory.UpdateBlockedNodes();
+
         if (!CheckInputs(graph, startPosition, targetPosition)) return null;
         frontier.Clear();
         frontier.Enqueue(startPosition, 0);

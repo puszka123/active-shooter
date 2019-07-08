@@ -33,6 +33,11 @@ public class PersonDoor : MonoBehaviour
         door.SendMessage("TryToCloseDoor", new object[] { myKeys.ToArray(), gameObject });
     }
 
+    public void TryToLockDoor(GameObject door)
+    {
+        door.SendMessage("TryToLockDoor", new object[] { myKeys.ToArray(), gameObject });
+    }
+
     public void AddKey(string key)
     {
         if (key == null)
@@ -65,10 +70,10 @@ public class PersonDoor : MonoBehaviour
     }
 
     public bool IsTargetBehindDoor(Node target, GameObject door)
-    {
+    {  
         int layerMask = 1 << 10;
         RaycastHit hit;
-        if (Physics.Linecast(target.Position, transform.position, out hit, layerMask))
+        if (Physics.Linecast(transform.position, target.Position, out hit, layerMask))
         {
             return hit.transform.name == door.name;
         }
@@ -80,29 +85,29 @@ public class PersonDoor : MonoBehaviour
 
     public void OpenDoor(GameObject door)
     {
-        Action gotoDoor = new Action();
+        Task gotoDoor = new Task();
         gotoDoor.Command = Command.GO_TO_DOOR;
         gotoDoor.Limits = new List<Limit>() { new Limit() { DoorToOpen = door } };
-        gotoDoor.Type = ActionType.MOVEMENT;
-        gotoDoor.RequiredActions = new List<Action>();
-        GetComponent<Person>().waitingActions.AddAction(gotoDoor);
+        gotoDoor.Type = TaskType.MOVEMENT;
+        gotoDoor.RequiredTasks = new List<Task>();
+        GetComponent<Person>().waitingTasks.AddTask(gotoDoor);
 
-        Action openDoor = new Action();
+        Task openDoor = new Task();
         openDoor.Command = Command.OPEN_DOOR;
         openDoor.Limits = new List<Limit>() { new Limit() { DoorToOpen = door } };
-        openDoor.Type = ActionType.DOOR;
-        openDoor.RequiredActions = new List<Action>() { gotoDoor };
-        GetComponent<Person>().waitingActions.AddAction(openDoor);
+        openDoor.Type = TaskType.DOOR;
+        openDoor.RequiredTasks = new List<Task>() { gotoDoor };
+        GetComponent<Person>().waitingTasks.AddTask(openDoor);
     }
 
     public void CloseDoor(GameObject door)
     {
-        Action closeDoor = new Action();
+        Task closeDoor = new Task();
         closeDoor.Command = Command.CLOSE_DOOR;
         closeDoor.Limits = new List<Limit>() { new Limit() { DoorToOpen = door } };
-        closeDoor.Type = ActionType.DOOR;
-        closeDoor.RequiredActions = new List<Action>();
-        GetComponent<Person>().waitingActions.AddAction(closeDoor);
+        closeDoor.Type = TaskType.DOOR;
+        closeDoor.RequiredTasks = new List<Task>();
+        GetComponent<Person>().waitingTasks.AddTask(closeDoor);
     }
 
     public void YouEnterRoom(GameObject door)

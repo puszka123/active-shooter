@@ -5,25 +5,25 @@ using System.Linq;
 
 public static class Utils
 {
-    public static Room GetRoom(Action action)
+    public static Room GetRoom(Task task)
     {
-        Room[] rooms = action.Limits.
+        Room[] rooms = task.Limits.
                     Select(limit => limit.FoundRoom).
                     Where(r => r != null).ToArray();
         return rooms.Length > 0 ? rooms[0] : null;
     }
 
-    public static GameObject GetDoor(Action action)
+    public static GameObject GetDoor(Task task)
     {
-        GameObject[] doors = action.Limits.
+        GameObject[] doors = task.Limits.
                     Select(limit => limit.DoorToOpen).
                     Where(d => d != null).ToArray();
         return doors.Length > 0 ? doors[0] : null;
     }
 
-    public static GameObject[] GetEmployees(Action action)
+    public static GameObject[] GetEmployees(Task task)
     {
-        var employees = action.Limits.
+        var employees = task.Limits.
                     Select(limit => limit.Employees).
                     Where(e => e != null).ToArray();
         return employees.Length > 0 ? employees[0] : null;
@@ -83,5 +83,10 @@ public static class Utils
     public static bool ToFar(GameObject a, GameObject b, float threshold = 2)
     {
         return Vector3.Distance(a.transform.position, b.transform.position) > threshold;
+    }
+
+    public static bool DoorIsOpened(GameObject door)
+    {
+        return door.GetComponent<DoorController>().IsOpen;
     }
 }

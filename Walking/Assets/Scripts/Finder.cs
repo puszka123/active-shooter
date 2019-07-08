@@ -6,7 +6,7 @@ using System.Linq;
 public class Finder {
     PersonMemory memory;
     public bool Executing;
-    public Action ActionToExecute;
+    public Task TaskToExecute;
 
 
     public Finder(PersonMemory memory)
@@ -14,25 +14,25 @@ public class Finder {
         this.memory = memory;
     }
 	
-    public void ExecuteAction(Action action, Transform transform)
+    public void ExecuteTask(Task task, Transform transform)
     {
-        if (IsActionExecuting(action)) return; //don't do that again!
+        if (IsTaskExecuting(task)) return; //don't do that again!
         Executing = true;
-        switch (action.Command)
+        switch (task.Command)
         {
             case Command.FIND_ROOM:
                 Room room = FindNearestNotInformedRoom(memory.CurrentFloor, transform);
                 if (room == null) return;
                 SaveRoomInMemory(room);
-                action.IsDone = true;
+                task.IsDone = true;
                 Executing = false;
                 break;
         }
     }
 
-    public bool IsActionExecuting(Action action)
+    public bool IsTaskExecuting(Task task)
     {
-        return (ActionToExecute != null && action.Command == ActionToExecute.Command && Executing);
+        return (TaskToExecute != null && task.Command == TaskToExecute.Command && Executing);
     }
 
     public Room FindNearestRoom(int floor, Transform transform)

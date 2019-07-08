@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PersonBehaviours  {
-    public List<Behaviour> MyBehaviours { get; private set; }
+public class PersonActions  {
+    public List<Action> MyActions { get; private set; }
 
-    public PersonBehaviours()
+    public PersonActions()
     {
-        MyBehaviours = new List<Behaviour>();
+        MyActions = new List<Action>();
     }
 
-    public void AddBehaviour(Behaviour behaviour)
+    public void AddAction(Action action)
     {
-        MyBehaviours.Add(behaviour);
+        MyActions.Add(action);
     }
 
-    public Behaviour GetBehaviourByIndex(int index)
+    public Action GetActionByIndex(int index)
     {
-        return MyBehaviours[index];
+        return MyActions[index];
     }
 }

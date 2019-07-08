@@ -13,12 +13,12 @@ public class PersonMemory
     public Room CurrentRoom;
     public Room MyRoom;
     public Room FoundRoom;
-    public PersonBehaviours MyBehaviours;
+    public PersonActions MyActions;
     private List<Room> InformedRooms;
     Transform transform; //for testing!!!
     public ShooterInfo ShooterInfo;
 
-    List<Node> blockedByDoor;
+    Dictionary<string, List<Node>> blockedByDoor;
 
     public PersonMemory()
     {
@@ -28,10 +28,10 @@ public class PersonMemory
 
         StartPosition = TargetPosition = null;
         ShooterInfo = new ShooterInfo(); //test
-        //MyBehaviours = new PersonBehaviours();
-        //Behaviour behaviour = new Behaviour();
-        //behaviour.WorkBehaviour(MyRoom.Id);
-        //MyBehaviours.AddBehaviour(behaviour);
+        //MyActions = new PersonActions();
+        //Action action = new Action();
+        //action.WorkAction(MyRoom.Id);
+        //MyActions.AddAction(action);
     }
 
     public void Init(int floor, Transform transform) //it was vector3 position instead of transform, checkwhat better will be
@@ -90,7 +90,7 @@ public class PersonMemory
                     {
                         node = entry.Value;
                     }
-                    else if (!blockedByDoor.Select(n => n.Name).Contains(entry.Value.Name))
+                    else if (!blockedByDoor.Values.SelectMany(l => l).Select(n => n.Name).Contains(entry.Value.Name))
                     {
                         node = entry.Value;
                     }
@@ -107,18 +107,26 @@ public class PersonMemory
 
     public Node[] GetBlockedNodes()
     {
-        return blockedByDoor?.ToArray() ?? new Node[0];
+        return blockedByDoor?.Values?.SelectMany(l => l).ToArray() ?? new Node[0];
     }
 
-    public void AddBlockedNode(Node node)
+    public void AddBlockedNode(GameObject door, Node node)
     {
         if (blockedByDoor == null)
         {
-            blockedByDoor = new List<Node>(new Node[] { node });
+            blockedByDoor = new Dictionary<string, List<Node>>();
+            blockedByDoor.Add(door.name, new List<Node>() { node });
         }
-        else if (!blockedByDoor.Select(n => n.Name).Contains(node.Name))
+        else if (!blockedByDoor.Values.SelectMany(l => l).ToArray().Select(n => n.Name).Contains(node.Name))
         {
-            blockedByDoor.Add(node);
+            if (blockedByDoor.ContainsKey(door.name))
+            {
+                blockedByDoor[door.name].Add(node);
+            }
+            else
+            {
+                blockedByDoor.Add(door.name, new List<Node>() { node });
+            }
         }
     }
 
@@ -137,18 +145,18 @@ public class PersonMemory
     {
         MyRoom = new Room { Id = roomId };
         CurrentRoom = new Room { Id = roomId };
-        MyBehaviours = new PersonBehaviours();
-        Behaviour behaviour = null;
+        MyActions = new PersonActions();
+        Action action = null;
         if (transform.name == "Informer")
         {
-            behaviour = new ImplementedBehaviours.InformRoom();
+            action = new ImplementedActions.InformRoom();
         }
         else
         {
-            behaviour = new ImplementedBehaviours.Work(MyRoom.Id);
+            action = new ImplementedActions.Work(MyRoom.Id);
         }
-        //Behaviour behaviour = new ImplementedBehaviours.RunToExit();
-        MyBehaviours.AddBehaviour(behaviour);
+        //Action action = new ImplementedActions.RunToExit();
+        MyActions.AddAction(action);
     }
 
     public bool MyRoomIsAboveMe()
@@ -164,6 +172,7 @@ public class PersonMemory
 
     public bool IsInMyRoom()
     {
+        if (CurrentRoom == null) return false;
         return CurrentRoom.Id == MyRoom.Id;
     }
 
@@ -244,6 +253,25 @@ public class PersonMemory
     public void ClearCurrentRoom()
     {
         CurrentRoom = null;
-        Debug.Log(CurrentRoom);
+    }
+
+    public void UpdateBlockedNodes()
+    {
+        if (blockedByDoor == null) return;
+
+        List<string> keysToClear = new List<string>();
+        Dictionary<string, List<Node>> temp = new Dictionary<string, List<Node>>(blockedByDoor);
+        foreach (var key in temp.Keys)
+        {
+            if(GameObject.Find(key).GetComponent<DoorController>().IsOpen)
+            {
+                keysToClear.Add(key);
+            }
+        }
+
+        foreach (var key in keysToClear)
+        {
+            blockedByDoor[key] = new List<Node>();
+        }
     }
 }

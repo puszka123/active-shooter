@@ -76,25 +76,31 @@ public class DoorController : MonoBehaviour
         }
         else if(gObject != null)
         {
-            Person person = gObject.GetComponent<Person>();
-            bool update = false;
-            foreach (var item in person.walkingModule.Path)
+            Debug.Log(gObject);
+            UpdateBlockedNodes(gObject);
+        }
+    }
+
+    private void UpdateBlockedNodes(GameObject gObject)
+    {
+        Person person = gObject.GetComponent<Person>();
+        bool update = false;
+        foreach (var item in person.walkingModule.Path)
+        {
+            LayerMask layerMask = LayerMask.GetMask("Door");
+            RaycastHit hit;
+            bool blocked = Physics.Linecast(person.transform.position, item.Position, out hit, layerMask);
+            LayerMask layerMask1 = LayerMask.GetMask("Wall");
+            bool wall = Physics.Linecast(transform.position, item.Position, layerMask1);
+            if (blocked && !wall && hit.collider.gameObject.name == gameObject.name)
             {
-                LayerMask layerMask = LayerMask.GetMask("Door");
-                RaycastHit hit;
-                bool blocked = Physics.Linecast(person.transform.position, item.Position, out hit, layerMask);
-                LayerMask layerMask1 = LayerMask.GetMask("Wall");
-                bool wall = Physics.Linecast(transform.position, item.Position, layerMask1);
-                if (blocked && !wall && hit.collider.gameObject.name == gameObject.name)
-                {
-                    update = true;
-                    person.PersonMemory.AddBlockedNode(item);
-                }
+                update = true;
+                person.PersonMemory.AddBlockedNode(gameObject, item);
             }
-            if (update)
-            {
-                person.walkingModule.UpdatePathAfterBlockedNode(gObject.transform, person.PersonMemory);
-            }
+        }
+        if (update)
+        {
+            person.walkingModule.UpdatePathAfterBlockedNode(gObject.transform, person.PersonMemory);
         }
     }
 
@@ -102,10 +108,18 @@ public class DoorController : MonoBehaviour
     {
         GameObject gObject = (GameObject)args[1];
         string[] keys = (string[])args[0];
+        CloseDoor();
+        
+    }
+
+    public void TryToLockDoor(object[] args)
+    {
+        GameObject gObject = (GameObject)args[1];
+        string[] keys = (string[])args[0];
 
         if ((keys != null && keys.Contains(doorKey)) || doorKey == null)
         {
-            CloseDoor();
+            LockDoor();
         }
     }
 
@@ -125,6 +139,20 @@ public class DoorController : MonoBehaviour
     public void CloseDoor()
     {
         closeTime = 0f;
+    }
+
+    //if opened then close and lock
+    public void LockDoor()
+    {
+        if(!IsOpen)
+        {
+            IsLocked = true;
+        }
+        else
+        {
+            CloseDoor();
+            IsLocked = true;
+        }
     }
 
     public void SetRoom(GameObject room)

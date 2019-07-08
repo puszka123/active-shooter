@@ -8,7 +8,7 @@ public class TalkExecutor {
     ChatRoom chatRoom;
     ChatRoomManager chatRoomManager;
     public bool Executing;
-    public Action ActionToExecute;
+    public Task TaskToExecute;
 
     public float talkingTime = 10f;
     public float time = 0f;
@@ -20,13 +20,13 @@ public class TalkExecutor {
         chatRoomManager = GameObject.FindGameObjectWithTag("ChatRoomManager").GetComponent<ChatRoomManager>();
     }
 
-    public void ExecuteAction(Action action)
+    public void ExecuteTask(Task task)
     {
-        if (IsActionExecuting(action)) return; //don't do that again!
-        if (action.IsDone) return;
+        if (IsTaskExecuting(task)) return; //don't do that again!
+        if (task.IsDone) return;
         Executing = true;
-        ActionToExecute = action;
-        switch (action.Command)
+        TaskToExecute = task;
+        switch (task.Command)
         {
             case Command.TELL_ABOUT_SHOOTER:
                 InitChat();
@@ -52,7 +52,7 @@ public class TalkExecutor {
 
     public void CanTalk()
     {
-        switch (ActionToExecute.Command)
+        switch (TaskToExecute.Command)
         {
             case Command.TELL_ABOUT_SHOOTER:
                 TellAboutShooter();
@@ -70,12 +70,12 @@ public class TalkExecutor {
     {
         time = 0f;
         Executing = false;
-        ActionToExecute.IsDone = true;
+        TaskToExecute.IsDone = true;
     }
 
-    public bool IsActionExecuting(Action action)
+    public bool IsTaskExecuting(Task task)
     {
-        return (ActionToExecute != null && action.Command == ActionToExecute.Command && Executing);
+        return (TaskToExecute != null && task.Command == TaskToExecute.Command && Executing);
     }
 
     public void InitChat()
@@ -105,10 +105,10 @@ public class TalkExecutor {
     public GameObject[] GetMembers()
     {
         GameObject[] members = null;
-        Room room = Utils.GetRoom(ActionToExecute);
+        Room room = Utils.GetRoom(TaskToExecute);
         if (room == null)
         {
-            members = Utils.GetEmployees(ActionToExecute);
+            members = Utils.GetEmployees(TaskToExecute);
         }
         else
         {

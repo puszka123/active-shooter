@@ -26,7 +26,7 @@ public class Walking
     private float _finalAngle = 0.0f;
 
     public bool Executing;
-    public Action ActionToExecute;
+    public Task TaskToExecute;
 
     public Walking(Rigidbody rigidbody)
     {
@@ -39,7 +39,7 @@ public class Walking
         pathfinder = new Pathfinder();
         avoidanceSystem = new AvoidanceSystem();
         avoidanceSystem.initAvoidanceSystem();
-        ActionToExecute = null;
+        TaskToExecute = null;
     }
 
     public void InitPath(PersonMemory memory)
@@ -60,11 +60,11 @@ public class Walking
         currentNodeIndex = 0;
     }
 
-    public void ExecuteAction(Action action, PersonMemory memory, Transform transform)
+    public void ExecuteTask(Task task, PersonMemory memory, Transform transform)
     {
-        if (IsActionExecuting(action)) return; //don't do that again!
-        ActionToExecute = action;
-        switch (action.Command)
+        if (IsTaskExecuting(task)) return; //don't do that again!
+        TaskToExecute = task;
+        switch (task.Command)
         {
             case Command.GO_UP:
                 memory.FindNearestLocation(transform.position);
@@ -86,7 +86,7 @@ public class Walking
                 break;
             case Command.GO_TO_ROOM:
                 memory.FindNearestLocation(transform.position);
-                Room room1 = Utils.GetRoom(action);
+                Room room1 = Utils.GetRoom(task);
                 if(room1 == null)
                 {
                     FinishWalking();
@@ -96,7 +96,7 @@ public class Walking
                 Executing = true;
                 break;
             case Command.GO_TO_DOOR:
-                GameObject doorToOpen = Utils.GetDoor(action);
+                GameObject doorToOpen = Utils.GetDoor(task);
                 if(doorToOpen == null)
                 {
                     FinishWalking();
@@ -106,7 +106,7 @@ public class Walking
                 Executing = true;
                 break;
             case Command.ENTER_ROOM:
-                Room room2 = Utils.GetRoom(action);
+                Room room2 = Utils.GetRoom(task);
                 if (room2 == null)
                 {
                     FinishWalking();
@@ -125,9 +125,9 @@ public class Walking
         }
     }
 
-    public bool IsActionExecuting(Action action)
+    public bool IsTaskExecuting(Task task)
     {
-        return (ActionToExecute != null && action.Command == ActionToExecute.Command && Executing);
+        return (TaskToExecute != null && task.Command == TaskToExecute.Command && Executing);
     }
 
     public void MakeMove(Transform transform, PersonMemory memory)
@@ -146,7 +146,7 @@ public class Walking
         }
         else
         {
-            switch (ActionToExecute.Command)
+            switch (TaskToExecute.Command)
             {
                 case Command.GO_UP:
                     if (pathfinder.CheckDistance(transform.gameObject, memory.TargetPosition))
@@ -169,7 +169,7 @@ public class Walking
                 default:
                     break;
             }
-            ActionToExecute.IsDone = true;
+            TaskToExecute.IsDone = true;
         }
     }
 
@@ -269,7 +269,7 @@ public class Walking
 
     public void FinishWalking()
     {
-        ActionToExecute.IsDone = true;
+        TaskToExecute.IsDone = true;
         Executing = false;
         Path = null;
     }

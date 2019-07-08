@@ -6,7 +6,7 @@ using System.Linq;
 public class DoorExecutor {
     public PersonDoor PersonDoor;
     public bool Executing;
-    public Action ActionToExecute;
+    public Task TaskToExecute;
     public MyChat MyChat;
     public GameObject Me;
     public bool WaitForOpenDoor;
@@ -24,21 +24,21 @@ public class DoorExecutor {
         chatRoomManager = GameObject.FindGameObjectWithTag("ChatRoomManager").GetComponent<ChatRoomManager>();
     }
 
-    public void ExecuteAction(Action action, Transform transform)
+    public void ExecuteTask(Task task, Transform transform)
     {
-        if (IsActionExecuting(action)) return; //don't do that again!
-        if (action.IsDone) return;
+        if (IsTaskExecuting(task)) return; //don't do that again!
+        if (task.IsDone) return;
         Executing = true;
-        ActionToExecute = action;
-        switch (action.Command)
+        TaskToExecute = task;
+        switch (task.Command)
         {
             case Command.KNOCK:
                 timer = 0.0f;
                 WaitForOpenDoor = true;
-                Room room = Utils.GetRoom(action);
+                Room room = Utils.GetRoom(task);
                 if (room == null || Utils.ToFar(room.Door, Me, 2)) //null or to far from door
                 {
-                    FinishKnockAction();
+                    FinishKnockTask();
                     return;
                 }
                 chatRoom = chatRoomManager.CreateChatRoom(this);
@@ -47,36 +47,53 @@ public class DoorExecutor {
                     chatRoom.InviteMember(employee);
                 }
                 chatRoom.InviteMember(Me);
-                chatRoom.SendRequest(ChatRequest.OPEN_DOOR, Me, room.Door);
+                if (!Utils.DoorIsOpened(room.Door))
+                {
+                    chatRoom.SendRequest(ChatRequest.OPEN_DOOR, Me, room.Door);
+                }
+                else
+                {
+                    FinishKnockTask();
+                }
                 break;
             case Command.OPEN_DOOR:
-                GameObject door2 = Utils.GetDoor(action);
+                GameObject door2 = Utils.GetDoor(task);
                 if (door2 == null || Utils.ToFar(door2, Me, 2)) //null or to far from door
                 {
-                    FinishKnockAction();
+                    FinishDoorOpenTask();
                     return;
                 }
                 PersonDoor.TryToOpenDoor(door2);
                 break;
             case Command.CLOSE_DOOR:
-                GameObject door1 = Utils.GetDoor(action);
+                GameObject door1 = Utils.GetDoor(task);
                 if (door1 == null || Utils.ToFar(door1, Me, 2)) //null or to far from door
                 {
-                    FinishKnockAction();
+                    FinishDoorCloseTask();
                     return;
                 }
                 PersonDoor.TryToCloseDoor(door1);
                 break;
             case Command.ASK_CLOSE_DOOR:
-                chatRoom.SendRequest(ChatRequest.CLOSE_DOOR, Me, Utils.GetRoom(action).Door);
+                chatRoom.SendRequest(ChatRequest.CLOSE_DOOR, Me, Utils.GetRoom(task).Door);
                 FinishAskCloseDoor();
                 break;
+            case Command.LOCK_DOOR:
+                GameObject door3 = Utils.GetDoor(task);
+                if (door3 == null || Utils.ToFar(door3, Me, 2)) //null or to far from door
+                {
+                    FinishDoorLockTask();
+                    return;
+                }
+                PersonDoor.TryToLockDoor(door3);
+                break;
+
         }
     }
 
-    public bool IsActionExecuting(Action action)
+    public bool IsTaskExecuting(Task task)
     {
-        return (ActionToExecute != null && action.Command == ActionToExecute.Command && Executing);
+        return (TaskToExecute != null && task.Command == TaskToExecute.Command && Executing);
     }
 
     public void DoorWillOpen()
@@ -92,21 +109,31 @@ public class DoorExecutor {
         }
     }
 
-    public void CheckDoor(Action action)
+    public void CheckDoor(Task task)
     {
-        if (ActionToExecute == null) return;
+        if (TaskToExecute == null) return;
         GameObject door = null;
-        switch (ActionToExecute.Command)
+        switch (TaskToExecute.Command)
         {
             case Command.KNOCK:
-                door = Utils.GetRoom(action)?.Door;
+                door = Utils.GetRoom(task)?.Door;
                 if (door == null) return;
                 KnockCheck(door);
                 break;
             case Command.OPEN_DOOR:
-                door = Utils.GetDoor(action);
+                door = Utils.GetDoor(task);
                 if (door == null) return;
                 OpenDoorCheck(door);
+                break;
+            case Command.CLOSE_DOOR:
+                door = Utils.GetDoor(task);
+                if (door == null) return;
+                CloseDoorCheck(door);
+                break;
+            case Command.LOCK_DOOR:
+                door = Utils.GetDoor(task);
+                if (door == null) return;
+                LockDoorCheck(door);
                 break;
         }
     }
@@ -117,16 +144,16 @@ public class DoorExecutor {
             && !door.GetComponent<DoorController>().IsOpen
             && timer >= MaxTimeWait)
         {
-            FinishKnockAction();
+            FinishKnockTask();
         }
         if (door.GetComponent<DoorController>().IsOpen)
         {
-            FinishKnockAction();
+            FinishKnockTask();
         }
 
         if (timer >= MaxTimeWait)
         {
-            FinishKnockAction();
+            FinishKnockTask();
         }
     }
 
@@ -134,32 +161,64 @@ public class DoorExecutor {
     {
         if(door.GetComponent<DoorController>().IsOpen)
         {
-            FinishDoorOpenAction();
+            FinishDoorOpenTask();
         }
     }
 
-    public void FinishKnockAction()
+    private void CloseDoorCheck(GameObject door)
     {
-        Me.GetComponent<Person>().PersonMemory.AddInformedRoom(Utils.GetRoom(ActionToExecute));
+        if (!door.GetComponent<DoorController>().IsOpen)
+        {
+            FinishDoorCloseTask();
+        }
+    }
+
+    private void LockDoorCheck(GameObject door)
+    {
+        if (door.GetComponent<DoorController>().IsLocked)
+        {
+            FinishDoorLockTask();
+        }
+    }
+
+    public void FinishKnockTask()
+    {
+        Me.GetComponent<Person>().PersonMemory.AddInformedRoom(Utils.GetRoom(TaskToExecute));
         timer = 0;
         WaitForOpenDoor = false;
         Executing = false;
-        //close chat room related to this action
-        ActionToExecute.IsDone = true;
+        //close chat room related to this task
+        TaskToExecute.IsDone = true;
     }
 
-    public void FinishDoorOpenAction()
+    public void FinishDoorOpenTask()
     {
         timer = 0;
         Executing = false;
-        //close chat room related to this action
-        ActionToExecute.IsDone = true;
+        //close chat room related to this task
+        TaskToExecute.IsDone = true;
+    }
+
+    public void FinishDoorCloseTask()
+    {
+        timer = 0;
+        Executing = false;
+        //close chat room related to this task
+        TaskToExecute.IsDone = true;
+    }
+
+    public void FinishDoorLockTask()
+    {
+        timer = 0;
+        Executing = false;
+        //close chat room related to this task
+        TaskToExecute.IsDone = true;
     }
 
     public void FinishAskCloseDoor()
     {
         Executing = false;
-        //close chat room related to this action
-        ActionToExecute.IsDone = true;
+        //close chat room related to this task
+        TaskToExecute.IsDone = true;
     }
 }
