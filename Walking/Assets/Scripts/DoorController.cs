@@ -15,7 +15,7 @@ public class DoorController : MonoBehaviour
     private float closeTime = 1f;
 
     public bool IsOpen { get { return isOpen; } }
-    public bool IsLocked { get; set; }
+    public bool IsLocked;
 
     public List<GameObject> peopleToInform;
 
@@ -76,7 +76,6 @@ public class DoorController : MonoBehaviour
         }
         else if(gObject != null)
         {
-            Debug.Log(gObject);
             UpdateBlockedNodes(gObject);
         }
     }

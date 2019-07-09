@@ -36,7 +36,7 @@ public class DoorExecutor {
                 timer = 0.0f;
                 WaitForOpenDoor = true;
                 Room room = Utils.GetRoom(task);
-                if (room == null || Utils.ToFar(room.Door, Me, 2)) //null or to far from door
+                if (room == null || room.Door == null || Utils.ToFar(room.Door, Me, 2)) //null or to far from door
                 {
                     FinishKnockTask();
                     return;

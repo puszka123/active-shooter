@@ -183,11 +183,11 @@ public class PersonMemory
 
     public void AddInformedRoom(Room room)
     {
-        if(room == null)
+        if (room == null)
         {
             return;
         }
-        if(InformedRooms == null)
+        if (InformedRooms == null)
         {
             InformedRooms = new List<Room>() { room };
         }
@@ -247,12 +247,21 @@ public class PersonMemory
             Employees = room.GetComponent<PathLocation>().RoomEmployees.ToArray(),
             Reference = room
         };
-        Debug.Log(CurrentRoom.Id);
+        ClearRoomBlockedNode(CurrentRoom);
     }
 
     public void ClearCurrentRoom()
     {
         CurrentRoom = null;
+    }
+
+    public void ClearRoomBlockedNode(Room room)
+    {
+        string key = room.Door.name;
+        if (blockedByDoor != null && blockedByDoor.ContainsKey(key))
+        {
+            blockedByDoor[key] = blockedByDoor[key].Where(n => n.Name != room.Reference.name).ToList();
+        }
     }
 
     public void UpdateBlockedNodes()
@@ -263,7 +272,7 @@ public class PersonMemory
         Dictionary<string, List<Node>> temp = new Dictionary<string, List<Node>>(blockedByDoor);
         foreach (var key in temp.Keys)
         {
-            if(GameObject.Find(key).GetComponent<DoorController>().IsOpen)
+            if (!GameObject.Find(key).GetComponent<DoorController>().IsLocked)
             {
                 keysToClear.Add(key);
             }
