@@ -89,4 +89,9 @@ public static class Utils
     {
         return door.GetComponent<DoorController>().IsOpen;
     }
+
+    public static bool DoorIsLocked(GameObject door)
+    {
+        return door.GetComponent<DoorController>().IsLocked;
+    }
 }

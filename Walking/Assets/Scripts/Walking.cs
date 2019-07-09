@@ -195,7 +195,7 @@ public class Walking
         float avoidanceAngle = avoidanceSystem.GetOutputValue("Angle");
         float ratio = 0.4f;
         float goalWeight = 0.5f;
-        float avoidanceWeight = 0.7f;
+        float avoidanceWeight = 2f;
         if (avoidanceAngle != -999.0f)
         {
             _finalAngle = avoidanceWeight * avoidanceAngle + goalWeight * goalAngle;

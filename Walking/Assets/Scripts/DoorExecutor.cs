@@ -11,7 +11,7 @@ public class DoorExecutor {
     public GameObject Me;
     public bool WaitForOpenDoor;
     public float timer = 0.0f;
-    public float MaxTimeWait = 3f;
+    public float MaxTimeWait = 5f;
 
     ChatRoom chatRoom;
     ChatRoomManager chatRoomManager;
@@ -47,7 +47,7 @@ public class DoorExecutor {
                     chatRoom.InviteMember(employee);
                 }
                 chatRoom.InviteMember(Me);
-                if (!Utils.DoorIsOpened(room.Door))
+                if (Utils.DoorIsLocked(room.Door))
                 {
                     chatRoom.SendRequest(ChatRequest.OPEN_DOOR, Me, room.Door);
                 }
@@ -141,12 +141,12 @@ public class DoorExecutor {
     private void KnockCheck(GameObject door)
     {
         if (WaitForOpenDoor
-            && !door.GetComponent<DoorController>().IsOpen
+            && Utils.DoorIsLocked(door)
             && timer >= MaxTimeWait)
         {
             FinishKnockTask();
         }
-        if (door.GetComponent<DoorController>().IsOpen)
+        if (!Utils.DoorIsLocked(door))
         {
             FinishKnockTask();
         }

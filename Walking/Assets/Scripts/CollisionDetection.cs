@@ -19,7 +19,7 @@ public class CollisionDetection {
 
         float angle;
         Vector3 direction;
-        LayerMask layerMask = LayerMask.GetMask("Wall", "Employee");
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Employee", "Obstacle");
 
         //front----------------------------
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
