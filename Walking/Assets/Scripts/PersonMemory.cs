@@ -15,8 +15,9 @@ public class PersonMemory
     public Room FoundRoom;
     public PersonActions MyActions;
     private List<Room> InformedRooms;
-    Transform transform; //for testing!!!
+    Transform transform; 
     public ShooterInfo ShooterInfo;
+    public List<GameObject> InformedPeople;
 
     Dictionary<string, List<Node>> blockedByDoor;
 
@@ -143,8 +144,22 @@ public class PersonMemory
 
     public void SetMyRoom(string roomId)
     {
-        MyRoom = new Room { Id = roomId };
-        CurrentRoom = new Room { Id = roomId };
+        GameObject myRoom = GameObject.Find(roomId);
+        MyRoom = new Room
+        {
+            Id = roomId,
+            Door = myRoom.GetComponent<PathLocation>().RoomDoor,
+            Employees = myRoom.GetComponent<PathLocation>().RoomEmployees.ToArray(),
+            Reference = myRoom
+        };
+        if (transform.name != "Informer") //test
+            CurrentRoom = new Room
+            {
+                Id = roomId,
+                Door = myRoom.GetComponent<PathLocation>().RoomDoor,
+                Employees = myRoom.GetComponent<PathLocation>().RoomEmployees.ToArray(),
+                Reference = myRoom
+            };
         MyActions = new PersonActions();
         Action action = null;
         if (transform.name == "Informer")
@@ -282,5 +297,43 @@ public class PersonMemory
         {
             blockedByDoor[key] = new List<Node>();
         }
+    }
+
+    public void AddInformedPerson(GameObject person)
+    {
+        if(InformedPeople == null)
+        {
+            InformedPeople = new List<GameObject> { person };
+        }
+        else
+        {
+            InformedPeople.Add(person);
+        }
+    }
+
+    public void AddInformedPeople(IEnumerable<GameObject> people)
+    {
+        if (InformedPeople == null)
+        {
+            InformedPeople = new List<GameObject>(people);
+        }
+        else
+        {
+            InformedPeople.AddRange(people);
+        }
+    }
+
+    public bool AreInformed(IEnumerable<GameObject> people)
+    {
+        if (InformedPeople == null) return false;
+
+        foreach (var person in people)
+        {
+            if(!InformedPeople.Select(p => p.name).Contains(person.name))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

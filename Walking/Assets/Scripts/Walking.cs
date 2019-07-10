@@ -18,6 +18,7 @@ public class Walking
     Pathfinder pathfinder;
     CollisionDetection collisionDetection;
     public PersonGoal goal;
+    public GameObject Me;
 
 
     private Rigidbody m_Rigidbody;
@@ -40,6 +41,7 @@ public class Walking
         avoidanceSystem = new AvoidanceSystem();
         avoidanceSystem.initAvoidanceSystem();
         TaskToExecute = null;
+        Me = rigidbody.gameObject;
     }
 
     public void InitPath(PersonMemory memory)
@@ -57,6 +59,13 @@ public class Walking
     public void InitPath(Room room)
     {
         Path = new List<Node>() { new Node() { Name = room.Id, Position = room.Reference.transform.position } };
+        currentNodeIndex = 0;
+    }
+
+    public void InitRoomPath(Room room, Transform transform, PersonMemory memory, GameObject targetPosition)
+    {
+        GameObject startPosition = Utils.NearestRoomLocation(room.Reference, transform.gameObject);
+        Path = pathfinder.FindWay(startPosition, targetPosition, memory);
         currentNodeIndex = 0;
     }
 
@@ -87,9 +96,10 @@ public class Walking
             case Command.GO_TO_ROOM:
                 memory.FindNearestLocation(transform.position);
                 Room room1 = Utils.GetRoom(task);
-                if(room1 == null)
+                if(room1 == null || room1.Id == memory.CurrentRoom?.Id)
                 {
                     FinishWalking();
+                    return;
                 }
                 memory.setTargetPosition(room1.Id);
                 InitPath(memory);
@@ -100,18 +110,41 @@ public class Walking
                 if(doorToOpen == null)
                 {
                     FinishWalking();
+                    return;
                 }
-                InitPath(doorToOpen);
+                if (Utils.IsInAnyRoom(memory))
+                {
+                    InitRoomPath(memory.CurrentRoom, transform, memory, doorToOpen);
+                }
+                else
+                {
+                    InitPath(doorToOpen);
+                }
                 CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
             case Command.ENTER_ROOM:
                 Room room2 = Utils.GetRoom(task);
-                if (room2 == null)
+                if (room2 == null || room2.Id == memory.CurrentRoom?.Id)
                 {
                     FinishWalking();
+                    return;
                 }
                 InitPath(room2);
+                CurrentSpeed = Resources.Walk;
+                Executing = true;
+                break;
+            case Command.HIDE_IN_CURRENT_ROOM:
+                Room room3 = Utils.GetRoom(task);
+                if (room3 == null 
+                    || transform.GetComponent<Person>().MyState.IsHiding 
+                    || !Utils.IsInAnyRoom(memory))
+                {
+                    FinishWalking();
+                    return;
+                }
+                InitRoomPath(room3, transform, memory, 
+                    Utils.TheFarthestHidingPlaceInRoom(transform.gameObject, room3.Reference));
                 CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
@@ -169,7 +202,7 @@ public class Walking
                 default:
                     break;
             }
-            TaskToExecute.IsDone = true;
+            FinishWalking();
         }
     }
 
@@ -269,6 +302,11 @@ public class Walking
 
     public void FinishWalking()
     {
+        Person person = Me.GetComponent<Person>();
+        if (TaskToExecute.Command == Command.HIDE_IN_CURRENT_ROOM && Utils.IsHiding(Me, person.PersonMemory))
+        {
+            person.MyState.IsHiding = true;
+        }
         TaskToExecute.IsDone = true;
         Executing = false;
         Path = null;

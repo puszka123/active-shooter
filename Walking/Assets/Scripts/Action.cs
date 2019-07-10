@@ -11,5 +11,5 @@ public abstract class Action {
     public ActionType Type;
 
     public abstract void TasksCleaner(PersonMemory memory);
-    public abstract void UpdateTasksLimits(PersonMemory memory);
+    public abstract void UpdateLimit(PersonMemory memory);
 }

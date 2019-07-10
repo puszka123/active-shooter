@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23923135107693010}
   - component: {fileID: 65275500298556642}
   - component: {fileID: 114666677507333552}
+  - component: {fileID: 114634237481992888}
   m_Layer: 10
   m_Name: Door
   m_TagString: Door
@@ -73,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1852635756823176}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.9, y: 0, z: 0}
+  m_LocalPosition: {x: -4.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4889181299384948}
@@ -86,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1699685632030186}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.9, y: 0, z: 0}
+  m_LocalPosition: {x: 4.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.9999998, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 4889181299384948}
@@ -98,15 +99,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1540847570019190}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 167.4, y: 0, z: -0.83}
+  m_LocalScale: {x: 1, y: 0.9999998, z: 1.0000001}
   m_Children:
   - {fileID: 4450304114086566}
   - {fileID: 4522377492782066}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!23 &23923135107693010
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -185,7 +186,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12.56, y: 1, z: 1}
+  m_Size: {x: 8, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65854407630050260
 BoxCollider:
@@ -197,8 +198,22 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12.56, y: 1, z: 1}
+  m_Size: {x: 8, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114634237481992888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1540847570019190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25724cf96d3d46245bbcef826c29d1f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyRoom: {fileID: 0}
+  HidingPlace: 0
+  Neighbours: []
 --- !u!114 &114666677507333552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,6 +227,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsLockable: 1
   IsToilet: 0
+  MyRoom: {fileID: 0}
+  IsLocked: 0
+  peopleToInform: []
 --- !u!114 &114780583229314626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,6 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5283fc432291d42bd90518dc84f374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Side: 
+  People: []
 --- !u!114 &114857551806597556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,3 +254,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5283fc432291d42bd90518dc84f374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Side: 
+  People: []

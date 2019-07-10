@@ -37,7 +37,7 @@ public class ActionExecutor
         {
             if (item.CanBeExecuted(memory) && !item.IsDone)
             {
-                actionToExecute.UpdateTasksLimits(memory);
+                actionToExecute.UpdateLimit(memory);
                 switch (item.Type)
                 {
                     case TaskType.MOVEMENT:

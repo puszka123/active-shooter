@@ -11,6 +11,7 @@ TagManager:
   - Floor
   - ChatRoomManager
   - Obstacle
+  - RoomLocation
   layers:
   - Default
   - TransparentFX

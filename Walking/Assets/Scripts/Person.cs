@@ -14,13 +14,17 @@ public class Person : MonoBehaviour
     public Action CurrentAction;
     ActionExecutor actionExecutor;
     public TalkExecutor talkExecutor;
+    public PersonState MyState;
 
     public TasksQueue waitingTasks;
+    public float actionTime = 0.1f;
+    public float actionTimeEdge = 0.1f;
 
     bool init = false;
 
     public void Init(int floor, string myRoomId)
     {
+        MyState = new PersonState();
         memory = new PersonMemory();
         memory.Init(floor, transform);
         memory.SetMyRoom(myRoomId);
@@ -40,6 +44,7 @@ public class Person : MonoBehaviour
         if (!init) return;
 
         timer += Time.deltaTime;
+        actionTime += Time.deltaTime;
         doorExecutor.UpdateTimer(Time.deltaTime);
         talkExecutor.UpdateTalkingTimer(Time.deltaTime);
         if (timer >= timerEdge && walkingModule.Executing)
@@ -51,18 +56,22 @@ public class Person : MonoBehaviour
         {
             walkingModule.MakeMove(transform, memory);
         }
-        if (waitingTasks.Tasks.Count > 0 && waitingTasks.WaitingTaskIsExecuted()) //if single task is executed but queue still full
+        if (actionTime >= actionTimeEdge)
         {
-            actionExecutor.ExecuteSingleTask(waitingTasks.GetTaskToExecute());
+            actionTime = 0;
+            if (waitingTasks.Tasks.Count > 0 && waitingTasks.WaitingTaskIsExecuted()) //if single task is executed but queue still full
+            {
+                actionExecutor.ExecuteSingleTask(waitingTasks.GetTaskToExecute());
+            }
+            else if (!waitingTasks.WaitingTaskIsExecuted()) //if single task is not done
+            {
+                actionExecutor.ExecuteSingleTask(waitingTasks.ExecutingTask);
+            }
+            else if (waitingTasks.Tasks.Count == 0 && waitingTasks.WaitingTaskIsExecuted()) //if single task is done and queue is empty
+            {
+                actionExecutor.ExecuteAction(ref CurrentAction);
+            }
         }
-        else if (!waitingTasks.WaitingTaskIsExecuted()) //if single task is not done
-        {
-            actionExecutor.ExecuteSingleTask(waitingTasks.ExecutingTask);
-        }
-        else if(waitingTasks.Tasks.Count == 0 && waitingTasks.WaitingTaskIsExecuted()) //if single task is done and queue is empty
-        {
-            actionExecutor.ExecuteAction(ref CurrentAction);
-        }
-        
     }
+
 }

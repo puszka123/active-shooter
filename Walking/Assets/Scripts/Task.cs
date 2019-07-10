@@ -6,7 +6,7 @@ using System.Linq;
 public class Task {
     public Command Command;
     //public Condition Condition;
-    public List<Limit> Limits;
+    public Limit Limit;
     public TaskType Type;
     public bool IsDone;
     public List<Task> RequiredTasks;

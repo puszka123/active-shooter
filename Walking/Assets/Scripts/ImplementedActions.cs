@@ -34,9 +34,9 @@ public static class ImplementedActions
             Tasks = Tasks.Where(task => task.Command != commandToDelete).ToList();
         }
 
-        public override void UpdateTasksLimits(PersonMemory memory)
+        public override void UpdateLimit(PersonMemory memory)
         {
-            
+
         }
     }
 
@@ -50,7 +50,7 @@ public static class ImplementedActions
 
             Task task2 = new Task();
             task2.Command = Command.GO_TO_ROOM;
-            task2.Limits = new List<Limit>() { new Limit() { LocationId = myRoomId } };
+            task2.Limit = new Limit() { LocationId = myRoomId };
             task2.Type = TaskType.MOVEMENT;
             task2.RequiredTasks = new List<Task>();
             task1.RequiredTasks = new List<Task> { task2 };
@@ -70,7 +70,7 @@ public static class ImplementedActions
             Tasks = Tasks.Where(task => task.Command != commandToDelete).ToList();
         }
 
-        public override void UpdateTasksLimits(PersonMemory memory)
+        public override void UpdateLimit(PersonMemory memory)
         {
 
         }
@@ -92,7 +92,7 @@ public static class ImplementedActions
 
             Task goToRoom = new Task();
             goToRoom.Command = Command.GO_TO_ROOM;
-            goToRoom.Limits = new List<Limit>() { new Limit() { LocationId = myRoomId } };
+            goToRoom.Limit = new Limit() { LocationId = myRoomId };
             goToRoom.Type = TaskType.MOVEMENT;
             goToRoom.RequiredTasks = new List<Task>() { goUp, goDown };
 
@@ -102,8 +102,8 @@ public static class ImplementedActions
         public override void TasksCleaner(PersonMemory memory)
         {
             List<Task> tasksToDelete = Tasks.
-                FindAll(task => memory.MyRoomIsAboveMe() ? 
-                task.Command == Command.GO_DOWN 
+                FindAll(task => memory.MyRoomIsAboveMe() ?
+                task.Command == Command.GO_DOWN
                 : task.Command == Command.GO_UP).ToList();
             if (tasksToDelete.Count == 0) return;
             Command commandToDelete = tasksToDelete[0].Command;
@@ -112,7 +112,7 @@ public static class ImplementedActions
             Tasks = Tasks.Where(task => task.Command != commandToDelete).ToList();
         }
 
-        public override void UpdateTasksLimits(PersonMemory memory)
+        public override void UpdateLimit(PersonMemory memory)
         {
 
         }
@@ -124,37 +124,37 @@ public static class ImplementedActions
         {
             Task findRoom = new Task();
             findRoom.Command = Command.FIND_ROOM;
-            findRoom.Limits = new List<Limit>();
+            findRoom.Limit = new Limit();
             findRoom.Type = TaskType.FINDER;
             findRoom.RequiredTasks = new List<Task>();
 
             Task goToRoom = new Task();
             goToRoom.Command = Command.GO_TO_ROOM;
-            goToRoom.Limits = new List<Limit>();
+            goToRoom.Limit = new Limit();
             goToRoom.Type = TaskType.MOVEMENT;
             goToRoom.RequiredTasks = new List<Task>() { findRoom };
 
             Task knockDoor = new Task();
             knockDoor.Command = Command.KNOCK;
-            knockDoor.Limits = new List<Limit>();
+            knockDoor.Limit = new Limit();
             knockDoor.Type = TaskType.DOOR;
             knockDoor.RequiredTasks = new List<Task>() { goToRoom };
 
             Task enterRoom = new Task();
             enterRoom.Command = Command.ENTER_ROOM;
-            enterRoom.Limits = new List<Limit>();
+            enterRoom.Limit = new Limit();
             enterRoom.Type = TaskType.MOVEMENT;
             enterRoom.RequiredTasks = new List<Task>() { knockDoor };
 
             Task askCloseDoor = new Task();
             askCloseDoor.Command = Command.ASK_CLOSE_DOOR;
-            askCloseDoor.Limits = new List<Limit>();
+            askCloseDoor.Limit = new Limit();
             askCloseDoor.Type = TaskType.DOOR;
             askCloseDoor.RequiredTasks = new List<Task>() { enterRoom };
 
             Task tellAboutShooter = new Task();
             tellAboutShooter.Command = Command.TELL_ABOUT_SHOOTER;
-            tellAboutShooter.Limits = new List<Limit>();
+            tellAboutShooter.Limit = new Limit();
             tellAboutShooter.Type = TaskType.TALK;
             tellAboutShooter.RequiredTasks = new List<Task>() { askCloseDoor };
 
@@ -164,104 +164,82 @@ public static class ImplementedActions
 
         public override void TasksCleaner(PersonMemory memory)
         {
-            
+
         }
 
-        public override void UpdateTasksLimits(PersonMemory memory)
+        public override void UpdateLimit(PersonMemory memory)
         {
-            if (memory.FoundRoom != null)
-            {
-                Task task = Tasks.
-                    Where(a => a.Command == Command.GO_TO_ROOM).
-                    ToArray()?[0];
-                Limit[] limits = task?.Limits.Where(l => l.FoundRoom != null).ToArray();
-                Limit limit = null;
-                if (limits.Length > 0) limit = limits[0];
-                if(limit != null)
-                {
-                    limit.FoundRoom = memory.FoundRoom;
-                }
-                else
-                {
-                    task.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
-                }
+            Utils.UpdateLimitForTask(memory, Command.GO_TO_ROOM, Tasks);
+            Utils.UpdateLimitForTask(memory, Command.KNOCK, Tasks);
+            Utils.UpdateLimitForTask(memory, Command.ENTER_ROOM, Tasks);
+            Utils.UpdateLimitForTask(memory, Command.ASK_CLOSE_DOOR, Tasks);
+            Utils.UpdateLimitForTask(memory, Command.TELL_ABOUT_SHOOTER, Tasks);
+        }
+    }
 
-                task = null;
-                limit = null;
-                limits = null;
+    public class InformRoomAndHide : Action
+    {
+        public InformRoomAndHide()
+        {
+            Task findRoom = new Task();
+            findRoom.Command = Command.FIND_ANY_ROOM;
+            findRoom.Limit = new Limit();
+            findRoom.Type = TaskType.FINDER;
+            findRoom.RequiredTasks = new List<Task>();
 
-                task = Tasks.
-                    Where(a => a.Command == Command.KNOCK).
-                    ToArray()?[0];
-                limits = task?.Limits.Where(l => l.FoundRoom != null).ToArray();
-                limit = null;
-                if (limits.Length > 0) limit = limits[0];
-                if (limit != null)
-                {
-                    limit.FoundRoom = memory.FoundRoom;
-                }
-                else
-                {
-                    task.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
-                }
+            Task goToRoom = new Task();
+            goToRoom.Command = Command.GO_TO_ROOM;
+            goToRoom.Limit = new Limit();
+            goToRoom.Type = TaskType.MOVEMENT;
+            goToRoom.RequiredTasks = new List<Task>() { findRoom };
 
-                task = null;
-                limit = null;
-                limits = null;
+            Task knockDoor = new Task();
+            knockDoor.Command = Command.KNOCK;
+            knockDoor.Limit = new Limit();
+            knockDoor.Type = TaskType.DOOR;
+            knockDoor.RequiredTasks = new List<Task>() { goToRoom };
 
-                task = Tasks.
-                    Where(a => a.Command == Command.ENTER_ROOM).
-                    ToArray()?[0];
-                limits = task?.Limits.Where(l => l.FoundRoom != null).ToArray();
-                limit = null;
-                if (limits.Length > 0) limit = limits[0];
-                if (limit != null)
-                {
-                    limit.FoundRoom = memory.FoundRoom;
-                }
-                else
-                {
-                    task.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
-                }
+            Task enterRoom = new Task();
+            enterRoom.Command = Command.ENTER_ROOM;
+            enterRoom.Limit = new Limit();
+            enterRoom.Type = TaskType.MOVEMENT;
+            enterRoom.RequiredTasks = new List<Task>() { knockDoor };
 
-                task = null;
-                limit = null;
-                limits = null;
+            Task askCloseDoor = new Task();
+            askCloseDoor.Command = Command.ASK_CLOSE_DOOR;
+            askCloseDoor.Limit = new Limit();
+            askCloseDoor.Type = TaskType.DOOR;
+            askCloseDoor.RequiredTasks = new List<Task>() { enterRoom };
 
-                task = Tasks.
-                    Where(a => a.Command == Command.ASK_CLOSE_DOOR).
-                    ToArray()?[0];
-                limits = task?.Limits.Where(l => l.FoundRoom != null).ToArray();
-                limit = null;
-                if (limits.Length > 0) limit = limits[0];
-                if (limit != null)
-                {
-                    limit.FoundRoom = memory.FoundRoom;
-                }
-                else
-                {
-                    task.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
-                }
+            Task tellAboutShooter = new Task();
+            tellAboutShooter.Command = Command.TELL_ABOUT_SHOOTER;
+            tellAboutShooter.Limit = new Limit();
+            tellAboutShooter.Type = TaskType.TALK;
+            tellAboutShooter.RequiredTasks = new List<Task>() { askCloseDoor };
 
-                task = null;
-                limit = null;
-                limits = null;
+            Task hideInRoom = new Task();
+            hideInRoom.Command = Command.HIDE_IN_CURRENT_ROOM;
+            hideInRoom.Limit = new Limit();
+            hideInRoom.Type = TaskType.MOVEMENT;
+            hideInRoom.RequiredTasks = new List<Task>() { tellAboutShooter };
 
-                task = Tasks.
-                    Where(a => a.Command == Command.TELL_ABOUT_SHOOTER).
-                    ToArray()?[0];
-                limits = task?.Limits.Where(l => l.FoundRoom != null).ToArray();
-                limit = null;
-                if (limits.Length > 0) limit = limits[0];
-                if (limit != null)
-                {
-                    limit.FoundRoom = memory.FoundRoom;
-                }
-                else
-                {
-                    task.Limits.Add(new Limit { FoundRoom = memory.FoundRoom });
-                }
-            }
+
+            Tasks = new List<Task>(new Task[] { findRoom, goToRoom, knockDoor, enterRoom, askCloseDoor, tellAboutShooter, hideInRoom });
+        }
+
+        public override void TasksCleaner(PersonMemory memory)
+        {
+
+        }
+
+        public override void UpdateLimit(PersonMemory memory)
+        {
+            Utils.UpdateLimitForTask(memory, Command.GO_TO_ROOM, Tasks);
+            Utils.UpdateLimitForTask(memory, Command.KNOCK, Tasks);
+            Utils.UpdateLimitForTask(memory, Command.ENTER_ROOM, Tasks);
+            Utils.UpdateLimitForTask(memory, Command.ASK_CLOSE_DOOR, Tasks);
+            Utils.UpdateLimitForTask(memory, Command.TELL_ABOUT_SHOOTER, Tasks);
+            Utils.UpdateLimitForTask(memory, Command.HIDE_IN_CURRENT_ROOM, Tasks);
         }
     }
 }

@@ -8,4 +8,15 @@ public class Node : FastPriorityQueueNode {
 
     public string Name;
     public Vector3 Position;
+
+    public Node()
+    {
+
+    }
+
+    public Node(Node copy)
+    {
+        Name = copy.Name;
+        Position = copy.Position;
+    }
 }

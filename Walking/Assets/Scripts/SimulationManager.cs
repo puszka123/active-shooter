@@ -12,11 +12,20 @@ public class SimulationManager : MonoBehaviour {
         {
             item.name = "CheckPoint " + pathLocationNameGenerator++;
             item.GetComponent<PathLocation>().InitFloor();
+            if(item.GetComponent<PathLocation>().IsRoom)
+            {
+                item.AddComponent<RoomManager>();
+                item.GetComponent<RoomManager>().Init();
+            }
         }
         foreach (var item in GameObject.FindGameObjectsWithTag("Door"))
         {
             item.name = "Door " + doorNameGenerator++;
             item.GetComponent<DoorController>().SetDoorKey(item.name);
+            if (item.GetComponent<RoomLocation>() != null)
+            {
+                item.GetComponent<RoomLocation>().UpdateNode(item.name);
+            }
         }
         foreach (var item in GameObject.FindGameObjectsWithTag("Respawn"))
         {

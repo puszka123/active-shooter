@@ -62,6 +62,7 @@ public class TalkExecutor {
 
     public void TellAboutShooter()
     {
+        Person.PersonMemory.AddInformedPeople(chatRoom.GetOtherMembers(Person.gameObject));
         SendInfoAboutShooter();
         PretendTalking();
     }
@@ -82,6 +83,11 @@ public class TalkExecutor {
     {
         GameObject[] members = GetMembers();
         if (members == null)
+        {
+            FinishTalk();
+            return;
+        }
+        if(TaskToExecute.Command == Command.TELL_ABOUT_SHOOTER && AlreadyInformed(members, Person.PersonMemory))
         {
             FinishTalk();
             return;
@@ -137,5 +143,10 @@ public class TalkExecutor {
         bool blocked = Physics.Linecast(person1.transform.position, person2.transform.position, layerMask);
 
         return !blocked;
+    }
+
+    public bool AlreadyInformed(GameObject[] members, PersonMemory memory)
+    {
+        return memory.AreInformed(members);
     }
 }

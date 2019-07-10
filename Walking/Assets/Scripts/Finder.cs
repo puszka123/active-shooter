@@ -18,6 +18,7 @@ public class Finder {
     {
         if (IsTaskExecuting(task)) return; //don't do that again!
         Executing = true;
+        TaskToExecute = task;
         switch (task.Command)
         {
             case Command.FIND_ROOM:
@@ -26,6 +27,17 @@ public class Finder {
                 SaveRoomInMemory(room);
                 task.IsDone = true;
                 Executing = false;
+                break;
+            case Command.FIND_ANY_ROOM:
+                if(Utils.IsInAnyRoom(memory))
+                {
+                    FinishFind();
+                    return;
+                }
+                Room room1 = FindNearestNotInformedRoom(memory.CurrentFloor, transform);
+                if (room1 == null) return;
+                SaveRoomInMemory(room1);
+                FinishFind();
                 break;
         }
     }
@@ -97,6 +109,12 @@ public class Finder {
     public void SaveRoomInMemory(Room room)
     {
         memory.SaveFoundRoom(room);
+    }
+
+    public void FinishFind()
+    {
+        TaskToExecute.IsDone = true;
+        Executing = false;
     }
 
 }

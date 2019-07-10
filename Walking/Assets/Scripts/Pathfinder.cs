@@ -8,6 +8,7 @@ public class Pathfinder {
 
     public const int MAX_NODES_IN_QUEUE = 100;
     public const float MIN_DISTANCE = 0.2f;
+    public const float MIN_DISTANCE_ROOM = 0.1f;
 
     public float GetGoalAngle(GameObject person, Vector3 destination)
     {
@@ -23,6 +24,12 @@ public class Pathfinder {
     {
         //Debug.Log(Vector3.Distance(agent.transform.position, target.Position));
         return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE;
+    }
+
+    public bool CheckDistanceRoom(GameObject agent, Node target)
+    {
+        //Debug.Log(Vector3.Distance(agent.transform.position, target.Position));
+        return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_ROOM;
     }
 
     FastPriorityQueue<Node> frontier = new FastPriorityQueue<Node>(MAX_NODES_IN_QUEUE);
@@ -87,5 +94,62 @@ public class Pathfinder {
     private bool CheckInputs(Graph graph, Node startPosition, Node targetPosition)
     {
         return !(graph == null || startPosition == null || targetPosition == null);
+    }
+
+    private bool CheckInputs(GameObject startPosition, GameObject targetPosition)
+    {
+        return !(startPosition == null || targetPosition == null);
+    }
+
+    //for room
+    FastPriorityQueue<Node> frontierRoom = new FastPriorityQueue<Node>(MAX_NODES_IN_QUEUE);
+    public List<Node> FindWay(GameObject startPosition, GameObject targetPosition, PersonMemory personMemory)
+    {
+        if (!CheckInputs(startPosition, targetPosition)) return null;
+        RoomLocation start = startPosition.GetComponent<RoomLocation>();
+        RoomLocation target = targetPosition.GetComponent<RoomLocation>();     
+        frontierRoom.Clear();
+        frontierRoom.Enqueue(new Node(start.MeAsNode), 0);
+        Dictionary<string, Node> cameFrom = new Dictionary<string, Node>();
+        Dictionary<string, float> costSoFar = new Dictionary<string, float>();
+        cameFrom.Add(start.MeAsNode.Name, null);
+        costSoFar.Add(start.MeAsNode.Name, 0);
+
+        while (frontierRoom.Count > 0)
+        {
+            Node current = frontierRoom.Dequeue();
+            if (current.Name == target.MeAsNode.Name)
+            {
+                break;
+            }
+            
+            foreach (Node next in GameObject.Find(current.Name).GetComponent<RoomLocation>().NeighbourNodes)
+            {
+                float newCost = costSoFar[current.Name] + Vector3.Distance(current.Position, next.Position);
+                if (!costSoFar.ContainsKey(next.Name) || newCost < costSoFar[next.Name])
+                {
+                    costSoFar[next.Name] = newCost;
+                    float priority = newCost + Heuristic(target.MeAsNode, next);
+                    frontierRoom.Enqueue(new Node(next), priority);
+                    if (cameFrom.ContainsKey(next.Name)) cameFrom[next.Name] = current;
+                    else cameFrom.Add(next.Name, current);
+                }
+            }
+        }
+
+        List<Node> desiredPath = new List<Node>();
+        desiredPath.Add(target.MeAsNode);
+        if (!cameFrom.ContainsKey(target.MeAsNode.Name))
+        {
+            return new List<Node>();
+        }
+        Node startNode = cameFrom[target.MeAsNode.Name];
+        while (startNode != null)
+        {
+            desiredPath.Add(startNode);
+            startNode = cameFrom[startNode.Name];
+        }
+        desiredPath.Reverse();
+        return desiredPath;
     }
 }

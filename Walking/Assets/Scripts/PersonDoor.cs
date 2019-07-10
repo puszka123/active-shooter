@@ -87,14 +87,14 @@ public class PersonDoor : MonoBehaviour
     {
         Task gotoDoor = new Task();
         gotoDoor.Command = Command.GO_TO_DOOR;
-        gotoDoor.Limits = new List<Limit>() { new Limit() { DoorToOpen = door } };
+        gotoDoor.Limit = new Limit() { DoorToOpen = door };
         gotoDoor.Type = TaskType.MOVEMENT;
         gotoDoor.RequiredTasks = new List<Task>();
         GetComponent<Person>().waitingTasks.AddTask(gotoDoor);
 
         Task openDoor = new Task();
         openDoor.Command = Command.OPEN_DOOR;
-        openDoor.Limits = new List<Limit>() { new Limit() { DoorToOpen = door } };
+        openDoor.Limit = new Limit() { DoorToOpen = door };
         openDoor.Type = TaskType.DOOR;
         openDoor.RequiredTasks = new List<Task>() { gotoDoor };
         GetComponent<Person>().waitingTasks.AddTask(openDoor);
@@ -104,7 +104,7 @@ public class PersonDoor : MonoBehaviour
     {
         Task closeDoor = new Task();
         closeDoor.Command = Command.CLOSE_DOOR;
-        closeDoor.Limits = new List<Limit>() { new Limit() { DoorToOpen = door } };
+        closeDoor.Limit = new Limit() { DoorToOpen = door };
         closeDoor.Type = TaskType.DOOR;
         closeDoor.RequiredTasks = new List<Task>();
         GetComponent<Person>().waitingTasks.AddTask(closeDoor);

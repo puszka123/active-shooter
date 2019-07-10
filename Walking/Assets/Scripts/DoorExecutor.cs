@@ -13,6 +13,8 @@ public class DoorExecutor {
     public float timer = 0.0f;
     public float MaxTimeWait = 5f;
 
+    public float doorDistance = 0.25f;
+
     ChatRoom chatRoom;
     ChatRoomManager chatRoomManager;
 
@@ -36,7 +38,7 @@ public class DoorExecutor {
                 timer = 0.0f;
                 WaitForOpenDoor = true;
                 Room room = Utils.GetRoom(task);
-                if (room == null || room.Door == null || Utils.ToFar(room.Door, Me, 2)) //null or to far from door
+                if (room == null || room.Door == null || Utils.ToFar(room.Door, Me, doorDistance)) //null or to far from door
                 {
                     FinishKnockTask();
                     return;
@@ -58,7 +60,7 @@ public class DoorExecutor {
                 break;
             case Command.OPEN_DOOR:
                 GameObject door2 = Utils.GetDoor(task);
-                if (door2 == null || Utils.ToFar(door2, Me, 2)) //null or to far from door
+                if (door2 == null || Utils.ToFar(door2, Me, doorDistance)) //null or to far from door
                 {
                     FinishDoorOpenTask();
                     return;
@@ -67,7 +69,7 @@ public class DoorExecutor {
                 break;
             case Command.CLOSE_DOOR:
                 GameObject door1 = Utils.GetDoor(task);
-                if (door1 == null || Utils.ToFar(door1, Me, 2)) //null or to far from door
+                if (door1 == null || Utils.ToFar(door1, Me, doorDistance)) //null or to far from door
                 {
                     FinishDoorCloseTask();
                     return;
@@ -80,7 +82,7 @@ public class DoorExecutor {
                 break;
             case Command.LOCK_DOOR:
                 GameObject door3 = Utils.GetDoor(task);
-                if (door3 == null || Utils.ToFar(door3, Me, 2)) //null or to far from door
+                if (door3 == null || Utils.ToFar(door3, Me, doorDistance)) //null or to far from door
                 {
                     FinishDoorLockTask();
                     return;

@@ -9,7 +9,8 @@ public enum Command {
     OPEN_DOOR, GO_TO_DOOR,
     ENTER_ROOM, ASK_CLOSE_DOOR,
     CLOSE_DOOR, TELL_ABOUT_SHOOTER,
-    LOCK_DOOR
+    LOCK_DOOR, HIDE_IN_CURRENT_ROOM,
+    FIND_ANY_ROOM
 }
 
 //lock_door close and lock doors
