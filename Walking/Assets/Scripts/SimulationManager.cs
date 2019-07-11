@@ -12,6 +12,7 @@ public class SimulationManager : MonoBehaviour {
         {
             item.name = "CheckPoint " + pathLocationNameGenerator++;
             item.GetComponent<PathLocation>().InitFloor();
+            item.GetComponent<PathLocation>().FindRoomObstacles();
             if(item.GetComponent<PathLocation>().IsRoom)
             {
                 item.AddComponent<RoomManager>();

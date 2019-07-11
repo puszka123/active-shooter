@@ -20,6 +20,7 @@ public class Limit
     public GameObject DoorToOpen;
     public ChatRoom chatRoom;
     public GameObject[] Employees;
+    public GameObject Obstacle;
 }
 
 //public class Condition {

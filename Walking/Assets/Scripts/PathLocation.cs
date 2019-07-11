@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PathLocation : MonoBehaviour {
@@ -11,6 +12,7 @@ public class PathLocation : MonoBehaviour {
     public bool IsRoom = false;
     public List<GameObject> RoomEmployees;
     public GameObject RoomDoor;
+    public List<GameObject> Obstacles;
 
     public void FindMyNeighbours()
     {
@@ -24,6 +26,19 @@ public class PathLocation : MonoBehaviour {
                 NearestNeighbours.Add(item);
             }
 
+        }
+    }
+
+    public void FindRoomObstacles()
+    {
+        Obstacles = new List<GameObject>();
+        LayerMask layerMask = LayerMask.GetMask("Door", "Wall");
+        foreach (var item in GameObject.FindGameObjectsWithTag("Obstacle"))
+        {
+            if(!Physics.Linecast(transform.position, item.transform.position, layerMask))
+            {
+                Obstacles.Add(item);
+            }
         }
     }
 
@@ -47,5 +62,10 @@ public class PathLocation : MonoBehaviour {
         {
             RoomDoor = door;
         }
+    }
+
+    public void PickedObstacle(GameObject obstacle)
+    {
+        Obstacles.Remove(Obstacles.Where(o => o.name == obstacle.name).ToArray().ElementAtOrDefault(0));
     }
 }

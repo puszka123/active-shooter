@@ -25,6 +25,11 @@ public static class Utils
         return task.Limit.Employees;
     }
 
+    public static GameObject GetObstacle(Task task)
+    {
+        return task.Limit.Obstacle;
+    }
+
     public static string NearestStairs(string stairsType, Transform transform, PersonMemory memory)
     {
         GameObject location = GameObject.Find("Checkpoints " + memory.CurrentFloor);
@@ -174,6 +179,9 @@ public static class Utils
                 break;
             case Command.HIDE_IN_CURRENT_ROOM:
                 task.Limit.FoundRoom = memory.FoundRoom;
+                break;
+            case Command.BLOCK_DOOR:
+                task.Limit.Obstacle = memory.PickedObstacle;
                 break;
             default:
                 break;

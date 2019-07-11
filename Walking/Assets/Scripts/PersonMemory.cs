@@ -18,6 +18,7 @@ public class PersonMemory
     Transform transform; 
     public ShooterInfo ShooterInfo;
     public List<GameObject> InformedPeople;
+    public GameObject PickedObstacle;
 
     Dictionary<string, List<Node>> blockedByDoor;
 
@@ -150,7 +151,7 @@ public class PersonMemory
             Id = roomId,
             Door = myRoom.GetComponent<PathLocation>().RoomDoor,
             Employees = myRoom.GetComponent<PathLocation>().RoomEmployees.ToArray(),
-            Reference = myRoom
+            Reference = myRoom,
         };
         if (transform.name != "Informer") //test
             CurrentRoom = new Room
@@ -158,13 +159,13 @@ public class PersonMemory
                 Id = roomId,
                 Door = myRoom.GetComponent<PathLocation>().RoomDoor,
                 Employees = myRoom.GetComponent<PathLocation>().RoomEmployees.ToArray(),
-                Reference = myRoom
+                Reference = myRoom,
             };
         MyActions = new PersonActions();
         Action action = null;
         if (transform.name == "Informer")
         {
-            action = new ImplementedActions.InformRoomAndHide();
+            action = new ImplementedActions.InformRoom();
         }
         else
         {
@@ -261,7 +262,7 @@ public class PersonMemory
             Id = room.name,
             Door = room.GetComponent<PathLocation>().RoomDoor,
             Employees = room.GetComponent<PathLocation>().RoomEmployees.ToArray(),
-            Reference = room
+            Reference = room,
         };
         ClearRoomBlockedNode(CurrentRoom);
     }
@@ -336,5 +337,33 @@ public class PersonMemory
             }
         }
         return true;
+    }
+
+    public GameObject GetNearestObstacle(GameObject person)
+    {
+        if (CurrentRoom.Obstacles.Count == 0) return null;
+        GameObject nearestObstacle = CurrentRoom.Obstacles[0];
+        float nearestDistance = Utils.Distance(nearestObstacle, person);
+        foreach (var item in CurrentRoom.Obstacles)
+        {
+            float distance = Utils.Distance(item, person);
+            if(distance < nearestDistance)
+            {
+                nearestObstacle = item;
+                nearestDistance = distance;
+            }
+        }
+
+        return nearestObstacle;
+    }
+
+    public void PickObstacle(GameObject obstacle)
+    {
+        PickedObstacle = obstacle;
+    }
+
+    public void PutObstacle()
+    {
+        PickedObstacle = null;
     }
 }

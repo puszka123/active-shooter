@@ -76,6 +76,19 @@ public class Walking
         currentNodeIndex = 0;
     }
 
+    public void InitPathToNearestObstacle(GameObject gameObject, PersonMemory memory)
+    {
+        GameObject obstacleToPick = memory.GetNearestObstacle(gameObject);
+        if(obstacleToPick == null)
+        {
+            FinishWalking();
+            return;
+        }
+        memory.PickObstacle(obstacleToPick);
+        Path = new List<Node>() { new Node() { Name = obstacleToPick.name, Position = obstacleToPick.transform.position } };
+        currentNodeIndex = 0;
+    }
+
     public void ExecuteTask(Task task, PersonMemory memory, Transform transform)
     {
         if (IsTaskExecuting(task)) return; //don't do that again!
@@ -110,7 +123,7 @@ public class Walking
                 {
                     InitPath(memory);
                 }
-                
+
                 Executing = true;
                 break;
             case Command.EXIT_BUILDING:
@@ -122,7 +135,7 @@ public class Walking
             case Command.GO_TO_ROOM:
                 memory.FindNearestLocation(transform.position);
                 Room room1 = Utils.GetRoom(task);
-                if(room1 == null || room1.Id == memory.CurrentRoom?.Id)
+                if (room1 == null || room1.Id == memory.CurrentRoom?.Id)
                 {
                     FinishWalking();
                     return;
@@ -133,7 +146,7 @@ public class Walking
                 break;
             case Command.GO_TO_DOOR:
                 GameObject doorToOpen = Utils.GetDoor(task);
-                if(doorToOpen == null)
+                if (doorToOpen == null)
                 {
                     FinishWalking();
                     return;
@@ -162,16 +175,35 @@ public class Walking
                 break;
             case Command.HIDE_IN_CURRENT_ROOM:
                 Room room3 = Utils.GetRoom(task);
-                if (room3 == null 
-                    || transform.GetComponent<Person>().MyState.IsHiding 
+                if (room3 == null
+                    || transform.GetComponent<Person>().MyState.IsHiding
                     || !Utils.IsInAnyRoom(memory))
                 {
                     FinishWalking();
                     return;
                 }
-                InitRoomPath(room3, transform, memory, 
+                InitRoomPath(room3, transform, memory,
                     Utils.TheFarthestHidingPlaceInRoom(transform.gameObject, room3.Reference));
                 CurrentSpeed = Resources.Walk;
+                Executing = true;
+                break;
+            case Command.PICK_NEAREST_OBSTACLE:
+                if (!Utils.IsInAnyRoom(memory))
+                {
+                    FinishWalking();
+                    return;
+                }
+                InitPathToNearestObstacle(transform.gameObject, memory);
+                CurrentSpeed = Resources.Walk;
+                Executing = true;
+                break;
+            case Command.BLOCK_DOOR:
+                if (!Utils.IsInAnyRoom(memory) || Utils.GetObstacle(task) == null)
+                {
+                    FinishWalking();
+                    return;
+                }
+                Utils.GetObstacle(task).GetComponent<Obstacle>().TryToPickUp(transform.gameObject);
                 Executing = true;
                 break;
             case Command.STAY:
@@ -223,6 +255,15 @@ public class Walking
                     if (Utils.NearestExit(transform, memory) != null)
                     {
                         transform.gameObject.SetActive(false);
+                    }
+                    break;
+                case Command.BLOCK_DOOR:
+                    GameObject obstacle = Utils.GetObstacle(TaskToExecute);
+                    if (obstacle != null
+                        && Utils.Distance(memory.CurrentRoom.Door, transform.gameObject) < Pathfinder.MIN_DISTANCE)
+                    {
+                        memory.CurrentRoom.Door.SendMessage("AddObstacle", obstacle);
+                        memory.PutObstacle();
                     }
                     break;
                 default:
@@ -285,7 +326,7 @@ public class Walking
         {
             blockedWayTimeout += Time.deltaTime + 0.1f;
         }
-        if (pathfinder.CheckDistance(transform.gameObject, Path[currentNodeIndex]))
+        if (pathfinder.CheckDistance(transform.gameObject, Path[currentNodeIndex], TaskToExecute.Command))
         {
             if (++currentNodeIndex >= Path.Count) return true;
             else return false;
@@ -311,7 +352,7 @@ public class Walking
         if (memory.StartPosition != null)
         {
             InitPath(memory);
-            if(Path.Count == 0)
+            if (Path.Count == 0)
             {
                 FinishWalking();
             }
@@ -323,8 +364,30 @@ public class Walking
         GameObject.Find(memory.TargetPosition.Name).SendMessage("TeleportMePls", gameObject);
     }
 
+    public void OnObstaclePick(GameObject obstacle, GameObject person)
+    {
+        if (TaskToExecute.Command == Command.BLOCK_DOOR)
+        {
+            if (Utils.GetObstacle(TaskToExecute) == null)
+            {
+                FinishWalking();
+            }
+            Utils.GetObstacle(TaskToExecute).SetActive(false);
+            person.GetComponent<Person>().PersonMemory.CurrentRoom.Reference.SendMessage("PickedObstacle", Utils.GetObstacle(TaskToExecute));
+            InitPath(person.GetComponent<Person>().PersonMemory.CurrentRoom.Door);
+            CurrentSpeed = obstacle.GetComponent<Obstacle>().TargetSpeed;
+        }
+    }
 
-    
+    public void OnBeNearObstacle(GameObject obstacle, GameObject person)
+    {
+        if (TaskToExecute.Command == Command.PICK_NEAREST_OBSTACLE)
+        {
+            person.GetComponent<Person>().PersonMemory.PickObstacle(obstacle);
+            FinishWalking();
+        }
+    }
+
 
     public void FinishWalking()
     {

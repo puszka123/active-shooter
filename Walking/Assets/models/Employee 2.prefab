@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114546645984719468}
   - component: {fileID: 114778694033796470}
   - component: {fileID: 114943548488074182}
+  - component: {fileID: 114347455053989192}
   m_Layer: 11
   m_Name: Employee 2
   m_TagString: Employee
@@ -103,6 +104,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &114347455053989192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531717540930292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f39fab7d2382cf4c9def80719661217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114546645984719468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d959b3127c6165243a41d6eb65210685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionTime: 0.5
+  actionTimeEdge: 0.5
+  simulationTime: 0
 --- !u!114 &114943548488074182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,6 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460359386d2c70245985daf295a273d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentSender: {fileID: 0}
+  RequestToProcess: 0
 --- !u!136 &136033733192427174
 CapsuleCollider:
   m_ObjectHideFlags: 1

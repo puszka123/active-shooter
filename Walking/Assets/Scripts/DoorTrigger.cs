@@ -53,5 +53,4 @@ public class DoorTrigger : MonoBehaviour
     {
         People = People.Where(p => p.name != person.name).ToList();
     }
-
 }

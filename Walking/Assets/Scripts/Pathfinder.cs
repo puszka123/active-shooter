@@ -9,6 +9,7 @@ public class Pathfinder {
     public const int MAX_NODES_IN_QUEUE = 100;
     public const float MIN_DISTANCE = 0.2f;
     public const float MIN_DISTANCE_ROOM = 0.1f;
+    public const float MIN_DISTANCE_OBSTACLE = 0.1f;
 
     public float GetGoalAngle(GameObject person, Vector3 destination)
     {
@@ -24,6 +25,17 @@ public class Pathfinder {
     {
         //Debug.Log(Vector3.Distance(agent.transform.position, target.Position));
         return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE;
+    }
+
+    public bool CheckDistance(GameObject agent, Node target, Command cmd)
+    {
+        switch (cmd)
+        {
+            case Command.PICK_NEAREST_OBSTACLE:
+                return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_OBSTACLE;
+            default:
+                return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE;
+        }
     }
 
     public bool CheckDistanceRoom(GameObject agent, Node target)

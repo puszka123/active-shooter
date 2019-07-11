@@ -213,6 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyRoom: {fileID: 0}
   HidingPlace: 0
+  Workplace: 0
   Neighbours: []
 --- !u!114 &114666677507333552
 MonoBehaviour:
@@ -229,6 +230,7 @@ MonoBehaviour:
   IsToilet: 0
   MyRoom: {fileID: 0}
   IsLocked: 0
+  testLock: 0
   peopleToInform: []
 --- !u!114 &114780583229314626
 MonoBehaviour:
@@ -243,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Side: 
   People: []
+  Obstacles: 0
 --- !u!114 &114857551806597556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,3 +259,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Side: 
   People: []
+  Obstacles: 0

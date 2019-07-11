@@ -217,14 +217,26 @@ public static class ImplementedActions
             tellAboutShooter.Type = TaskType.TALK;
             tellAboutShooter.RequiredTasks = new List<Task>() { askCloseDoor };
 
-            Task hideInRoom = new Task();
-            hideInRoom.Command = Command.HIDE_IN_CURRENT_ROOM;
-            hideInRoom.Limit = new Limit();
-            hideInRoom.Type = TaskType.MOVEMENT;
-            hideInRoom.RequiredTasks = new List<Task>() { tellAboutShooter };
+            Task findObstacle = new Task();
+            findObstacle.Command = Command.PICK_NEAREST_OBSTACLE;
+            findObstacle.Limit = new Limit();
+            findObstacle.Type = TaskType.MOVEMENT;
+            findObstacle.RequiredTasks = new List<Task>() { tellAboutShooter };
+
+            Task blockDoor = new Task();
+            blockDoor.Command = Command.BLOCK_DOOR;
+            blockDoor.Limit = new Limit();
+            blockDoor.Type = TaskType.MOVEMENT;
+            blockDoor.RequiredTasks = new List<Task>() { findObstacle };
+
+            //Task hideInRoom = new Task();
+            //hideInRoom.Command = Command.HIDE_IN_CURRENT_ROOM;
+            //hideInRoom.Limit = new Limit();
+            //hideInRoom.Type = TaskType.MOVEMENT;
+            //hideInRoom.RequiredTasks = new List<Task>() { tellAboutShooter };
 
 
-            Tasks = new List<Task>(new Task[] { findRoom, goToRoom, knockDoor, enterRoom, askCloseDoor, tellAboutShooter, hideInRoom });
+            Tasks = new List<Task>(new Task[] { findRoom, goToRoom, knockDoor, enterRoom, askCloseDoor, tellAboutShooter, findObstacle, blockDoor });
         }
 
         public override void TasksCleaner(PersonMemory memory)
@@ -239,7 +251,8 @@ public static class ImplementedActions
             Utils.UpdateLimitForTask(memory, Command.ENTER_ROOM, Tasks);
             Utils.UpdateLimitForTask(memory, Command.ASK_CLOSE_DOOR, Tasks);
             Utils.UpdateLimitForTask(memory, Command.TELL_ABOUT_SHOOTER, Tasks);
-            Utils.UpdateLimitForTask(memory, Command.HIDE_IN_CURRENT_ROOM, Tasks);
+            Utils.UpdateLimitForTask(memory, Command.BLOCK_DOOR, Tasks);
+            //Utils.UpdateLimitForTask(memory, Command.HIDE_IN_CURRENT_ROOM, Tasks);
         }
     }
 }

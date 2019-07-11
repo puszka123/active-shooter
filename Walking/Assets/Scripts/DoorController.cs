@@ -11,6 +11,7 @@ public class DoorController : MonoBehaviour
     public bool IsToilet = false;
     private string doorKey;
     public GameObject MyRoom;
+    public int Obstacles;
 
     private float closeTime = 1f;
 
@@ -29,7 +30,7 @@ public class DoorController : MonoBehaviour
     void Start()
     {
         peopleToInform = new List<GameObject>();
-        IsLocked = true; //TEST
+        IsLocked = false; //TEST
         BoxCollider[] res = GetComponents<BoxCollider>();
         m_renderer = GetComponent<Renderer>();
         foreach (var item in res)
@@ -64,10 +65,10 @@ public class DoorController : MonoBehaviour
 
     public void TryToOpenDoor(object[] args)
     {
-        //if(testLock)
-        //{
-        //    return;
-        //}
+        if(Obstacles > 0)
+        {
+            return;
+        }
         GameObject gObject = (GameObject)args[1];
         if (!IsLocked)
         {
@@ -111,15 +112,15 @@ public class DoorController : MonoBehaviour
 
     public void TryToCloseDoor(object[] args)
     {
-        GameObject gObject = (GameObject)args[1];
-        string[] keys = (string[])args[0];
+        //GameObject gObject = (GameObject)args[1];
+        //string[] keys = (string[])args[0];
         CloseDoor();
         
     }
 
     public void TryToLockDoor(object[] args)
     {
-        GameObject gObject = (GameObject)args[1];
+        //GameObject gObject = (GameObject)args[1];
         string[] keys = (string[])args[0];
 
         if ((keys != null && keys.Contains(doorKey)) || doorKey == null)
@@ -163,6 +164,15 @@ public class DoorController : MonoBehaviour
     public void SetRoom(GameObject room)
     {
         MyRoom = room;
+    }
+
+    public void AddObstacle(GameObject obstacle)
+    {
+        if (!obstacle.GetComponent<Obstacle>().InBlock)
+        {
+            obstacle.GetComponent<Obstacle>().InBlock = true;
+            ++Obstacles;
+        }
     }
 
 }
