@@ -10,6 +10,11 @@ public static class Utils
         return task.Limit.FoundRoom;
     }
 
+    public static Room GetRoom(PersonMemory memory)
+    {
+        return memory.CurrentRoom;
+    }
+
     public static GameObject GetDoor(Task task)
     {
         return task.Limit.DoorToOpen;
@@ -183,5 +188,11 @@ public static class Utils
     public static bool IsInAnyRoom(PersonMemory memory)
     {
         return memory.CurrentRoom != null;
+    }
+
+    public static bool IsInRoom(GameObject person, Room room)
+    {
+        PersonMemory memory = person.GetComponent<Person>().PersonMemory;
+        return memory.CurrentRoom != null && memory.CurrentRoom.Id == room.Id;
     }
 }

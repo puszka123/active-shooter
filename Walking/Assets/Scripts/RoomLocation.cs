@@ -6,6 +6,7 @@ public class RoomLocation : MonoBehaviour
 {
     public GameObject MyRoom;
     public bool HidingPlace;
+    public bool Workplace;
     public List<GameObject> Neighbours;
     public List<Node> NeighbourNodes;
     public Node MeAsNode;

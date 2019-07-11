@@ -38,7 +38,16 @@ public class DoorExecutor {
                 timer = 0.0f;
                 WaitForOpenDoor = true;
                 Room room = Utils.GetRoom(task);
-                if (room == null || room.Door == null || Utils.ToFar(room.Door, Me, doorDistance)) //null or to far from door
+                if (room == null 
+                    || room.Door == null 
+                    || Utils.ToFar(room.Door, Me, doorDistance)
+                    || Utils.IsInRoom(Me, room)) //null or to far from door or already is in this room
+                {
+                    FinishKnockTask();
+                    return;
+                }
+                GameObject[] members = GetKnockMembers(room.Employees, room);
+                if(members.Length == 0)
                 {
                     FinishKnockTask();
                     return;
@@ -77,6 +86,11 @@ public class DoorExecutor {
                 PersonDoor.TryToCloseDoor(door1);
                 break;
             case Command.ASK_CLOSE_DOOR:
+                if(chatRoom == null)
+                {
+                    FinishAskCloseDoor();
+                    return;
+                }
                 chatRoom.SendRequest(ChatRequest.CLOSE_DOOR, Me, Utils.GetRoom(task).Door);
                 FinishAskCloseDoor();
                 break;
@@ -181,6 +195,19 @@ public class DoorExecutor {
         {
             FinishDoorLockTask();
         }
+    }
+
+    public GameObject[] GetKnockMembers(GameObject[] employees, Room room)
+    {
+        List<GameObject> filtered = new List<GameObject>();
+        foreach (var item in employees)
+        {
+            if(Utils.IsInRoom(item, room) || !Utils.ToFar(room.Reference, item, 1))
+            {
+                filtered.Add(item);
+            }
+        }
+        return filtered.ToArray();
     }
 
     public void FinishKnockTask()

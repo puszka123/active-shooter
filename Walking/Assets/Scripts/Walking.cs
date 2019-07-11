@@ -50,6 +50,13 @@ public class Walking
         currentNodeIndex = 0;
     }
 
+    public void InitPathWithRoomPath(PersonMemory memory)
+    {
+        List<Node> longPath = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
+        Path.AddRange(longPath);
+        currentNodeIndex = 0;
+    }
+
     public void InitPath(GameObject gameObject)
     {
         Path = new List<Node>() { new Node() { Name = gameObject.name, Position = gameObject.transform.position } };
@@ -78,13 +85,32 @@ public class Walking
             case Command.GO_UP:
                 memory.FindNearestLocation(transform.position);
                 memory.setTargetPosition(Utils.NearestStairs("UP", transform, memory));
-                InitPath(memory);
+                if (Utils.IsInAnyRoom(memory))
+                {
+                    GameObject roomUp = Utils.GetRoom(memory).Door;
+                    InitRoomPath(memory.CurrentRoom, transform, memory, roomUp);
+                    InitPathWithRoomPath(memory);
+                }
+                else
+                {
+                    InitPath(memory);
+                }
                 Executing = true;
                 break;
             case Command.GO_DOWN:
                 memory.FindNearestLocation(transform.position);
                 memory.setTargetPosition(Utils.NearestStairs("DOWN", transform, memory));
-                InitPath(memory);
+                if (Utils.IsInAnyRoom(memory))
+                {
+                    GameObject roomDown = Utils.GetRoom(memory).Door;
+                    InitRoomPath(memory.CurrentRoom, transform, memory, roomDown);
+                    InitPathWithRoomPath(memory);
+                }
+                else
+                {
+                    InitPath(memory);
+                }
+                
                 Executing = true;
                 break;
             case Command.EXIT_BUILDING:

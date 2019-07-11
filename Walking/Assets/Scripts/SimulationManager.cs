@@ -27,15 +27,23 @@ public class SimulationManager : MonoBehaviour {
                 item.GetComponent<RoomLocation>().UpdateNode(item.name);
             }
         }
-        foreach (var item in GameObject.FindGameObjectsWithTag("Respawn"))
+        //foreach (var item in GameObject.FindGameObjectsWithTag("Respawn"))
+        //{
+        //    item.name = "Respawn " + respawnNameGenerator++;
+        //    item.GetComponent<Respawn>().enabled = true;
+        //}
+        foreach (var item in GameObject.FindGameObjectsWithTag("RoomLocation"))
         {
-            item.name = "Respawn " + respawnNameGenerator++;
-            item.GetComponent<Respawn>().enabled = true;
+            if (item.GetComponent<RoomLocation>().Workplace)
+            {
+                //item.name = "RoomLocationWorkplace " + respawnNameGenerator++;
+                item.AddComponent<Respawn>();
+            }
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

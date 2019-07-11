@@ -32,6 +32,7 @@ public class Respawn : MonoBehaviour
 
     void Awake()
     {
+        numberOfSlots = 1;
         objectToInstantiate = GameObject.Find("Employee Origin");
         if (objectToInstantiate == null)
         {
@@ -46,7 +47,6 @@ public class Respawn : MonoBehaviour
         if (timer >= 1f && numberOfSlots > 0)
         {
             GameObject employee = Instantiate(objectToInstantiate, transform.position, transform.rotation);
-            
             employee.GetComponent<Person>().Init(int.Parse(transform.parent.name.Split(' ')[1]), room.name);
             room.GetComponent<PathLocation>().AddRoomEmployee(employee);
             employee.name = "employee " + nameGenerator++;

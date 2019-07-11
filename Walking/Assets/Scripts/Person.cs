@@ -17,8 +17,9 @@ public class Person : MonoBehaviour
     public PersonState MyState;
 
     public TasksQueue waitingTasks;
-    public float actionTime = 0.1f;
-    public float actionTimeEdge = 0.1f;
+    public float actionTime = 0.5f;
+    public float actionTimeEdge = 0.5f;
+    public float simulationTime = 0f;
 
     bool init = false;
 
@@ -42,7 +43,7 @@ public class Person : MonoBehaviour
     private void FixedUpdate()
     {
         if (!init) return;
-
+        simulationTime += Time.deltaTime;
         timer += Time.deltaTime;
         actionTime += Time.deltaTime;
         doorExecutor.UpdateTimer(Time.deltaTime);
@@ -69,6 +70,10 @@ public class Person : MonoBehaviour
             }
             else if (waitingTasks.Tasks.Count == 0 && waitingTasks.WaitingTaskIsExecuted()) //if single task is done and queue is empty
             {
+                if(gameObject.name == "Informer" && PersonMemory.GetInformedRooms().Count >= 29)
+                {
+                    Debug.Log(simulationTime);
+                }
                 actionExecutor.ExecuteAction(ref CurrentAction);
             }
         }

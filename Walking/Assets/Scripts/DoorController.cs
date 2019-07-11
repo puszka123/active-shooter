@@ -17,6 +17,8 @@ public class DoorController : MonoBehaviour
     public bool IsOpen { get { return isOpen; } }
     public bool IsLocked;
 
+    public bool testLock = false;
+
     public List<GameObject> peopleToInform;
 
     BoxCollider myCollider;
@@ -62,6 +64,10 @@ public class DoorController : MonoBehaviour
 
     public void TryToOpenDoor(object[] args)
     {
+        //if(testLock)
+        //{
+        //    return;
+        //}
         GameObject gObject = (GameObject)args[1];
         if (!IsLocked)
         {

@@ -164,11 +164,11 @@ public class PersonMemory
         Action action = null;
         if (transform.name == "Informer")
         {
-            action = new ImplementedActions.InformRoom();
+            action = new ImplementedActions.InformRoomAndHide();
         }
         else
         {
-            action = new ImplementedActions.Work(MyRoom.Id);
+            action = new ImplementedActions.RunToExit();
         }
         //Action action = new ImplementedActions.RunToExit();
         MyActions.AddAction(action);
@@ -206,7 +206,7 @@ public class PersonMemory
         {
             InformedRooms = new List<Room>() { room };
         }
-        else
+        else if(!InformedRooms.Select(r => r.Id).Contains(room.Id))
         {
             InformedRooms.Add(room);
         }
@@ -229,6 +229,7 @@ public class PersonMemory
     public List<Room> GetInformedRooms()
     {
         List<Room> informedRooms = new List<Room>();
+        if (InformedRooms == null) return informedRooms;
         foreach (var item in InformedRooms)
         {
             informedRooms.Add(new Room { Id = item.Id });
