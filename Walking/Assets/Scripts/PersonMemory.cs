@@ -15,7 +15,7 @@ public class PersonMemory
     public Room FoundRoom;
     public PersonActions MyActions;
     private List<Room> InformedRooms;
-    Transform transform; 
+    public Transform transform; 
     public ShooterInfo ShooterInfo;
     public List<GameObject> InformedPeople;
     public GameObject PickedObstacle;
@@ -82,12 +82,6 @@ public class PersonMemory
                 if (node == null) node = entry.Value;
                 else if (Vector3.Distance(entry.Value.Position, position) < Vector3.Distance(position, node.Position))
                 {
-                    //if(blockedByDoor != null)
-                    //    foreach (var item in blockedByDoor.Select(n => n.Name))
-                    //    {
-                    //        Debug.Log(item);
-                    //    }
-
                     if (blockedByDoor == null)
                     {
                         node = entry.Value;
@@ -165,11 +159,15 @@ public class PersonMemory
         Action action = null;
         if (transform.name == "Informer")
         {
-            action = new ImplementedActions.InformRoom();
+            action = new EvacuationActions.RunToAnyRoom();
         }
         else
         {
-            action = new ImplementedActions.RunToExit();
+            //action = new WorkActions.GoToWork(MyRoom);
+            //action = new WorkActions.LeaveWork();
+            //action = new EvacuationActions.RunToExit();
+            //action = new HideActions.HideInCurrentRoom();
+            action = new HideActions.LockCurrentRoom();
         }
         //Action action = new ImplementedActions.RunToExit();
         MyActions.AddAction(action);
@@ -178,6 +176,11 @@ public class PersonMemory
     public bool MyRoomIsAboveMe()
     {
         return CurrentFloor < GetRoomFloor(MyRoom.Id);
+    }
+
+    public bool MyRoomIsBelowMe()
+    {
+        return CurrentFloor > GetRoomFloor(MyRoom.Id);
     }
 
     public int GetRoomFloor(string roomId)

@@ -7,7 +7,7 @@ public static class Utils
 {
     public static Room GetRoom(Task task)
     {
-        return task.Limit.FoundRoom;
+        return task.Limit?.FoundRoom;
     }
 
     public static Room GetRoom(PersonMemory memory)
@@ -17,17 +17,17 @@ public static class Utils
 
     public static GameObject GetDoor(Task task)
     {
-        return task.Limit.DoorToOpen;
+        return task.Limit?.DoorToOpen;
     }
 
     public static GameObject[] GetEmployees(Task task)
     {
-        return task.Limit.Employees;
+        return task.Limit?.Employees;
     }
 
     public static GameObject GetObstacle(Task task)
     {
-        return task.Limit.Obstacle;
+        return task.Limit?.Obstacle;
     }
 
     public static string NearestStairs(string stairsType, Transform transform, PersonMemory memory)
@@ -93,6 +93,7 @@ public static class Utils
 
     public static bool DoorIsLocked(GameObject door)
     {
+        if (door == null) return true;
         return door.GetComponent<DoorController>().IsLocked;
     }
 
@@ -163,6 +164,7 @@ public static class Utils
             case Command.OPEN_DOOR:
                 break;
             case Command.GO_TO_DOOR:
+                task.Limit.DoorToOpen = memory.CurrentRoom?.Door;
                 break;
             case Command.ENTER_ROOM:
                 task.Limit.FoundRoom = memory.FoundRoom;
@@ -171,14 +173,16 @@ public static class Utils
                 task.Limit.FoundRoom = memory.FoundRoom;
                 break;
             case Command.CLOSE_DOOR:
+                task.Limit.DoorToOpen = memory.CurrentRoom?.Door;
                 break;
             case Command.TELL_ABOUT_SHOOTER:
                 task.Limit.FoundRoom = memory.FoundRoom;
                 break;
             case Command.LOCK_DOOR:
+                task.Limit.DoorToOpen = memory.CurrentRoom?.Door;
                 break;
             case Command.HIDE_IN_CURRENT_ROOM:
-                task.Limit.FoundRoom = memory.FoundRoom;
+                task.Limit.FoundRoom = memory.CurrentRoom;
                 break;
             case Command.BLOCK_DOOR:
                 task.Limit.Obstacle = memory.PickedObstacle;
@@ -202,5 +206,79 @@ public static class Utils
     {
         PersonMemory memory = person.GetComponent<Person>().PersonMemory;
         return memory.CurrentRoom != null && memory.CurrentRoom.Id == room.Id;
+    }
+
+    public static void TryCleanMyRoomGoUp(List<Task> tasks, PersonMemory memory)
+    {
+        if(memory.MyRoomIsAboveMe())
+        {
+            return;
+        }
+        tasks.Remove(tasks.Find(t => t.Command == Command.GO_UP));
+    }
+
+    public static void TryCleanMyRoomGoDown(List<Task> tasks, PersonMemory memory)
+    {
+        if (memory.MyRoomIsBelowMe())
+        {
+            return;
+        }
+        tasks.Remove(tasks.Find(t => t.Command == Command.GO_DOWN));
+    }
+
+    public static void CleanRequiredTasks(Task task, List<Task> tasks)
+    {
+        List<Task> tasksToRemove = new List<Task>();
+        foreach (var item in task.RequiredTasks)
+        {
+            Task requiredTask = tasks.Find(t => t.Command == item.Command);
+            if(requiredTask == null)
+            {
+                tasksToRemove.Add(item);
+            }
+        }
+        foreach (var item in tasksToRemove)
+        {
+            task.RequiredTasks.Remove(item);
+        }
+    }
+
+    public static void MoveAgent(GameObject agent, GameObject location)
+    {
+        agent.GetComponent<Rigidbody>().isKinematic = true;
+        agent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        agent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX
+            | RigidbodyConstraints.FreezeRotationZ;
+        agent.transform.position = location.transform.position;
+        agent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        agent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX
+            | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY;
+        agent.GetComponent<Rigidbody>().isKinematic = false;
+        agent.GetComponent<Person>().PersonMemory.CurrentFloor = int.Parse(location.transform.parent.name.Split(' ')[1]);
+    }
+
+    public static List<GameObject> GetAllChilds(this GameObject Go)
+    {
+        List<GameObject> list = new List<GameObject>();
+        for (int i = 0; i < Go.transform.childCount; i++)
+        {
+            list.Add(Go.transform.GetChild(i).gameObject);
+        }
+        return list;
+    }
+
+    public static bool RoomIsAbove(Room room, PersonMemory memory)
+    {
+        return memory.CurrentFloor < memory.GetRoomFloor(room.Id);
+    }
+
+    public static bool RoomIsBelow(Room room, PersonMemory memory)
+    {
+        return memory.CurrentFloor > memory.GetRoomFloor(room.Id);
+    }
+
+    public static bool RoomIsAtMyLevel(Room room, PersonMemory memory)
+    {
+        return memory.CurrentFloor == memory.GetRoomFloor(room.Id);
     }
 }

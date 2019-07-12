@@ -12,6 +12,7 @@ public class DoorController : MonoBehaviour
     private string doorKey;
     public GameObject MyRoom;
     public int Obstacles;
+    public GameObject[] VisibleObstacles;
 
     private float closeTime = 1f;
 
@@ -30,7 +31,7 @@ public class DoorController : MonoBehaviour
     void Start()
     {
         peopleToInform = new List<GameObject>();
-        IsLocked = false; //TEST
+        IsLocked = true; //TEST
         BoxCollider[] res = GetComponents<BoxCollider>();
         m_renderer = GetComponent<Renderer>();
         foreach (var item in res)
@@ -170,8 +171,13 @@ public class DoorController : MonoBehaviour
     {
         if (!obstacle.GetComponent<Obstacle>().InBlock)
         {
-            obstacle.GetComponent<Obstacle>().InBlock = true;
-            ++Obstacles;
+            if (VisibleObstacles.Length > Obstacles)
+            {
+                VisibleObstacles[Obstacles].GetComponent<Renderer>().enabled = true;
+                VisibleObstacles[Obstacles].GetComponent<BoxCollider>().enabled = true;
+                obstacle.GetComponent<Obstacle>().InBlock = true;
+                ++Obstacles;
+            }
         }
     }
 

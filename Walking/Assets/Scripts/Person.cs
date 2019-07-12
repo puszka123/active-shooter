@@ -48,8 +48,11 @@ public class Person : MonoBehaviour
         actionTime += Time.deltaTime;
         doorExecutor.UpdateTimer(Time.deltaTime);
         talkExecutor.UpdateTalkingTimer(Time.deltaTime);
+
         if (timer >= timerEdge && walkingModule.Executing)
         {
+            GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<Rigidbody>().isKinematic = false;
             timer = 0f;
             walkingModule.CalculateMovement(transform);
         }

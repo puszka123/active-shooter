@@ -10,6 +10,7 @@ public class RoomLocation : MonoBehaviour
     public List<GameObject> Neighbours;
     public List<Node> NeighbourNodes;
     public Node MeAsNode;
+    public GameObject WorkEmployee;
 
 
     public void InitMyNeighbours(List<GameObject> roomLocations)

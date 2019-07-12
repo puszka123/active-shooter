@@ -5,9 +5,12 @@ using UnityEngine;
 public static class ImplementedBehaviours {
     
     public class Evacuate : Behaviour {
-        public Evacuate()
+        public Evacuate(Room myRoom)
         {
-            //add all evacuate actions here
+            Actions = new List<Action>();
+            Actions.Add(new EvacuationActions.RunToAnyRoom());
+            Actions.Add(new EvacuationActions.RunToExit());
+            Actions.Add(new EvacuationActions.RunToMyRoom(myRoom));
         }
     }
 
@@ -15,7 +18,9 @@ public static class ImplementedBehaviours {
     {
         public Hide()
         {
-            //add all hide actions here
+            Actions = new List<Action>();
+            Actions.Add(new HideActions.HideInCurrentRoom());
+            Actions.Add(new HideActions.LockCurrentRoom());
         }
     }
 
@@ -29,9 +34,11 @@ public static class ImplementedBehaviours {
 
     public class Work : Behaviour
     {
-        public Work()
+        public Work(Room myRoom)
         {
-            //add all work actions here
+            Actions = new List<Action>();
+            Actions.Add(new WorkActions.GoToWork(myRoom));
+            Actions.Add(new WorkActions.LeaveWork());
         }
     }
 }

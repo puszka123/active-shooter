@@ -16,11 +16,12 @@ public class Respawn : MonoBehaviour
     public string RoomId;
     public GameObject room;
     public GameObject door;
-
+    
 
     float timer = 0.0f;
     float testTimer = 0.0f;
     static bool testOnly = true;
+    static System.Random random = new System.Random();
     // Use this for initialization
     private void Start()
     {
@@ -52,6 +53,21 @@ public class Respawn : MonoBehaviour
             employee.name = "employee " + nameGenerator++;
             DoorKey = door.name;
             employee.GetComponent<PersonDoor>().AddKey(DoorKey);
+            if(GetComponent<RoomLocation>().Workplace)
+            {
+                GetComponent<RoomLocation>().WorkEmployee = employee;
+            }
+
+            //start work 
+            //int rand = random.Next(0, 100);
+            //if (rand < 10)
+            //{
+            //    GameObject floor0 = GameObject.Find("Checkpoints 0");
+            //    GameObject[] floorLocations = floor0.GetAllChilds().ToArray();
+            //    int selected = random.Next(0, floor0.transform.childCount);
+            //    employee.GetComponent<Person>().PersonMemory.ClearCurrentRoom();
+            //    Utils.MoveAgent(employee, floorLocations[selected]);
+            //}
             timer = 0f;
             --numberOfSlots;
         }

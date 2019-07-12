@@ -53,7 +53,6 @@ public class ActionExecutor
                         finderExecutor.ExecuteTask(item, transform);
                         break;
                     case TaskType.DOOR:
-                       // doorExecutor.CheckDoor(doorExecutor.GetRoom(item)?.Door);
                         doorExecutor.CheckDoor(item);
                         doorExecutor.ExecuteTask(item, transform);
                         break;

@@ -96,7 +96,9 @@ public class DoorExecutor {
                 break;
             case Command.LOCK_DOOR:
                 GameObject door3 = Utils.GetDoor(task);
-                if (door3 == null || Utils.ToFar(door3, Me, doorDistance)) //null or to far from door
+                if (door3 == null 
+                    || Utils.ToFar(door3, Me, doorDistance)
+                    || Utils.DoorIsLocked(door3)) //null or to far from door or already locked
                 {
                     FinishDoorLockTask();
                     return;

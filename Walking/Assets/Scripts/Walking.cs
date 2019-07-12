@@ -46,6 +46,10 @@ public class Walking
 
     public void InitPath(PersonMemory memory)
     {
+        if (Me.name == "employee 43")
+        {
+            Debug.Log(TaskToExecute.Command);
+        }
         Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
         currentNodeIndex = 0;
     }
@@ -79,23 +83,29 @@ public class Walking
     public void InitPathToNearestObstacle(GameObject gameObject, PersonMemory memory)
     {
         GameObject obstacleToPick = memory.GetNearestObstacle(gameObject);
-        if(obstacleToPick == null)
+        if (obstacleToPick == null)
         {
             FinishWalking();
             return;
         }
-        memory.PickObstacle(obstacleToPick);
+        //memory.PickObstacle(obstacleToPick);
         Path = new List<Node>() { new Node() { Name = obstacleToPick.name, Position = obstacleToPick.transform.position } };
         currentNodeIndex = 0;
     }
 
     public void ExecuteTask(Task task, PersonMemory memory, Transform transform)
     {
-        if (IsTaskExecuting(task)) return; //don't do that again!
+        if (IsTaskExecuting(task)) return; //don't do that again!s 
         TaskToExecute = task;
         switch (task.Command)
         {
             case Command.GO_UP:
+                Room upRoom = Utils.GetRoom(task);
+                if (upRoom != null && !Utils.RoomIsAbove(upRoom, memory))
+                {
+                    FinishWalking();
+                    return;
+                }
                 memory.FindNearestLocation(transform.position);
                 memory.setTargetPosition(Utils.NearestStairs("UP", transform, memory));
                 if (Utils.IsInAnyRoom(memory))
@@ -108,9 +118,21 @@ public class Walking
                 {
                     InitPath(memory);
                 }
+                CurrentSpeed = Resources.Walk; //test
                 Executing = true;
                 break;
             case Command.GO_DOWN:
+                Room downRoom = Utils.GetRoom(task);
+                if (downRoom != null && !Utils.RoomIsBelow(downRoom, memory))
+                {
+                    FinishWalking();
+                    return;
+                }
+                if (memory.CurrentFloor == 0)
+                {
+                    FinishWalking();
+                    return;
+                }
                 memory.FindNearestLocation(transform.position);
                 memory.setTargetPosition(Utils.NearestStairs("DOWN", transform, memory));
                 if (Utils.IsInAnyRoom(memory))
@@ -123,30 +145,39 @@ public class Walking
                 {
                     InitPath(memory);
                 }
-
+                CurrentSpeed = Resources.Walk; //test
                 Executing = true;
                 break;
             case Command.EXIT_BUILDING:
-                memory.FindNearestLocation(transform.position);
-                memory.setTargetPosition(Utils.NearestExit(transform, memory));
-                InitPath(memory);
-                Executing = true;
-                break;
-            case Command.GO_TO_ROOM:
-                memory.FindNearestLocation(transform.position);
-                Room room1 = Utils.GetRoom(task);
-                if (room1 == null || room1.Id == memory.CurrentRoom?.Id)
+                if (memory.CurrentFloor != 0)
                 {
                     FinishWalking();
                     return;
                 }
+                memory.FindNearestLocation(transform.position);
+                memory.setTargetPosition(Utils.NearestExit(transform, memory));
+                InitPath(memory);
+                CurrentSpeed = Resources.Walk; //test
+                Executing = true;
+                break;
+            case Command.GO_TO_ROOM:
+                Room room1 = Utils.GetRoom(task);
+                if (room1 == null
+                    || room1.Id == memory.CurrentRoom?.Id
+                    || !Utils.RoomIsAtMyLevel(room1, memory))
+                {
+                    FinishWalking();
+                    return;
+                }
+                memory.FindNearestLocation(transform.position);
                 memory.setTargetPosition(room1.Id);
                 InitPath(memory);
+                CurrentSpeed = Resources.Walk; //test
                 Executing = true;
                 break;
             case Command.GO_TO_DOOR:
                 GameObject doorToOpen = Utils.GetDoor(task);
-                if (doorToOpen == null)
+                if (doorToOpen == null || !Utils.ToFar(transform.gameObject, doorToOpen))
                 {
                     FinishWalking();
                     return;
@@ -164,7 +195,9 @@ public class Walking
                 break;
             case Command.ENTER_ROOM:
                 Room room2 = Utils.GetRoom(task);
-                if (room2 == null || room2.Id == memory.CurrentRoom?.Id)
+                if (room2 == null 
+                    || room2.Id == memory.CurrentRoom?.Id
+                    || Utils.DoorIsLocked(room2.Door))
                 {
                     FinishWalking();
                     return;
@@ -198,20 +231,20 @@ public class Walking
                 Executing = true;
                 break;
             case Command.BLOCK_DOOR:
-                if (!Utils.IsInAnyRoom(memory) || Utils.GetObstacle(task) == null)
+                if (!Utils.IsInAnyRoom(memory) || memory.PickedObstacle == null)
                 {
                     FinishWalking();
                     return;
                 }
-                Utils.GetObstacle(task).GetComponent<Obstacle>().TryToPickUp(transform.gameObject);
+                memory.PickedObstacle.GetComponent<Obstacle>().TryToPickUp(transform.gameObject);
                 Executing = true;
                 break;
             case Command.STAY:
                 Path = new List<Node>();
                 memory.setStartPosition("");
                 memory.setTargetPosition("");
-                Executing = false;
                 CurrentSpeed = Resources.Stay;
+                FinishWalking();
                 break;
         }
     }
@@ -228,7 +261,14 @@ public class Walking
         {
             Vector3 m_EulerAngleVelocity;
             Quaternion deltaRotation;
-            m_Rigidbody.MovePosition(transform.position + transform.forward * Speed * Time.deltaTime);
+            if (memory.PickedObstacle == null) //test check if good
+            {
+                m_Rigidbody.MovePosition(transform.position + transform.forward * Speed * Time.deltaTime);
+            }
+            else
+            {
+                m_Rigidbody.MovePosition(transform.position + transform.forward * 0.025f * Time.deltaTime);
+            }
             m_EulerAngleVelocity = new Vector3(0, _finalAngle, 0);
             deltaRotation = Quaternion.Euler(m_EulerAngleVelocity * RotationSpeed * Time.deltaTime);
             m_Rigidbody.MoveRotation(m_Rigidbody.rotation * deltaRotation);
@@ -252,18 +292,18 @@ public class Walking
                     }
                     break;
                 case Command.EXIT_BUILDING:
-                    if (Utils.NearestExit(transform, memory) != null)
+                    if (Utils.NearestExit(transform, memory) != null
+                        && pathfinder.CheckDistance(transform.gameObject, memory.TargetPosition))
                     {
                         transform.gameObject.SetActive(false);
                     }
                     break;
                 case Command.BLOCK_DOOR:
-                    GameObject obstacle = Utils.GetObstacle(TaskToExecute);
+                    GameObject obstacle = memory.PickedObstacle;
                     if (obstacle != null
                         && Utils.Distance(memory.CurrentRoom.Door, transform.gameObject) < Pathfinder.MIN_DISTANCE)
                     {
                         memory.CurrentRoom.Door.SendMessage("AddObstacle", obstacle);
-                        memory.PutObstacle();
                     }
                     break;
                 default:
@@ -368,12 +408,13 @@ public class Walking
     {
         if (TaskToExecute.Command == Command.BLOCK_DOOR)
         {
-            if (Utils.GetObstacle(TaskToExecute) == null)
+            if (person.GetComponent<Person>().PersonMemory.PickedObstacle == null)
             {
                 FinishWalking();
             }
-            Utils.GetObstacle(TaskToExecute).SetActive(false);
-            person.GetComponent<Person>().PersonMemory.CurrentRoom.Reference.SendMessage("PickedObstacle", Utils.GetObstacle(TaskToExecute));
+            person.GetComponent<Person>().PersonMemory.PickedObstacle.SetActive(false);
+            person.GetComponent<Person>().PersonMemory.CurrentRoom.Reference.SendMessage("PickedObstacle",
+                person.GetComponent<Person>().PersonMemory.PickedObstacle);
             InitPath(person.GetComponent<Person>().PersonMemory.CurrentRoom.Door);
             CurrentSpeed = obstacle.GetComponent<Obstacle>().TargetSpeed;
         }
@@ -381,7 +422,7 @@ public class Walking
 
     public void OnBeNearObstacle(GameObject obstacle, GameObject person)
     {
-        if (TaskToExecute.Command == Command.PICK_NEAREST_OBSTACLE)
+        if (TaskToExecute != null && TaskToExecute.Command == Command.PICK_NEAREST_OBSTACLE)
         {
             person.GetComponent<Person>().PersonMemory.PickObstacle(obstacle);
             FinishWalking();
@@ -395,6 +436,10 @@ public class Walking
         if (TaskToExecute.Command == Command.HIDE_IN_CURRENT_ROOM && Utils.IsHiding(Me, person.PersonMemory))
         {
             person.MyState.IsHiding = true;
+        }
+        if (TaskToExecute.Command == Command.BLOCK_DOOR)
+        {
+            person.PersonMemory.PutObstacle();
         }
         TaskToExecute.IsDone = true;
         Executing = false;

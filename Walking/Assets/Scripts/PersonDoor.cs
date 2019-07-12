@@ -60,17 +60,21 @@ public class PersonDoor : MonoBehaviour
         Person person = GetComponent<Person>();
         Walking walking = person.walkingModule;
 
-        if (walking.Path == null 
-            || walking.Path.Count == 0 
+        if (walking.Path == null
+            || walking.Path.Count == 0
             || walking.currentNodeIndex >= walking.Path.Count) return false;
 
         Node target = walking.Path[walking.currentNodeIndex];
         return IsTargetBehindDoor(target, door);
-        
+
     }
 
     public bool IsTargetBehindDoor(Node target, GameObject door)
-    {  
+    {
+        if (target.Name == door.name)
+        {
+            return false;
+        }
         int layerMask = 1 << 10;
         RaycastHit hit;
         if (Physics.Linecast(transform.position, target.Position, out hit, layerMask))
@@ -113,7 +117,7 @@ public class PersonDoor : MonoBehaviour
     public void YouEnterRoom(GameObject door)
     {
         GameObject room = door.GetComponent<DoorController>().MyRoom;
-        if (room!= null)
+        if (room != null)
         {
             GetComponent<Person>().PersonMemory.SaveCurrentRoom(room);
         }
