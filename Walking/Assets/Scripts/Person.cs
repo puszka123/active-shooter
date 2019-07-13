@@ -82,4 +82,15 @@ public class Person : MonoBehaviour
         }
     }
 
+    public void Die(Transform activeShooter, Vector3 hitPoint)
+    {
+        float thrust = 100f;
+        init = false;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        GetComponent<ShootTester>().Speed = Resources.Stay; //test
+        Vector3 direction = transform.position - activeShooter.position;
+        GetComponent<Rigidbody>().AddForceAtPosition(direction.normalized * 1000f, hitPoint);
+        GetComponent<Rigidbody>().useGravity = true;
+    }
+
 }

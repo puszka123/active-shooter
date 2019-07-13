@@ -6,6 +6,9 @@ public class SimulationManager : MonoBehaviour {
     int respawnNameGenerator = 1;
     int doorNameGenerator = 1;
     int pathLocationNameGenerator = 1;
+
+    bool shootersInitied = false;
+
 	// Use this for initialization
 	void Start () {
         foreach (var item in GameObject.FindGameObjectsWithTag("PathLocation"))
@@ -45,6 +48,15 @@ public class SimulationManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+        if (!shootersInitied)
+        {
+            shootersInitied = true;
+            GameObject[] activeShooters = GameObject.FindGameObjectsWithTag("ActiveShooter");
+
+            foreach (var shooter in activeShooters)
+            {
+                shooter.GetComponent<Person>().Init(0, ""); //test floor
+            }
+        }
 	}
 }

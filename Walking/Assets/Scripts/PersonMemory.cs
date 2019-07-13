@@ -139,6 +139,13 @@ public class PersonMemory
 
     public void SetMyRoom(string roomId)
     {
+        if(transform.gameObject.tag == "ActiveShooter")
+        {
+            MyActions = new PersonActions();
+            Action actionShooter = new ShooterActions.FindVictim();
+            MyActions.AddAction(actionShooter);
+            return;
+        }
         GameObject myRoom = GameObject.Find(roomId);
         MyRoom = new Room
         {

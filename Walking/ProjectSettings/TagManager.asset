@@ -12,6 +12,7 @@ TagManager:
   - ChatRoomManager
   - Obstacle
   - RoomLocation
+  - ActiveShooter
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Door
   - Employee
   - Obstacle
-  - 
+  - ActiveShooter
   - 
   - 
   - 
