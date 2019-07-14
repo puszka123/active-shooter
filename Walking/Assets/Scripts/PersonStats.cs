@@ -19,4 +19,9 @@ public class PersonStats : MonoBehaviour {
             GetComponent<Person>().Die(activeShooter, hitPoint);
         }
     }
+
+    public float GetHealth()
+    {
+        return Health;
+    }
 }

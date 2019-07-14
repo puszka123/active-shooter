@@ -53,10 +53,13 @@ public class Shooting : MonoBehaviour
     Transform lastVictim = null;
     float start = 10f;
     float stop = 170f;
-    float increase = 0.5f;
+    float increase = 0.1f;
 
     private void FixedUpdate()
     {
+
+        myRigidBody.isKinematic = true;
+        myRigidBody.isKinematic = false;
         float angleHorizontal;
         Vector3 direction;
         RaycastHit hit;
@@ -87,7 +90,8 @@ public class Shooting : MonoBehaviour
             direction = new Vector3(-Mathf.Cos(angleHorizontal), 0, Mathf.Sin(angleHorizontal));
             if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
             {
-                if (hit.transform.CompareTag("Employee"))
+                if (hit.transform.CompareTag("Employee") 
+                    && hit.transform.GetComponent<PersonStats>().GetHealth() > 0)
                 {
                     //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
                     noOneInSight = false;
@@ -109,7 +113,16 @@ public class Shooting : MonoBehaviour
         }
         if (noOneInSight)
         {
-            lastVictim = victim;
+            if (victim != null
+                && victim.GetComponent<PersonStats>().GetHealth() > 0)
+            {
+                lastVictim = victim;
+                GetComponent<FollowVictim>().SetLastVictim(lastVictim);
+            }
+            else
+            {
+                lastVictim = null;
+            }
             victim = null;
         }
     }
@@ -193,5 +206,15 @@ public class Shooting : MonoBehaviour
             verticalUpDeviation = 12f;
         }
         ShooterVerticalAccuracy = new float[] { (90f - verticalUpDeviation), (90f + verticalDownDeviation) };
+    }
+
+    public bool ShootToVictim()
+    {
+        return victim != null;
+    }
+
+    public GameObject LastVictim()
+    {
+        return lastVictim.gameObject;
     }
 }

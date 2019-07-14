@@ -4,9 +4,9 @@ using UnityEngine;
 
 public static class ShooterActions  {
 
-    public class FindVictim : Action
+    public class SearchForVictim : Action
     {
-        public FindVictim()
+        public SearchForVictim()
         {
             Tasks = new List<Task>();
         }
