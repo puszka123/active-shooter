@@ -6,6 +6,7 @@ using UnityEngine;
 public class PathLocation : MonoBehaviour {
     public List<GameObject> NearestNeighbours;
     public bool IsStairs = false;
+    public bool IsToilet = false;
     public string StairsDirection = "";
     public int Floor;
     public bool IsExit = false;

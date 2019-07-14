@@ -13,6 +13,7 @@ public class DoorController : MonoBehaviour
     public GameObject MyRoom;
     public int Obstacles;
     public GameObject[] VisibleObstacles;
+    public float Resistance;
 
     private float closeTime = 1f;
 
@@ -30,6 +31,7 @@ public class DoorController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Resistance = 100f;
         peopleToInform = new List<GameObject>();
         IsLocked = true; //TEST
         BoxCollider[] res = GetComponents<BoxCollider>();
@@ -47,7 +49,7 @@ public class DoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isOpen)
+        if(isOpen && !Destroyed())
         {
 
             if (closeTime <= 0f)
@@ -66,6 +68,11 @@ public class DoorController : MonoBehaviour
 
     public void TryToOpenDoor(object[] args)
     {
+        if(Destroyed())
+        {
+            OpenDoor();
+            return;
+        }
         if(Obstacles > 0)
         {
             return;
@@ -181,4 +188,22 @@ public class DoorController : MonoBehaviour
         }
     }
 
+
+    public void YouAreHit(object[] args)
+    {
+        RaycastHit hit = (RaycastHit)args[0];
+        Transform activeShooter = (Transform)args[1];
+        Resistance -= activeShooter.GetComponent<Shooting>().ShootStrength;
+        if(Resistance <= 0f)
+        {
+            activeShooter.SendMessage("DoorDestroyed", gameObject);
+            myCollider.enabled = false;
+            m_renderer.enabled = false;
+        }
+    }
+
+    public bool Destroyed()
+    {
+        return Resistance <= 0f;
+    }
 }

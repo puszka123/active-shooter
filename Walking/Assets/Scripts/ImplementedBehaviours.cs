@@ -41,4 +41,12 @@ public static class ImplementedBehaviours {
             Actions.Add(new WorkActions.LeaveWork());
         }
     }
+
+    public class FindAndKill: Behaviour
+    {
+        public FindAndKill()
+        {
+            Actions = new List<Action>();
+        }
+    }
 }

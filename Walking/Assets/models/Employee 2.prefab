@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114778694033796470}
   - component: {fileID: 114943548488074182}
   - component: {fileID: 114347455053989192}
+  - component: {fileID: 114966159535210388}
+  - component: {fileID: 114278885196997112}
   m_Layer: 11
   m_Name: Employee 2
   m_TagString: Employee
@@ -104,6 +106,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &114278885196997112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531717540930292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1477296a202d00f42ba5cc0319e6e19d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 0
 --- !u!114 &114347455053989192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,6 +169,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSender: {fileID: 0}
   RequestToProcess: 0
+--- !u!114 &114966159535210388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531717540930292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1908ef7b6648f064fae0f394bcfa8c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChestHit: 0
+  HeadHit: 0
+  LegsHit: 0
 --- !u!136 &136033733192427174
 CapsuleCollider:
   m_ObjectHideFlags: 1

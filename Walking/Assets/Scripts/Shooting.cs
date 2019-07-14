@@ -15,7 +15,10 @@ public class Shooting : MonoBehaviour
     public float RotationSpeed;
     public float ReactionSpeed;
     public float firingRate;
+    public float ShootStrength;
     public bool CanShoot;
+
+    public GameObject DoorToDestroy;
 
     float timer;
     float shootTimer;
@@ -25,6 +28,7 @@ public class Shooting : MonoBehaviour
 
     private void Start()
     {
+        ShootStrength = 10f;
         CanShoot = true;
         firingRate = 1f;
         timer = 0f;
@@ -38,23 +42,12 @@ public class Shooting : MonoBehaviour
         ShooterVerticalAccuracy = new float[] { (90f - verticalUpDeviation), (90f + verticalDownDeviation) };
     }
 
-    private void Update()
-    {
-        //RaycastHit hit;
-        //LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Employee"); //test add obstacle
-        //if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
-        //{
-        //    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-        //}
-
-    }
-
     Transform victim = null;
     Transform lastVictim = null;
     float start = 10f;
     float stop = 170f;
-    float increase = 0.1f;
-
+    float increase = 1f;
+    public Vector3 DetectPosition;
     private void FixedUpdate()
     {
 
@@ -65,9 +58,20 @@ public class Shooting : MonoBehaviour
         RaycastHit hit;
         shootTimer += Time.deltaTime;
 
+        //if(!CanShoot)
+        //{
+        //    return;
+        //}
+
         if (victim != null)
         {
-            RotateToVictim(victim);
+            //RotateTo(victim);
+            RotateTo(DetectPosition);
+        }
+
+        if (DoorToDestroy != null)
+        {
+            RotateTo(DoorToDestroy.transform);
         }
 
         timer += Time.deltaTime;
@@ -100,6 +104,7 @@ public class Shooting : MonoBehaviour
                     {
                         distance = dist;
                         victim = hit.transform;
+                        DetectPosition = hit.point;
                         UpdateFiringRate();
                         UpdateVerticalDeviations();
                     }
@@ -124,16 +129,36 @@ public class Shooting : MonoBehaviour
                 lastVictim = null;
             }
             victim = null;
+
+            if(DoorToDestroy != null)
+            {
+                if (shootTimer >= firingRate)
+                {
+                    shootTimer = 0f;
+                    Shoot();
+                }
+            }
         }
     }
 
-    public void RotateToVictim(Transform victim)
+    public void RotateTo(Transform thing)
     {
         Vector3 direction;
-        direction = (victim.position - transform.position).normalized;
+        direction = (thing.position - transform.position).normalized;
+        direction.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * RotationSpeed);
     }
+
+    public void RotateTo(Vector3 position)
+    {
+        Vector3 direction;
+        direction = (position - transform.position).normalized;
+        direction.y = 0;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * RotationSpeed);
+    }
+
 
     public void Shoot()
     {
@@ -149,6 +174,11 @@ public class Shooting : MonoBehaviour
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.red);
             if (hit.transform.CompareTag("Employee"))
+            {
+                hit.transform.SendMessage("YouAreHit", new object[] { hit, transform });
+            }
+
+            if (hit.transform.CompareTag("Door"))
             {
                 hit.transform.SendMessage("YouAreHit", new object[] { hit, transform });
             }
@@ -216,5 +246,29 @@ public class Shooting : MonoBehaviour
     public GameObject LastVictim()
     {
         return lastVictim.gameObject;
+    }
+
+    public void ShootDoor(GameObject doorToDestroy)
+    {
+        DoorToDestroy = doorToDestroy;
+        RotateTo(doorToDestroy.transform);
+        if (doorToDestroy.GetComponent<DoorController>().Destroyed())
+        {
+            DoorDestroyed(doorToDestroy);
+        }
+    }
+
+    public void DoorDestroyed(GameObject door)
+    {
+        if (door.name == DoorToDestroy.name)
+        {
+            ClearDoorToDestroy();
+            GetComponent<Person>().destroyerExecutor.OnDoorDestroyed(door);
+        }
+    }
+
+    public void ClearDoorToDestroy()
+    {
+        DoorToDestroy = null;
     }
 }

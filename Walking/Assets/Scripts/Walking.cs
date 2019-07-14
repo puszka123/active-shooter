@@ -195,7 +195,7 @@ public class Walking
                 break;
             case Command.ENTER_ROOM:
                 Room room2 = Utils.GetRoom(task);
-                if (room2 == null 
+                if (room2 == null
                     || room2.Id == memory.CurrentRoom?.Id
                     || Utils.DoorIsLocked(room2.Door))
                 {
@@ -316,30 +316,38 @@ public class Walking
     public void CalculateMovement(Transform transform)
     {
         if (Path == null || currentNodeIndex >= Path.Count) return;
-        collisionDetection.UpdateCollisions(transform, Path[currentNodeIndex].Position);
+        Room currentRoom = Me.GetComponent<Person>().PersonMemory.CurrentRoom;
+        if (currentRoom == null)
+        {
+            collisionDetection.UpdateCollisions(transform, Path[currentNodeIndex].Position);
 
-        avoidanceSystem.Calculate(collisionDetection.rightDist, collisionDetection.veryRightDist, collisionDetection.leftDist,
+            avoidanceSystem.Calculate(collisionDetection.rightDist, collisionDetection.veryRightDist, collisionDetection.leftDist,
             collisionDetection.veryLeftDist, collisionDetection.frontDist, Speed, CurrentSpeed, collisionDetection.isStatic);
-
-
-        float aCS = avoidanceSystem.GetOutputValue("SpeedChange");
-
-
-        if (aCS != -999.0f)
-        {
-            Speed += aCS;
+            float aCS = avoidanceSystem.GetOutputValue("SpeedChange");
+            if (aCS != -999.0f)
+            {
+                Speed += aCS;
+            }
+            if (Speed < 0.0f) Speed = 0.0f;
+            if (Speed > 2.0f) Speed = 2.0f;
+            float goalAngle = pathfinder.GetGoalAngle(transform.gameObject, Path[currentNodeIndex].Position);
+            float avoidanceAngle = avoidanceSystem.GetOutputValue("Angle");
+            float ratio = 0.4f;
+            float goalWeight = 0.5f;
+            float avoidanceWeight = 2f;
+            if (avoidanceAngle != -999.0f)
+            {
+                _finalAngle = avoidanceWeight * avoidanceAngle + goalWeight * goalAngle;
+            }
         }
-        if (Speed < 0.0f) Speed = 0.0f;
-        if (Speed > 2.0f) Speed = 2.0f;
-        float goalAngle = pathfinder.GetGoalAngle(transform.gameObject, Path[currentNodeIndex].Position);
-        float avoidanceAngle = avoidanceSystem.GetOutputValue("Angle");
-        float ratio = 0.4f;
-        float goalWeight = 0.5f;
-        float avoidanceWeight = 2f;
-        if (avoidanceAngle != -999.0f)
+        else
         {
-            _finalAngle = avoidanceWeight * avoidanceAngle + goalWeight * goalAngle;
+            float goalAngle = pathfinder.GetGoalAngle(transform.gameObject, Path[currentNodeIndex].Position);
+            float goalWeight = 1f;
+            _finalAngle = goalWeight * goalAngle;
+            Speed = CurrentSpeed;
         }
+
     }
 
     private bool CheckGoal(Transform transform, PersonMemory memory)

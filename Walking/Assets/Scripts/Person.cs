@@ -14,6 +14,7 @@ public class Person : MonoBehaviour
     public Action CurrentAction;
     ActionExecutor actionExecutor;
     public TalkExecutor talkExecutor;
+    public DestroyerExecutor destroyerExecutor;
     public PersonState MyState;
 
     public TasksQueue waitingTasks;
@@ -33,7 +34,8 @@ public class Person : MonoBehaviour
         finderModule = new Finder(memory);
         doorExecutor = new DoorExecutor(GetComponent<PersonDoor>(), GetComponent<MyChat>(), gameObject);
         talkExecutor = new TalkExecutor(this);
-        actionExecutor = new ActionExecutor(walkingModule, memory, transform, finderModule, doorExecutor, talkExecutor);
+        destroyerExecutor = new DestroyerExecutor(gameObject);
+        actionExecutor = new ActionExecutor(walkingModule, memory, transform, finderModule, doorExecutor, talkExecutor, destroyerExecutor);
         CurrentAction = memory.MyActions.GetActionByIndex(0);
         actionExecutor.ExecuteAction(ref CurrentAction);
         init = true;
@@ -43,6 +45,15 @@ public class Person : MonoBehaviour
     private void FixedUpdate()
     {
         if (!init) return;
+
+        if(ImActiveShooter() && FoundVictim())
+        {
+            simulationTime += Time.deltaTime;
+            timer += Time.deltaTime;
+            actionTime += Time.deltaTime;
+            return;
+        }
+
         simulationTime += Time.deltaTime;
         timer += Time.deltaTime;
         actionTime += Time.deltaTime;
@@ -87,10 +98,20 @@ public class Person : MonoBehaviour
         float thrust = 100f;
         init = false;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        GetComponent<ShootTester>().Speed = Resources.Stay; //test
+        //GetComponent<ShootTester>().Speed = Resources.Stay; //test
         Vector3 direction = transform.position - activeShooter.position;
         GetComponent<Rigidbody>().AddForceAtPosition(direction.normalized * 1000f, hitPoint);
         GetComponent<Rigidbody>().useGravity = true;
+    }
+
+    public bool ImActiveShooter()
+    {
+        return GetComponent<Shooting>() != null;
+    }
+
+    public bool FoundVictim()
+    {
+        return GetComponent<Shooting>().ShootToVictim() || GetComponent<ShooterAwarness>().FoundVictim != null;
     }
 
 }

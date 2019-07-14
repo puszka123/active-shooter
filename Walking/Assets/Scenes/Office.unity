@@ -3122,6 +3122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -3152,6 +3153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -3391,6 +3393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -3575,6 +3578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -3972,6 +3976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -4244,6 +4249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -4346,6 +4352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -4371,6 +4378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -4396,6 +4404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -4729,6 +4738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -4831,6 +4841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -4933,6 +4944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -4958,6 +4970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -5060,6 +5073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -5090,6 +5104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -5508,6 +5523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -5533,6 +5549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -5575,6 +5592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -5830,6 +5848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -5932,6 +5951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -6520,6 +6540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -6538,7 +6559,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 103999062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e46c73a9e9cc8048816db080b67807e, type: 3}
   m_Name: 
@@ -6551,14 +6572,16 @@ MonoBehaviour:
   RotationSpeed: 0
   ReactionSpeed: 0
   firingRate: 0
+  ShootStrength: 0
   CanShoot: 0
+  DoorToDestroy: {fileID: 0}
 --- !u!114 &103999064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 103999062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daaff40050b8dd641838683bd7a5332d, type: 3}
   m_Name: 
@@ -6571,7 +6594,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 103999062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18554da107b0b25498550a730052cf27, type: 3}
   m_Name: 
@@ -6673,6 +6696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -7053,6 +7077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -7182,6 +7207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -7292,6 +7318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -7587,7 +7614,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_RootOrder
-      value: 127
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 1919779433844870, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_Name
@@ -7855,6 +7882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -8281,6 +8309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -8388,6 +8417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -8759,7 +8789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &172552990
 Transform:
   m_ObjectHideFlags: 0
@@ -8895,7 +8925,6 @@ Transform:
   - {fileID: 1970075101}
   - {fileID: 1589229787}
   - {fileID: 506989421}
-  - {fileID: 1745998525}
   - {fileID: 1627857386}
   - {fileID: 143653963}
   - {fileID: 642183828}
@@ -8905,6 +8934,7 @@ Transform:
   - {fileID: 2106557825}
   - {fileID: 1249282918}
   - {fileID: 186022528}
+  - {fileID: 1745998525}
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9069,6 +9099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -9158,15 +9189,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4787771424834092, guid: ff51460225ab47d4d8aede72aa15d8b5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -13.951
+      value: 17.249
       objectReference: {fileID: 0}
     - target: {fileID: 4787771424834092, guid: ff51460225ab47d4d8aede72aa15d8b5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.28
+      value: 4.339813
       objectReference: {fileID: 0}
     - target: {fileID: 4787771424834092, guid: ff51460225ab47d4d8aede72aa15d8b5, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -3.96
+      value: -1.853
       objectReference: {fileID: 0}
     - target: {fileID: 4787771424834092, guid: ff51460225ab47d4d8aede72aa15d8b5, type: 2}
       propertyPath: m_LocalRotation.x
@@ -9318,6 +9349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -9492,6 +9524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -9536,7 +9569,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_RootOrder
-      value: 134
+      value: 133
       objectReference: {fileID: 0}
     - target: {fileID: 1919779433844870, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_Name
@@ -9786,6 +9819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -9960,6 +9994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -10062,6 +10097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -10597,7 +10633,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_RootOrder
-      value: 129
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 1919779433844870, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_Name
@@ -13460,6 +13496,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.988601, y: 7.0323896, z: 0.04311101}
   m_Center: {x: -0.006608963, y: 0.49566132, z: 0}
+--- !u!4 &234453981 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400254, guid: ec2fa37ed9bc5d84985c274cdfd462e4,
+    type: 3}
+  m_PrefabInternal: {fileID: 234453724}
 --- !u!1001 &236294995
 Prefab:
   m_ObjectHideFlags: 0
@@ -13555,6 +13596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -13656,6 +13698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -13775,6 +13818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -13877,6 +13921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -14056,6 +14101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -14158,6 +14204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -14321,6 +14368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -14402,6 +14450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -14564,6 +14613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -14666,6 +14716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -14696,6 +14747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -14808,6 +14860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -15161,6 +15214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -15340,6 +15394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -15580,6 +15635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -15687,6 +15743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -15860,6 +15917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -16284,6 +16342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -16375,6 +16434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -16626,6 +16686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -16745,6 +16806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -16988,6 +17050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -17165,6 +17228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -17344,6 +17408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -17672,6 +17737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -17697,6 +17763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -17722,6 +17789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -17824,6 +17892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -17929,6 +17998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -18118,6 +18188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -18355,6 +18426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -18546,6 +18618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -18895,6 +18968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -19320,6 +19394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -19829,6 +19904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -19948,6 +20024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -20039,6 +20116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -20202,6 +20280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -20321,6 +20400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -20586,6 +20666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -20810,6 +20891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -21078,6 +21160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -21252,6 +21335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -21687,6 +21771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 1
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -21888,6 +21973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -21990,6 +22076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -25128,6 +25215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -25314,6 +25402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -25706,6 +25795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -25808,6 +25898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -25976,6 +26067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -26225,6 +26317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -26436,6 +26529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -26869,6 +26963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -26971,6 +27066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -27073,6 +27169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 1
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -27454,6 +27551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -27962,6 +28060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -28516,6 +28615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -28546,6 +28646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -28648,6 +28749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -28896,6 +28998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -28926,6 +29029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -29045,6 +29149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -29147,6 +29252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -29177,6 +29283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -29455,6 +29562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -29557,6 +29665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -29582,6 +29691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -29769,6 +29879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -29956,7 +30067,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_RootOrder
-      value: 128
+      value: 127
       objectReference: {fileID: 0}
     - target: {fileID: 1919779433844870, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_Name
@@ -30611,6 +30722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -30899,6 +31011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -30924,6 +31037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -31026,6 +31140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -31127,6 +31242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -31157,6 +31273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -31182,6 +31299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -31289,6 +31407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -32010,6 +32129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -32112,6 +32232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -32137,6 +32258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -32314,6 +32436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -32416,6 +32539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -32665,6 +32789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -32695,6 +32820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -32946,6 +33072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -33104,6 +33231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -33219,7 +33347,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_RootOrder
-      value: 131
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 1919779433844870, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_Name
@@ -33370,6 +33498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -33640,6 +33769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -34199,6 +34329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -34224,6 +34355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -34249,6 +34381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -34423,6 +34556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -34689,6 +34823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -34935,6 +35070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -35103,6 +35239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -35351,6 +35488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -35746,6 +35884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -35848,6 +35987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -35950,6 +36090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -36364,6 +36505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -36466,6 +36608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -36802,6 +36945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -37070,6 +37214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -37532,6 +37677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -37557,6 +37703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -37775,6 +37922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -38030,6 +38178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -38224,6 +38373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 1
@@ -38403,6 +38553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -38505,6 +38656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -38530,6 +38682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -38698,6 +38851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -38976,6 +39130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -39179,6 +39334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -39281,6 +39437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -39465,6 +39622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -39665,6 +39823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -39767,6 +39926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -40303,6 +40463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -40581,6 +40742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -40758,6 +40920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -40860,6 +41023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -41015,6 +41179,95 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fac2563fa4263f46970b631267c5edd, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &954406114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100052, guid: ec2fa37ed9bc5d84985c274cdfd462e4,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 954406115}
+  - component: {fileID: 954406118}
+  - component: {fileID: 954406117}
+  - component: {fileID: 954406116}
+  m_Layer: 9
+  m_Name: Cube.027 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &954406115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400052, guid: ec2fa37ed9bc5d84985c274cdfd462e4,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 954406114}
+  m_LocalRotation: {x: -0.7071068, y: -0.00000023040467, z: -0.0000002304047, w: 0.7071067}
+  m_LocalPosition: {x: -0.043, y: 0.4461422, z: 2.556}
+  m_LocalScale: {x: 1, y: 0.99999976, z: 0.99999976}
+  m_Children: []
+  m_Father: {fileID: 234453981}
+  m_RootOrder: 127
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &954406116
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 954406114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.034162108, y: 1.0151316, z: 0.7659799}
+  m_Center: {x: -0.000000029802317, y: 0.07994106, z: -1.0728892e-21}
+--- !u!23 &954406117
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 2300052, guid: ec2fa37ed9bc5d84985c274cdfd462e4,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 954406114}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: ec2fa37ed9bc5d84985c274cdfd462e4, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &954406118
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 3300052, guid: ec2fa37ed9bc5d84985c274cdfd462e4,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 954406114}
+  m_Mesh: {fileID: 4300200, guid: ec2fa37ed9bc5d84985c274cdfd462e4, type: 3}
 --- !u!1001 &956434676
 Prefab:
   m_ObjectHideFlags: 0
@@ -41110,6 +41363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -41569,6 +41823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -41671,6 +41926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -41822,6 +42078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -41852,6 +42109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -42260,6 +42518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -42290,6 +42549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -42392,6 +42652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -42494,6 +42755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -42826,6 +43088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -43162,6 +43425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -43187,6 +43451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -43355,6 +43620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -43452,6 +43718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -43548,6 +43815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -43650,6 +43918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -43802,6 +44071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -43832,6 +44102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -44010,6 +44281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -44822,6 +45094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -45385,6 +45658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -45625,6 +45899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -45738,6 +46013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -45917,6 +46193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -46229,6 +46506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -46406,6 +46684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -46508,6 +46787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -46610,6 +46890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -46635,6 +46916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -46820,6 +47102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -46845,6 +47128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -46947,6 +47231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -47658,6 +47943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -47934,6 +48220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -48025,6 +48312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -48050,6 +48338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -48152,6 +48441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -48254,6 +48544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -48373,6 +48664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -48475,6 +48767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -48643,6 +48936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -48903,6 +49197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -48928,6 +49223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -49353,6 +49649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -49400,6 +49697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -49579,6 +49877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -49773,6 +50072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -49815,6 +50115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -49934,6 +50235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -49959,6 +50261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -49984,6 +50287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -50173,6 +50477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -50275,6 +50580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -50455,6 +50761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -50480,6 +50787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -50599,6 +50907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -50629,6 +50938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -50659,6 +50969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -50867,6 +51178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -51252,6 +51564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -54364,6 +54677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -54526,6 +54840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -54628,6 +54943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -54806,6 +55122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -54850,7 +55167,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_RootOrder
-      value: 133
+      value: 132
       objectReference: {fileID: 0}
     - target: {fileID: 1919779433844870, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_Name
@@ -55451,6 +55768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -55570,6 +55888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -55689,6 +56008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -55967,6 +56287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -56069,6 +56390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -56237,6 +56559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -56262,6 +56585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -56365,6 +56689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -56467,6 +56792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -56492,6 +56818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -56660,6 +56987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -56939,6 +57267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -57058,6 +57387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -57160,6 +57490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -57627,6 +57958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -57652,6 +57984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -57754,6 +58087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -57856,6 +58190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 1
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -58019,6 +58354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -58121,6 +58457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -58667,6 +59004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -58769,6 +59107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -58958,6 +59297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -59104,6 +59444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -59206,6 +59547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -59308,6 +59650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -59410,6 +59753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -59587,6 +59931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -59907,6 +60252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -60082,6 +60428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -60766,6 +61113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -61234,6 +61582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -61589,6 +61938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -61689,6 +62039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -61719,6 +62070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -61810,6 +62162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -61835,6 +62188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -62086,6 +62440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -62217,6 +62572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -62319,6 +62675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -62455,6 +62812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -62499,7 +62857,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_RootOrder
-      value: 130
+      value: 129
       objectReference: {fileID: 0}
     - target: {fileID: 1919779433844870, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_Name
@@ -62706,6 +63064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -62924,6 +63283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -63043,6 +63403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -63286,6 +63647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -63776,6 +64138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -63818,6 +64181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -63954,6 +64318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -64362,6 +64727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -64701,6 +65067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -64803,6 +65170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -64833,6 +65201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -65034,6 +65403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -65359,6 +65729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -65472,6 +65843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -65594,6 +65966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -66027,6 +66400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -66439,6 +66813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -66541,6 +66916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -66643,6 +67019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -66673,6 +67050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -66722,7 +67100,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_RootOrder
-      value: 126
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 1919779433844870, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_Name
@@ -66996,6 +67374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -67021,6 +67400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -67198,6 +67578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -67394,6 +67775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -67490,6 +67872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -67592,6 +67975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -67634,6 +68018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -67659,6 +68044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -67684,6 +68070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -67786,6 +68173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -68173,6 +68561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -68198,6 +68587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -68383,6 +68773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -68578,6 +68969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -68680,6 +69072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -68787,6 +69180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -68889,6 +69283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -68919,6 +69314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 1
@@ -69159,6 +69555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 1
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -69569,6 +69966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -69671,6 +70069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -69845,6 +70244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -70019,6 +70419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -70221,6 +70622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -70554,6 +70956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -70596,6 +70999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -70698,6 +71102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -70800,6 +71205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -70825,6 +71231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -70927,6 +71334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -71104,6 +71512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -71206,6 +71615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -71222,7 +71632,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.838
+      value: -0.83799934
       objectReference: {fileID: 0}
     - target: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -71250,7 +71660,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_RootOrder
-      value: 125
+      value: 134
       objectReference: {fileID: 0}
     - target: {fileID: 1919779433844870, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_Name
@@ -71358,6 +71768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -71673,6 +72084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -71698,6 +72110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -72239,6 +72652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -72384,6 +72798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 1
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -72486,6 +72901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -72588,6 +73004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -72972,6 +73389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -73201,6 +73619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -73547,6 +73966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -73883,6 +74303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -74144,6 +74565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -74355,6 +74777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -74380,6 +74803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -74410,6 +74834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -74661,6 +75086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -74775,6 +75201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -75056,6 +75483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -75158,6 +75586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -75282,6 +75711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
   IsExit: 0
@@ -75384,6 +75814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -75600,6 +76031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -75625,6 +76057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -75727,6 +76160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -75893,6 +76327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -76003,6 +76438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -76269,6 +76705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -76365,6 +76802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -76395,6 +76833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -76437,6 +76876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -76539,6 +76979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -76782,6 +77223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -76884,6 +77326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -76986,6 +77429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -77088,6 +77532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -77190,6 +77635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -77367,6 +77813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -77486,6 +77933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -77588,6 +78036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -77700,6 +78149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -78619,6 +79069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -78649,6 +79100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -78880,6 +79332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -78976,6 +79429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -79078,6 +79532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -79246,6 +79701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -79348,6 +79804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -79985,6 +80442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -80306,6 +80764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -80331,6 +80790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -80361,6 +80821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -80403,6 +80864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -80494,6 +80956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -80541,6 +81004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -80782,6 +81246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -81012,6 +81477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -81515,6 +81981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -82694,6 +83161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -82868,6 +83336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -83497,6 +83966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -83541,7 +84011,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_RootOrder
-      value: 132
+      value: 131
       objectReference: {fileID: 0}
     - target: {fileID: 1919779433844870, guid: b7cd8c048479d1b4ebaa3359db92154b, type: 2}
       propertyPath: m_Name
@@ -83731,6 +84201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -83986,6 +84457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -84281,6 +84753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 1
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0
@@ -85072,6 +85545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearestNeighbours: []
   IsStairs: 0
+  IsToilet: 0
   StairsDirection: UP
   Floor: 0
   IsExit: 0

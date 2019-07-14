@@ -94,6 +94,7 @@ public static class Utils
     public static bool DoorIsLocked(GameObject door)
     {
         if (door == null) return true;
+        if (door.GetComponent<DoorController>().Destroyed()) return false;
         return door.GetComponent<DoorController>().IsLocked;
     }
 
@@ -186,6 +187,9 @@ public static class Utils
                 break;
             case Command.BLOCK_DOOR:
                 task.Limit.Obstacle = memory.PickedObstacle;
+                break;
+            case Command.DESTROY_DOOR:
+                task.Limit.FoundRoom = memory.FoundRoom;
                 break;
             default:
                 break;

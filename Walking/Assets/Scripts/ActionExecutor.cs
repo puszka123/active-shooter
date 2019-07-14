@@ -12,9 +12,10 @@ public class ActionExecutor
     Transform transform;
     PersonMemory memory;
     TalkExecutor talkExecutor;
+    DestroyerExecutor destroyerExecutor;
 
     public ActionExecutor(Walking walkingModule, PersonMemory memory, Transform transform, 
-        Finder finderExecutor, DoorExecutor doorExecutor, TalkExecutor talkExecutor)
+        Finder finderExecutor, DoorExecutor doorExecutor, TalkExecutor talkExecutor, DestroyerExecutor destroyerExecutor)
     {
         movementExecutor = walkingModule;
         this.doorExecutor = doorExecutor;
@@ -22,6 +23,7 @@ public class ActionExecutor
         this.transform = transform;
         this.memory = memory;
         this.talkExecutor = talkExecutor;
+        this.destroyerExecutor = destroyerExecutor;
     }
 
     public void ExecuteAction(ref Action actionToExecute)
@@ -55,6 +57,9 @@ public class ActionExecutor
                     case TaskType.DOOR:
                         doorExecutor.CheckDoor(item);
                         doorExecutor.ExecuteTask(item, transform);
+                        break;
+                    case TaskType.DESTROYER:
+                        destroyerExecutor.ExecuteTask(item);
                         break;
                     default:
                         break;

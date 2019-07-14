@@ -142,7 +142,7 @@ public class PersonMemory
         if(transform.gameObject.tag == "ActiveShooter")
         {
             MyActions = new PersonActions();
-            Action actionShooter = new ShooterActions.SearchForVictim();
+            Action actionShooter = new ShooterActions.GoToAnyRoom();
             MyActions.AddAction(actionShooter);
             return;
         }

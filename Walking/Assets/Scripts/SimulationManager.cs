@@ -8,6 +8,7 @@ public class SimulationManager : MonoBehaviour {
     int pathLocationNameGenerator = 1;
 
     bool shootersInitied = false;
+    float time = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -50,12 +51,19 @@ public class SimulationManager : MonoBehaviour {
     void Update () {
         if (!shootersInitied)
         {
+            time += Time.deltaTime;
+        }
+        if (!shootersInitied && time >= 3f)
+        {
             shootersInitied = true;
             GameObject[] activeShooters = GameObject.FindGameObjectsWithTag("ActiveShooter");
 
             foreach (var shooter in activeShooters)
             {
-                shooter.GetComponent<Person>().Init(0, ""); //test floor
+                shooter.GetComponent<Person>().Init(3, ""); //test floor
+                shooter.GetComponent<Shooting>().enabled = true; 
+                shooter.GetComponent<ShooterAwarness>().enabled = true; 
+                shooter.GetComponent<FollowVictim>().enabled = true; 
             }
         }
 	}

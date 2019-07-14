@@ -13,10 +13,27 @@ public class ShooterAwarness : MonoBehaviour
         RotationSpeed = 10f;
     }
 
+    private void Update()
+    {
+        //LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Employee");
+        //float angleHorizontal;
+        //Vector3 direction;
+        //RaycastHit hit;
+        //for (float i = 180; i < 360f; i += 1f)
+        //{
+        //    angleHorizontal = Mathf.Deg2Rad * i;
+        //    direction = new Vector3(-Mathf.Cos(angleHorizontal), 0, Mathf.Sin(angleHorizontal));
+        //    if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
+        //    {
+        //        Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
+        //    }
+        //}
+    }
+
     private void FixedUpdate()
     {
         timer += Time.deltaTime;
-        if (timer >= 0.1f)
+        if (timer >= 0.5f)
         {
             timer = 0f;
         }
@@ -40,12 +57,13 @@ public class ShooterAwarness : MonoBehaviour
         LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Employee"); //test add obstacle
         float distance = 999f;
         bool noOneInSight = true;
-        for (float i = 0; i < 360f; i += 0.1f)
+        for (float i = 180; i < 360f; i += 1f)
         {
             angleHorizontal = Mathf.Deg2Rad * i;
             direction = new Vector3(-Mathf.Cos(angleHorizontal), 0, Mathf.Sin(angleHorizontal));
             if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
             {
+                //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
                 if (hit.transform.CompareTag("Employee")
                     && hit.transform.GetComponent<PersonStats>().GetHealth() > 0)
                 {
