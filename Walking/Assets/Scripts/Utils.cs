@@ -285,4 +285,10 @@ public static class Utils
     {
         return memory.CurrentFloor == memory.GetRoomFloor(room.Id);
     }
+
+    public static bool CanSee(GameObject a, GameObject b)
+    {
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Obstacle");
+        return !Physics.Linecast(a.transform.position, b.transform.position, layerMask);
+    }
 }

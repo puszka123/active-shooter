@@ -47,4 +47,10 @@ public class PersonHit : MonoBehaviour
             }
         }
     }
+
+    public void YouAreHit(GameObject activeShooter)
+    {
+        float damage = Random.Range(ChestHit, 2 * ChestHit);
+        GetComponent<PersonStats>().GetDamage(damage, activeShooter.transform, transform.position);
+    }
 }

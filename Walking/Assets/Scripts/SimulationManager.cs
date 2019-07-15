@@ -65,6 +65,16 @@ public class SimulationManager : MonoBehaviour {
                 shooter.GetComponent<ShooterAwarness>().enabled = true; 
                 shooter.GetComponent<FollowVictim>().enabled = true; 
             }
+
+            GameObject[] fighters = GameObject.FindGameObjectsWithTag("Employee");
+
+            foreach (var fighter in fighters)
+            {
+                if (fighter.name.StartsWith("Fighter"))
+                {
+                    fighter.GetComponent<Person>().Init(3, ""); //test floor
+                }
+            }
         }
 	}
 }

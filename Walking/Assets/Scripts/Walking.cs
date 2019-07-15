@@ -29,9 +29,11 @@ public class Walking
     public bool Executing;
     public Task TaskToExecute;
 
+    public GameObject Shooter;
+
     public Walking(Rigidbody rigidbody)
     {
-        RotationSpeed = 7.5f;
+        RotationSpeed = 10f;
         Speed = 0f;
         CurrentSpeed = 0f;
         m_Rigidbody = rigidbody;
@@ -42,14 +44,12 @@ public class Walking
         avoidanceSystem.initAvoidanceSystem();
         TaskToExecute = null;
         Me = rigidbody.gameObject;
+
+        Shooter = GameObject.FindGameObjectWithTag("ActiveShooter"); 
     }
 
     public void InitPath(PersonMemory memory)
     {
-        if (Me.name == "employee 43")
-        {
-            Debug.Log(TaskToExecute.Command);
-        }
         Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
         currentNodeIndex = 0;
     }
@@ -93,6 +93,30 @@ public class Walking
         currentNodeIndex = 0;
     }
 
+    public void InitPathToEnemy(PersonMemory memory)
+    {
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Obstacle");
+        bool canRunTowards = !Physics.Linecast(Me.transform.position, Shooter.transform.position, layerMask);
+        if (canRunTowards)
+        {
+            InitPath(Shooter);
+        }
+        else 
+        {
+            memory.setStartPosition(memory.FindNearestLocation(Me.transform.position).Name);
+            memory.setTargetPosition(memory.FindNearestLocation(Shooter.transform.position).Name);
+            if (memory.CurrentRoom == null)
+            {
+                InitPath(memory);
+            }
+            else
+            {
+                InitRoomPath(memory.CurrentRoom, Me.transform, memory, memory.CurrentRoom.Door);
+                InitPathWithRoomPath(memory);
+            }
+        }
+    }
+
     public void ExecuteTask(Task task, PersonMemory memory, Transform transform)
     {
         if (IsTaskExecuting(task)) return; //don't do that again!s 
@@ -106,7 +130,7 @@ public class Walking
                     FinishWalking();
                     return;
                 }
-                memory.FindNearestLocation(transform.position);
+                memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
                 memory.setTargetPosition(Utils.NearestStairs("UP", transform, memory));
                 if (Utils.IsInAnyRoom(memory))
                 {
@@ -133,7 +157,7 @@ public class Walking
                     FinishWalking();
                     return;
                 }
-                memory.FindNearestLocation(transform.position);
+                memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
                 memory.setTargetPosition(Utils.NearestStairs("DOWN", transform, memory));
                 if (Utils.IsInAnyRoom(memory))
                 {
@@ -154,7 +178,7 @@ public class Walking
                     FinishWalking();
                     return;
                 }
-                memory.FindNearestLocation(transform.position);
+                memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
                 memory.setTargetPosition(Utils.NearestExit(transform, memory));
                 InitPath(memory);
                 CurrentSpeed = Resources.Walk; //test
@@ -169,7 +193,7 @@ public class Walking
                     FinishWalking();
                     return;
                 }
-                memory.FindNearestLocation(transform.position);
+                memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
                 memory.setTargetPosition(room1.Id);
                 InitPath(memory);
                 CurrentSpeed = Resources.Walk; //test
@@ -237,6 +261,16 @@ public class Walking
                     return;
                 }
                 memory.PickedObstacle.GetComponent<Obstacle>().TryToPickUp(transform.gameObject);
+                Executing = true;
+                break;
+            case Command.RUN_TO_ENEMY:
+                if (!Utils.ToFar(Shooter, Me))
+                {
+                    FinishWalking();
+                    return;
+                }
+                InitPathToEnemy(memory);
+                CurrentSpeed = Resources.Sprint;
                 Executing = true;
                 break;
             case Command.STAY:
@@ -345,7 +379,15 @@ public class Walking
             float goalAngle = pathfinder.GetGoalAngle(transform.gameObject, Path[currentNodeIndex].Position);
             float goalWeight = 1f;
             _finalAngle = goalWeight * goalAngle;
-            Speed = CurrentSpeed;
+            if(Speed < CurrentSpeed)
+            {
+                Speed += 0.05f;
+            }
+            if(Speed > CurrentSpeed)
+            {
+                Speed -= 0.05f;
+            }
+            //Speed = CurrentSpeed;
         }
 
     }
@@ -359,7 +401,7 @@ public class Walking
         if (Physics.Linecast(transform.position, Path[currentNodeIndex].Position, out hit, layerMask) && blockedWayTimeout >= 2f)
         {
             blockedWayTimeout = 0f;
-            memory.FindNearestLocation(transform.position);
+            memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
             if (memory.StartPosition != null)
             {
                 InitPath(memory);
@@ -396,7 +438,7 @@ public class Walking
     public void UpdatePathAfterBlockedNode(Transform transform, PersonMemory memory)
     {
         blockedWayTimeout = 0f;
-        memory.FindNearestLocation(transform.position);
+        memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
         if (memory.StartPosition != null)
         {
             InitPath(memory);
@@ -434,6 +476,16 @@ public class Walking
         {
             person.GetComponent<Person>().PersonMemory.PickObstacle(obstacle);
             FinishWalking();
+        }
+    }
+
+    public void CheckIfSeeShooter()
+    {
+        if (TaskToExecute == null) return;
+        if (TaskToExecute.Command == Command.RUN_TO_ENEMY
+            && Utils.CanSee(Me, Shooter))
+        {
+            InitPath(Shooter);
         }
     }
 

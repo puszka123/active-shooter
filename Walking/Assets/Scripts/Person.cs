@@ -15,6 +15,7 @@ public class Person : MonoBehaviour
     ActionExecutor actionExecutor;
     public TalkExecutor talkExecutor;
     public DestroyerExecutor destroyerExecutor;
+    public FighterExecutor fighterExecutor;
     public PersonState MyState;
 
     public TasksQueue waitingTasks;
@@ -35,7 +36,9 @@ public class Person : MonoBehaviour
         doorExecutor = new DoorExecutor(GetComponent<PersonDoor>(), GetComponent<MyChat>(), gameObject);
         talkExecutor = new TalkExecutor(this);
         destroyerExecutor = new DestroyerExecutor(gameObject);
-        actionExecutor = new ActionExecutor(walkingModule, memory, transform, finderModule, doorExecutor, talkExecutor, destroyerExecutor);
+        fighterExecutor = new FighterExecutor(gameObject);
+        actionExecutor = new ActionExecutor(walkingModule, memory, transform, finderModule, doorExecutor, talkExecutor, destroyerExecutor,
+            fighterExecutor);
         CurrentAction = memory.MyActions.GetActionByIndex(0);
         actionExecutor.ExecuteAction(ref CurrentAction);
         init = true;
@@ -46,7 +49,12 @@ public class Person : MonoBehaviour
     {
         if (!init) return;
 
-        if(ImActiveShooter() && FoundVictim())
+        if(transform.name.StartsWith("Employee Origin"))
+        {
+            return;
+        }
+
+        if(ImActiveShooter() && (FoundVictim() || Fighting()))
         {
             simulationTime += Time.deltaTime;
             timer += Time.deltaTime;
@@ -112,6 +120,11 @@ public class Person : MonoBehaviour
     public bool FoundVictim()
     {
         return GetComponent<Shooting>().ShootToVictim() || GetComponent<ShooterAwarness>().FoundVictim != null;
+    }
+
+    public bool Fighting()
+    {
+        return GetComponent<Fight>().FightIsStarted;
     }
 
 }

@@ -66,7 +66,7 @@ public class AvoidanceSystem
         angle.Terms.Add(turnAround);
 
         FuzzyTerm slower = new FuzzyTerm("Slower", new TriangularMembershipFunction(-0.35f, -0.3f, -0.25f));
-        FuzzyTerm fastWalk = new FuzzyTerm("Faster", new TriangularMembershipFunction(0.0f, 0.1f, 0.2f));
+        FuzzyTerm fastWalk = new FuzzyTerm("Faster", new TriangularMembershipFunction(0.0f, 0.05f, 0.1f));
 
         FuzzyVariable speedChange = new FuzzyVariable("SpeedChange", -1.5f, 1.5f);
         speedChange.Terms.Add(slower);

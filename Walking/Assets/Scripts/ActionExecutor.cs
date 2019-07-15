@@ -13,9 +13,11 @@ public class ActionExecutor
     PersonMemory memory;
     TalkExecutor talkExecutor;
     DestroyerExecutor destroyerExecutor;
+    FighterExecutor fighterExecutor;
 
     public ActionExecutor(Walking walkingModule, PersonMemory memory, Transform transform, 
-        Finder finderExecutor, DoorExecutor doorExecutor, TalkExecutor talkExecutor, DestroyerExecutor destroyerExecutor)
+        Finder finderExecutor, DoorExecutor doorExecutor, TalkExecutor talkExecutor, DestroyerExecutor destroyerExecutor,
+        FighterExecutor fighterExecutor)
     {
         movementExecutor = walkingModule;
         this.doorExecutor = doorExecutor;
@@ -24,6 +26,7 @@ public class ActionExecutor
         this.memory = memory;
         this.talkExecutor = talkExecutor;
         this.destroyerExecutor = destroyerExecutor;
+        this.fighterExecutor = fighterExecutor;
     }
 
     public void ExecuteAction(ref Action actionToExecute)
@@ -43,6 +46,7 @@ public class ActionExecutor
                 switch (item.Type)
                 {
                     case TaskType.MOVEMENT:
+                        movementExecutor.CheckIfSeeShooter();
                         movementExecutor.ExecuteTask(item, memory, transform);
                         break;
                     case TaskType.TALK:
@@ -60,6 +64,9 @@ public class ActionExecutor
                         break;
                     case TaskType.DESTROYER:
                         destroyerExecutor.ExecuteTask(item);
+                        break;
+                    case TaskType.FIGHTER:
+                        fighterExecutor.ExecuteTask(item);
                         break;
                     default:
                         break;

@@ -60,6 +60,8 @@ public class PersonDoor : MonoBehaviour
         Person person = GetComponent<Person>();
         Walking walking = person.walkingModule;
 
+        if (walking == null) return false;
+
         if (walking.Path == null
             || walking.Path.Count == 0
             || walking.currentNodeIndex >= walking.Path.Count) return false;

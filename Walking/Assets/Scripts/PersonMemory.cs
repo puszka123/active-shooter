@@ -15,7 +15,7 @@ public class PersonMemory
     public Room FoundRoom;
     public PersonActions MyActions;
     private List<Room> InformedRooms;
-    public Transform transform; 
+    public Transform transform;
     public ShooterInfo ShooterInfo;
     public List<GameObject> InformedPeople;
     public GameObject PickedObstacle;
@@ -71,7 +71,7 @@ public class PersonMemory
         }
     }
 
-    public void FindNearestLocation(Vector3 position)
+    public Node FindNearestLocation(Vector3 position)
     {
         Node node = null;
         foreach (KeyValuePair<string, Node> entry in Graph[CurrentFloor].AllNodes)
@@ -94,11 +94,11 @@ public class PersonMemory
                 }
             }
         }
-        StartPosition = node;
         if (StartPosition == null)
         {
-            Debug.Log("StartPosition is null");
+            Debug.Log(transform.name + " StartPosition is null");
         }
+        return node;
     }
 
     public Node[] GetBlockedNodes()
@@ -139,13 +139,21 @@ public class PersonMemory
 
     public void SetMyRoom(string roomId)
     {
-        if(transform.gameObject.tag == "ActiveShooter")
+        if (transform.gameObject.tag == "ActiveShooter")
         {
             MyActions = new PersonActions();
             Action actionShooter = new ShooterActions.GoToAnyRoom();
             MyActions.AddAction(actionShooter);
             return;
         }
+        if (transform.gameObject.name.StartsWith("Fighter"))
+        {
+            MyActions = new PersonActions();
+            Action actionFighter = new FightActions.Fight();
+            MyActions.AddAction(actionFighter);
+            //return;
+        }
+        //return; //test
         GameObject myRoom = GameObject.Find(roomId);
         MyRoom = new Room
         {
@@ -166,7 +174,11 @@ public class PersonMemory
         Action action = null;
         if (transform.name == "Informer")
         {
-            action = new EvacuationActions.RunToAnyRoom();
+            action = new EvacuationActions.RunToExit();
+        }
+        else if (transform.name.StartsWith("Fighter"))
+        {
+            action = new FightActions.Fight();
         }
         else
         {
@@ -174,7 +186,8 @@ public class PersonMemory
             //action = new WorkActions.LeaveWork();
             //action = new EvacuationActions.RunToExit();
             //action = new HideActions.HideInCurrentRoom();
-            action = new HideActions.LockCurrentRoom();
+            //action = new HideActions.LockCurrentRoom();
+            action = new FightActions.Fight();
         }
         //Action action = new ImplementedActions.RunToExit();
         MyActions.AddAction(action);
@@ -217,7 +230,7 @@ public class PersonMemory
         {
             InformedRooms = new List<Room>() { room };
         }
-        else if(!InformedRooms.Select(r => r.Id).Contains(room.Id))
+        else if (!InformedRooms.Select(r => r.Id).Contains(room.Id))
         {
             InformedRooms.Add(room);
         }
@@ -313,7 +326,7 @@ public class PersonMemory
 
     public void AddInformedPerson(GameObject person)
     {
-        if(InformedPeople == null)
+        if (InformedPeople == null)
         {
             InformedPeople = new List<GameObject> { person };
         }
@@ -341,7 +354,7 @@ public class PersonMemory
 
         foreach (var person in people)
         {
-            if(!InformedPeople.Select(p => p.name).Contains(person.name))
+            if (!InformedPeople.Select(p => p.name).Contains(person.name))
             {
                 return false;
             }
@@ -357,7 +370,7 @@ public class PersonMemory
         foreach (var item in CurrentRoom.Obstacles)
         {
             float distance = Utils.Distance(item, person);
-            if(distance < nearestDistance)
+            if (distance < nearestDistance)
             {
                 nearestObstacle = item;
                 nearestDistance = distance;

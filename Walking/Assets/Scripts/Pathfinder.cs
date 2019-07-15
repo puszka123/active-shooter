@@ -119,7 +119,12 @@ public class Pathfinder {
     {
         if (!CheckInputs(startPosition, targetPosition)) return null;
         RoomLocation start = startPosition.GetComponent<RoomLocation>();
-        RoomLocation target = targetPosition.GetComponent<RoomLocation>();     
+        RoomLocation target = targetPosition.GetComponent<RoomLocation>();  
+        if(target == null)
+        {
+            Debug.Log("Bug: " + personMemory.transform.name + " " +targetPosition);
+            return new List<Node>();
+        }
         frontierRoom.Clear();
         frontierRoom.Enqueue(new Node(start.MeAsNode), 0);
         Dictionary<string, Node> cameFrom = new Dictionary<string, Node>();
