@@ -17,7 +17,6 @@ public class Person : MonoBehaviour
     public DestroyerExecutor destroyerExecutor;
     public FighterExecutor fighterExecutor;
     public PersonState MyState;
-
     public TasksQueue waitingTasks;
     public float actionTime = 0.5f;
     public float actionTimeEdge = 0.5f;

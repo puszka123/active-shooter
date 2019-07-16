@@ -28,7 +28,8 @@ public static class ImplementedBehaviours {
     {
         public Fight()
         {
-            //add all fight actions here
+            Actions = new List<Action>();
+            Actions.Add(new FightActions.Fight());
         }
     }
 
@@ -45,6 +46,14 @@ public static class ImplementedBehaviours {
     public class FindAndKill: Behaviour
     {
         public FindAndKill()
+        {
+            Actions = new List<Action>();
+        }
+    }
+
+    public class Inform : Behaviour
+    {
+        public Inform()
         {
             Actions = new List<Action>();
         }

@@ -50,7 +50,9 @@ public class Walking
 
     public void InitPath(PersonMemory memory)
     {
-        Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
+
+        //Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
+        Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], Me, memory.TargetPosition, memory);
         currentNodeIndex = 0;
     }
 
@@ -504,5 +506,10 @@ public class Walking
         TaskToExecute.IsDone = true;
         Executing = false;
         Path = null;
+    }
+
+    public void Slowdown(float factor)
+    {
+        Speed = Resources.Stay;
     }
 }

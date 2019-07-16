@@ -96,7 +96,7 @@ public class PersonMemory
         }
         if (StartPosition == null)
         {
-            Debug.Log(transform.name + " StartPosition is null");
+            //Debug.Log(transform.name + " StartPosition is null");
         }
         return node;
     }
@@ -184,10 +184,10 @@ public class PersonMemory
         {
             //action = new WorkActions.GoToWork(MyRoom);
             //action = new WorkActions.LeaveWork();
-            //action = new EvacuationActions.RunToExit();
+            action = new EvacuationActions.RunToExit();
             //action = new HideActions.HideInCurrentRoom();
             //action = new HideActions.LockCurrentRoom();
-            action = new FightActions.Fight();
+            //action = new FightActions.Fight();
         }
         //Action action = new ImplementedActions.RunToExit();
         MyActions.AddAction(action);

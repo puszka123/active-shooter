@@ -169,4 +169,71 @@ public class Pathfinder {
         desiredPath.Reverse();
         return desiredPath;
     }
+
+
+    FastPriorityQueue<Node> frontierPerson = new FastPriorityQueue<Node>(MAX_NODES_IN_QUEUE);
+    public List<Node> FindWay(Graph graph, GameObject person, Node targetPosition, PersonMemory personMemory)
+    {
+        //first check if blocked nodes are still blocked!!!
+        personMemory.UpdateBlockedNodes();
+        PersonGraph personGraph = new PersonGraph(person);
+        Node[] personNeighbours = personGraph.GetNeighbours();
+        if (!CheckInputs(graph, personGraph.MeAsNode, targetPosition)) return null;
+        frontierPerson.Clear();
+        frontierPerson.Enqueue(new Node(personGraph.MeAsNode), 0);
+        Dictionary<string, Node> cameFrom = new Dictionary<string, Node>();
+        Dictionary<string, float> costSoFar = new Dictionary<string, float>();
+        cameFrom.Add(personGraph.MeAsNode.Name, null);
+        costSoFar.Add(personGraph.MeAsNode.Name, 0);
+
+        while (frontierPerson.Count > 0)
+        {
+            Node current = frontierPerson.Dequeue();
+            if (current.Name == targetPosition.Name)
+            {
+                break;
+            }
+            Node[] neighbours = null;
+            if (current.Name == person.name)
+            {
+                neighbours = personGraph.GetNeighbours();
+            }
+            else {
+                neighbours = graph.GetNeighbours(current);
+            }
+            foreach (Node next in neighbours)
+            {
+                //if a node is blocked by a door (a person doesn't have a keys) then d not consider the node and find another way
+                if (personMemory.GetBlockedNodes().Select(node => node.Name).Contains(next.Name))
+                {
+                    continue;
+                }
+                float newCost = costSoFar[current.Name] + Vector3.Distance(current.Position, next.Position);
+                if (!costSoFar.ContainsKey(next.Name) || newCost < costSoFar[next.Name])
+                {
+                    costSoFar[next.Name] = newCost;
+                    float priority = newCost + Heuristic(targetPosition, next);
+                    frontierPerson.Enqueue(new Node(next), priority);
+                    if (cameFrom.ContainsKey(next.Name)) cameFrom[next.Name] = current;
+                    else cameFrom.Add(next.Name, current);
+                }
+            }
+        }
+
+        List<Node> desiredPath = new List<Node>();
+        desiredPath.Add(targetPosition);
+        if (!cameFrom.ContainsKey(targetPosition.Name))
+        {
+            return new List<Node>();
+        }
+        Node start = cameFrom[targetPosition.Name];
+        while (start != null)
+        {
+            desiredPath.Add(start);
+            //Debug.Log(start.Name);
+            start = cameFrom[start.Name];
+        }
+        desiredPath.Reverse();
+        return desiredPath;
+    }
 }

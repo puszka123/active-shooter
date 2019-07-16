@@ -15,7 +15,7 @@ public class DoorController : MonoBehaviour
     public GameObject[] VisibleObstacles;
     public float Resistance;
 
-    private float closeTime = 1f;
+    private float closeTime = 2f;
 
     public bool IsOpen { get { return isOpen; } }
     public bool IsLocked;
@@ -73,6 +73,7 @@ public class DoorController : MonoBehaviour
             OpenDoor();
             return;
         }
+
         if(Obstacles > 0)
         {
             return;
@@ -144,7 +145,7 @@ public class DoorController : MonoBehaviour
 
     public void OpenDoor()
     {
-        closeTime = 1f;
+        closeTime = 2f;
         isOpen = true;
         m_renderer.enabled = false;
         IsLocked = false;
