@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Staircase : MonoBehaviour {
-    public float SlowFactor;
+public class StairsEntry : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        SlowFactor = 2f;
+		
 	}
 	
 	// Update is called once per frame
@@ -18,14 +17,9 @@ public class Staircase : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         Person person = other.GetComponent<Person>();
-        if (person != null)
+        if(person != null)
         {
-            person.PersonMemory.AddCurrentStaircase(gameObject);
+            person.PersonMemory.ToggleIsAtStaircase();
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        
     }
 }

@@ -45,7 +45,7 @@ public class Walking
         TaskToExecute = null;
         Me = rigidbody.gameObject;
 
-        Shooter = GameObject.FindGameObjectWithTag("ActiveShooter"); 
+        Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
     }
 
     public void InitPath(PersonMemory memory)
@@ -103,7 +103,7 @@ public class Walking
         {
             InitPath(Shooter);
         }
-        else 
+        else
         {
             memory.setStartPosition(memory.FindNearestLocation(Me.transform.position).Name);
             memory.setTargetPosition(memory.FindNearestLocation(Shooter.transform.position).Name);
@@ -299,7 +299,7 @@ public class Walking
             Quaternion deltaRotation;
             if (memory.PickedObstacle == null) //test check if good
             {
-                m_Rigidbody.MovePosition(transform.position + transform.forward * Speed * Time.deltaTime);
+                m_Rigidbody.MovePosition(transform.position + transform.forward * GetSpeedAtStaircase(Speed) * Time.deltaTime);
             }
             else
             {
@@ -381,11 +381,11 @@ public class Walking
             float goalAngle = pathfinder.GetGoalAngle(transform.gameObject, Path[currentNodeIndex].Position);
             float goalWeight = 1f;
             _finalAngle = goalWeight * goalAngle;
-            if(Speed < CurrentSpeed)
+            if (Speed < CurrentSpeed)
             {
                 Speed += 0.05f;
             }
-            if(Speed > CurrentSpeed)
+            if (Speed > CurrentSpeed)
             {
                 Speed -= 0.05f;
             }
@@ -511,5 +511,22 @@ public class Walking
     public void Slowdown(float factor)
     {
         Speed = Resources.Stay;
+    }
+
+    public float GetSpeedAtStaircase(float currentSpeed)
+    {
+        if(Me.GetComponent<Person>().PersonMemory.GetCurrentStaircase() == null)
+        {
+            return currentSpeed;
+        }
+
+        float w = Resources.Walk;
+        float s = Resources.Sprint;
+        float a = (3 * w - 2 * s) / (6 * (w - s));
+        float b = s / 3 - (3 * s * w - 2 * s * s) / (6 * (w - s));
+
+        float res = a * currentSpeed + b;
+        Debug.Log(currentSpeed + " " + res);
+        return res;
     }
 }

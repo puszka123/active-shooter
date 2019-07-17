@@ -14,6 +14,8 @@ public class PathLocation : MonoBehaviour {
     public List<GameObject> RoomEmployees;
     public GameObject RoomDoor;
     public List<GameObject> Obstacles;
+    public bool IsStairsway;
+    public GameObject[] MyStairs;
 
     public void FindMyNeighbours()
     {

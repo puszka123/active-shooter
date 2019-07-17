@@ -3130,6 +3130,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &10200044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -3161,6 +3163,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &12294005
 Prefab:
   m_ObjectHideFlags: 0
@@ -3405,6 +3409,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &21471152
 Prefab:
   m_ObjectHideFlags: 0
@@ -3590,6 +3596,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &22142121
 Prefab:
   m_ObjectHideFlags: 0
@@ -3898,7 +3906,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.845
+      value: 3.706
       objectReference: {fileID: 0}
     - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3992,6 +4000,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!114 &27661323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4265,6 +4275,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &30075034
 Prefab:
   m_ObjectHideFlags: 0
@@ -4359,7 +4371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NearestNeighbours: []
-  IsStairs: 1
+  IsStairs: 0
   IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
@@ -4368,6 +4380,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &30480170 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -4394,6 +4408,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &31087654 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -4420,6 +4436,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &32515288
 Prefab:
   m_ObjectHideFlags: 0
@@ -4758,6 +4776,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &40000882
 Prefab:
   m_ObjectHideFlags: 0
@@ -4861,6 +4881,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &45836147
 Prefab:
   m_ObjectHideFlags: 0
@@ -4964,6 +4986,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &46268944 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -4990,6 +5014,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &50599424
 Prefab:
   m_ObjectHideFlags: 0
@@ -5093,6 +5119,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &51287109 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -5124,6 +5152,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &56201680
 Prefab:
   m_ObjectHideFlags: 0
@@ -5543,6 +5573,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &61688645 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -5569,6 +5601,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &63285339 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -5612,6 +5646,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &64316078
 Prefab:
   m_ObjectHideFlags: 0
@@ -5872,6 +5908,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &75928234
 Prefab:
   m_ObjectHideFlags: 0
@@ -5975,6 +6013,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &77929342
 Prefab:
   m_ObjectHideFlags: 0
@@ -6568,6 +6608,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &103999062 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1876597391301684, guid: ff51460225ab47d4d8aede72aa15d8b5,
@@ -6738,6 +6780,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &109844269 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100106, guid: 01095faf123f73143860973525fc4d87,
@@ -7119,6 +7163,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &121475246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100236, guid: 01095faf123f73143860973525fc4d87,
@@ -7249,6 +7295,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &129911396
 Prefab:
   m_ObjectHideFlags: 0
@@ -7360,6 +7408,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &136061203 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100152, guid: 01095faf123f73143860973525fc4d87,
@@ -7928,6 +7978,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!114 &150354119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8359,6 +8411,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!4 &159918397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4189129635886670, guid: 4fac2563fa4263f46970b631267c5edd,
@@ -8467,6 +8521,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &162810788
 Prefab:
   m_ObjectHideFlags: 0
@@ -9153,6 +9209,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &177238956
 GameObject:
   m_ObjectHideFlags: 0
@@ -9403,6 +9461,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &184907092
 Prefab:
   m_ObjectHideFlags: 0
@@ -9578,6 +9638,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &186022527
 Prefab:
   m_ObjectHideFlags: 0
@@ -9877,6 +9939,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &198443028
 Prefab:
   m_ObjectHideFlags: 0
@@ -10056,6 +10120,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &205929302
 Prefab:
   m_ObjectHideFlags: 0
@@ -10159,6 +10225,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &210093762 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100076, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -13666,6 +13734,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &236345624
 Prefab:
   m_ObjectHideFlags: 0
@@ -13768,6 +13838,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &243101759 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100128, guid: 01095faf123f73143860973525fc4d87,
@@ -13888,6 +13960,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &247599554
 Prefab:
   m_ObjectHideFlags: 0
@@ -13991,6 +14065,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &251740371
 Prefab:
   m_ObjectHideFlags: 0
@@ -14171,6 +14247,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &253983043
 Prefab:
   m_ObjectHideFlags: 0
@@ -14274,6 +14352,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &254243139
 Prefab:
   m_ObjectHideFlags: 0
@@ -14442,6 +14522,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &255671215
 Prefab:
   m_ObjectHideFlags: 0
@@ -14528,6 +14610,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &258319551
 Prefab:
   m_ObjectHideFlags: 0
@@ -14695,6 +14779,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &266275732
 Prefab:
   m_ObjectHideFlags: 0
@@ -14798,6 +14884,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &267937370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -14829,6 +14917,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &270242638
 Prefab:
   m_ObjectHideFlags: 0
@@ -14942,6 +15032,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &270970604
 Prefab:
   m_ObjectHideFlags: 0
@@ -15296,6 +15388,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &272649958
 Prefab:
   m_ObjectHideFlags: 0
@@ -15476,6 +15570,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &279467724
 Prefab:
   m_ObjectHideFlags: 0
@@ -15717,6 +15813,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &284401009
 Prefab:
   m_ObjectHideFlags: 0
@@ -15825,6 +15923,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &286715622
 Prefab:
   m_ObjectHideFlags: 0
@@ -15999,6 +16099,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &287631825 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100212, guid: 01095faf123f73143860973525fc4d87,
@@ -16424,6 +16526,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &304403934
 Prefab:
   m_ObjectHideFlags: 0
@@ -16520,6 +16624,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &311928871
 Prefab:
   m_ObjectHideFlags: 0
@@ -16772,6 +16878,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &313339813 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100046, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -16892,6 +17000,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &317197306
 Prefab:
   m_ObjectHideFlags: 0
@@ -17140,6 +17250,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &320825991
 Prefab:
   m_ObjectHideFlags: 0
@@ -17318,6 +17430,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &327220280
 Prefab:
   m_ObjectHideFlags: 0
@@ -17498,6 +17612,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &335091192
 Prefab:
   m_ObjectHideFlags: 0
@@ -17835,6 +17951,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &346716326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -17861,6 +17979,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &346981208 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -17887,6 +18007,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &347231378
 Prefab:
   m_ObjectHideFlags: 0
@@ -17990,6 +18112,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &347994204
 Prefab:
   m_ObjectHideFlags: 0
@@ -18096,6 +18220,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &351656041
 Prefab:
   m_ObjectHideFlags: 0
@@ -18286,6 +18412,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &358527604
 GameObject:
   m_ObjectHideFlags: 0
@@ -18524,6 +18652,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &361086113
 Prefab:
   m_ObjectHideFlags: 0
@@ -18716,6 +18846,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!114 &363409584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19070,6 +19202,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &368167084
 Prefab:
   m_ObjectHideFlags: 0
@@ -19496,6 +19630,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &381140604
 GameObject:
   m_ObjectHideFlags: 0
@@ -20010,6 +20146,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &395944759 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100030, guid: 01095faf123f73143860973525fc4d87,
@@ -20130,6 +20268,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &410043624
 Prefab:
   m_ObjectHideFlags: 0
@@ -20222,6 +20362,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &415060346
 Prefab:
   m_ObjectHideFlags: 0
@@ -20390,6 +20532,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &424613771 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100056, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -20510,6 +20654,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &426065422
 Prefab:
   m_ObjectHideFlags: 0
@@ -20776,6 +20922,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &432653765
 Prefab:
   m_ObjectHideFlags: 0
@@ -21009,6 +21157,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &435669714
 Prefab:
   m_ObjectHideFlags: 0
@@ -21278,6 +21428,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &450102136
 Prefab:
   m_ObjectHideFlags: 0
@@ -21453,6 +21605,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &451977007
 Prefab:
   m_ObjectHideFlags: 0
@@ -21889,6 +22043,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &465120954 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100034, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -22091,6 +22247,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &472150220
 Prefab:
   m_ObjectHideFlags: 0
@@ -22194,6 +22352,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &473174674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100226, guid: 01095faf123f73143860973525fc4d87,
@@ -25333,6 +25493,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &491744911
 Prefab:
   m_ObjectHideFlags: 0
@@ -25528,6 +25690,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!4 &503268886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4189129635886670, guid: 4fac2563fa4263f46970b631267c5edd,
@@ -25925,6 +26089,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &510419700
 Prefab:
   m_ObjectHideFlags: 0
@@ -26028,6 +26194,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &511985861
 Prefab:
   m_ObjectHideFlags: 0
@@ -26197,6 +26365,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &514098380
 Prefab:
   m_ObjectHideFlags: 0
@@ -26447,6 +26617,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &516828882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100074, guid: 01095faf123f73143860973525fc4d87,
@@ -26659,6 +26831,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &520695551 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100086, guid: 01095faf123f73143860973525fc4d87,
@@ -27097,6 +27271,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &533679169
 Prefab:
   m_ObjectHideFlags: 0
@@ -27200,6 +27376,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &547398152
 Prefab:
   m_ObjectHideFlags: 0
@@ -27303,6 +27481,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &548388854
 Prefab:
   m_ObjectHideFlags: 0
@@ -27685,6 +27865,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &559226389 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100128, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -28202,6 +28384,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &574670693
 Prefab:
   m_ObjectHideFlags: 0
@@ -28761,6 +28945,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &606582025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -28792,6 +28978,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &607680290
 Prefab:
   m_ObjectHideFlags: 0
@@ -28895,6 +29083,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &610819614
 Prefab:
   m_ObjectHideFlags: 0
@@ -29144,6 +29334,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &619651433 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -29175,6 +29367,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &620407519 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100014, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -29295,6 +29489,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &626570523
 Prefab:
   m_ObjectHideFlags: 0
@@ -29398,6 +29594,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &626972483 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -29429,6 +29627,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &627590563
 Prefab:
   m_ObjectHideFlags: 0
@@ -29708,6 +29908,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &628131475
 Prefab:
   m_ObjectHideFlags: 0
@@ -29811,6 +30013,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &629847971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -29837,6 +30041,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &634695596 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100124, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -30029,6 +30235,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &639488810
 Prefab:
   m_ObjectHideFlags: 0
@@ -30176,6 +30384,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b,
     type: 2}
   m_PrefabInternal: {fileID: 640571160}
+--- !u!1 &640914274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 640914275}
+  m_Layer: 0
+  m_Name: Staircase 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &640914275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 640914274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.76399, y: 4.817304, z: -1.2625897}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1770422973}
+  - {fileID: 759995218}
+  - {fileID: 717232434}
+  - {fileID: 1898797061}
+  - {fileID: 799771773}
+  - {fileID: 1439440420}
+  m_Father: {fileID: 0}
+  m_RootOrder: 31
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &642183827
 Prefab:
   m_ObjectHideFlags: 0
@@ -30880,6 +31122,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &663305151
 Prefab:
   m_ObjectHideFlags: 0
@@ -31169,6 +31413,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &668736106 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -31195,6 +31441,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &670285058
 Prefab:
   m_ObjectHideFlags: 0
@@ -31298,6 +31546,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &671426917
 Prefab:
   m_ObjectHideFlags: 0
@@ -31404,6 +31654,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &675286945 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -31435,6 +31687,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &675653653 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -31461,6 +31715,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!4 &678065931 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4189129635886670, guid: 4fac2563fa4263f46970b631267c5edd,
@@ -31569,6 +31825,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &679476332
 Prefab:
   m_ObjectHideFlags: 0
@@ -32303,6 +32561,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &707856789
 Prefab:
   m_ObjectHideFlags: 0
@@ -32406,6 +32666,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &708126769 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -32432,6 +32694,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &710372430
 Prefab:
   m_ObjectHideFlags: 0
@@ -32610,6 +32874,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &713109117
 Prefab:
   m_ObjectHideFlags: 0
@@ -32713,6 +32979,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &713896356
 Prefab:
   m_ObjectHideFlags: 0
@@ -32860,6 +33128,11 @@ Prefab:
     - {fileID: 136011556874941850, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &717232434 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1,
+    type: 2}
+  m_PrefabInternal: {fileID: 2028551403}
 --- !u!1001 &720088060
 Prefab:
   m_ObjectHideFlags: 0
@@ -32963,6 +33236,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &720663600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -32994,6 +33269,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &721294509
 Prefab:
   m_ObjectHideFlags: 0
@@ -33246,6 +33523,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &721558909
 Prefab:
   m_ObjectHideFlags: 0
@@ -33409,6 +33688,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &723471964
 Prefab:
   m_ObjectHideFlags: 0
@@ -33680,6 +33961,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &730770061
 Prefab:
   m_ObjectHideFlags: 0
@@ -33955,6 +34238,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &752642510
 Prefab:
   m_ObjectHideFlags: 0
@@ -34194,6 +34479,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4621191380749292, guid: c96aa9b38ee01b94f90fcaf05d8f4211,
     type: 2}
   m_PrefabInternal: {fileID: 757814221}
+--- !u!4 &759995218 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178,
+    type: 2}
+  m_PrefabInternal: {fileID: 1003448884}
 --- !u!1001 &761201062
 Prefab:
   m_ObjectHideFlags: 0
@@ -34519,6 +34809,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &765252312 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -34545,6 +34837,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &766617920 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -34571,6 +34865,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &766837044
 Prefab:
   m_ObjectHideFlags: 0
@@ -34746,6 +35042,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &768341396
 Prefab:
   m_ObjectHideFlags: 0
@@ -35013,6 +35311,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &780813797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100084, guid: 01095faf123f73143860973525fc4d87,
@@ -35268,6 +35568,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!4 &783643739 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b,
@@ -35441,6 +35743,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &786735287
 Prefab:
   m_ObjectHideFlags: 0
@@ -35647,6 +35951,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc,
     type: 2}
   m_PrefabInternal: {fileID: 796075882}
+--- !u!1001 &799771772
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 640914275}
+    m_Modifications:
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.2810001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.52230406
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.42558968
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141923015199692, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_Name
+      value: Staircase Up (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 23595290824017826, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &799771773 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178,
+    type: 2}
+  m_PrefabInternal: {fileID: 799771772}
 --- !u!1 &799879452 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100122, guid: 01095faf123f73143860973525fc4d87,
@@ -35690,6 +36054,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &801091541
 Prefab:
   m_ObjectHideFlags: 0
@@ -36086,6 +36452,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &805570422
 Prefab:
   m_ObjectHideFlags: 0
@@ -36189,6 +36557,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &808422497
 Prefab:
   m_ObjectHideFlags: 0
@@ -36292,6 +36662,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &813114623
 Prefab:
   m_ObjectHideFlags: 0
@@ -36707,6 +37079,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &819451398
 Prefab:
   m_ObjectHideFlags: 0
@@ -36810,6 +37184,10 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 1
+  MyStairs:
+  - {fileID: 1381618206}
+  - {fileID: 27661321}
 --- !u!1001 &828978037
 Prefab:
   m_ObjectHideFlags: 0
@@ -37147,6 +37525,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &839598411
 Prefab:
   m_ObjectHideFlags: 0
@@ -37420,6 +37800,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &849713349
 Prefab:
   m_ObjectHideFlags: 0
@@ -37887,6 +38269,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &866429198 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -37913,6 +38297,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &870293072 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100040, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -38132,6 +38518,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &876685914
 Prefab:
   m_ObjectHideFlags: 0
@@ -38392,6 +38780,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &881573054
 Prefab:
   m_ObjectHideFlags: 0
@@ -38587,6 +38977,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &883878163
 Prefab:
   m_ObjectHideFlags: 0
@@ -38767,6 +39159,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &889852652
 Prefab:
   m_ObjectHideFlags: 0
@@ -38870,6 +39264,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &889993328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -38896,6 +39292,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &890068026
 Prefab:
   m_ObjectHideFlags: 0
@@ -39069,6 +39467,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!114 &891023882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39348,6 +39748,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &895259636 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100192, guid: 01095faf123f73143860973525fc4d87,
@@ -39552,6 +39954,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &903926306
 Prefab:
   m_ObjectHideFlags: 0
@@ -39655,6 +40059,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &903932089
 Prefab:
   m_ObjectHideFlags: 0
@@ -39840,6 +40246,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &907077544
 Prefab:
   m_ObjectHideFlags: 0
@@ -40045,6 +40453,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &910118117
 Prefab:
   m_ObjectHideFlags: 0
@@ -40148,6 +40558,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!4 &913463013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4189129635886670, guid: 4fac2563fa4263f46970b631267c5edd,
@@ -40685,6 +41097,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &937798006
 Prefab:
   m_ObjectHideFlags: 0
@@ -40972,6 +41386,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &946365505
 Prefab:
   m_ObjectHideFlags: 0
@@ -41150,6 +41566,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &948570757
 Prefab:
   m_ObjectHideFlags: 0
@@ -41253,6 +41671,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &952747001
 Prefab:
   m_ObjectHideFlags: 0
@@ -41593,6 +42013,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &956930817
 Prefab:
   m_ObjectHideFlags: 0
@@ -42057,6 +42479,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &975214339
 Prefab:
   m_ObjectHideFlags: 0
@@ -42160,6 +42584,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &977611750
 Prefab:
   m_ObjectHideFlags: 0
@@ -42316,6 +42742,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &982929298 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -42347,6 +42775,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &984139272 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100092, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -42760,6 +43190,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &989752157 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -42791,6 +43223,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &992567940
 Prefab:
   m_ObjectHideFlags: 0
@@ -42894,6 +43328,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &995558446
 Prefab:
   m_ObjectHideFlags: 0
@@ -42997,6 +43433,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &997935288
 Prefab:
   m_ObjectHideFlags: 0
@@ -43334,36 +43772,38 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1003448884
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 640914275}
     m_Modifications:
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 19.544
+      value: 0.71401024
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.295
+      value: -0.52230406
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.536
+      value: 0.7265897
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalRotation.w
@@ -43371,11 +43811,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_RootOrder
-      value: 32
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1141923015199692, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_Name
       value: Staircase Down
+      objectReference: {fileID: 0}
+    - target: {fileID: 23595290824017826, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
@@ -43717,6 +44162,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1008223399 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -43743,6 +44190,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1010236442
 Prefab:
   m_ObjectHideFlags: 0
@@ -43916,6 +44365,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1014111023
 Prefab:
   m_ObjectHideFlags: 0
@@ -44014,6 +44465,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!4 &1016360993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4189129635886670, guid: 4fac2563fa4263f46970b631267c5edd,
@@ -44115,6 +44568,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1023251835
 Prefab:
   m_ObjectHideFlags: 0
@@ -44218,6 +44673,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1024784233
 Prefab:
   m_ObjectHideFlags: 0
@@ -44375,6 +44832,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1036166268 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -44406,6 +44865,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1037930671
 Prefab:
   m_ObjectHideFlags: 0
@@ -44585,6 +45046,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1043958662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100030, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -45398,6 +45861,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!114 &1060003976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45966,6 +46431,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1081479557
 Prefab:
   m_ObjectHideFlags: 0
@@ -46211,6 +46678,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1083282983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100244, guid: 01095faf123f73143860973525fc4d87,
@@ -46329,6 +46798,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1085954486
 Prefab:
   m_ObjectHideFlags: 0
@@ -46509,6 +46980,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1089142311
 Prefab:
   m_ObjectHideFlags: 0
@@ -46826,6 +47299,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1096661869
 Prefab:
   m_ObjectHideFlags: 0
@@ -47004,6 +47479,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1103478409
 Prefab:
   m_ObjectHideFlags: 0
@@ -47107,6 +47584,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1110632040
 Prefab:
   m_ObjectHideFlags: 0
@@ -47210,6 +47689,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1112357595 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -47236,6 +47717,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1112732403 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100168, guid: 01095faf123f73143860973525fc4d87,
@@ -47422,6 +47905,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1117664228 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -47448,6 +47933,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1118019708
 Prefab:
   m_ObjectHideFlags: 0
@@ -47551,6 +48038,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1118593562
 Prefab:
   m_ObjectHideFlags: 0
@@ -48267,6 +48756,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!4 &1127905778 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b,
@@ -48544,6 +49035,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1136575360
 Prefab:
   m_ObjectHideFlags: 0
@@ -48636,6 +49129,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1139214579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -48662,6 +49157,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1139321627
 Prefab:
   m_ObjectHideFlags: 0
@@ -48765,6 +49262,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1140799247
 Prefab:
   m_ObjectHideFlags: 0
@@ -48868,6 +49367,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1142075400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100062, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -48988,6 +49489,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1142982767
 Prefab:
   m_ObjectHideFlags: 0
@@ -49091,6 +49594,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!114 &1142982771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49264,6 +49769,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1148365985
 Prefab:
   m_ObjectHideFlags: 0
@@ -49520,7 +50027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NearestNeighbours: []
-  IsStairs: 1
+  IsStairs: 0
   IsToilet: 0
   StairsDirection: UP
   Floor: 0
@@ -49529,6 +50036,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1154135206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -49555,6 +50064,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1155180243
 Prefab:
   m_ObjectHideFlags: 0
@@ -49985,6 +50496,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1167577646 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100094, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -50033,6 +50546,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1172050069
 Prefab:
   m_ObjectHideFlags: 0
@@ -50213,6 +50728,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1173814927
 Prefab:
   m_ObjectHideFlags: 0
@@ -50408,6 +50925,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1180455256 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100048, guid: 01095faf123f73143860973525fc4d87,
@@ -50451,6 +50970,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1183299652
 Prefab:
   m_ObjectHideFlags: 0
@@ -50571,6 +51092,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1184062967 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -50597,6 +51120,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1186325281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -50623,6 +51148,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1186836804
 GameObject:
   m_ObjectHideFlags: 0
@@ -50817,6 +51344,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1189642221
 Prefab:
   m_ObjectHideFlags: 0
@@ -50920,6 +51449,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1195606584 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100054, guid: 01095faf123f73143860973525fc4d87,
@@ -51105,6 +51636,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1199879809 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -51131,6 +51664,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1200065709 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100044, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -51251,6 +51786,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1201599162 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -51282,6 +51819,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1202205716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -51313,6 +51852,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1203088959
 Prefab:
   m_ObjectHideFlags: 0
@@ -51522,6 +52063,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1212281554 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100208, guid: 01095faf123f73143860973525fc4d87,
@@ -51908,6 +52451,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1229220965
 Prefab:
   m_ObjectHideFlags: 0
@@ -55025,6 +55570,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!4 &1238086939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4189129635886670, guid: 4fac2563fa4263f46970b631267c5edd,
@@ -55196,6 +55743,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1243682425
 Prefab:
   m_ObjectHideFlags: 0
@@ -55299,6 +55848,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1244451640
 Prefab:
   m_ObjectHideFlags: 0
@@ -55482,6 +56033,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1249282917
 Prefab:
   m_ObjectHideFlags: 0
@@ -56136,6 +56689,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1271994205 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100238, guid: 01095faf123f73143860973525fc4d87,
@@ -56256,6 +56811,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1274965356 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100214, guid: 01095faf123f73143860973525fc4d87,
@@ -56376,6 +56933,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1279230432
 Prefab:
   m_ObjectHideFlags: 0
@@ -56655,6 +57214,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1282205975
 Prefab:
   m_ObjectHideFlags: 0
@@ -56758,6 +57319,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1285873189
 Prefab:
   m_ObjectHideFlags: 0
@@ -56931,6 +57494,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1292136559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -56957,6 +57522,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1292499762 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100108, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -57065,6 +57632,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1296706872
 Prefab:
   m_ObjectHideFlags: 0
@@ -57168,6 +57737,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1297593970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -57194,6 +57765,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1309373733
 Prefab:
   m_ObjectHideFlags: 0
@@ -57367,6 +57940,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1313318763
 Prefab:
   m_ObjectHideFlags: 0
@@ -57651,6 +58226,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1324214686 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100038, guid: 01095faf123f73143860973525fc4d87,
@@ -57821,6 +58398,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1326455724
 Prefab:
   m_ObjectHideFlags: 0
@@ -57924,6 +58503,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1326706985
 Prefab:
   m_ObjectHideFlags: 0
@@ -58396,6 +58977,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1338923348 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -58422,6 +59005,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1338954739
 Prefab:
   m_ObjectHideFlags: 0
@@ -58525,6 +59110,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1340860285
 Prefab:
   m_ObjectHideFlags: 0
@@ -58628,6 +59215,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1342157313
 Prefab:
   m_ObjectHideFlags: 0
@@ -58796,6 +59385,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1343765248
 Prefab:
   m_ObjectHideFlags: 0
@@ -58899,6 +59490,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1351066999
 Prefab:
   m_ObjectHideFlags: 0
@@ -59450,6 +60043,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1381618204
 Prefab:
   m_ObjectHideFlags: 0
@@ -59459,7 +60054,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.858
+      value: 3.706
       objectReference: {fileID: 0}
     - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -59553,6 +60148,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!114 &1381618208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59743,6 +60340,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1387086383
 GameObject:
   m_ObjectHideFlags: 0
@@ -59894,6 +60493,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1393649054
 Prefab:
   m_ObjectHideFlags: 0
@@ -59997,6 +60598,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1396703478
 Prefab:
   m_ObjectHideFlags: 0
@@ -60100,6 +60703,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1397094752
 Prefab:
   m_ObjectHideFlags: 0
@@ -60203,6 +60808,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1397861021
 Prefab:
   m_ObjectHideFlags: 0
@@ -60381,6 +60988,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1400863212
 Prefab:
   m_ObjectHideFlags: 0
@@ -60702,6 +61311,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1410930463
 GameObject:
   m_ObjectHideFlags: 0
@@ -60878,6 +61489,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1411047333
 Prefab:
   m_ObjectHideFlags: 0
@@ -61575,6 +62188,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1438952023
 Prefab:
   m_ObjectHideFlags: 0
@@ -61708,6 +62323,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc,
     type: 2}
   m_PrefabInternal: {fileID: 1439178822}
+--- !u!1001 &1439440419
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 640914275}
+    m_Modifications:
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.281
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.52230406
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.7265897
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141923015199692, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_Name
+      value: Staircase Down (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 23595290824017826, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.099999994
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &1439440420 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178,
+    type: 2}
+  m_PrefabInternal: {fileID: 1439440419}
 --- !u!1001 &1440958920
 Prefab:
   m_ObjectHideFlags: 0
@@ -62028,6 +62703,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1454500020 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100124, guid: 01095faf123f73143860973525fc4d87,
@@ -62384,6 +63061,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1462303710
 Prefab:
   m_ObjectHideFlags: 0
@@ -62485,6 +63164,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1466211969 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -62516,6 +63197,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1466654061
 Prefab:
   m_ObjectHideFlags: 0
@@ -62612,6 +63295,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1471485297 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -62638,6 +63323,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1472265162
 Prefab:
   m_ObjectHideFlags: 0
@@ -62890,6 +63577,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!114 &1478091973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63022,6 +63711,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1483965592
 Prefab:
   m_ObjectHideFlags: 0
@@ -63125,6 +63816,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1484934282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100156, guid: 01095faf123f73143860973525fc4d87,
@@ -63262,6 +63955,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1489853946
 Prefab:
   m_ObjectHideFlags: 0
@@ -63522,6 +64217,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1494371897 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100086, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -63741,6 +64438,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1503802598 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100020, guid: 01095faf123f73143860973525fc4d87,
@@ -63861,6 +64560,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1505981986
 Prefab:
   m_ObjectHideFlags: 0
@@ -64105,6 +64806,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1511286061
 Prefab:
   m_ObjectHideFlags: 0
@@ -64506,7 +65209,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.387
+      value: 3.5157
       objectReference: {fileID: 0}
     - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -64600,6 +65303,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!114 &1537701630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64643,6 +65348,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1539979074 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100154, guid: 01095faf123f73143860973525fc4d87,
@@ -64780,6 +65487,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1557078506
 GameObject:
   m_ObjectHideFlags: 0
@@ -65189,6 +65898,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1571954993 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100042, guid: 01095faf123f73143860973525fc4d87,
@@ -65533,6 +66244,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1580620921
 Prefab:
   m_ObjectHideFlags: 0
@@ -65636,6 +66349,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1580742057 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -65667,6 +66382,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1581794949
 Prefab:
   m_ObjectHideFlags: 0
@@ -65869,6 +66586,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1582402877
 Prefab:
   m_ObjectHideFlags: 0
@@ -66249,6 +66968,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1589229786
 Prefab:
   m_ObjectHideFlags: 0
@@ -66367,6 +67088,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1595022836 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100090, guid: 01095faf123f73143860973525fc4d87,
@@ -66490,6 +67213,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1598143773
 Prefab:
   m_ObjectHideFlags: 0
@@ -66924,6 +67649,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1611957979
 Prefab:
   m_ObjectHideFlags: 0
@@ -67337,6 +68064,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1624170984
 Prefab:
   m_ObjectHideFlags: 0
@@ -67440,6 +68169,10 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 1
+  MyStairs:
+  - {fileID: 1537701628}
+  - {fileID: 2124889685}
 --- !u!1001 &1626267938
 Prefab:
   m_ObjectHideFlags: 0
@@ -67534,7 +68267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NearestNeighbours: []
-  IsStairs: 1
+  IsStairs: 0
   IsToilet: 0
   StairsDirection: DOWN
   Floor: 0
@@ -67543,6 +68276,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1626541493 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -67574,6 +68309,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!4 &1627294869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b,
@@ -67906,6 +68643,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1636170753 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -67932,6 +68671,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1637186742
 Prefab:
   m_ObjectHideFlags: 0
@@ -68110,6 +68851,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1638588057
 Prefab:
   m_ObjectHideFlags: 0
@@ -68307,6 +69050,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1643253049
 Prefab:
   m_ObjectHideFlags: 0
@@ -68404,6 +69149,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1645897213
 Prefab:
   m_ObjectHideFlags: 0
@@ -68507,6 +69254,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1649266566 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -68550,6 +69299,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1653528546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -68576,6 +69327,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1654546688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -68602,6 +69355,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1654643438
 Prefab:
   m_ObjectHideFlags: 0
@@ -68705,6 +69460,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1655868453
 Prefab:
   m_ObjectHideFlags: 0
@@ -69101,6 +69858,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1673617494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -69127,6 +69886,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1675181779 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 01095faf123f73143860973525fc4d87,
@@ -69317,6 +70078,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1684618813 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100186, guid: 01095faf123f73143860973525fc4d87,
@@ -69513,6 +70276,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1687700577
 Prefab:
   m_ObjectHideFlags: 0
@@ -69616,6 +70381,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!4 &1687781424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4189129635886670, guid: 4fac2563fa4263f46970b631267c5edd,
@@ -69724,6 +70491,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1689500994
 Prefab:
   m_ObjectHideFlags: 0
@@ -69827,6 +70596,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1689861268 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -69858,6 +70629,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1691373967
 Prefab:
   m_ObjectHideFlags: 0
@@ -70103,6 +70876,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1697322923
 Prefab:
   m_ObjectHideFlags: 0
@@ -70514,6 +71289,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1709871908
 Prefab:
   m_ObjectHideFlags: 0
@@ -70617,6 +71394,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1716686944
 Prefab:
   m_ObjectHideFlags: 0
@@ -70792,6 +71571,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1718885308
 Prefab:
   m_ObjectHideFlags: 0
@@ -70967,6 +71748,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1725892451 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100028, guid: 01095faf123f73143860973525fc4d87,
@@ -71170,6 +71953,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1728792511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100028, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -71508,6 +72293,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1734431034 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100016, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -71551,6 +72338,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1739359602
 Prefab:
   m_ObjectHideFlags: 0
@@ -71654,6 +72443,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1739869671
 Prefab:
   m_ObjectHideFlags: 0
@@ -71757,6 +72548,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1739913778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -71783,6 +72576,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1739921930
 Prefab:
   m_ObjectHideFlags: 0
@@ -71886,6 +72681,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1741967859
 Prefab:
   m_ObjectHideFlags: 0
@@ -72064,6 +72861,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1742824450
 Prefab:
   m_ObjectHideFlags: 0
@@ -72167,6 +72966,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1745998524
 Prefab:
   m_ObjectHideFlags: 0
@@ -72237,6 +73038,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b,
     type: 2}
   m_PrefabInternal: {fileID: 1745998524}
+--- !u!1001 &1747737353
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 640914275}
+    m_Modifications:
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.7030087
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.39430428
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.6985897
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423185984565844, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_Name
+      value: Stairs Entry (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &1748367993
 Prefab:
   m_ObjectHideFlags: 0
@@ -72328,6 +73175,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1752875162
 Prefab:
   m_ObjectHideFlags: 0
@@ -72644,6 +73493,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1761708987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -72670,6 +73521,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1765719895
 Prefab:
   m_ObjectHideFlags: 0
@@ -72745,6 +73598,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4889181299384948, guid: 037e5e744374c794e97be1586bb49fdc,
     type: 2}
   m_PrefabInternal: {fileID: 1765719895}
+--- !u!4 &1770422973 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178,
+    type: 2}
+  m_PrefabInternal: {fileID: 1831553122}
 --- !u!1001 &1770622227
 Prefab:
   m_ObjectHideFlags: 0
@@ -73224,6 +74082,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1784890284 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1531717540930292, guid: a8212a30b98748b498a29bdea52bb71f,
@@ -73370,6 +74230,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1794130482
 Prefab:
   m_ObjectHideFlags: 0
@@ -73473,6 +74335,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1797738112
 Prefab:
   m_ObjectHideFlags: 0
@@ -73576,6 +74440,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1799648449 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100136, guid: 01095faf123f73143860973525fc4d87,
@@ -73961,6 +74827,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1810504359
 Prefab:
   m_ObjectHideFlags: 0
@@ -74199,6 +75067,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1816676186
 Prefab:
   m_ObjectHideFlags: 0
@@ -74546,6 +75416,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1822799810
 Prefab:
   m_ObjectHideFlags: 0
@@ -74883,6 +75755,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1828312161
 Prefab:
   m_ObjectHideFlags: 0
@@ -75047,31 +75921,31 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 640914275}
     m_Modifications:
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 19.544
+      value: 0.71401024
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.295
+      value: -0.52230406
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.837
+      value: 0.42558968
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_LocalRotation.w
@@ -75079,11 +75953,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4268053329846968, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_RootOrder
-      value: 31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1141923015199692, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
       propertyPath: m_Name
       value: Staircase Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 23595290824017826, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c94d2c2f3c0d3a47a4b70f2f7b6d178, type: 2}
@@ -75191,6 +76070,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1835424686
 Prefab:
   m_ObjectHideFlags: 0
@@ -75403,6 +76284,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1842477626 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -75429,6 +76312,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1844116390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -75460,6 +76345,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1848485808
 Prefab:
   m_ObjectHideFlags: 0
@@ -75712,6 +76599,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!114 &1853980520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75827,6 +76716,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1863414600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100116, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -76109,6 +77000,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1870846609
 Prefab:
   m_ObjectHideFlags: 0
@@ -76212,6 +77105,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1872498499
 Prefab:
   m_ObjectHideFlags: 0
@@ -76337,6 +77232,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1876152059
 Prefab:
   m_ObjectHideFlags: 0
@@ -76440,6 +77337,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1877688749
 Prefab:
   m_ObjectHideFlags: 0
@@ -76657,6 +77556,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1888915269 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -76683,6 +77584,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1889272878
 Prefab:
   m_ObjectHideFlags: 0
@@ -76786,6 +77689,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1889368424
 Prefab:
   m_ObjectHideFlags: 0
@@ -76957,6 +77862,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1892930005
 Prefab:
   m_ObjectHideFlags: 0
@@ -77068,6 +77975,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1895080036
 Prefab:
   m_ObjectHideFlags: 0
@@ -77232,6 +78141,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.020000037, y: 0.050629452, z: 0.02}
   m_Center: {x: -0.00000003257587, y: -0.013233239, z: 6.321617e-11}
+--- !u!4 &1898797061 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1747737353}
 --- !u!1001 &1900041067
 Prefab:
   m_ObjectHideFlags: 0
@@ -77335,6 +78249,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1900779363
 Prefab:
   m_ObjectHideFlags: 0
@@ -77432,6 +78348,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1902601629 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -77463,6 +78381,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1905580326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100050, guid: 01095faf123f73143860973525fc4d87,
@@ -77506,6 +78426,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1906118733
 Prefab:
   m_ObjectHideFlags: 0
@@ -77609,6 +78531,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1907049592
 Prefab:
   m_ObjectHideFlags: 0
@@ -77857,6 +78781,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1909162648
 Prefab:
   m_ObjectHideFlags: 0
@@ -77960,6 +78886,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1909214793
 Prefab:
   m_ObjectHideFlags: 0
@@ -78063,6 +78991,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1909909317
 Prefab:
   m_ObjectHideFlags: 0
@@ -78166,6 +79096,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1912894113
 Prefab:
   m_ObjectHideFlags: 0
@@ -78269,6 +79201,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1913765492
 Prefab:
   m_ObjectHideFlags: 0
@@ -78447,6 +79381,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1914753577 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100174, guid: 01095faf123f73143860973525fc4d87,
@@ -78567,6 +79503,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1920082174
 Prefab:
   m_ObjectHideFlags: 0
@@ -78670,6 +79608,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!114 &1920082178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78783,6 +79723,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1926659976
 Prefab:
   m_ObjectHideFlags: 0
@@ -79723,6 +80665,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1945861918 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -79754,6 +80698,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1950221043
 Prefab:
   m_ObjectHideFlags: 0
@@ -79990,6 +80936,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1959655358
 Prefab:
   m_ObjectHideFlags: 0
@@ -80091,6 +81039,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1961830624
 Prefab:
   m_ObjectHideFlags: 0
@@ -80194,6 +81144,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1961858152
 Prefab:
   m_ObjectHideFlags: 0
@@ -80367,6 +81319,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1967862546
 Prefab:
   m_ObjectHideFlags: 0
@@ -80470,6 +81424,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1969720842
 Prefab:
   m_ObjectHideFlags: 0
@@ -81116,6 +82072,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1979744651
 Prefab:
   m_ObjectHideFlags: 0
@@ -81442,6 +82400,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1985918827 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -81468,6 +82428,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1990288056 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1015750846495788, guid: 644730d1b58cab241af4a2d80d14a28b,
@@ -81499,6 +82461,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1992200163 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100104, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -81542,6 +82506,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &1995777781
 Prefab:
   m_ObjectHideFlags: 0
@@ -81634,6 +82600,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &1998109856 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100228, guid: 01095faf123f73143860973525fc4d87,
@@ -81682,6 +82650,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &2001051579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100196, guid: 01095faf123f73143860973525fc4d87,
@@ -81932,6 +82902,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1 &2009308245 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100120, guid: 1d4060e493d365e4f8ac447ea97a69a7,
@@ -82163,6 +83135,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &2018015113
 Prefab:
   m_ObjectHideFlags: 0
@@ -82667,6 +83641,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &2026412188
 Prefab:
   m_ObjectHideFlags: 0
@@ -82814,6 +83790,48 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4719085587204598, guid: b7cd8c048479d1b4ebaa3359db92154b,
     type: 2}
   m_PrefabInternal: {fileID: 2026458334}
+--- !u!1001 &2028551403
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 640914275}
+    m_Modifications:
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.31501007
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.39430428
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.6985897
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718676047337086, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7d9cb48fe1de1be4f99dc4f307afdfe1, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &2033341838
 Prefab:
   m_ObjectHideFlags: 0
@@ -83879,6 +84897,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &2075867377
 Prefab:
   m_ObjectHideFlags: 0
@@ -84054,6 +85074,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &2080434735
 Prefab:
   m_ObjectHideFlags: 0
@@ -84692,6 +85714,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &2106557824
 Prefab:
   m_ObjectHideFlags: 0
@@ -84935,6 +85959,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &2114058444
 Prefab:
   m_ObjectHideFlags: 0
@@ -85191,6 +86217,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!1001 &2118477477
 Prefab:
   m_ObjectHideFlags: 0
@@ -85393,7 +86421,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.388
+      value: 3.5157
       objectReference: {fileID: 0}
     - target: {fileID: 4963907750054570, guid: 644730d1b58cab241af4a2d80d14a28b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -85487,6 +86515,8 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []
 --- !u!114 &2124889687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86287,3 +87317,5 @@ MonoBehaviour:
   RoomEmployees: []
   RoomDoor: {fileID: 0}
   Obstacles: []
+  IsStairsway: 0
+  MyStairs: []

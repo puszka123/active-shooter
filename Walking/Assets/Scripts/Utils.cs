@@ -36,23 +36,23 @@ public static class Utils
         List<GameObject> stairs = new List<GameObject>();
         foreach (Transform item in location.transform)
         {
-            if (item.GetComponent<Stairs>() != null && item.GetComponent<PathLocation>().StairsDirection == stairsType)
+            if (item.GetComponent<PathLocation>().IsStairsway)
             {
                 stairs.Add(item.gameObject);
             }
             if (stairs.Count >= 2) break;
         }
-        GameObject nearestStairs = stairs[0];
-        foreach (var item in stairs)
+        GameObject nearestStairs = Distance(transform.gameObject, stairs[0]) < Distance(transform.gameObject, stairs[1]) 
+            ? stairs[0] : stairs[1];
+        PathLocation pl = nearestStairs.GetComponent<PathLocation>();
+        if(pl.MyStairs[0].GetComponent<PathLocation>().StairsDirection == stairsType)
         {
-            if (Vector3.Distance(transform.position, nearestStairs.transform.position)
-                >
-                Vector3.Distance(transform.position, item.transform.position))
-            {
-                nearestStairs = item;
-            }
+            return pl.MyStairs[0].name;
         }
-        return nearestStairs.name;
+        else
+        {
+            return pl.MyStairs[1].name;
+        }
     }
 
     public static string NearestExit(Transform transform, PersonMemory memory)

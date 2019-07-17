@@ -19,6 +19,8 @@ public class PersonMemory
     public ShooterInfo ShooterInfo;
     public List<GameObject> InformedPeople;
     public GameObject PickedObstacle;
+    public GameObject CurrentStaircase;
+    public bool IsAtStaircase;
 
     Dictionary<string, List<Node>> blockedByDoor;
 
@@ -389,4 +391,26 @@ public class PersonMemory
     {
         PickedObstacle = null;
     }
+
+    public GameObject GetCurrentStaircase()
+    {
+        return CurrentStaircase;
+    }
+
+    public void AddCurrentStaircase(GameObject staircase)
+    {
+        CurrentStaircase = staircase;
+    }
+
+    public void ClearCurrentStaircase()
+    {
+        CurrentStaircase = null;
+    }
+
+    public void ToggleIsAtStaircase()
+    {
+        IsAtStaircase = !IsAtStaircase;
+        Debug.Log(transform.name + " " + IsAtStaircase);
+    }
 }
+
