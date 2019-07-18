@@ -189,6 +189,20 @@ public class DoorController : MonoBehaviour
         }
     }
 
+    public void AddFirstObstacle()
+    {
+        VisibleObstacles[0].GetComponent<Renderer>().enabled = true;
+        //VisibleObstacles[0].GetComponent<BoxCollider>().enabled = true;
+        Obstacles = 1;
+    }
+
+    public void AddSecondObstacle()
+    {
+        VisibleObstacles[1].GetComponent<Renderer>().enabled = true;
+        //VisibleObstacles[1].GetComponent<BoxCollider>().enabled = true;
+        Obstacles = 2;
+    }
+
 
     public void YouAreHit(object[] args)
     {

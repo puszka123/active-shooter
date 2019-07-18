@@ -12,7 +12,7 @@ public enum Command {
     LOCK_DOOR, HIDE_IN_CURRENT_ROOM,
     FIND_ANY_ROOM, PICK_NEAREST_OBSTACLE,
     BLOCK_DOOR, DESTROY_DOOR,
-    RUN_TO_ENEMY, FIGHT
+    RUN_TO_ENEMY, FIGHT, BARRICADE_DOOR
 }
 
 //lock_door close and lock doors

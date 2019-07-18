@@ -105,6 +105,17 @@ public class DoorExecutor {
                 }
                 PersonDoor.TryToLockDoor(door3);
                 break;
+            case Command.BARRICADE_DOOR:
+                GameObject door4 = Utils.GetDoor(task);
+                if (door4 == null
+                    || Utils.ToFar(door4, Me, doorDistance)
+                    || Utils.AlreadyBarricaded(door4))
+                {
+                    FinishBarricadeDoorTask();
+                    return;
+                }
+                door4.SendMessage("JoinBarricading", Me);
+                break;
 
         }
     }
@@ -152,6 +163,16 @@ public class DoorExecutor {
                 door = Utils.GetDoor(task);
                 if (door == null) return;
                 LockDoorCheck(door);
+                break;
+            case Command.BARRICADE_DOOR:
+                door = Utils.GetDoor(task);
+                if (door == null) return;
+                if (door == null
+                    || Utils.ToFar(door, Me, doorDistance)
+                    || Utils.AlreadyBarricaded(door))
+                {
+                    FinishBarricadeDoorTask();
+                }
                 break;
         }
     }
@@ -250,6 +271,12 @@ public class DoorExecutor {
     {
         Executing = false;
         //close chat room related to this task
+        TaskToExecute.IsDone = true;
+    }
+
+    public void FinishBarricadeDoorTask()
+    {
+        Executing = false;
         TaskToExecute.IsDone = true;
     }
 }

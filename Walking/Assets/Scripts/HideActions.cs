@@ -60,4 +60,35 @@ public static class HideActions {
             Utils.UpdateLimitForTask(memory, Command.LOCK_DOOR, Tasks);
         }
     }
+
+    public class BarricadeDoor : Action
+    {
+        public BarricadeDoor()
+        {
+            Task goToDoor = new Task();
+            goToDoor.Command = Command.GO_TO_DOOR;
+            goToDoor.Limit = new Limit();
+            goToDoor.Type = TaskType.MOVEMENT;
+            goToDoor.RequiredTasks = new List<Task>();
+
+            Task barricade = new Task();
+            barricade.Command = Command.BARRICADE_DOOR;
+            barricade.Limit = new Limit();
+            barricade.Type = TaskType.DOOR;
+            barricade.RequiredTasks = new List<Task>();
+
+            Tasks = new List<Task> { goToDoor, barricade };
+        }
+
+        public override void TasksCleaner(PersonMemory memory)
+        {
+            
+        }
+
+        public override void UpdateLimit(PersonMemory memory)
+        {
+            Utils.UpdateLimitForTask(memory, Command.GO_TO_DOOR, Tasks);
+            Utils.UpdateLimitForTask(memory, Command.BARRICADE_DOOR, Tasks);
+        }
+    }
 }

@@ -42,10 +42,10 @@ public static class Utils
             }
             if (stairs.Count >= 2) break;
         }
-        GameObject nearestStairs = Distance(transform.gameObject, stairs[0]) < Distance(transform.gameObject, stairs[1]) 
+        GameObject nearestStairs = Distance(transform.gameObject, stairs[0]) < Distance(transform.gameObject, stairs[1])
             ? stairs[0] : stairs[1];
         PathLocation pl = nearestStairs.GetComponent<PathLocation>();
-        if(pl.MyStairs[0].GetComponent<PathLocation>().StairsDirection == stairsType)
+        if (pl.MyStairs[0].GetComponent<PathLocation>().StairsDirection == stairsType)
         {
             return pl.MyStairs[0].name;
         }
@@ -106,7 +106,7 @@ public static class Utils
         foreach (var roomLocation in roomLocations)
         {
             float distance = Distance(roomLocation, person);
-            if(distance < nearestDistance)
+            if (distance < nearestDistance)
             {
                 nearestDistance = distance;
                 nearestRoomLocation = roomLocation;
@@ -191,6 +191,9 @@ public static class Utils
             case Command.DESTROY_DOOR:
                 task.Limit.FoundRoom = memory.FoundRoom;
                 break;
+            case Command.BARRICADE_DOOR:
+                task.Limit.DoorToOpen = memory.CurrentRoom?.Door;
+                break;
             default:
                 break;
         }
@@ -214,7 +217,7 @@ public static class Utils
 
     public static void TryCleanMyRoomGoUp(List<Task> tasks, PersonMemory memory)
     {
-        if(memory.MyRoomIsAboveMe())
+        if (memory.MyRoomIsAboveMe())
         {
             return;
         }
@@ -236,7 +239,7 @@ public static class Utils
         foreach (var item in task.RequiredTasks)
         {
             Task requiredTask = tasks.Find(t => t.Command == item.Command);
-            if(requiredTask == null)
+            if (requiredTask == null)
             {
                 tasksToRemove.Add(item);
             }
@@ -290,5 +293,10 @@ public static class Utils
     {
         LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Obstacle");
         return !Physics.Linecast(a.transform.position, b.transform.position, layerMask);
+    }
+
+    public static bool AlreadyBarricaded(GameObject door)
+    {
+        return door.GetComponent<DoorController>().Obstacles == 2;
     }
 }

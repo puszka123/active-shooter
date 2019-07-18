@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 65275500298556642}
   - component: {fileID: 114666677507333552}
   - component: {fileID: 114634237481992888}
+  - component: {fileID: 114657984309330422}
   m_Layer: 10
   m_Name: Door
   m_TagString: Door
@@ -193,9 +194,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1540847570019190}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.99}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 17.758703, y: 4.390814, z: -3.1258}
+  m_LocalScale: {x: 0.010000025, y: 0.3, z: 0.28000075}
   m_Children:
   - {fileID: 4450304114086566}
   - {fileID: 4522377492782066}
@@ -487,6 +488,20 @@ MonoBehaviour:
   Workplace: 0
   Neighbours: []
   WorkEmployee: {fileID: 0}
+--- !u!114 &114657984309330422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1540847570019190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9db9a42d23c65743add79883bd8042f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barricadeTime: 0
+  Members: []
+  time: 0
 --- !u!114 &114666677507333552
 MonoBehaviour:
   m_ObjectHideFlags: 1

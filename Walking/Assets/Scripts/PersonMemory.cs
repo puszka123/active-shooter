@@ -153,9 +153,9 @@ public class PersonMemory
             MyActions = new PersonActions();
             Action actionFighter = new FightActions.Fight();
             MyActions.AddAction(actionFighter);
-            //return;
+            return;
         }
-        //return; //test
+
         GameObject myRoom = GameObject.Find(roomId);
         MyRoom = new Room
         {
@@ -186,10 +186,11 @@ public class PersonMemory
         {
             //action = new WorkActions.GoToWork(MyRoom);
             //action = new WorkActions.LeaveWork();
-            action = new EvacuationActions.RunToExit();
+            //action = new EvacuationActions.RunToExit();
             //action = new HideActions.HideInCurrentRoom();
             //action = new HideActions.LockCurrentRoom();
             //action = new FightActions.Fight();
+            action = new HideActions.BarricadeDoor();
         }
         //Action action = new ImplementedActions.RunToExit();
         MyActions.AddAction(action);

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PersonStats : MonoBehaviour {
     public float Health;
+    public float Strength;
 
     private void Start()
     {
         Health = 100f;
+        Strength = 1f;
     }
 
     public void GetDamage(float damage, Transform activeShooter, Vector3 hitPoint)

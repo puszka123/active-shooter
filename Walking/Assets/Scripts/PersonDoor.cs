@@ -133,4 +133,9 @@ public class PersonDoor : MonoBehaviour
             GetComponent<Person>().PersonMemory.ClearCurrentRoom();
         }
     }
+
+    public void FinishBarricade(GameObject door)
+    {
+        GetComponent<Person>().doorExecutor.FinishBarricadeDoorTask();
+    }
 }
