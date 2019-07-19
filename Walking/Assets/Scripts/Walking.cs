@@ -275,6 +275,18 @@ public class Walking
                 CurrentSpeed = Resources.Sprint;
                 Executing = true;
                 break;
+            case Command.RUN_AWAY:
+                if(!Utils.CanSee(Me, Shooter))
+                {
+                    FinishWalking();
+                    return;
+                }
+                memory.UpdateActiveShooterInfo(Shooter);
+                memory.setTargetPosition(Utils.GetNodeToRunAway(Me, Shooter).Name);
+                InitPath(memory);
+                CurrentSpeed = Resources.Sprint;
+                Executing = true;
+                break;
             case Command.STAY:
                 Path = new List<Node>();
                 memory.setStartPosition("");
@@ -292,7 +304,23 @@ public class Walking
 
     public void MakeMove(Transform transform, PersonMemory memory)
     {
+        if (TaskToExecute.Command == Command.RUN_AWAY)
+        {
+            if (!Utils.CanSee(Me, Shooter))
+            {
+                FinishWalking();
+                return;
+            }
+            Node foundNode = Utils.GetNodeToRunAway(Me, Shooter, true);
+            if (foundNode != null)
+            {
+                memory.setTargetPosition(foundNode.Name);
+                InitPath(Me.GetComponent<Person>().PersonMemory);
+            }
+        }
+
         Executing = !CheckGoal(transform, memory);
+
         if (Executing)
         {
             Vector3 m_EulerAngleVelocity;
@@ -341,6 +369,9 @@ public class Walking
                     {
                         memory.CurrentRoom.Door.SendMessage("AddObstacle", obstacle);
                     }
+                    break;
+                case Command.RUN_AWAY:
+                    memory.UpdateNodesBlockedByShooter();
                     break;
                 default:
                     break;
@@ -488,7 +519,7 @@ public class Walking
             && Utils.CanSee(Me, Shooter))
         {
             InitPath(Shooter);
-        }
+        } 
     }
 
 
@@ -502,6 +533,10 @@ public class Walking
         if (TaskToExecute.Command == Command.BLOCK_DOOR)
         {
             person.PersonMemory.PutObstacle();
+        }
+        if (TaskToExecute.Command == Command.RUN_AWAY)
+        {
+            person.PersonMemory.UpdateNodesBlockedByShooter();
         }
         TaskToExecute.IsDone = true;
         Executing = false;

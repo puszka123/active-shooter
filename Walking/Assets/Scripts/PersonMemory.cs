@@ -23,6 +23,8 @@ public class PersonMemory
     public bool IsAtStaircase;
 
     Dictionary<string, List<Node>> blockedByDoor;
+    List<Node> blockedByShooter;
+    public List<Node> BlockedByShooter { get { return new List<Node>(blockedByShooter); } }
 
     public PersonMemory()
     {
@@ -31,7 +33,7 @@ public class PersonMemory
         CurrentFloor = 1;
 
         StartPosition = TargetPosition = null;
-        ShooterInfo = new ShooterInfo(); //test
+        //ShooterInfo = new ShooterInfo(); //test
         //MyActions = new PersonActions();
         //Action action = new Action();
         //action.WorkAction(MyRoom.Id);
@@ -151,7 +153,7 @@ public class PersonMemory
         if (transform.gameObject.name.StartsWith("Fighter"))
         {
             MyActions = new PersonActions();
-            Action actionFighter = new FightActions.Fight();
+            Action actionFighter = new EvacuationActions.RunAway();
             MyActions.AddAction(actionFighter);
             return;
         }
@@ -412,6 +414,45 @@ public class PersonMemory
     {
         IsAtStaircase = !IsAtStaircase;
         Debug.Log(transform.name + " " + IsAtStaircase);
+    }
+
+    public void UpdateNodesBlockedByShooter()
+    {
+        if (ShooterInfo == null) return;
+
+        Vector3 shooterPosition = ShooterInfo.Position;
+        int shooterFloor = ShooterInfo.Floor;
+
+        LayerMask layerMask = LayerMask.GetMask("Wall");
+        foreach (KeyValuePair<string, Node> entry in Graph[CurrentFloor].AllNodes)
+        {
+            if (!Physics.Linecast(shooterPosition, entry.Value.Position, layerMask))
+            {
+                AddNodeBlockedByShooter(entry.Value);
+            }
+        }
+    }
+
+    public void AddNodeBlockedByShooter(Node node)
+    {
+        if(blockedByShooter == null)
+        {
+            blockedByShooter = new List<Node> { node };
+        }
+        else if(!blockedByShooter.Select(n => n.Name).Contains(node.Name))
+        {
+            blockedByShooter.Add(node);
+        }
+    }
+
+    public void UpdateActiveShooterInfo(GameObject activeShooter)
+    {
+        Vector3 shooterPos = activeShooter.transform.position;
+        ShooterInfo = new ShooterInfo
+        {
+            Position = new Vector3(shooterPos.x, shooterPos.y, shooterPos.z),
+            Name = activeShooter.name,
+        };
     }
 }
 

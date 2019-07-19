@@ -260,7 +260,7 @@ public class Shooting : MonoBehaviour
 
     public void DoorDestroyed(GameObject door)
     {
-        if (door.name == DoorToDestroy.name)
+        if (door.name == DoorToDestroy?.name)
         {
             ClearDoorToDestroy();
             GetComponent<Person>().destroyerExecutor.OnDoorDestroyed(door);

@@ -116,4 +116,30 @@ public static class EvacuationActions  {
             Utils.UpdateLimitForTask(memory, Command.ENTER_ROOM, Tasks);
         }
     }
+
+    public class RunAway : Action
+    {
+        public RunAway()
+        {
+            Task runAway = new Task();
+            runAway.Command = Command.RUN_AWAY;
+            runAway.Limit = new Limit();
+            runAway.Type = TaskType.MOVEMENT;
+            runAway.RequiredTasks = new List<Task>();
+
+            Tasks = new List<Task> { runAway };
+
+            Type = ActionType.EVACUATE;
+        }
+
+        public override void TasksCleaner(PersonMemory memory)
+        {
+
+        }
+
+        public override void UpdateLimit(PersonMemory memory)
+        {
+            
+        }
+    }
 }

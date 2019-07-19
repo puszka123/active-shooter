@@ -19,7 +19,7 @@ public class FollowVictim : MonoBehaviour {
     private void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
-        Speed = Resources.Sprint;
+        Speed = Resources.Run;
         RotationSpeed = 7.5f;
     }
 

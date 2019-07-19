@@ -4,4 +4,6 @@ using UnityEngine;
 
 public class ShooterInfo {
     public string Name = "TEST";
+    public Vector3 Position;
+    public int Floor;
 }

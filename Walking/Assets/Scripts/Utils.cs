@@ -299,4 +299,81 @@ public static class Utils
     {
         return door.GetComponent<DoorController>().Obstacles == 2;
     }
+
+    public static Node GetNodeToRunAway(GameObject person, GameObject shooter, bool update = false)
+    {
+        PersonMemory memory = person.GetComponent<Person>().PersonMemory;
+        Node node = null;
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Door");
+        node = GetVisibleNodeByPersonOnly(person, shooter, memory, node, layerMask);
+        if (node == null)
+        {
+            if (update) { return null; }
+            node = GetVisibleNodeByBoth(person, shooter, memory, node, layerMask);
+        }
+        if (node == null)
+        {
+            Debug.Log(person.name + " run away is null");
+        }
+        return node;
+    }
+
+    private static Node GetVisibleNodeByBoth(GameObject person, GameObject shooter, PersonMemory memory, Node node, LayerMask layerMask)
+    {
+        foreach (KeyValuePair<string, Node> entry in memory.Graph[memory.CurrentFloor].AllNodes)
+        {
+            if (!Physics.Linecast(person.transform.position, entry.Value.Position, layerMask))
+            {
+                Vector3 nodePerson = entry.Value.Position - person.transform.position;
+                Vector3 personShooter = shooter.transform.position - person.transform.position;
+                float angleBetween = Vector3.Angle(nodePerson, personShooter);
+                if (node == null) node = entry.Value;
+                else if (angleBetween > 70f &&
+                    Vector3.Distance(entry.Value.Position, shooter.transform.position) > Vector3.Distance(shooter.transform.position, node.Position))
+                {
+                    if (memory.GetBlockedNodes().Length == 0)
+                    {
+                        node = entry.Value;
+                    }
+                    else if (!memory.GetBlockedNodes().Select(n => n.Name).Contains(entry.Value.Name))
+                    {
+                        node = entry.Value;
+                    }
+
+                }
+            }
+        }
+
+        return node;
+    }
+
+    private static Node GetVisibleNodeByPersonOnly(GameObject person, GameObject shooter, PersonMemory memory, Node node, LayerMask layerMask)
+    {
+        foreach (KeyValuePair<string, Node> entry in memory.Graph[memory.CurrentFloor].AllNodes)
+        {
+            if (!Physics.Linecast(person.transform.position, entry.Value.Position, layerMask)
+                && Physics.Linecast(shooter.transform.position, entry.Value.Position, layerMask))
+            {
+                Vector3 nodePerson = entry.Value.Position - person.transform.position;
+                Vector3 personShooter = shooter.transform.position - person.transform.position;
+                float angleBetween = Vector3.Angle(nodePerson, personShooter);
+                if (node == null) node = entry.Value;
+                else if (angleBetween > 70f &&
+                    Vector3.Distance(entry.Value.Position, shooter.transform.position) > Vector3.Distance(shooter.transform.position, node.Position))
+                {
+                    if (memory.GetBlockedNodes().Length == 0)
+                    {
+                        node = entry.Value;
+                    }
+                    else if (!memory.GetBlockedNodes().Select(n => n.Name).Contains(entry.Value.Name))
+                    {
+                        node = entry.Value;
+                    }
+
+                }
+            }
+        }
+
+        return node;
+    }
 }
