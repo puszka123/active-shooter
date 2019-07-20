@@ -24,7 +24,7 @@ public class PersonMemory
 
     Dictionary<string, List<Node>> blockedByDoor;
     List<Node> blockedByShooter;
-    public List<Node> BlockedByShooter { get { return new List<Node>(blockedByShooter); } }
+    public List<Node> BlockedByShooter { get { return blockedByShooter != null ? new List<Node>(blockedByShooter) : null; } }
 
     public PersonMemory()
     {
@@ -453,6 +453,11 @@ public class PersonMemory
             Position = new Vector3(shooterPos.x, shooterPos.y, shooterPos.z),
             Name = activeShooter.name,
         };
+    }
+
+    public void ClearBlockedNodesByShooter()
+    {
+        blockedByShooter = null;
     }
 }
 

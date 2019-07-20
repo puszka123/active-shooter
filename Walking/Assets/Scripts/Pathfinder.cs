@@ -208,7 +208,9 @@ public class Pathfinder {
             foreach (Node next in neighbours)
             {
                 //if a node is blocked by a door (a person doesn't have a keys) then d not consider the node and find another way
-                if (personMemory.GetBlockedNodes().Select(node => node.Name).Contains(next.Name))
+                //if blocked by shooter, too
+                if (personMemory.GetBlockedNodes().Select(node => node.Name).Contains(next.Name)
+                    || (personMemory.BlockedByShooter != null && personMemory.BlockedByShooter.Select(node => node.Name).Contains(next.Name)))
                 {
                     continue;
                 }

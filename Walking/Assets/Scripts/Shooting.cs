@@ -260,6 +260,10 @@ public class Shooting : MonoBehaviour
 
     public void DoorDestroyed(GameObject door)
     {
+        if(DoorToDestroy == null)
+        {
+            return;
+        }
         if (door.name == DoorToDestroy?.name)
         {
             ClearDoorToDestroy();

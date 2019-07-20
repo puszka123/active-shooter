@@ -282,6 +282,7 @@ public class Walking
                     return;
                 }
                 memory.UpdateActiveShooterInfo(Shooter);
+                memory.ClearBlockedNodesByShooter(); //if we see shooter then previous locations are clear probably
                 memory.setTargetPosition(Utils.GetNodeToRunAway(Me, Shooter).Name);
                 InitPath(memory);
                 CurrentSpeed = Resources.Sprint;
