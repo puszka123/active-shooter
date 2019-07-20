@@ -12,6 +12,7 @@ public class Person : MonoBehaviour
     private float timer = 0.1f;
     private float timerEdge = 0.1f;
     public Action CurrentAction;
+    public Behaviour CurrentBehaviour;
     ActionExecutor actionExecutor;
     public TalkExecutor talkExecutor;
     public DestroyerExecutor destroyerExecutor;
@@ -21,8 +22,12 @@ public class Person : MonoBehaviour
     public float actionTime = 0.5f;
     public float actionTimeEdge = 0.5f;
     public float simulationTime = 0f;
+    public BehaviourSelector BehaviourSelector;
+    public ActionSelector ActionSelector;
+    public PersonPersonalAttributes PersonalAttributes;
 
     bool init = false;
+    bool test = false;
 
     public void Init(int floor, string myRoomId)
     {
@@ -40,8 +45,17 @@ public class Person : MonoBehaviour
             fighterExecutor);
         CurrentAction = memory.MyActions.GetActionByIndex(0);
         actionExecutor.ExecuteAction(ref CurrentAction);
-        init = true;
         waitingTasks = new TasksQueue();
+        List<Behaviour> behaviours = new List<Behaviour>();
+        behaviours.Add(new ImplementedBehaviours.Evacuate(PersonMemory.MyRoom));
+        behaviours.Add(new ImplementedBehaviours.Fight());
+        behaviours.Add(new ImplementedBehaviours.Work(PersonMemory.MyRoom));
+        behaviours.Add(new ImplementedBehaviours.Hide());
+        PersonalAttributes = new PersonPersonalAttributes();
+        //behaviours.Add(new ImplementedBehaviours.FindAndKill()); test
+
+        BehaviourSelector = new BehaviourSelector(behaviours);
+        init = true;
     }
 
     private void FixedUpdate()
@@ -60,6 +74,14 @@ public class Person : MonoBehaviour
             actionTime += Time.deltaTime;
             return;
         }
+        if(simulationTime >= 5f && !test)
+        {
+            test = true;
+            //CurrentAction = new HideActions.BarricadeDoor();
+            CurrentAction = new EvacuationActions.RunToExit();
+        }
+
+        //CurrentBehaviour = 
 
         simulationTime += Time.deltaTime;
         timer += Time.deltaTime;

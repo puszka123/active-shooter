@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SimulationManager : MonoBehaviour {
     int respawnNameGenerator = 1;
+    int roomLocationGenerator = 1;
     int doorNameGenerator = 1;
     int pathLocationNameGenerator = 1;
 
@@ -12,6 +13,11 @@ public class SimulationManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        foreach (var item in GameObject.FindGameObjectsWithTag("RoomLocation"))
+        {
+            item.name = "RoomLocation " + roomLocationGenerator++;
+        }
+
         foreach (var item in GameObject.FindGameObjectsWithTag("PathLocation"))
         {
             item.name = "CheckPoint " + pathLocationNameGenerator++;

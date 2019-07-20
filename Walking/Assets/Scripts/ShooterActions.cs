@@ -83,4 +83,30 @@ public static class ShooterActions
         {
         }
     }
+
+    public class GoDown : Action
+    {
+        public GoDown()
+        {
+            Task goDown = new Task();
+            goDown.Command = Command.GO_DOWN;
+            goDown.Limit = new Limit();
+            goDown.Type = TaskType.MOVEMENT;
+            goDown.RequiredTasks = new List<Task>();
+
+
+            Tasks = new List<Task>(new Task[] { goDown, });
+
+            Type = ActionType.FIND_AND_KILL;
+        }
+
+        public override void TasksCleaner(PersonMemory memory)
+        {
+
+        }
+
+        public override void UpdateLimit(PersonMemory memory)
+        {
+        }
+    }
 }

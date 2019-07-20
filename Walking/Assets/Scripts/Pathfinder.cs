@@ -119,10 +119,12 @@ public class Pathfinder {
 
     //for room
     FastPriorityQueue<Node> frontierRoom = new FastPriorityQueue<Node>(MAX_NODES_IN_QUEUE);
-    public List<Node> FindWay(GameObject startPosition, GameObject targetPosition, PersonMemory personMemory)
+    public List<Node> FindWay(GameObject person, GameObject targetPosition, PersonMemory personMemory)
     {
-        if (!CheckInputs(startPosition, targetPosition)) return null;
-        RoomLocation start = startPosition.GetComponent<RoomLocation>();
+        if (!CheckInputs(person, targetPosition)) return null;
+        PersonGraph personGraph = new PersonGraph(person);
+        Node[] personNeighbours = personGraph.GetRoomNeighbours();
+        //RoomLocation start = startPosition.GetComponent<RoomLocation>();
         RoomLocation target = targetPosition.GetComponent<RoomLocation>();  
         if(target == null)
         {
@@ -130,11 +132,11 @@ public class Pathfinder {
             return new List<Node>();
         }
         frontierRoom.Clear();
-        frontierRoom.Enqueue(new Node(start.MeAsNode), 0);
+        frontierRoom.Enqueue(new Node(personGraph.MeAsNode), 0);
         Dictionary<string, Node> cameFrom = new Dictionary<string, Node>();
         Dictionary<string, float> costSoFar = new Dictionary<string, float>();
-        cameFrom.Add(start.MeAsNode.Name, null);
-        costSoFar.Add(start.MeAsNode.Name, 0);
+        cameFrom.Add(personGraph.MeAsNode.Name, null);
+        costSoFar.Add(personGraph.MeAsNode.Name, 0);
 
         while (frontierRoom.Count > 0)
         {
@@ -143,8 +145,16 @@ public class Pathfinder {
             {
                 break;
             }
-            
-            foreach (Node next in GameObject.Find(current.Name).GetComponent<RoomLocation>().NeighbourNodes)
+            List<Node> neighbours = null;
+            if(current.Name == person.name)
+            {
+                neighbours = personNeighbours.ToList();
+            }
+            else
+            {
+                neighbours = GameObject.Find(current.Name).GetComponent<RoomLocation>().NeighbourNodes;
+            }
+            foreach (Node next in neighbours)
             {
                 float newCost = costSoFar[current.Name] + Vector3.Distance(current.Position, next.Position);
                 if (!costSoFar.ContainsKey(next.Name) || newCost < costSoFar[next.Name])

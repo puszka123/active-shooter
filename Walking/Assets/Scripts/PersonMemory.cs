@@ -186,13 +186,13 @@ public class PersonMemory
         }
         else
         {
-            //action = new WorkActions.GoToWork(MyRoom);
+            action = new WorkActions.GoToWork(MyRoom);
             //action = new WorkActions.LeaveWork();
             //action = new EvacuationActions.RunToExit();
             //action = new HideActions.HideInCurrentRoom();
             //action = new HideActions.LockCurrentRoom();
             //action = new FightActions.Fight();
-            action = new HideActions.BarricadeDoor();
+            //action = new HideActions.BarricadeDoor();
         }
         //Action action = new ImplementedActions.RunToExit();
         MyActions.AddAction(action);
@@ -413,7 +413,6 @@ public class PersonMemory
     public void ToggleIsAtStaircase()
     {
         IsAtStaircase = !IsAtStaircase;
-        Debug.Log(transform.name + " " + IsAtStaircase);
     }
 
     public void UpdateNodesBlockedByShooter()

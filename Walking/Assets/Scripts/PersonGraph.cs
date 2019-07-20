@@ -33,4 +33,20 @@ public class PersonGraph {
         }
         return Neighbours.ToArray();
     }
+
+    public Node[] GetRoomNeighbours()
+    {
+        Neighbours = new List<Node>();
+        PersonMemory memory = Me.GetComponent<Person>().PersonMemory;
+        Node[] allNodes = memory.CurrentRoom.Reference.GetComponent<RoomManager>().RoomLocations.Select(rl => rl.GetComponent<RoomLocation>().MeAsNode).ToArray();
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Obstacle");
+        foreach (var node in allNodes)
+        {
+            if (!Physics.Linecast(Me.transform.position, node.Position, layerMask))
+            {
+                Neighbours.Add(node);
+            }
+        }
+        return Neighbours.ToArray();
+    }
 }

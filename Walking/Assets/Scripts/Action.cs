@@ -12,4 +12,12 @@ public abstract class Action {
 
     public abstract void TasksCleaner(PersonMemory memory);
     public abstract void UpdateLimit(PersonMemory memory);
+    public void ResetTasks()
+    {
+        if (Tasks == null) return;
+        foreach (var item in Tasks)
+        {
+            item.IsDone = true;
+        }
+    }
 }

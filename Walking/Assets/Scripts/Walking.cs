@@ -77,8 +77,8 @@ public class Walking
 
     public void InitRoomPath(Room room, Transform transform, PersonMemory memory, GameObject targetPosition)
     {
-        GameObject startPosition = Utils.NearestRoomLocation(room.Reference, transform.gameObject);
-        Path = pathfinder.FindWay(startPosition, targetPosition, memory);
+        //GameObject startPosition = Utils.NearestRoomLocation(room.Reference, transform.gameObject);
+        Path = pathfinder.FindWay(Me, targetPosition, memory);
         currentNodeIndex = 0;
     }
 
@@ -216,6 +216,14 @@ public class Walking
                 {
                     InitPath(doorToOpen);
                 }
+                //if (transform.name == "employee 73")
+                //{
+                //    foreach (var item in Path)
+                //    {
+                //        Debug.Log(item.Name);
+                //    }
+                //    Debug.Log("------------");
+                //}
                 CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
@@ -276,7 +284,7 @@ public class Walking
                 Executing = true;
                 break;
             case Command.RUN_AWAY:
-                if(!Utils.CanSee(Me, Shooter))
+                if (!Utils.CanSee(Me, Shooter))
                 {
                     FinishWalking();
                     return;
@@ -319,7 +327,6 @@ public class Walking
                 InitPath(Me.GetComponent<Person>().PersonMemory);
             }
         }
-
         Executing = !CheckGoal(transform, memory);
 
         if (Executing)
@@ -520,7 +527,7 @@ public class Walking
             && Utils.CanSee(Me, Shooter))
         {
             InitPath(Shooter);
-        } 
+        }
     }
 
 
@@ -551,7 +558,7 @@ public class Walking
 
     public float GetSpeedAtStaircase(float currentSpeed)
     {
-        if(Me.GetComponent<Person>().PersonMemory.GetCurrentStaircase() == null)
+        if (Me.GetComponent<Person>().PersonMemory.GetCurrentStaircase() == null)
         {
             return currentSpeed;
         }
@@ -562,7 +569,6 @@ public class Walking
         float b = s / 3 - (3 * s * w - 2 * s * s) / (6 * (w - s));
 
         float res = a * currentSpeed + b;
-        Debug.Log(currentSpeed + " " + res);
         return res;
     }
 }
