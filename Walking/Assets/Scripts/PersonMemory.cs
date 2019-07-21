@@ -428,6 +428,10 @@ public class PersonMemory
             if (!Physics.Linecast(shooterPosition, entry.Value.Position, layerMask))
             {
                 AddNodeBlockedByShooter(entry.Value);
+                //foreach (var item in Graph[CurrentFloor].Nodes[entry.Key])
+                //{
+                //    AddNodeBlockedByShooter(item);
+                //}
             }
         }
     }
@@ -446,6 +450,10 @@ public class PersonMemory
 
     public void UpdateActiveShooterInfo(GameObject activeShooter)
     {
+        if(ShooterInfo == null)
+        {
+            transform.SendMessage("PersonStateChanged");
+        }
         Vector3 shooterPos = activeShooter.transform.position;
         ShooterInfo = new ShooterInfo
         {

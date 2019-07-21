@@ -23,6 +23,11 @@ public static class FightActions {
             Tasks = new List<Task> { getToEnemy, fight };
         }
 
+        public override float ActionHappenProbability(Person person)
+        {
+            return 1f;
+        }
+
         public override void TasksCleaner(PersonMemory memory)
         {
             

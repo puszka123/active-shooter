@@ -19,6 +19,11 @@ public static class HideActions {
             Type = ActionType.HIDE;
         }
 
+        public override float ActionHappenProbability(Person person)
+        {
+            return 0f;
+        }
+
         public override void TasksCleaner(PersonMemory memory)
         {
         }
@@ -50,6 +55,11 @@ public static class HideActions {
             Type = ActionType.HIDE;
         }
 
+        public override float ActionHappenProbability(Person person)
+        {
+            return 0f;
+        }
+
         public override void TasksCleaner(PersonMemory memory)
         {
         }
@@ -78,6 +88,11 @@ public static class HideActions {
             barricade.RequiredTasks = new List<Task>();
 
             Tasks = new List<Task> { goToDoor, barricade };
+        }
+
+        public override float ActionHappenProbability(Person person)
+        {
+            return 0f;
         }
 
         public override void TasksCleaner(PersonMemory memory)

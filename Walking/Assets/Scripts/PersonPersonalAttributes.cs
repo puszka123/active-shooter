@@ -7,6 +7,6 @@ public class PersonPersonalAttributes  {
 
     public PersonPersonalAttributes()
     {
-        Altruism = 0.5f;
+        Altruism = 0.0f;
     }
 }

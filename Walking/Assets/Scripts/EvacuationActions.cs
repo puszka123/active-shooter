@@ -23,6 +23,35 @@ public static class EvacuationActions  {
             Type = ActionType.EVACUATE;
         }
 
+        public override float ActionHappenProbability(Person person)
+        {
+            if (person.MyState.SeeShooter)
+            {
+                return 0f;
+            }
+            int shooterFloor = person.PersonMemory.ShooterInfo.Floor;
+            int myFloor = person.PersonMemory.CurrentFloor;
+            bool isBelowMe = shooterFloor < myFloor;
+            bool isOnMyFloor = shooterFloor == myFloor;
+            bool isAboveMe = shooterFloor > myFloor;
+
+            float chances = 0.3f;
+            if(myFloor == 0)
+            {
+                chances += 0.8f;
+                return chances;
+            }
+
+            float floorWeight = 0.5f;
+
+            if(isAboveMe || isOnMyFloor)
+            {
+                chances += floorWeight;
+            }
+
+            return chances;
+        }
+
         public override void TasksCleaner(PersonMemory memory)
         {
         }
@@ -58,6 +87,39 @@ public static class EvacuationActions  {
             Tasks = new List<Task>(new Task[] { goUp, goDown, goToRoom });
 
             Type = ActionType.EVACUATE;
+        }
+
+        public override float ActionHappenProbability(Person person)
+        {
+            if (person.MyState.SeeShooter)
+            {
+                return 0f;
+            }
+            if(!person.MyState.CanRunToMyRoom)
+            {
+                return 0f;
+            }
+            int shooterFloor = person.PersonMemory.ShooterInfo.Floor;
+            int myFloor = person.PersonMemory.CurrentFloor;
+            bool isBelowMe = shooterFloor < myFloor;
+            bool isOnMyFloor = shooterFloor == myFloor;
+            bool isAboveMe = shooterFloor > myFloor;
+
+            float chances = 0.3f;
+            if (myFloor == person.PersonMemory.GetRoomFloor(person.PersonMemory.MyRoom.Id))
+            {
+                chances += 0.8f;
+                return chances;
+            }
+
+            float floorWeight = 0.5f;
+
+            if (isBelowMe || isOnMyFloor)
+            {
+                chances += floorWeight;
+            }
+
+            return chances;
         }
 
         public override void TasksCleaner(PersonMemory memory)
@@ -104,6 +166,31 @@ public static class EvacuationActions  {
             Type = ActionType.EVACUATE;
         }
 
+        public override float ActionHappenProbability(Person person)
+        {
+            return 0f; //test
+            if (person.MyState.SeeShooter)
+            {
+                return 0f;
+            }
+            int shooterFloor = person.PersonMemory.ShooterInfo.Floor;
+            int myFloor = person.PersonMemory.CurrentFloor;
+            bool isBelowMe = shooterFloor < myFloor;
+            bool isOnMyFloor = shooterFloor == myFloor;
+            bool isAboveMe = shooterFloor > myFloor;
+
+            float chances = 0.0f;
+
+            float floorWeight = 0.5f;
+
+            if (isBelowMe || isOnMyFloor)
+            {
+                chances += floorWeight;
+            }
+
+            return chances;
+        }
+
         public override void TasksCleaner(PersonMemory memory)
         {
 
@@ -130,6 +217,15 @@ public static class EvacuationActions  {
             Tasks = new List<Task> { runAway };
 
             Type = ActionType.EVACUATE;
+        }
+
+        public override float ActionHappenProbability(Person person)
+        {
+            if (person.MyState.SeeShooter)
+            {
+                return 1f;
+            }
+            return 0f;
         }
 
         public override void TasksCleaner(PersonMemory memory)

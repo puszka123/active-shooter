@@ -44,6 +44,11 @@ public static class ShooterActions
             Type = ActionType.FIND_AND_KILL;
         }
 
+        public override float ActionHappenProbability(Person person)
+        {
+            return 1f;
+        }
+
         public override void TasksCleaner(PersonMemory memory)
         {
 
@@ -74,6 +79,11 @@ public static class ShooterActions
             Type = ActionType.FIND_AND_KILL;
         }
 
+        public override float ActionHappenProbability(Person person)
+        {
+            return 0f;
+        }
+
         public override void TasksCleaner(PersonMemory memory)
         {
 
@@ -98,6 +108,11 @@ public static class ShooterActions
             Tasks = new List<Task>(new Task[] { goDown, });
 
             Type = ActionType.FIND_AND_KILL;
+        }
+
+        public override float ActionHappenProbability(Person person)
+        {
+            return 0f;
         }
 
         public override void TasksCleaner(PersonMemory memory)

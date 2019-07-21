@@ -160,7 +160,14 @@ public class Walking
                     return;
                 }
                 memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
-                memory.setTargetPosition(Utils.NearestStairs("DOWN", transform, memory));
+                string nearestStairs = Utils.NearestStairs("DOWN", transform, memory);
+                if(nearestStairs == null)
+                {
+                    Me.GetComponent<Person>().MyState.CanGoDown = false;
+                    FinishWalking();
+                    Me.SendMessage("PersonStateChanged");
+                }
+                memory.setTargetPosition(nearestStairs);
                 if (Utils.IsInAnyRoom(memory))
                 {
                     GameObject roomDown = Utils.GetRoom(memory).Door;
@@ -198,6 +205,13 @@ public class Walking
                 memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
                 memory.setTargetPosition(room1.Id);
                 InitPath(memory);
+                if (Path.Count == 0 && room1.Id == memory.MyRoom.Id)
+                {
+                    Me.GetComponent<Person>().MyState.CanRunToMyRoom = false;
+                    FinishWalking();
+                    Me.SendMessage("PersonStateChanged");
+                    return;
+                }
                 CurrentSpeed = Resources.Walk; //test
                 Executing = true;
                 break;
@@ -216,14 +230,6 @@ public class Walking
                 {
                     InitPath(doorToOpen);
                 }
-                //if (transform.name == "employee 73")
-                //{
-                //    foreach (var item in Path)
-                //    {
-                //        Debug.Log(item.Name);
-                //    }
-                //    Debug.Log("------------");
-                //}
                 CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;

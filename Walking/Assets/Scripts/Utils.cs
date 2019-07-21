@@ -36,14 +36,23 @@ public static class Utils
         List<GameObject> stairs = new List<GameObject>();
         foreach (Transform item in location.transform)
         {
-            if (item.GetComponent<PathLocation>().IsStairsway)
+            if (item.GetComponent<PathLocation>().IsStairsway && !BlockedByShooter(item.gameObject, memory))
             {
                 stairs.Add(item.gameObject);
             }
             if (stairs.Count >= 2) break;
         }
-        GameObject nearestStairs = Distance(transform.gameObject, stairs[0]) < Distance(transform.gameObject, stairs[1])
-            ? stairs[0] : stairs[1];
+        GameObject nearestStairs = null;
+        if (stairs.Count == 0) return null;
+        if (stairs.Count == 1)
+        {
+            nearestStairs = stairs[0];
+        }
+        else
+        {
+            nearestStairs = Distance(transform.gameObject, stairs[0]) < Distance(transform.gameObject, stairs[1])
+                ? stairs[0] : stairs[1];
+        }
         PathLocation pl = nearestStairs.GetComponent<PathLocation>();
         if (pl.MyStairs[0].GetComponent<PathLocation>().StairsDirection == stairsType)
         {
@@ -315,6 +324,10 @@ public static class Utils
         {
             Debug.Log(person.name + " run away is null");
         }
+        if (person.gameObject.name == "employee 32")
+        {
+            //Debug.Log(node.Name);
+        }
         return node;
     }
 
@@ -375,5 +388,11 @@ public static class Utils
         }
 
         return node;
+    }
+
+    public static bool BlockedByShooter(GameObject pathLocation, PersonMemory memory)
+    {
+        if (memory.BlockedByShooter == null || memory.BlockedByShooter.Count == 0) return false;
+        return memory.BlockedByShooter.Select(n => n.Name).Contains(pathLocation.name);
     }
 }

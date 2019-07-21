@@ -49,6 +49,11 @@ public static class ImplementedActions
             Tasks = new List<Task>(new Task[] { findRoom, goToRoom, knockDoor, enterRoom, askCloseDoor, tellAboutShooter });
         }
 
+        public override float ActionHappenProbability(Person person)
+        {
+            return 0f;
+        }
+
         public override void TasksCleaner(PersonMemory memory)
         {
 

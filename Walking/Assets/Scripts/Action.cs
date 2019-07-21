@@ -12,6 +12,7 @@ public abstract class Action {
 
     public abstract void TasksCleaner(PersonMemory memory);
     public abstract void UpdateLimit(PersonMemory memory);
+    public abstract float ActionHappenProbability(Person person);
     public void ResetTasks()
     {
         if (Tasks == null) return;

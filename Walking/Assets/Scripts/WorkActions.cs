@@ -36,6 +36,11 @@ public static class WorkActions {
             Type = ActionType.WORK;
         }
 
+        public override float ActionHappenProbability(Person person)
+        {
+            return 1f;
+        }
+
         public override void TasksCleaner(PersonMemory memory)
         {
         }
@@ -63,6 +68,11 @@ public static class WorkActions {
             Tasks = new List<Task>(new Task[] { goDown, exitBuilding });
 
             Type = ActionType.WORK;
+        }
+
+        public override float ActionHappenProbability(Person person)
+        {
+            return 0f;
         }
 
         public override void TasksCleaner(PersonMemory memory)

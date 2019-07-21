@@ -28,16 +28,24 @@ public static class ImplementedBehaviours
             float altruism = person.PersonalAttributes.Altruism;
 
             float altruismWeight = 1f;
-            float aboveMeWeight = 0.25f;
-            float isInRoomWeight = 0.25f;
+            float aboveMeWeight = 0.75f;
             float chances;
-            if (!seeShooter)
+
+            if(seeShooter && isInRoom)
             {
-                chances = aboveMeValue * aboveMeWeight + isInRoomValue * isInRoomWeight;
+                chances = 0f;
+            }
+            else if(!seeShooter && isInRoom)
+            {
+                chances = aboveMeValue * aboveMeWeight + (1 - aboveMeValue * aboveMeWeight);
+            }
+            else if(seeShooter && !isInRoom)
+            {
+                chances = (1 - altruism) * altruismWeight;
             }
             else
             {
-                chances = (1 - altruism) * altruismWeight;
+                chances = 1f;
             }
 
             return chances;
@@ -64,16 +72,16 @@ public static class ImplementedBehaviours
             float notAboveMeValue = !aboveMe ? 1f : 0f;
             float isInRoomValue = isInRoom ? 1f : 0f;
 
-            float aboveMeWeight = 0.25f;
-            float isInRoomWeight = 0.25f;
+            float notAboveMeWeight = 0.85f;
+
             float chances;
-            if (seeShooter)
+            if (seeShooter || !isInRoom)
             {
                 chances = 0f;
             }
             else
             {
-                chances = notAboveMeValue * aboveMeWeight + isInRoomValue * isInRoomWeight;
+                chances = notAboveMeValue * notAboveMeWeight + (1 - notAboveMeValue * notAboveMeWeight);
             }
 
             return chances;
@@ -92,6 +100,7 @@ public static class ImplementedBehaviours
         {
             if (person.PersonMemory.ShooterInfo == null) return 0f;
             bool seeShooter = Utils.CanSee(person.gameObject, GameObject.FindGameObjectWithTag("ActiveShooter"));
+            bool isInRoom = Utils.IsInAnyRoom(person.PersonMemory);
 
             float altruism = person.PersonalAttributes.Altruism;
 
@@ -99,9 +108,13 @@ public static class ImplementedBehaviours
             float altruismWeight = 1f;
 
             float chances;
-            if (seeShooter)
+            if (seeShooter && !isInRoom)
             {
                 chances = altruism * altruismWeight;
+            }
+            else if(seeShooter && isInRoom)
+            {
+                chances = 1f;
             }
             else
             {
@@ -139,7 +152,14 @@ public static class ImplementedBehaviours
 
         public override float BehaviourHappenProbability(Person person)
         {
-            return 1f;
+            if (person.CompareTag("ActiveShooter"))
+            {
+                return 1f;
+            }
+            else
+            {
+                return 0f;
+            }
         }
     }
 
