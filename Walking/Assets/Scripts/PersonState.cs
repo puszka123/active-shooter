@@ -7,11 +7,13 @@ public class PersonState {
     bool seeShooter;
     bool canRunToMyRoom;
     bool canGoDown;
+    bool canGoUp;
     //bool canRunToAnyRoom;
 
     public PersonState()
     {
         IsHiding = false;
+        canRunToMyRoom = true;
     }
 
     public bool IsHiding {
@@ -58,6 +60,18 @@ public class PersonState {
         set
         {
             canGoDown = value;
+        }
+    }
+
+    public bool CanGoUp
+    {
+        get
+        {
+            return canGoUp;
+        }
+        set
+        {
+            canGoUp = value;
         }
     }
 }

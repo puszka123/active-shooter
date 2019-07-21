@@ -14,8 +14,13 @@ public class BehaviourSelector
     public Behaviour SelectBehaviour(Person person)
     {
         List<float> behavioursProbabilities = new List<float>();
-        AvailableBehaviours.ForEach(b => behavioursProbabilities.Add(b.BehaviourHappenProbability(person)));
-        float luckyNumber = Random.Range(0f, 1f);
+        float probabilitiesSum = 0f;
+        AvailableBehaviours.ForEach(b =>
+        {
+            probabilitiesSum += b.BehaviourHappenProbability(person);
+            behavioursProbabilities.Add(b.BehaviourHappenProbability(person));
+        });
+        float luckyNumber = Random.Range(0f, probabilitiesSum);
         float start = 0f;
         float end = 0f;
         for (int i = 0; i < behavioursProbabilities.Count; i++)
@@ -31,7 +36,7 @@ public class BehaviourSelector
             if (start <= luckyNumber && luckyNumber < end)
             {
                 return AvailableBehaviours[i];
-            } 
+            }
         }
 
         return null;

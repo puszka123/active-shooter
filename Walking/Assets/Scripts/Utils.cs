@@ -341,7 +341,7 @@ public static class Utils
                 Vector3 personShooter = shooter.transform.position - person.transform.position;
                 float angleBetween = Vector3.Angle(nodePerson, personShooter);
                 if (node == null) node = entry.Value;
-                else if (angleBetween > 70f &&
+                else if (angleBetween > 60f &&
                     Vector3.Distance(entry.Value.Position, shooter.transform.position) > Vector3.Distance(shooter.transform.position, node.Position))
                 {
                     if (memory.GetBlockedNodes().Length == 0)
@@ -371,7 +371,7 @@ public static class Utils
                 Vector3 personShooter = shooter.transform.position - person.transform.position;
                 float angleBetween = Vector3.Angle(nodePerson, personShooter);
                 if (node == null) node = entry.Value;
-                else if (angleBetween > 70f &&
+                else if (angleBetween > 60f &&
                     Vector3.Distance(entry.Value.Position, shooter.transform.position) > Vector3.Distance(shooter.transform.position, node.Position))
                 {
                     if (memory.GetBlockedNodes().Length == 0)
@@ -386,8 +386,21 @@ public static class Utils
                 }
             }
         }
-
-        return node;
+        if(node == null)
+        {
+            return null;
+        }
+        Vector3 finalNodePerson = node.Position - person.transform.position;
+        Vector3 finalPersonShooter = shooter.transform.position - person.transform.position;
+        float finalAngleBetween = Vector3.Angle(finalNodePerson, finalPersonShooter);
+        if (finalAngleBetween >= 60f)
+        {
+            return node;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public static bool BlockedByShooter(GameObject pathLocation, PersonMemory memory)

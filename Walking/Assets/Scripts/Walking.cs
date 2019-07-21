@@ -50,7 +50,6 @@ public class Walking
 
     public void InitPath(PersonMemory memory)
     {
-
         //Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
         Path = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], Me, memory.TargetPosition, memory);
         currentNodeIndex = 0;
@@ -58,7 +57,8 @@ public class Walking
 
     public void InitPathWithRoomPath(PersonMemory memory)
     {
-        List<Node> longPath = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], memory.StartPosition, memory.TargetPosition, memory);
+        List<Node> longPath = pathfinder.FindWay(memory.Graph[memory.CurrentFloor], Me, memory.TargetPosition, memory);
+        longPath = longPath.Where(n => n.Name != Me.name).ToList();
         Path.AddRange(longPath);
         currentNodeIndex = 0;
     }
@@ -105,7 +105,6 @@ public class Walking
         }
         else
         {
-            memory.setStartPosition(memory.FindNearestLocation(Me.transform.position).Name);
             memory.setTargetPosition(memory.FindNearestLocation(Shooter.transform.position).Name);
             if (memory.CurrentRoom == null)
             {
@@ -132,8 +131,14 @@ public class Walking
                     FinishWalking();
                     return;
                 }
-                memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
-                memory.setTargetPosition(Utils.NearestStairs("UP", transform, memory));
+                string nearestStairs = Utils.NearestStairs("UP", transform, memory);
+                if (nearestStairs == null)
+                {
+                    Me.GetComponent<Person>().MyState.CanGoUp = false;
+                    FinishWalking();
+                    Me.SendMessage("PersonStateChanged");
+                }
+                memory.setTargetPosition(nearestStairs);
                 if (Utils.IsInAnyRoom(memory))
                 {
                     GameObject roomUp = Utils.GetRoom(memory).Door;
@@ -159,15 +164,14 @@ public class Walking
                     FinishWalking();
                     return;
                 }
-                memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
-                string nearestStairs = Utils.NearestStairs("DOWN", transform, memory);
-                if(nearestStairs == null)
+                string nearestStairs2 = Utils.NearestStairs("DOWN", transform, memory);
+                if (nearestStairs2 == null)
                 {
                     Me.GetComponent<Person>().MyState.CanGoDown = false;
                     FinishWalking();
                     Me.SendMessage("PersonStateChanged");
                 }
-                memory.setTargetPosition(nearestStairs);
+                memory.setTargetPosition(nearestStairs2);
                 if (Utils.IsInAnyRoom(memory))
                 {
                     GameObject roomDown = Utils.GetRoom(memory).Door;
@@ -187,7 +191,6 @@ public class Walking
                     FinishWalking();
                     return;
                 }
-                memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
                 memory.setTargetPosition(Utils.NearestExit(transform, memory));
                 InitPath(memory);
                 CurrentSpeed = Resources.Walk; //test
@@ -202,7 +205,6 @@ public class Walking
                     FinishWalking();
                     return;
                 }
-                memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
                 memory.setTargetPosition(room1.Id);
                 InitPath(memory);
                 if (Path.Count == 0 && room1.Id == memory.MyRoom.Id)
@@ -443,21 +445,13 @@ public class Walking
     {
         if (Path == null || Path.Count == 0) return true;
         if (currentNodeIndex >= Path.Count) return true;
-        int layerMask = 1 << 9;
+        LayerMask layerMask = LayerMask.GetMask("Wall");
         RaycastHit hit;
         if (Physics.Linecast(transform.position, Path[currentNodeIndex].Position, out hit, layerMask) && blockedWayTimeout >= 2f)
         {
             blockedWayTimeout = 0f;
-            memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
-            if (memory.StartPosition != null)
-            {
-                InitPath(memory);
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            InitPath(memory);
+            return false;
         }
         else
         {
@@ -485,15 +479,13 @@ public class Walking
     public void UpdatePathAfterBlockedNode(Transform transform, PersonMemory memory)
     {
         blockedWayTimeout = 0f;
-        memory.setStartPosition(memory.FindNearestLocation(transform.position).Name);
-        if (memory.StartPosition != null)
+
+        InitPath(memory);
+        if (Path.Count == 0)
         {
-            InitPath(memory);
-            if (Path.Count == 0)
-            {
-                FinishWalking();
-            }
+            FinishWalking();
         }
+
     }
 
     public void TryToGoStairs(GameObject gameObject, PersonMemory memory)

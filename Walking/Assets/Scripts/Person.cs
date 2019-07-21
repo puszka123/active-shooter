@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Person : MonoBehaviour
@@ -171,10 +172,13 @@ public class Person : MonoBehaviour
     public void PersonStateChanged()
     {
         CurrentBehaviour = BehaviourSelector.SelectBehaviour(this);
+        //if(CurrentBehaviour == null)
+        //{
+        //    CurrentBehaviour = BehaviourSelector.AvailableBehaviours.Find(b => b.GetType() == typeof(ImplementedBehaviours.Fight));
+        //}
         ActionSelector = new ActionSelector(CurrentBehaviour);
         CurrentAction.ResetTasks();
         CurrentAction = ActionSelector.SelectAction(this);
-        //Debug.Log(CurrentBehaviour.GetType());
     }
 
     public void SeeShooterCheck()

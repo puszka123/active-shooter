@@ -31,10 +31,10 @@ public class ActionSelector
             end += actionsProbabilities[i];
             if (start <= luckyNumber && luckyNumber < end)
             {
-                if (person.gameObject.name == "employee 19")
-                {
-                    //Debug.Log(AvailableActions[i].GetType() + " " + actionsProbabilities[i] + " [" + start + ", " + end + "] " + luckyNumber);
-                }
+                //if (person.gameObject.name == "employee 19")
+                //{
+                //    Debug.Log(AvailableActions[i].GetType() + " " + actionsProbabilities[i] + " [" + start + ", " + end + "] " + luckyNumber);
+                //}
                 return AvailableActions[i];
             }
         }
