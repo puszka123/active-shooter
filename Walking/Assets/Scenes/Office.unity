@@ -84510,6 +84510,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   Strength: 0
+  LockDoorChance: 0
+  BarricadeDoorChance: 0
+  HideChance: 0
 --- !u!114 &1784890286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86415,6 +86418,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   Strength: 0
+  LockDoorChance: 0
+  BarricadeDoorChance: 0
+  HideChance: 0
 --- !u!1001 &1822294261
 Prefab:
   m_ObjectHideFlags: 0

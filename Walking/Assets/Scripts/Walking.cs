@@ -207,7 +207,7 @@ public class Walking
                 }
                 memory.setTargetPosition(room1.Id);
                 InitPath(memory);
-                if (Path.Count == 0 && room1.Id == memory.MyRoom.Id)
+                if (!transform.CompareTag("ActiveShooter") && Path.Count == 0 && room1.Id == memory.MyRoom.Id)
                 {
                     Me.GetComponent<Person>().MyState.CanRunToMyRoom = false;
                     FinishWalking();
@@ -304,7 +304,29 @@ public class Walking
                 CurrentSpeed = Resources.Sprint;
                 Executing = true;
                 break;
-            case Command.STAY:
+            case Command.GO_TO_WORKPLACE:
+                Room room5 = Utils.GetRoom(task);
+                if (room5 == null
+                    || room5.Id != memory.MyRoom.Id
+                    || memory.CurrentRoom == null
+                    || memory.CurrentRoom.Id != memory.MyRoom.Id
+                    || !Utils.ToFar(transform.gameObject, Utils.GetMyWorkplace(memory), Pathfinder.MIN_DISTANCE_WORKPLACE))
+                {
+                    FinishWalking();
+                    return;
+                }
+                InitRoomPath(room5, transform, memory, Utils.GetMyWorkplace(memory));
+                CurrentSpeed = Resources.Walk;
+                Executing = true;
+                break;
+            case Command.WORK:
+                if (memory.CurrentRoom == null
+                    || memory.CurrentRoom.Id != memory.MyRoom.Id
+                    || Utils.ToFar(transform.gameObject, Utils.GetMyWorkplace(memory), Pathfinder.MIN_DISTANCE_WORKPLACE))
+                {
+                    FinishWalking();
+                    return;
+                }
                 Path = new List<Node>();
                 memory.setStartPosition("");
                 memory.setTargetPosition("");

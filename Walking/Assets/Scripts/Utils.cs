@@ -161,7 +161,7 @@ public static class Utils
                 break;
             case Command.SAY_ACTIVE_SHOOTER:
                 break;
-            case Command.STAY:
+            case Command.WORK:
                 break;
             case Command.GO_TO_ROOM:
                 task.Limit.FoundRoom = memory.FoundRoom;
@@ -300,7 +300,7 @@ public static class Utils
 
     public static bool CanSee(GameObject a, GameObject b)
     {
-        LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Obstacle");
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Door");
         return !Physics.Linecast(a.transform.position, b.transform.position, layerMask);
     }
 
@@ -407,5 +407,11 @@ public static class Utils
     {
         if (memory.BlockedByShooter == null || memory.BlockedByShooter.Count == 0) return false;
         return memory.BlockedByShooter.Select(n => n.Name).Contains(pathLocation.name);
+    }
+
+    public static GameObject GetMyWorkplace(PersonMemory memory)
+    {
+        return memory.MyRoom.Reference.GetComponent<RoomManager>().RoomLocations.Find(r => r.GetComponent<RoomLocation>().Workplace
+        && r.GetComponent<RoomLocation>().WorkEmployee.name == memory.transform.name);
     }
 }

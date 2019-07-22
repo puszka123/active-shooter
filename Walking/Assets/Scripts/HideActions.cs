@@ -21,7 +21,18 @@ public static class HideActions {
 
         public override float ActionHappenProbability(Person person)
         {
-            return 0f;
+            PersonStats stats = person.GetComponent<PersonStats>();
+            float chances = stats.HideChance;
+            if(person.MyState.IsHiding)
+            {
+                chances = 0f;
+                return chances;
+            }
+            else if(!person.PersonMemory.CurrentRoom.Door.GetComponent<DoorController>().IsLocked)
+            {
+                chances = 1f - stats.LockDoorChance;
+            }
+            return chances;
         }
 
         public override void TasksCleaner(PersonMemory memory)
@@ -57,7 +68,13 @@ public static class HideActions {
 
         public override float ActionHappenProbability(Person person)
         {
-            return 0f;
+            PersonStats stats = person.GetComponent<PersonStats>();
+            float chances = stats.LockDoorChance;
+            if (person.PersonMemory.CurrentRoom.Door.GetComponent<DoorController>().IsLocked)
+            {
+                chances = 0f;
+            }
+            return chances;
         }
 
         public override void TasksCleaner(PersonMemory memory)
@@ -92,7 +109,7 @@ public static class HideActions {
 
         public override float ActionHappenProbability(Person person)
         {
-            return 0f;
+            return person.GetComponent<PersonStats>().BarricadeDoorChance;
         }
 
         public override void TasksCleaner(PersonMemory memory)

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class EvacuationActions  {
+public static class EvacuationActions
+{
 
     public class RunToExit : Action
     {
@@ -36,7 +37,7 @@ public static class EvacuationActions  {
             bool isAboveMe = shooterFloor > myFloor;
 
             float chances = 0.3f;
-            if(myFloor == 0)
+            if (myFloor == 0)
             {
                 chances += 0.8f;
                 return chances;
@@ -44,7 +45,7 @@ public static class EvacuationActions  {
 
             float floorWeight = 0.5f;
 
-            if(isAboveMe || isOnMyFloor)
+            if (isAboveMe || isOnMyFloor)
             {
                 chances += floorWeight;
             }
@@ -84,7 +85,13 @@ public static class EvacuationActions  {
             goToRoom.Type = TaskType.MOVEMENT;
             goToRoom.RequiredTasks = new List<Task>();
 
-            Tasks = new List<Task>(new Task[] { goUp, goDown, goToRoom });
+            Task enterRoom = new Task();
+            enterRoom.Command = Command.ENTER_ROOM;
+            enterRoom.Limit = new Limit() { FoundRoom = myRoom };
+            enterRoom.Type = TaskType.MOVEMENT;
+            enterRoom.RequiredTasks = new List<Task> { goToRoom };
+
+            Tasks = new List<Task>(new Task[] { goUp, goDown, goToRoom, enterRoom });
 
             Type = ActionType.EVACUATE;
         }
@@ -95,7 +102,12 @@ public static class EvacuationActions  {
             {
                 return 0f;
             }
-            if(!person.MyState.CanRunToMyRoom)
+            if (!person.MyState.CanRunToMyRoom)
+            {
+                return 0f;
+            }
+            Room currentRoom = person.PersonMemory.CurrentRoom;
+            if (currentRoom != null && currentRoom.Id == person.PersonMemory.MyRoom.Id)
             {
                 return 0f;
             }
@@ -235,7 +247,7 @@ public static class EvacuationActions  {
 
         public override void UpdateLimit(PersonMemory memory)
         {
-            
+
         }
     }
 }

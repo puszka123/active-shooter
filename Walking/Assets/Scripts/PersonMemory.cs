@@ -285,6 +285,11 @@ public class PersonMemory
 
     public void SaveCurrentRoom(GameObject room)
     {
+        bool wasNull = false;
+        if (CurrentRoom == null)
+        {
+            wasNull = true;
+        }
         CurrentRoom = new Room
         {
             Id = room.name,
@@ -293,11 +298,24 @@ public class PersonMemory
             Reference = room,
         };
         ClearRoomBlockedNode(CurrentRoom);
+        if (wasNull)
+        {
+            transform.SendMessage("PersonStateChanged");
+        }
+        if (transform.name == "employee 19")
+        {
+            Debug.Log(CurrentRoom.Id + " save: " + transform.GetComponent<Person>().simulationTime);
+        }
     }
 
     public void ClearCurrentRoom()
     {
         CurrentRoom = null;
+        transform.SendMessage("PersonStateChanged");
+        if (transform.name == "employee 19")
+        {
+            Debug.Log("clear: " + transform.GetComponent<Person>().simulationTime);
+        }
     }
 
     public void ClearRoomBlockedNode(Room room)

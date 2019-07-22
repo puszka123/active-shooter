@@ -99,12 +99,12 @@ public class Person : MonoBehaviour
             actionTime += Time.deltaTime;
             return;
         }
-        if (simulationTime >= 5f && !test && !CompareTag("ActiveShooter"))
-        {
-            test = true;
-            //CurrentAction = new HideActions.BarricadeDoor();
-            CurrentAction = new EvacuationActions.RunToExit();
-        }
+        //if (simulationTime >= 5f && !test && !CompareTag("ActiveShooter"))
+        //{
+        //    test = true;
+        //    //CurrentAction = new HideActions.BarricadeDoor();
+        //    CurrentAction = new EvacuationActions.RunToExit();
+        //}
 
         simulationTime += Time.deltaTime;
         timer += Time.deltaTime;
@@ -172,13 +172,13 @@ public class Person : MonoBehaviour
     public void PersonStateChanged()
     {
         CurrentBehaviour = BehaviourSelector.SelectBehaviour(this);
-        //if(CurrentBehaviour == null)
-        //{
-        //    CurrentBehaviour = BehaviourSelector.AvailableBehaviours.Find(b => b.GetType() == typeof(ImplementedBehaviours.Fight));
-        //}
         ActionSelector = new ActionSelector(CurrentBehaviour);
         CurrentAction.ResetTasks();
         CurrentAction = ActionSelector.SelectAction(this);
+        //if(name == "employee 19")
+        //{
+        //    Debug.Log(name + " " + CurrentBehaviour + " " + CurrentAction + " Room: " + PersonMemory.CurrentRoom + " " + simulationTime);
+        //}
     }
 
     public void SeeShooterCheck()

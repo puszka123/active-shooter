@@ -26,12 +26,24 @@ public static class WorkActions {
             goToRoom.Type = TaskType.MOVEMENT;
             goToRoom.RequiredTasks = new List<Task>();
 
+            Task enterRoom = new Task();
+            enterRoom.Command = Command.ENTER_ROOM;
+            enterRoom.Limit = new Limit() { FoundRoom = myRoom };
+            enterRoom.Type = TaskType.MOVEMENT;
+            enterRoom.RequiredTasks = new List<Task>();
+
+            Task goToWorkplace = new Task();
+            goToWorkplace.Command = Command.GO_TO_WORKPLACE;
+            goToWorkplace.Limit = new Limit() { FoundRoom = myRoom };
+            goToWorkplace.Type = TaskType.MOVEMENT;
+            goToWorkplace.RequiredTasks = new List<Task>() { enterRoom };
+
             Task work = new Task();
-            work.Command = Command.STAY;
+            work.Command = Command.WORK;
             work.Type = TaskType.MOVEMENT;
             work.RequiredTasks = new List<Task>();
 
-            Tasks = new List<Task>(new Task[] { goDown, goUp, goToRoom, work });
+            Tasks = new List<Task>(new Task[] { goDown, goUp, goToRoom, enterRoom, goToWorkplace, work });
 
             Type = ActionType.WORK;
         }

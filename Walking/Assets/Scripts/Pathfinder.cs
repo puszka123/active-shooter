@@ -11,6 +11,7 @@ public class Pathfinder {
     public const float MIN_DISTANCE_ROOM = 0.1f;
     public const float MIN_DISTANCE_OBSTACLE = 0.1f;
     public const float MIN_DISTANCE_STAIRS = 0.1f;
+    public const float MIN_DISTANCE_WORKPLACE = 0.025f;
 
     public float GetGoalAngle(GameObject person, Vector3 destination)
     {
@@ -34,6 +35,8 @@ public class Pathfinder {
         {
             case Command.PICK_NEAREST_OBSTACLE:
                 return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_OBSTACLE;
+            case Command.GO_TO_WORKPLACE:
+                return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_WORKPLACE;
             case Command.GO_DOWN:
             case Command.GO_UP:
                 return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_STAIRS;
