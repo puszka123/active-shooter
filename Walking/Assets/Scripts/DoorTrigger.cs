@@ -11,7 +11,7 @@ public class DoorTrigger : MonoBehaviour
 
     private void Start()
     {
-        Side = gameObject.name.Split(' ')[1];          
+        Side = gameObject.name.Split(' ')[1];
     }
 
     private void OnTriggerStay(Collider other)
@@ -26,21 +26,17 @@ public class DoorTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        AddPerson(other.gameObject);
         other.SendMessage("DoorMet", transform.parent.gameObject);
-        if(Side == "In")
+        if (Side == "In")
         {
+            AddPerson(other.gameObject);
             other.SendMessage("YouEnterRoom", transform.parent.gameObject);
         }
-        if(Side == "Out")
+        if (Side == "Out")
         {
+            RemovePerson(other.gameObject);
             other.SendMessage("YouExitRoom", transform.parent.gameObject);
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        RemovePerson(other.gameObject);
     }
 
     public void AddPerson(GameObject person)
@@ -51,6 +47,7 @@ public class DoorTrigger : MonoBehaviour
 
     public void RemovePerson(GameObject person)
     {
+        if (People == null || People.Count == 0) return;
         People = People.Where(p => p.name != person.name).ToList();
     }
 }

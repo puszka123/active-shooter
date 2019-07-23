@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public static class Utils
 {
@@ -124,7 +123,7 @@ public static class Utils
         return nearestRoomLocation;
     }
 
-    public static GameObject TheFarthestHidingPlaceInRoom(GameObject person, GameObject room)
+    public static GameObject FarthestHidingPlaceInRoom(GameObject person, GameObject room)
     {
         GameObject[] roomLocations = room.GetComponent<RoomManager>().RoomLocations.ToArray();
         GameObject[] hidingPlaces = roomLocations.Where(rl => rl.GetComponent<RoomLocation>().HidingPlace).ToArray();
@@ -140,6 +139,24 @@ public static class Utils
             }
         }
         return farthestHidingPlace;
+    }
+
+    public static GameObject NearestHidingPlaceInRoom(GameObject person, GameObject room)
+    {
+        GameObject[] roomLocations = room.GetComponent<RoomManager>().RoomLocations.ToArray();
+        GameObject[] hidingPlaces = roomLocations.Where(rl => rl.GetComponent<RoomLocation>().HidingPlace).ToArray();
+        GameObject nearestHidingPlace = hidingPlaces[0];
+        float nearestDistance = Distance(nearestHidingPlace, person);
+        foreach (var hidingPlace in hidingPlaces)
+        {
+            float distance = Distance(hidingPlace, person);
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestHidingPlace = hidingPlace;
+            }
+        }
+        return nearestHidingPlace;
     }
 
     public static float Distance(GameObject a, GameObject b)
@@ -413,5 +430,11 @@ public static class Utils
     {
         return memory.MyRoom.Reference.GetComponent<RoomManager>().RoomLocations.Find(r => r.GetComponent<RoomLocation>().Workplace
         && r.GetComponent<RoomLocation>().WorkEmployee.name == memory.transform.name);
+    }
+
+    public static GameObject[] GetEmployeesInRoom(GameObject room)
+    {
+        return GameObject.FindGameObjectsWithTag("Employee").Where(e => !e.name.EndsWith("Origin")
+        && e.GetComponent<Person>().PersonMemory.CurrentRoom?.Id == room.name).ToArray();
     }
 }

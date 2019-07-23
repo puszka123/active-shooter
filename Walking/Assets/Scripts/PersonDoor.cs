@@ -81,6 +81,10 @@ public class PersonDoor : MonoBehaviour
         RaycastHit hit;
         if (Physics.Linecast(transform.position, target.Position, out hit, layerMask))
         {
+            if(GetComponent<Person>().CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Hide))
+            {
+                //Debug.Log(name + " " + target.Name + " " + door.name);
+            }
             return hit.transform.name == door.name;
         }
         else

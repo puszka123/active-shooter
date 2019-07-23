@@ -8,6 +8,8 @@ public class Pathfinder {
 
     public const int MAX_NODES_IN_QUEUE = 100;
     public const float MIN_DISTANCE = 0.2f;
+    public const float MIN_DISTANCE_DOOR = 0.3f;
+    public const float MIN_DISTANCE_HIDE = 0.15f;
     public const float MIN_DISTANCE_ROOM = 0.1f;
     public const float MIN_DISTANCE_OBSTACLE = 0.1f;
     public const float MIN_DISTANCE_STAIRS = 0.1f;
@@ -37,6 +39,10 @@ public class Pathfinder {
                 return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_OBSTACLE;
             case Command.GO_TO_WORKPLACE:
                 return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_WORKPLACE;
+            case Command.HIDE_IN_CURRENT_ROOM:
+                return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_HIDE;
+            case Command.GO_TO_DOOR:
+                return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_DOOR;
             case Command.GO_DOWN:
             case Command.GO_UP:
                 return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_STAIRS;

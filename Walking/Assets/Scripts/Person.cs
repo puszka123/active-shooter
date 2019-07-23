@@ -20,8 +20,8 @@ public class Person : MonoBehaviour
     public FighterExecutor fighterExecutor;
     public PersonState MyState;
     public TasksQueue waitingTasks;
-    public float actionTime = 0.5f;
-    public float actionTimeEdge = 0.5f;
+    public float actionTime = 0.1f;
+    public float actionTimeEdge = 0.1f;
     public float simulationTime = 0f;
     public BehaviourSelector BehaviourSelector;
     public ActionSelector ActionSelector;
@@ -99,12 +99,6 @@ public class Person : MonoBehaviour
             actionTime += Time.deltaTime;
             return;
         }
-        //if (simulationTime >= 5f && !test && !CompareTag("ActiveShooter"))
-        //{
-        //    test = true;
-        //    //CurrentAction = new HideActions.BarricadeDoor();
-        //    CurrentAction = new EvacuationActions.RunToExit();
-        //}
 
         simulationTime += Time.deltaTime;
         timer += Time.deltaTime;
@@ -169,16 +163,25 @@ public class Person : MonoBehaviour
         return GetComponent<Fight>().FightIsStarted;
     }
 
-    public void PersonStateChanged()
+    public void SelectBehaviour()
     {
         CurrentBehaviour = BehaviourSelector.SelectBehaviour(this);
+        SelectAction();
+    }
+
+    public void SelectAction()
+    {
         ActionSelector = new ActionSelector(CurrentBehaviour);
         CurrentAction.ResetTasks();
-        CurrentAction = ActionSelector.SelectAction(this);
-        //if(name == "employee 19")
-        //{
-        //    Debug.Log(name + " " + CurrentBehaviour + " " + CurrentAction + " Room: " + PersonMemory.CurrentRoom + " " + simulationTime);
-        //}
+        Action action = ActionSelector.SelectAction(this);
+        if(action != null)
+        {
+            CurrentAction = action;
+        }
+        if (name == "employee 11")
+        {
+            //Debug.Log(name + " " + CurrentBehaviour + " " + CurrentAction);
+        }
     }
 
     public void SeeShooterCheck()
@@ -198,7 +201,7 @@ public class Person : MonoBehaviour
                     if (!MyState.SeeShooter)
                     {
                         MyState.SeeShooter = true;
-                        PersonStateChanged();
+                        SelectBehaviour();
                     }
                 }
                 else
@@ -206,11 +209,25 @@ public class Person : MonoBehaviour
                     if (MyState.SeeShooter)
                     {
                         MyState.SeeShooter = false;
-                        PersonStateChanged();
+                        SelectBehaviour();
                     }
                 }
             }
         }
+    }
+
+    public void ISeeYou()
+    {
+
+    }
+
+    public void ShotSound()
+    {
+        if (transform.name.StartsWith("Employee Origin"))
+        {
+            return;
+        }
+        PersonMemory.UpdateActiveShooterInfo(Shooter);
     }
 
 }

@@ -109,6 +109,10 @@ public static class HideActions {
 
         public override float ActionHappenProbability(Person person)
         {
+            if(person.PersonMemory.CurrentRoom.Door.GetComponent<DoorController>().Obstacles == 2)
+            {
+                return 0f;
+            }
             return person.GetComponent<PersonStats>().BarricadeDoorChance;
         }
 

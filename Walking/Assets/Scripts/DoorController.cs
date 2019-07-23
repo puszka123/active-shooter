@@ -149,11 +149,14 @@ public class DoorController : MonoBehaviour
         isOpen = true;
         m_renderer.enabled = false;
         IsLocked = false;
+        InformRoomEmployees();
     }
 
     public void CloseDoor()
     {
-        closeTime = 0f;
+        isOpen = false;
+        myCollider.enabled = true;
+        m_renderer.enabled = true;
     }
 
     //if opened then close and lock
@@ -168,11 +171,21 @@ public class DoorController : MonoBehaviour
             CloseDoor();
             IsLocked = true;
         }
+        InformRoomEmployees();
     }
 
     public void SetRoom(GameObject room)
     {
         MyRoom = room;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+            DoorTrigger doorTrigger = child.GetComponent<DoorTrigger>();
+            if(doorTrigger != null)
+            {
+                doorTrigger.enabled = true;
+            }
+        }
     }
 
     public void AddObstacle(GameObject obstacle)
@@ -201,6 +214,7 @@ public class DoorController : MonoBehaviour
         VisibleObstacles[1].GetComponent<Renderer>().enabled = true;
         //VisibleObstacles[1].GetComponent<BoxCollider>().enabled = true;
         Obstacles = 2;
+        InformRoomEmployees();
     }
 
 
@@ -220,5 +234,16 @@ public class DoorController : MonoBehaviour
     public bool Destroyed()
     {
         return Resistance <= 0f;
+    }
+
+    public void InformRoomEmployees()
+    {
+        if (MyRoom != null)
+        {
+            foreach (var employee in Utils.GetEmployeesInRoom(MyRoom))
+            {
+                employee.SendMessage("SelectAction");
+            }
+        }
     }
 }

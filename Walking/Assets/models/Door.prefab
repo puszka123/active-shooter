@@ -194,9 +194,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1540847570019190}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 17.758703, y: 4.390814, z: -3.1258}
-  m_LocalScale: {x: 0.010000025, y: 0.3, z: 0.28000075}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 182.90005, y: 0, z: 0.16000016}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4450304114086566}
   - {fileID: 4522377492782066}
@@ -205,7 +205,7 @@ Transform:
   - {fileID: 4330223028962364}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!23 &23045190098071106
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54eb5be812e52346902a7676202fa2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsLockable: 1
+  IsLockable: 0
   IsToilet: 0
   MyRoom: {fileID: 0}
   Obstacles: 0
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1852635756823176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b5283fc432291d42bd90518dc84f374, type: 3}
   m_Name: 
@@ -543,7 +543,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1699685632030186}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b5283fc432291d42bd90518dc84f374, type: 3}
   m_Name: 

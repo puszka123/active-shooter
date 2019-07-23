@@ -102,12 +102,7 @@ public static class EvacuationActions
             {
                 return 0f;
             }
-            if (!person.MyState.CanRunToMyRoom)
-            {
-                return 0f;
-            }
-            Room currentRoom = person.PersonMemory.CurrentRoom;
-            if (currentRoom != null && currentRoom.Id == person.PersonMemory.MyRoom.Id)
+            if (person.PersonMemory.CurrentRoom != null)
             {
                 return 0f;
             }
@@ -117,14 +112,14 @@ public static class EvacuationActions
             bool isOnMyFloor = shooterFloor == myFloor;
             bool isAboveMe = shooterFloor > myFloor;
 
-            float chances = 0.3f;
+            float chances = 0.0f;
             if (myFloor == person.PersonMemory.GetRoomFloor(person.PersonMemory.MyRoom.Id))
             {
                 chances += 0.8f;
                 return chances;
             }
 
-            float floorWeight = 0.5f;
+            float floorWeight = 0.7f;
 
             if (isBelowMe || isOnMyFloor)
             {
@@ -180,8 +175,11 @@ public static class EvacuationActions
 
         public override float ActionHappenProbability(Person person)
         {
-            return 0f; //test
             if (person.MyState.SeeShooter)
+            {
+                return 0f;
+            }
+            if (person.PersonMemory.CurrentRoom != null)
             {
                 return 0f;
             }
@@ -193,7 +191,7 @@ public static class EvacuationActions
 
             float chances = 0.0f;
 
-            float floorWeight = 0.5f;
+            float floorWeight = 0.3f;
 
             if (isBelowMe || isOnMyFloor)
             {

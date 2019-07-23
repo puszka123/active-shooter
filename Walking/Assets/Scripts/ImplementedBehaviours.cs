@@ -28,7 +28,7 @@ public static class ImplementedBehaviours
             float altruism = person.PersonalAttributes.Altruism;
 
             float altruismWeight = 1f;
-            float aboveMeWeight = 0.75f;
+            float aboveMeWeight = 0.9f;
             float chances;
 
             if(seeShooter && isInRoom)
@@ -37,7 +37,7 @@ public static class ImplementedBehaviours
             }
             else if(!seeShooter && isInRoom)
             {
-                chances = aboveMeValue * aboveMeWeight + (1 - aboveMeValue * aboveMeWeight);
+                chances = aboveMeValue * aboveMeWeight + (1 - aboveMeWeight) * (1 - aboveMeValue);
             }
             else if(seeShooter && !isInRoom)
             {
@@ -72,16 +72,16 @@ public static class ImplementedBehaviours
             float notAboveMeValue = !aboveMe ? 1f : 0f;
             float isInRoomValue = isInRoom ? 1f : 0f;
 
-            float notAboveMeWeight = 0.85f;
+            float notAboveMeWeight = 0.9f;
 
-            float chances;
+            float chances = 0f;
             if (seeShooter || !isInRoom)
             {
                 chances = 0f;
             }
-            else
+            else if(isInRoom)
             {
-                chances = notAboveMeValue * notAboveMeWeight + (1 - notAboveMeValue * notAboveMeWeight);
+                chances = notAboveMeValue * notAboveMeWeight + (1 - notAboveMeWeight) * (1 - notAboveMeValue);
             }
 
             return chances;

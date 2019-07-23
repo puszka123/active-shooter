@@ -136,7 +136,7 @@ public class Walking
                 {
                     Me.GetComponent<Person>().MyState.CanGoUp = false;
                     FinishWalking();
-                    Me.SendMessage("PersonStateChanged");
+                    Me.SendMessage("SelectBehaviour");
                 }
                 memory.setTargetPosition(nearestStairs);
                 if (Utils.IsInAnyRoom(memory))
@@ -169,7 +169,7 @@ public class Walking
                 {
                     Me.GetComponent<Person>().MyState.CanGoDown = false;
                     FinishWalking();
-                    Me.SendMessage("PersonStateChanged");
+                    Me.SendMessage("SelectBehaviour");
                 }
                 memory.setTargetPosition(nearestStairs2);
                 if (Utils.IsInAnyRoom(memory))
@@ -211,7 +211,7 @@ public class Walking
                 {
                     Me.GetComponent<Person>().MyState.CanRunToMyRoom = false;
                     FinishWalking();
-                    Me.SendMessage("PersonStateChanged");
+                    Me.SendMessage("SelectBehaviour");
                     return;
                 }
                 CurrentSpeed = Resources.Walk; //test
@@ -251,14 +251,14 @@ public class Walking
             case Command.HIDE_IN_CURRENT_ROOM:
                 Room room3 = Utils.GetRoom(task);
                 if (room3 == null
-                    || transform.GetComponent<Person>().MyState.IsHiding
-                    || !Utils.IsInAnyRoom(memory))
+                    || !Utils.IsInAnyRoom(memory)
+                    || !Utils.ToFar(transform.gameObject, Utils.NearestHidingPlaceInRoom(transform.gameObject, room3.Reference), 0.15f))
                 {
                     FinishWalking();
                     return;
                 }
                 InitRoomPath(room3, transform, memory,
-                    Utils.TheFarthestHidingPlaceInRoom(transform.gameObject, room3.Reference));
+                    Utils.NearestHidingPlaceInRoom(transform.gameObject, room3.Reference));
                 CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
@@ -452,7 +452,7 @@ public class Walking
             _finalAngle = goalWeight * goalAngle;
             if (Speed < CurrentSpeed)
             {
-                Speed += 0.05f;
+                Speed += 0.01f;
             }
             if (Speed > CurrentSpeed)
             {
@@ -557,6 +557,7 @@ public class Walking
         if (TaskToExecute.Command == Command.HIDE_IN_CURRENT_ROOM && Utils.IsHiding(Me, person.PersonMemory))
         {
             person.MyState.IsHiding = true;
+            //person.SelectAction();
         }
         if (TaskToExecute.Command == Command.BLOCK_DOOR)
         {
@@ -573,7 +574,7 @@ public class Walking
 
     public void Slowdown(float factor)
     {
-        Speed = Resources.Stay;
+        Speed = Resources.SlowWalk;
     }
 
     public float GetSpeedAtStaircase(float currentSpeed)

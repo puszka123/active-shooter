@@ -26,6 +26,10 @@ public class Shooting : MonoBehaviour
     float allHits = 0;
     float hits = 0;
 
+    float soundTimer = 1f;
+    float soundMax = 1f;
+    float numberOfShots = 0f;
+
     private void Start()
     {
         ShootStrength = 10f;
@@ -33,7 +37,7 @@ public class Shooting : MonoBehaviour
         firingRate = 1f;
         timer = 0f;
         RotationSpeed = 30f;
-        ReactionSpeed = 0.0f;
+        ReactionSpeed = 0.1f;
         myRigidBody = GetComponent<Rigidbody>();
         horizontalDeviation = 1f;
         verticalUpDeviation =1f;
@@ -57,15 +61,16 @@ public class Shooting : MonoBehaviour
         Vector3 direction;
         RaycastHit hit;
         shootTimer += Time.deltaTime;
-
-        //if(!CanShoot)
-        //{
-        //    return;
-        //}
+        soundTimer += Time.deltaTime;
+        if(soundTimer >= soundMax && numberOfShots > 0)
+        {
+            soundTimer = 0f;
+            numberOfShots = 0f;
+            ShotSound();
+        }
 
         if (victim != null)
         {
-            //RotateTo(victim);
             RotateTo(DetectPosition);
         }
 
@@ -97,7 +102,7 @@ public class Shooting : MonoBehaviour
                 if (hit.transform.CompareTag("Employee") 
                     && hit.transform.GetComponent<PersonStats>().GetHealth() > 0)
                 {
-                    //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
+                    hit.transform.SendMessage("ISeeYou");
                     noOneInSight = false;
                     float dist = Utils.Distance(gameObject, hit.transform.gameObject);
                     if (dist < distance)
@@ -162,6 +167,8 @@ public class Shooting : MonoBehaviour
 
     public void Shoot()
     {
+        ++numberOfShots;
+
         RaycastHit hit;
         float angleHorizontal;
         float angleVertical;
@@ -274,5 +281,13 @@ public class Shooting : MonoBehaviour
     public void ClearDoorToDestroy()
     {
         DoorToDestroy = null;
+    }
+
+    public void ShotSound()
+    {
+        foreach (var item in GameObject.FindGameObjectsWithTag("Employee"))
+        {
+            item.SendMessage("ShotSound");
+        }
     }
 }

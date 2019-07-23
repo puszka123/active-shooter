@@ -33,11 +33,6 @@ public class PersonMemory
         CurrentFloor = 1;
 
         StartPosition = TargetPosition = null;
-        //ShooterInfo = new ShooterInfo(); //test
-        //MyActions = new PersonActions();
-        //Action action = new Action();
-        //action.WorkAction(MyRoom.Id);
-        //MyActions.AddAction(action);
     }
 
     public void Init(int floor, Transform transform) //it was vector3 position instead of transform, checkwhat better will be
@@ -300,22 +295,13 @@ public class PersonMemory
         ClearRoomBlockedNode(CurrentRoom);
         if (wasNull)
         {
-            transform.SendMessage("PersonStateChanged");
-        }
-        if (transform.name == "employee 19")
-        {
-            Debug.Log(CurrentRoom.Id + " save: " + transform.GetComponent<Person>().simulationTime);
+            transform.SendMessage("SelectBehaviour");
         }
     }
 
     public void ClearCurrentRoom()
     {
         CurrentRoom = null;
-        transform.SendMessage("PersonStateChanged");
-        if (transform.name == "employee 19")
-        {
-            Debug.Log("clear: " + transform.GetComponent<Person>().simulationTime);
-        }
     }
 
     public void ClearRoomBlockedNode(Room room)
@@ -468,16 +454,22 @@ public class PersonMemory
 
     public void UpdateActiveShooterInfo(GameObject activeShooter)
     {
+        bool shooterNull = false;
         if(ShooterInfo == null)
         {
-            transform.SendMessage("PersonStateChanged");
+            shooterNull = true;
         }
         Vector3 shooterPos = activeShooter.transform.position;
         ShooterInfo = new ShooterInfo
         {
             Position = new Vector3(shooterPos.x, shooterPos.y, shooterPos.z),
             Name = activeShooter.name,
+            Floor = activeShooter.GetComponent<Person>().PersonMemory.CurrentFloor
         };
+        if (shooterNull)
+        {
+            transform.SendMessage("SelectBehaviour");
+        }
     }
 
     public void ClearBlockedNodesByShooter()
