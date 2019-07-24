@@ -5,11 +5,19 @@ public class FPSDisplayScript : MonoBehaviour
 {
     float deltaTime = 0.0f;
     float simulationTime = 0.0f;
+    int numberOfEmployees = 0;
+    int numberOfActiveShooters = 1;
+    bool initiated = false;
 
     void Update()
     {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
         simulationTime += Time.deltaTime;
+        if(simulationTime > 2f && !initiated)
+        {
+            numberOfEmployees = GameObject.FindGameObjectsWithTag("Employee").Length;
+            initiated = true;
+        }
     }
 
     void OnGUI()
@@ -39,6 +47,13 @@ public class FPSDisplayScript : MonoBehaviour
         style.fontSize = h * 2 / 50;
         style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
         text = string.Format("Time elapsed: {0:0.00} sec", simulationTime);
+        GUI.Label(rect, text, style);
+
+        rect = new Rect(0, rect.size.y * 3, w, h * 2 / 50);
+        style.alignment = TextAnchor.UpperLeft;
+        style.fontSize = h * 2 / 50;
+        style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
+        text = string.Format("All employees: {0} ", numberOfEmployees);
         GUI.Label(rect, text, style);
     }
 }

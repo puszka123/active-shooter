@@ -40,6 +40,10 @@ public class PersonDoor : MonoBehaviour
 
     public void AddKey(string key)
     {
+        if(CompareTag("ActiveShooter"))
+        {
+            return;
+        }
         if (key == null)
         {
             Debug.Log(transform.name + " AddKey: key is null. => return null");

@@ -16,6 +16,7 @@ public class SimulationManager : MonoBehaviour {
         foreach (var item in GameObject.FindGameObjectsWithTag("RoomLocation"))
         {
             item.name = "RoomLocation " + roomLocationGenerator++;
+            item.GetComponent<Renderer>().enabled = false;
         }
 
         foreach (var item in GameObject.FindGameObjectsWithTag("PathLocation"))
@@ -28,6 +29,7 @@ public class SimulationManager : MonoBehaviour {
                 item.AddComponent<RoomManager>();
                 item.GetComponent<RoomManager>().Init();
             }
+            item.GetComponent<Renderer>().enabled = false;
         }
         foreach (var item in GameObject.FindGameObjectsWithTag("Door"))
         {
@@ -38,11 +40,6 @@ public class SimulationManager : MonoBehaviour {
                 item.GetComponent<RoomLocation>().UpdateNode(item.name);
             }
         }
-        //foreach (var item in GameObject.FindGameObjectsWithTag("Respawn"))
-        //{
-        //    item.name = "Respawn " + respawnNameGenerator++;
-        //    item.GetComponent<Respawn>().enabled = true;
-        //}
         foreach (var item in GameObject.FindGameObjectsWithTag("RoomLocation"))
         {
             if (item.GetComponent<RoomLocation>().Workplace)
@@ -79,16 +76,6 @@ public class SimulationManager : MonoBehaviour {
                 shooter.GetComponent<Shooting>().enabled = true; 
                 shooter.GetComponent<ShooterAwarness>().enabled = true; 
                 shooter.GetComponent<FollowVictim>().enabled = true; 
-            }
-
-            GameObject[] fighters = GameObject.FindGameObjectsWithTag("Employee");
-
-            foreach (var fighter in fighters)
-            {
-                if (fighter.name.StartsWith("Fighter"))
-                {
-                    fighter.GetComponent<Person>().Init(3, ""); //test floor
-                }
             }
         }
 	}

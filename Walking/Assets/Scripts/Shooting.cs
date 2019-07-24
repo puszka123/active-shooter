@@ -86,7 +86,7 @@ public class Shooting : MonoBehaviour
         }
         else
         {
-            return;
+            //return;
         }
 
 

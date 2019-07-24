@@ -34,13 +34,9 @@ public class Person : MonoBehaviour
 
     Renderer rend;
 
-    public void Start()
-    {
-        rend = GetComponent<Renderer>();
-    }
-
     public void Init(int floor, string myRoomId)
     {
+        rend = GetComponent<Renderer>();
         Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
         MyState = new PersonState();
         memory = new PersonMemory();
@@ -54,8 +50,6 @@ public class Person : MonoBehaviour
         fighterExecutor = new FighterExecutor(gameObject);
         actionExecutor = new ActionExecutor(walkingModule, memory, transform, finderModule, doorExecutor, talkExecutor, destroyerExecutor,
             fighterExecutor);
-       // CurrentAction = memory.MyActions.GetActionByIndex(0);
-       // actionExecutor.ExecuteAction(ref CurrentAction);
         waitingTasks = new TasksQueue();
         List<Behaviour> behaviours = new List<Behaviour>();
         if (!CompareTag("ActiveShooter"))
@@ -70,16 +64,14 @@ public class Person : MonoBehaviour
             behaviours.Add(new ImplementedBehaviours.FindAndKill());
         }
         PersonalAttributes = new PersonPersonalAttributes();
-        //behaviours.Add(new ImplementedBehaviours.FindAndKill()); test
 
         BehaviourSelector = new BehaviourSelector(behaviours);
         CurrentBehaviour = BehaviourSelector.SelectBehaviour(this);
+        SelectColour();
         ActionSelector = new ActionSelector(CurrentBehaviour);
         CurrentAction = ActionSelector.SelectAction(this);
-        if (CompareTag("ActiveShooter"))
-        {
-            actionExecutor.ExecuteAction(ref CurrentAction);
-        }
+        actionExecutor.ExecuteAction(ref CurrentAction);
+
 
         init = true;
     }
@@ -129,7 +121,16 @@ public class Person : MonoBehaviour
             actionTime = 0;
             if (waitingTasks.Tasks.Count > 0 && waitingTasks.WaitingTaskIsExecuted()) //if single task is executed but queue still full
             {
-                actionExecutor.ExecuteSingleTask(waitingTasks.GetTaskToExecute());
+                if (CurrentBehaviour.GetType() != typeof(ImplementedBehaviours.Work))
+                {
+                    waitingTasks.ClearQueue();
+                }
+                else
+                {
+                    Task task = waitingTasks.GetTaskToExecute();
+                    Debug.Log(task.Command);
+                    actionExecutor.ExecuteSingleTask(task);
+                }
             }
             else if (!waitingTasks.WaitingTaskIsExecuted()) //if single task is not done
             {
@@ -182,7 +183,7 @@ public class Person : MonoBehaviour
         ActionSelector = new ActionSelector(CurrentBehaviour);
         CurrentAction.ResetTasks();
         Action action = ActionSelector.SelectAction(this);
-        if(action != null)
+        if (action != null)
         {
             CurrentAction = action;
         }
@@ -240,7 +241,7 @@ public class Person : MonoBehaviour
 
     public void SelectColour()
     {
-        if(CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Work))
+        if (CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Work))
         {
             rend.material.color = Color.green;
         }

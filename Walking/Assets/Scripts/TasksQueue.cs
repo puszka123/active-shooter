@@ -34,4 +34,9 @@ public class TasksQueue
     {
         return ExecutingTask == null || ExecutingTask.IsDone;
     }
+
+    public void ClearQueue()
+    {
+        tasks.Clear();
+    }
 }

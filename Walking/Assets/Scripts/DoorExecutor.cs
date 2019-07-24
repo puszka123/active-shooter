@@ -13,7 +13,7 @@ public class DoorExecutor {
     public float timer = 0.0f;
     public float MaxTimeWait = 5f;
 
-    public float doorDistance = 0.25f;
+    public float doorDistance = 0.3f;
 
     ChatRoom chatRoom;
     ChatRoomManager chatRoomManager;
@@ -74,6 +74,7 @@ public class DoorExecutor {
                     FinishDoorOpenTask();
                     return;
                 }
+                Debug.Log(transform.name + " executing " + task.Command);
                 PersonDoor.TryToOpenDoor(door2);
                 break;
             case Command.CLOSE_DOOR:

@@ -452,7 +452,7 @@ public class Walking
             _finalAngle = goalWeight * goalAngle;
             if (Speed < CurrentSpeed)
             {
-                Speed += 0.01f;
+                Speed += 0.03f;
             }
             if (Speed > CurrentSpeed)
             {

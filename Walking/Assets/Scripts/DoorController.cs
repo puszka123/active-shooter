@@ -7,7 +7,7 @@ public class DoorController : MonoBehaviour
 {
 
     private bool isOpen = false;
-    public bool IsLockable = true;
+    public bool IsLockable;
     public bool IsToilet = false;
     private string doorKey;
     public GameObject MyRoom;
@@ -33,12 +33,13 @@ public class DoorController : MonoBehaviour
     {
         Resistance = 100f;
         peopleToInform = new List<GameObject>();
-        IsLocked = true; //TEST
+        IsLocked = false; //TEST
+        //SetLockColor();
         BoxCollider[] res = GetComponents<BoxCollider>();
         m_renderer = GetComponent<Renderer>();
         foreach (var item in res)
         {
-            if(!item.isTrigger)
+            if (!item.isTrigger)
             {
                 myCollider = item;
                 break;
@@ -49,7 +50,7 @@ public class DoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isOpen && !Destroyed())
+        if (isOpen && !Destroyed())
         {
 
             if (closeTime <= 0f)
@@ -57,6 +58,7 @@ public class DoorController : MonoBehaviour
                 isOpen = false;
                 myCollider.enabled = true;
                 m_renderer.enabled = true;
+                SetCloseColor();
             }
             else
             {
@@ -68,17 +70,18 @@ public class DoorController : MonoBehaviour
 
     public void TryToOpenDoor(object[] args)
     {
-        if(Destroyed())
+        GameObject gObject = (GameObject)args[1];
+        if (Destroyed())
         {
             OpenDoor();
             return;
         }
 
-        if(Obstacles > 0)
+        if (Obstacles > 0)
         {
             return;
         }
-        GameObject gObject = (GameObject)args[1];
+
         if (!IsLocked)
         {
             OpenDoor();
@@ -86,11 +89,12 @@ public class DoorController : MonoBehaviour
         }
         string[] keys = (string[])args[0];
 
-        if((keys != null && keys.Contains(doorKey)) || doorKey == null)
+        if ((keys != null && keys.Contains(doorKey)) || doorKey == null)
         {
+            Debug.Log(doorKey + " " + keys.Contains(doorKey));
             OpenDoor();
         }
-        else if(gObject != null)
+        else if (gObject != null)
         {
             UpdateBlockedNodes(gObject);
         }
@@ -124,7 +128,7 @@ public class DoorController : MonoBehaviour
         //GameObject gObject = (GameObject)args[1];
         //string[] keys = (string[])args[0];
         CloseDoor();
-        
+
     }
 
     public void TryToLockDoor(object[] args)
@@ -157,12 +161,13 @@ public class DoorController : MonoBehaviour
         isOpen = false;
         myCollider.enabled = true;
         m_renderer.enabled = true;
+        SetCloseColor();
     }
 
     //if opened then close and lock
     public void LockDoor()
     {
-        if(!IsOpen)
+        if (!IsOpen)
         {
             IsLocked = true;
         }
@@ -171,6 +176,7 @@ public class DoorController : MonoBehaviour
             CloseDoor();
             IsLocked = true;
         }
+        SetLockColor();
         InformRoomEmployees();
     }
 
@@ -181,7 +187,7 @@ public class DoorController : MonoBehaviour
         {
             Transform child = transform.GetChild(i);
             DoorTrigger doorTrigger = child.GetComponent<DoorTrigger>();
-            if(doorTrigger != null)
+            if (doorTrigger != null)
             {
                 doorTrigger.enabled = true;
             }
@@ -223,7 +229,7 @@ public class DoorController : MonoBehaviour
         RaycastHit hit = (RaycastHit)args[0];
         Transform activeShooter = (Transform)args[1];
         Resistance -= activeShooter.GetComponent<Shooting>().ShootStrength;
-        if(Resistance <= 0f)
+        if (Resistance <= 0f)
         {
             activeShooter.SendMessage("DoorDestroyed", gameObject);
             myCollider.enabled = false;
@@ -245,5 +251,15 @@ public class DoorController : MonoBehaviour
                 employee.SendMessage("SelectAction");
             }
         }
+    }
+
+    public void SetLockColor()
+    {
+        GetComponent<Renderer>().material.color = Color.red;
+    }
+
+    public void SetCloseColor()
+    {
+        GetComponent<Renderer>().material.color = Color.gray;
     }
 }

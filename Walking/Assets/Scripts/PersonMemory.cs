@@ -13,7 +13,6 @@ public class PersonMemory
     public Room CurrentRoom;
     public Room MyRoom;
     public Room FoundRoom;
-    public PersonActions MyActions;
     private List<Room> InformedRooms;
     public Transform transform;
     public ShooterInfo ShooterInfo;
@@ -140,16 +139,6 @@ public class PersonMemory
     {
         if (transform.gameObject.tag == "ActiveShooter")
         {
-            MyActions = new PersonActions();
-            Action actionShooter = new ShooterActions.GoToAnyRoom();
-            MyActions.AddAction(actionShooter);
-            return;
-        }
-        if (transform.gameObject.name.StartsWith("Fighter"))
-        {
-            MyActions = new PersonActions();
-            Action actionFighter = new EvacuationActions.RunAway();
-            MyActions.AddAction(actionFighter);
             return;
         }
 
@@ -161,36 +150,13 @@ public class PersonMemory
             Employees = myRoom.GetComponent<PathLocation>().RoomEmployees.ToArray(),
             Reference = myRoom,
         };
-        if (transform.name != "Informer") //test
-            CurrentRoom = new Room
-            {
-                Id = roomId,
-                Door = myRoom.GetComponent<PathLocation>().RoomDoor,
-                Employees = myRoom.GetComponent<PathLocation>().RoomEmployees.ToArray(),
-                Reference = myRoom,
-            };
-        MyActions = new PersonActions();
-        Action action = null;
-        if (transform.name == "Informer")
+        CurrentRoom = new Room
         {
-            action = new EvacuationActions.RunToExit();
-        }
-        else if (transform.name.StartsWith("Fighter"))
-        {
-            action = new FightActions.Fight();
-        }
-        else
-        {
-            action = new WorkActions.GoToWork(MyRoom);
-            //action = new WorkActions.LeaveWork();
-            //action = new EvacuationActions.RunToExit();
-            //action = new HideActions.HideInCurrentRoom();
-            //action = new HideActions.LockCurrentRoom();
-            //action = new FightActions.Fight();
-            //action = new HideActions.BarricadeDoor();
-        }
-        //Action action = new ImplementedActions.RunToExit();
-        MyActions.AddAction(action);
+            Id = roomId,
+            Door = myRoom.GetComponent<PathLocation>().RoomDoor,
+            Employees = myRoom.GetComponent<PathLocation>().RoomEmployees.ToArray(),
+            Reference = myRoom,
+        };
     }
 
     public bool MyRoomIsAboveMe()
@@ -432,21 +398,17 @@ public class PersonMemory
             if (!Physics.Linecast(shooterPosition, entry.Value.Position, layerMask))
             {
                 AddNodeBlockedByShooter(entry.Value);
-                //foreach (var item in Graph[CurrentFloor].Nodes[entry.Key])
-                //{
-                //    AddNodeBlockedByShooter(item);
-                //}
             }
         }
     }
 
     public void AddNodeBlockedByShooter(Node node)
     {
-        if(blockedByShooter == null)
+        if (blockedByShooter == null)
         {
             blockedByShooter = new List<Node> { node };
         }
-        else if(!blockedByShooter.Select(n => n.Name).Contains(node.Name))
+        else if (!blockedByShooter.Select(n => n.Name).Contains(node.Name))
         {
             blockedByShooter.Add(node);
         }
@@ -455,7 +417,7 @@ public class PersonMemory
     public void UpdateActiveShooterInfo(GameObject activeShooter)
     {
         bool shooterNull = false;
-        if(ShooterInfo == null)
+        if (ShooterInfo == null)
         {
             shooterNull = true;
         }
