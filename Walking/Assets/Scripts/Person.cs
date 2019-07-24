@@ -32,6 +32,13 @@ public class Person : MonoBehaviour
     bool init = false;
     bool test = false;
 
+    Renderer rend;
+
+    public void Start()
+    {
+        rend = GetComponent<Renderer>();
+    }
+
     public void Init(int floor, string myRoomId)
     {
         Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
@@ -166,6 +173,7 @@ public class Person : MonoBehaviour
     public void SelectBehaviour()
     {
         CurrentBehaviour = BehaviourSelector.SelectBehaviour(this);
+        SelectColour();
         SelectAction();
     }
 
@@ -230,4 +238,23 @@ public class Person : MonoBehaviour
         PersonMemory.UpdateActiveShooterInfo(Shooter);
     }
 
+    public void SelectColour()
+    {
+        if(CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Work))
+        {
+            rend.material.color = Color.green;
+        }
+        else if (CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Hide))
+        {
+            rend.material.color = Color.gray;
+        }
+        else if (CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Fight))
+        {
+            rend.material.color = Color.red;
+        }
+        else if (CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Evacuate))
+        {
+            rend.material.color = Color.blue;
+        }
+    }
 }

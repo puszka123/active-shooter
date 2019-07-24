@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ActionType  {
-    MOVEMENT, TALK, OTHER, FINDER, DOOR
-}
+//public enum ActionType  {
+//    MOVEMENT, TALK, OTHER, FINDER, DOOR
+//}

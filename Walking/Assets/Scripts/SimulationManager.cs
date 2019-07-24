@@ -55,6 +55,15 @@ public class SimulationManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        if(Input.GetKeyDown(KeyCode.KeypadPlus))
+        {
+            Time.timeScale += 1f;
+        }
+        if (Input.GetKeyDown(KeyCode.KeypadMinus))
+        {
+            Time.timeScale -= 1f;
+        }
+
         if (!shootersInitied)
         {
             time += Time.deltaTime;
