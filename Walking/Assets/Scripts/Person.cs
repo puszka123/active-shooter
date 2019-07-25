@@ -28,6 +28,7 @@ public class Person : MonoBehaviour
     public PersonPersonalAttributes PersonalAttributes;
     public GameObject Shooter;
     public float seeShooterTimer = 0f;
+    public bool FirstDecision;
 
     bool init = false;
     bool test = false;
@@ -36,6 +37,7 @@ public class Person : MonoBehaviour
 
     public void Init(int floor, string myRoomId)
     {
+        FirstDecision = false;
         rend = GetComponent<Renderer>();
         Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
         MyState = new PersonState();
@@ -89,6 +91,15 @@ public class Person : MonoBehaviour
         if (!CompareTag("ActiveShooter"))
         {
             SeeShooterCheck();
+            if(FirstDecision)
+            {
+                GetComponent<PersonStats>().FirstDecisionTime -= Time.deltaTime;
+                if (GetComponent<PersonStats>().FirstDecisionTime <= 0f)
+                {
+                    FirstDecision = false;
+                    SelectBehaviour();
+                }
+            }
         }
 
         if (ImActiveShooter() && (FoundVictim() || Fighting()))
@@ -158,7 +169,7 @@ public class Person : MonoBehaviour
 
     public bool ImActiveShooter()
     {
-        return GetComponent<Shooting>() != null;
+        return CompareTag("ActiveShooter");
     }
 
     public bool FoundVictim()
@@ -230,13 +241,20 @@ public class Person : MonoBehaviour
 
     }
 
-    public void ShotSound()
+    public void ShotSound(float numberOfShots)
     {
         if (transform.name.StartsWith("Employee Origin"))
         {
             return;
         }
-        PersonMemory.UpdateActiveShooterInfo(Shooter);
+        if (RecognizedShots(numberOfShots))
+        {
+            if(PersonMemory.ShooterInfo == null)
+            {
+                FirstDecision = true;
+            }
+            PersonMemory.UpdateActiveShooterInfo(Shooter);
+        }
     }
 
     public void SelectColour()
@@ -257,5 +275,20 @@ public class Person : MonoBehaviour
         {
             rend.material.color = Color.blue;
         }
+    }
+
+    public bool RecognizedShots(float shots)
+    {
+        float floorWeight = 0.1f;
+        float shotWeight = 0.01f;
+        float shotDetection = GetComponent<PersonStats>().ShotDetection;
+        int floorDiff = Mathf.Abs(PersonMemory.CurrentFloor - Shooter.GetComponent<Person>().PersonMemory.CurrentFloor);
+        float chance = shotDetection - (floorWeight * floorDiff) + (shots * shotWeight);
+        if (chance <= 0f)
+        {
+            return false;
+        }
+        float random = Random.Range(0f, 1f);
+        return random <= chance;
     }
 }

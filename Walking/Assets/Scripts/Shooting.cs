@@ -64,9 +64,9 @@ public class Shooting : MonoBehaviour
         soundTimer += Time.deltaTime;
         if(soundTimer >= soundMax && numberOfShots > 0)
         {
+            ShotSound(numberOfShots);
             soundTimer = 0f;
             numberOfShots = 0f;
-            ShotSound();
         }
 
         if (victim != null)
@@ -283,11 +283,11 @@ public class Shooting : MonoBehaviour
         DoorToDestroy = null;
     }
 
-    public void ShotSound()
+    public void ShotSound(float numberOfShots)
     {
         foreach (var item in GameObject.FindGameObjectsWithTag("Employee"))
         {
-            item.SendMessage("ShotSound");
+            item.SendMessage("ShotSound", numberOfShots);
         }
     }
 }

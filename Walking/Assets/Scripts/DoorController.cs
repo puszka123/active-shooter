@@ -91,7 +91,7 @@ public class DoorController : MonoBehaviour
 
         if ((keys != null && keys.Contains(doorKey)) || doorKey == null)
         {
-            Debug.Log(doorKey + " " + keys.Contains(doorKey));
+            //Debug.Log(doorKey + " " + keys.Contains(doorKey));
             OpenDoor();
         }
         else if (gObject != null)

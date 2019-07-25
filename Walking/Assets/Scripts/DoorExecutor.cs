@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class DoorExecutor {
+public class DoorExecutor
+{
     public PersonDoor PersonDoor;
     public bool Executing;
     public Task TaskToExecute;
@@ -12,8 +13,6 @@ public class DoorExecutor {
     public bool WaitForOpenDoor;
     public float timer = 0.0f;
     public float MaxTimeWait = 5f;
-
-    public float doorDistance = 0.3f;
 
     ChatRoom chatRoom;
     ChatRoomManager chatRoomManager;
@@ -38,16 +37,16 @@ public class DoorExecutor {
                 timer = 0.0f;
                 WaitForOpenDoor = true;
                 Room room = Utils.GetRoom(task);
-                if (room == null 
-                    || room.Door == null 
-                    || Utils.ToFar(room.Door, Me, doorDistance)
+                if (room == null
+                    || room.Door == null
+                    || Utils.ToFar(room.Door, Me, Pathfinder.MIN_DISTANCE_DOOR)
                     || Utils.IsInRoom(Me, room)) //null or to far from door or already is in this room
                 {
                     FinishKnockTask();
                     return;
                 }
                 GameObject[] members = GetKnockMembers(room.Employees, room);
-                if(members.Length == 0)
+                if (members.Length == 0)
                 {
                     FinishKnockTask();
                     return;
@@ -69,7 +68,7 @@ public class DoorExecutor {
                 break;
             case Command.OPEN_DOOR:
                 GameObject door2 = Utils.GetDoor(task);
-                if (door2 == null || Utils.ToFar(door2, Me, doorDistance)) //null or to far from door
+                if (door2 == null || Utils.ToFar(door2, Me, Pathfinder.MIN_DISTANCE_DOOR)) //null or to far from door
                 {
                     FinishDoorOpenTask();
                     return;
@@ -79,7 +78,7 @@ public class DoorExecutor {
                 break;
             case Command.CLOSE_DOOR:
                 GameObject door1 = Utils.GetDoor(task);
-                if (door1 == null || Utils.ToFar(door1, Me, doorDistance)) //null or to far from door
+                if (door1 == null || Utils.ToFar(door1, Me, Pathfinder.MIN_DISTANCE_DOOR)) //null or to far from door
                 {
                     FinishDoorCloseTask();
                     return;
@@ -87,7 +86,7 @@ public class DoorExecutor {
                 PersonDoor.TryToCloseDoor(door1);
                 break;
             case Command.ASK_CLOSE_DOOR:
-                if(chatRoom == null)
+                if (chatRoom == null)
                 {
                     FinishAskCloseDoor();
                     return;
@@ -97,8 +96,8 @@ public class DoorExecutor {
                 break;
             case Command.LOCK_DOOR:
                 GameObject door3 = Utils.GetDoor(task);
-                if (door3 == null 
-                    || Utils.ToFar(door3, Me, doorDistance)
+                if (door3 == null
+                    || Utils.ToFar(door3, Me, Pathfinder.MIN_DISTANCE_DOOR)
                     || Utils.DoorIsLocked(door3)) //null or to far from door or already locked
                 {
                     FinishDoorLockTask();
@@ -109,7 +108,7 @@ public class DoorExecutor {
             case Command.BARRICADE_DOOR:
                 GameObject door4 = Utils.GetDoor(task);
                 if (door4 == null
-                    || Utils.ToFar(door4, Me, doorDistance)
+                    || Utils.ToFar(door4, Me, Pathfinder.MIN_DISTANCE_DOOR)
                     || Utils.AlreadyBarricaded(door4))
                 {
                     FinishBarricadeDoorTask();
@@ -169,7 +168,7 @@ public class DoorExecutor {
                 door = Utils.GetDoor(task);
                 if (door == null) return;
                 if (door == null
-                    || Utils.ToFar(door, Me, doorDistance)
+                    || Utils.ToFar(door, Me, Pathfinder.MIN_DISTANCE_DOOR)
                     || Utils.AlreadyBarricaded(door))
                 {
                     FinishBarricadeDoorTask();
@@ -199,7 +198,7 @@ public class DoorExecutor {
 
     private void OpenDoorCheck(GameObject door)
     {
-        if(door.GetComponent<DoorController>().IsOpen)
+        if (door.GetComponent<DoorController>().IsOpen)
         {
             FinishDoorOpenTask();
         }
@@ -226,7 +225,7 @@ public class DoorExecutor {
         List<GameObject> filtered = new List<GameObject>();
         foreach (var item in employees)
         {
-            if(Utils.IsInRoom(item, room) || !Utils.ToFar(room.Reference, item, 1))
+            if (Utils.IsInRoom(item, room) || !Utils.ToFar(room.Reference, item, 1))
             {
                 filtered.Add(item);
             }

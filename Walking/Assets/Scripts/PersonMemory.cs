@@ -428,10 +428,10 @@ public class PersonMemory
             Name = activeShooter.name,
             Floor = activeShooter.GetComponent<Person>().PersonMemory.CurrentFloor
         };
-        if (shooterNull)
-        {
-            transform.SendMessage("SelectBehaviour");
-        }
+        //if (shooterNull)
+        //{
+        //    transform.SendMessage("SelectBehaviour");
+        //}
     }
 
     public void ClearBlockedNodesByShooter()

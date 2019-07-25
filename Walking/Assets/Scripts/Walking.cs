@@ -219,7 +219,7 @@ public class Walking
                 break;
             case Command.GO_TO_DOOR:
                 GameObject doorToOpen = Utils.GetDoor(task);
-                if (doorToOpen == null || !Utils.ToFar(transform.gameObject, doorToOpen))
+                if (doorToOpen == null || !Utils.ToFar(transform.gameObject, doorToOpen, Pathfinder.MIN_DISTANCE_DOOR))
                 {
                     FinishWalking();
                     return;
@@ -479,10 +479,21 @@ public class Walking
         {
             blockedWayTimeout += Time.deltaTime + 0.1f;
         }
-        if (pathfinder.CheckDistance(transform.gameObject, Path[currentNodeIndex], TaskToExecute.Command))
+        if(currentNodeIndex < Path.Count - 1)
         {
-            if (++currentNodeIndex >= Path.Count) return true;
-            else return false;
+            if (pathfinder.CheckDistance(transform.gameObject, Path[currentNodeIndex]))
+            {
+                if (++currentNodeIndex >= Path.Count) return true;
+                else return false;
+            }
+        }
+        else
+        {
+            if (pathfinder.CheckDistance(transform.gameObject, Path[currentNodeIndex], TaskToExecute.Command))
+            {
+                if (++currentNodeIndex >= Path.Count) return true;
+                else return false;
+            }
         }
 
         return false;

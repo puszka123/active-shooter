@@ -42,7 +42,7 @@ public class Fight : MonoBehaviour
         {
             ShooterEnemies.Add(enemy);
         }
-        Debug.Log(enemy.name + " joined a fight");
+       // Debug.Log(enemy.name + " joined a fight");
         if (!FightIsStarted)
         {
             StartFight();

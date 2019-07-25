@@ -24,7 +24,7 @@ public class DoorBarricade : MonoBehaviour {
             List<GameObject> membersToRemove = new List<GameObject>();
             foreach (var member in Members)
             {
-                if(Utils.ToFar(member, gameObject))
+                if(Utils.ToFar(member, gameObject, Pathfinder.MIN_DISTANCE_DOOR))
                 {
                     membersToRemove.Add(member);
                 }
