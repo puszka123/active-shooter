@@ -239,7 +239,8 @@ public class Walking
                 Room room2 = Utils.GetRoom(task);
                 if (room2 == null
                     || room2.Id == memory.CurrentRoom?.Id
-                    || Utils.DoorIsLocked(room2.Door))
+                    || Utils.DoorIsLocked(room2.Door)
+                    || Utils.ToFar(Me, room2.Reference, Pathfinder.MIN_DISTANCE))
                 {
                     FinishWalking();
                     return;

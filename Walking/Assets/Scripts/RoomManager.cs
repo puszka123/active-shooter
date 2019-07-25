@@ -5,9 +5,11 @@ using System.Linq;
 
 public class RoomManager : MonoBehaviour {
     public List<GameObject> RoomLocations;
+    public int Floor;
 
-    public void Init()
+    public void Init(int floor)
     {
+        Floor = floor;
         GetRoomLocations();
         InitRoomLocations();
         InitDoors();
@@ -15,15 +17,17 @@ public class RoomManager : MonoBehaviour {
 
     public void GetRoomLocations()
     {
-        GameObject[] roomLocations = GameObject.FindGameObjectsWithTag("RoomLocation");
         LayerMask layerMask = LayerMask.GetMask("Wall", "Door");
-        roomLocations = roomLocations.Where(
-            roomLocation => !Physics.Linecast(transform.position, roomLocation.transform.position, layerMask))
-            .ToArray();
-        RoomLocations = new List<GameObject>(roomLocations);
-        foreach (var item in RoomLocations)
+        RoomLocations = new List<GameObject>();
+
+        foreach (Transform item in GameObject.Find("RoomLocations " + Floor).transform)
         {
-            item.GetComponent<RoomLocation>().MyRoom = gameObject;
+
+            if(!Physics.Linecast(transform.position, item.position, layerMask))
+            {
+                item.GetComponent<RoomLocation>().MyRoom = gameObject;
+                RoomLocations.Add(item.gameObject);
+            }
         }
     }
 
@@ -45,15 +49,14 @@ public class RoomManager : MonoBehaviour {
     {
         GameObject doorKey = null;
         float distance = 9999999f;
-        GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
-        foreach (var item in doors)
+        foreach (Transform item in GameObject.Find("Doors " + Floor).transform)
         {
-            float dist = Vector3.Distance(transform.position, item.transform.position);
+            float dist = Vector3.Distance(transform.position, item.position);
             int layerMask = 1 << 9;
-            bool blocked = Physics.Linecast(transform.position, item.transform.position, layerMask);
+            bool blocked = Physics.Linecast(transform.position, item.position, layerMask);
             if (dist < distance && !blocked)
             {
-                doorKey = item;
+                doorKey = item.gameObject;
                 distance = dist;
             }
         }

@@ -14,9 +14,7 @@ public class Graph
     {
         allNodes = new Dictionary<string, Node>();
         nodes = new Dictionary<string, List<Node>>();
-        GameObject[] pathLocations = GameObject.FindGameObjectsWithTag("PathLocation")
-            .Where(e => e.GetComponent<PathLocation>().Floor == floor).ToArray();
-        foreach (GameObject pathLocation in pathLocations)
+        foreach (Transform pathLocation in GameObject.Find("Checkpoints " + floor).transform)
         {
             pathLocation.GetComponent<PathLocation>().FindMyNeighbours();
             nodes.Add(pathLocation.name, GetNeighbours(pathLocation.GetComponent<PathLocation>().NearestNeighbours));

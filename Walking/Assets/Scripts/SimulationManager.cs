@@ -13,7 +13,8 @@ public class SimulationManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        foreach (var item in GameObject.FindGameObjectsWithTag("RoomLocation"))
+        GameObject[] roomLocations = GameObject.FindGameObjectsWithTag("RoomLocation");
+        foreach (var item in roomLocations)
         {
             item.name = "RoomLocation " + roomLocationGenerator++;
             item.GetComponent<Renderer>().enabled = false;
@@ -22,12 +23,13 @@ public class SimulationManager : MonoBehaviour {
         foreach (var item in GameObject.FindGameObjectsWithTag("PathLocation"))
         {
             item.name = "CheckPoint " + pathLocationNameGenerator++;
-            item.GetComponent<PathLocation>().InitFloor();
-            item.GetComponent<PathLocation>().FindRoomObstacles();
-            if(item.GetComponent<PathLocation>().IsRoom)
+            PathLocation itemPathlocation = item.GetComponent<PathLocation>();
+            itemPathlocation.InitFloor();
+            itemPathlocation.FindRoomObstacles();
+            if(itemPathlocation.IsRoom)
             {
                 item.AddComponent<RoomManager>();
-                item.GetComponent<RoomManager>().Init();
+                item.GetComponent<RoomManager>().Init(itemPathlocation.Floor);
             }
             item.GetComponent<Renderer>().enabled = false;
         }
@@ -40,7 +42,7 @@ public class SimulationManager : MonoBehaviour {
                 item.GetComponent<RoomLocation>().UpdateNode(item.name);
             }
         }
-        foreach (var item in GameObject.FindGameObjectsWithTag("RoomLocation"))
+        foreach (var item in roomLocations)
         {
             if (item.GetComponent<RoomLocation>().Workplace)
             {

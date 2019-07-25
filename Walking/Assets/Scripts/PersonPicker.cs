@@ -11,7 +11,8 @@ public class PersonPicker : MonoBehaviour {
 
     public void StopPickingMe(GameObject obstacle)
     {
-        GetComponent<Person>().walkingModule.OnBeNearObstacle(obstacle, gameObject);
+        
+        GetComponent<Person>().walkingModule?.OnBeNearObstacle(obstacle, gameObject);
     }
 
 }

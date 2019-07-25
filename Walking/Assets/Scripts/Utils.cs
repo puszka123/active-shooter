@@ -429,12 +429,30 @@ public static class Utils
     public static GameObject GetMyWorkplace(PersonMemory memory)
     {
         return memory.MyRoom.Reference.GetComponent<RoomManager>().RoomLocations.Find(r => r.GetComponent<RoomLocation>().Workplace
+        && r.GetComponent<RoomLocation>().WorkEmployee != null
         && r.GetComponent<RoomLocation>().WorkEmployee.name == memory.transform.name);
     }
 
     public static GameObject[] GetEmployeesInRoom(GameObject room)
     {
+        //repair
         return GameObject.FindGameObjectsWithTag("Employee").Where(e => !e.name.EndsWith("Origin")
         && e.GetComponent<Person>().PersonMemory.CurrentRoom?.Id == room.name).ToArray();
+    }
+
+    public static GameObject GetNearestEmployee(GameObject respawn, int floor)
+    {
+        float nearestDist = 999f;
+        GameObject nearestEmployee = null;
+        foreach (Transform employee in GameObject.Find("Employees " + floor).transform)
+        {
+            float distance = Vector3.Distance(respawn.transform.position, employee.transform.position);
+            if (distance < nearestDist)
+            {
+                nearestDist = distance;
+                nearestEmployee = employee.gameObject;
+            }
+        }
+        return nearestEmployee;
     }
 }

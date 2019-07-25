@@ -20,15 +20,13 @@ public class PathLocation : MonoBehaviour {
     public void FindMyNeighbours()
     {
         NearestNeighbours = new List<GameObject>();
-        GameObject[] pathLocations = GameObject.FindGameObjectsWithTag("PathLocation");
-        foreach (GameObject item in pathLocations)
+        int layerMask = 1 << 9;
+        foreach (Transform item in GameObject.Find("Checkpoints " + Floor).transform)
         {
-            int layerMask = 1 << 9;
-            if(!Physics.Linecast(transform.position, item.transform.position, layerMask))
+            if (!Physics.Linecast(transform.position, item.position, layerMask))
             {
-                NearestNeighbours.Add(item);
+                NearestNeighbours.Add(item.gameObject);
             }
-
         }
     }
 
@@ -36,11 +34,11 @@ public class PathLocation : MonoBehaviour {
     {
         Obstacles = new List<GameObject>();
         LayerMask layerMask = LayerMask.GetMask("Door", "Wall");
-        foreach (var item in GameObject.FindGameObjectsWithTag("Obstacle"))
+        foreach (Transform item in GameObject.Find("Obstacles " + Floor).transform)
         {
-            if(!Physics.Linecast(transform.position, item.transform.position, layerMask))
+            if(!Physics.Linecast(transform.position, item.position, layerMask))
             {
-                Obstacles.Add(item);
+                Obstacles.Add(item.gameObject);
             }
         }
     }

@@ -16,7 +16,7 @@ public class Respawn : MonoBehaviour
     public string RoomId;
     public GameObject room;
     public GameObject door;
-    
+
 
     float timer = 0.0f;
     float testTimer = 0.0f;
@@ -47,12 +47,12 @@ public class Respawn : MonoBehaviour
         testTimer += Time.deltaTime;
         if (timer >= 1f && numberOfSlots > 0) //test
         {
-            GameObject employee = Instantiate(objectToInstantiate, transform.position, transform.rotation);
+            GameObject employee = Utils.GetNearestEmployee(gameObject, int.Parse(transform.parent.name.Split(' ')[1]));
             room.GetComponent<PathLocation>().AddRoomEmployee(employee);
             employee.name = "employee " + nameGenerator++;
             DoorKey = door.name;
             employee.GetComponent<PersonDoor>().AddKey(DoorKey);
-            if(GetComponent<RoomLocation>().Workplace)
+            if (GetComponent<RoomLocation>().Workplace)
             {
                 GetComponent<RoomLocation>().WorkEmployee = employee;
             }
@@ -73,7 +73,7 @@ public class Respawn : MonoBehaviour
         }
 
         //test
-        if(testOnly && testTimer >= 3f)
+        if (testOnly && testTimer >= 3f)
         {
             testOnly = false;
             //GameObject informer = GameObject.Find("Informer");
@@ -85,15 +85,15 @@ public class Respawn : MonoBehaviour
     {
         GameObject doorKey = null;
         float distance = 9999999f;
-        GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
-        foreach (var item in doors)
+
+        foreach (Transform item in GameObject.Find("Doors " + transform.parent.name.Split(' ')[1]).transform)
         {
             float dist = Vector3.Distance(this.transform.position, item.transform.position);
             int layerMask = 1 << 9;
             bool blocked = Physics.Linecast(transform.position, item.transform.position, layerMask);
             if (dist < distance && !blocked)
             {
-                doorKey = item;
+                doorKey = item.gameObject;
                 distance = dist;
             }
         }
@@ -104,16 +104,20 @@ public class Respawn : MonoBehaviour
     {
         GameObject roomId = null;
         float distance = 9999999f;
-        GameObject[] rooms = GameObject.FindGameObjectsWithTag("PathLocation").
-            Where(pathLocation => pathLocation.GetComponent<PathLocation>().IsRoom).ToArray();
-        foreach (var item in rooms)
+
+        foreach (Transform item in GameObject.Find("Checkpoints " + transform.parent.name.Split(' ')[1]).transform)
         {
+            if(!item.GetComponent<PathLocation>().IsRoom)
+            {
+                continue;
+            }
+
             float dist = Vector3.Distance(this.transform.position, item.transform.position);
             int layerMask = 1 << 9;
             bool blocked = Physics.Linecast(transform.position, item.transform.position, layerMask);
             if (dist < distance && !blocked)
             {
-                roomId = item;
+                roomId = item.gameObject;
                 distance = dist;
             }
         }
