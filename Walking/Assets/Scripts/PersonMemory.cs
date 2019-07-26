@@ -14,6 +14,7 @@ public class PersonMemory
     public Room MyRoom;
     public Room FoundRoom;
     private List<Room> InformedRooms;
+    private List<Room> CheckedRooms;
     public Transform transform;
     public ShooterInfo ShooterInfo;
     public List<GameObject> InformedPeople;
@@ -239,6 +240,12 @@ public class PersonMemory
         return InformedRooms.Select(r => r.Id).Contains(room.name);
     }
 
+    public bool CheckedRoom(GameObject room)
+    {
+        if (CheckedRooms == null) return false;
+        return CheckedRooms.Select(r => r.Id).Contains(room.name);
+    }
+
     public void ClearFoundRoom()
     {
         FoundRoom = null;
@@ -428,15 +435,27 @@ public class PersonMemory
             Name = activeShooter.name,
             Floor = activeShooter.GetComponent<Person>().PersonMemory.CurrentFloor
         };
-        //if (shooterNull)
-        //{
-        //    transform.SendMessage("SelectBehaviour");
-        //}
     }
 
     public void ClearBlockedNodesByShooter()
     {
         blockedByShooter = null;
+    }
+
+    public void AddCheckedRoom(Room room)
+    {
+        if (room == null)
+        {
+            return;
+        }
+        if (CheckedRooms == null)
+        {
+            CheckedRooms = new List<Room>() { room };
+        }
+        else if (!CheckedRooms.Select(r => r.Id).Contains(room.Id))
+        {
+            CheckedRooms.Add(room);
+        }
     }
 }
 

@@ -26,9 +26,7 @@ public class Respawn : MonoBehaviour
     private void Start()
     {
         room = GetRoomForRespawn();
-        door = room.GetComponent<RoomManager>().Door;
-        room.GetComponent<PathLocation>().SetRoomDoor(door);
-        door.GetComponent<DoorController>().SetRoom(room);
+        door = room.GetComponent<RoomManager>().Door; 
     }
 
     void Awake()

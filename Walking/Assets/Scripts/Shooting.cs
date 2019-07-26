@@ -73,8 +73,7 @@ public class Shooting : MonoBehaviour
         {
             RotateTo(DetectPosition);
         }
-
-        if (DoorToDestroy != null)
+        else if (DoorToDestroy != null)
         {
             RotateTo(DoorToDestroy.transform);
         }
@@ -258,9 +257,11 @@ public class Shooting : MonoBehaviour
 
     public void ShootDoor(GameObject doorToDestroy)
     {
+        DoorController doorController = doorToDestroy.GetComponent<DoorController>();
         DoorToDestroy = doorToDestroy;
         RotateTo(doorToDestroy.transform);
-        if (doorToDestroy.GetComponent<DoorController>().Destroyed())
+        if (doorController.Destroyed() 
+            || (!doorController.IsLocked && !doorController.IsBarricaded()))
         {
             DoorDestroyed(doorToDestroy);
         }

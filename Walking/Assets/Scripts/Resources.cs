@@ -13,4 +13,7 @@ public static class Resources {
     public const float MaxRun = 4.17f * scale;
     public const float Sprint = 5.56f * scale;
     public const float MaxSprint = 6.94f * scale;
+
+    public static readonly float[] Near = { 0f, 10f };
+    public static readonly float[] Far = { 10f, 100f };
 }

@@ -104,9 +104,10 @@ public class Person : MonoBehaviour
 
         if (ImActiveShooter() && (FoundVictim() || Fighting()))
         {
-            simulationTime += Time.deltaTime;
+            //simulationTime += Time.deltaTime;
             timer += Time.deltaTime;
             actionTime += Time.deltaTime;
+            CurrentAction.ResetTasks();
             return;
         }
 

@@ -504,4 +504,9 @@ public static class Utils
         }
         return nearestEmployee;
     }
+
+    public static bool IsCheckedRoom(Room room, PersonMemory memory)
+    {
+        return memory.CheckedRoom(room.Reference);
+    }
 }

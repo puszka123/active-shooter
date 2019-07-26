@@ -18,30 +18,35 @@ public static class ImplementedBehaviours
 
         public override float BehaviourHappenProbability(Person person)
         {
+            GameObject shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
             if (person.PersonMemory.ShooterInfo == null) return 0f;
-            bool seeShooter = Utils.CanSee(person.gameObject, GameObject.FindGameObjectWithTag("ActiveShooter"));
+            bool seeShooter = Utils.CanSee(person.gameObject, shooter);
             bool isInRoom = Utils.IsInAnyRoom(person.PersonMemory);
             bool aboveMe = person.PersonMemory.ShooterInfo.Floor > person.PersonMemory.CurrentFloor;
 
             float aboveMeValue = aboveMe ? 1f : 0f;
             float isInRoomValue = isInRoom ? 1f : 0f;
             float altruism = person.PersonalAttributes.Altruism;
+            float distanceToShooter = Utils.Distance(person.gameObject, shooter);
+            float shooterFar = Resources.Far[0] < distanceToShooter ? 1f : 0f;
 
             float altruismWeight = 1f;
             float aboveMeWeight = 0.9f;
+            float distanceWeight = 0.3f;
+
             float chances;
 
-            if(seeShooter && isInRoom)
+            if (seeShooter && isInRoom)
             {
                 chances = 0f;
             }
-            else if(!seeShooter && isInRoom)
+            else if (!seeShooter && isInRoom)
             {
                 chances = aboveMeValue * aboveMeWeight + (1 - aboveMeWeight) * (1 - aboveMeValue);
             }
-            else if(seeShooter && !isInRoom)
+            else if (seeShooter && !isInRoom)
             {
-                chances = (1 - altruism) * altruismWeight;
+                chances = (1 - altruism) * altruismWeight + shooterFar * distanceWeight;
             }
             else
             {
@@ -79,7 +84,7 @@ public static class ImplementedBehaviours
             {
                 chances = 0f;
             }
-            else if(isInRoom)
+            else if (isInRoom)
             {
                 chances = notAboveMeValue * notAboveMeWeight + (1 - notAboveMeWeight) * (1 - notAboveMeValue);
             }
@@ -99,20 +104,24 @@ public static class ImplementedBehaviours
         public override float BehaviourHappenProbability(Person person)
         {
             if (person.PersonMemory.ShooterInfo == null) return 0f;
-            bool seeShooter = Utils.CanSee(person.gameObject, GameObject.FindGameObjectWithTag("ActiveShooter"));
+
+            GameObject shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
+            bool seeShooter = Utils.CanSee(person.gameObject, shooter);
             bool isInRoom = Utils.IsInAnyRoom(person.PersonMemory);
 
             float altruism = person.PersonalAttributes.Altruism;
-
+            float distanceToShooter = Utils.Distance(person.gameObject, shooter);
+            float shooterNear = Resources.Near[1] >= distanceToShooter ? 1f : 0f;
 
             float altruismWeight = 1f;
+            float distanceWeight = 0.3f;
 
             float chances;
             if (seeShooter && !isInRoom)
             {
-                chances = altruism * altruismWeight;
+                chances = altruism * altruismWeight + shooterNear * distanceWeight;
             }
-            else if(seeShooter && isInRoom)
+            else if (seeShooter && isInRoom)
             {
                 chances = 1f;
             }

@@ -285,14 +285,16 @@ public class Walking
                     return;
                 }
                 GameObject hide = Utils.NearestHidingPlaceInRoom(transform.gameObject, room7.Reference);
-                if (hide == null)
+                if (hide == null && Utils.IsInRoom(Me, room7))
                 {
                     memory.ClearFoundRoom();
+                    memory.AddCheckedRoom(Utils.GetRoom(task));
                     FinishWalking();
                     return;
                 }
                 if (!Utils.IsInAnyRoom(memory)
-                    || !Utils.ToFar(transform.gameObject, hide, Pathfinder.MIN_DISTANCE))
+                    || !Utils.ToFar(transform.gameObject, hide, Pathfinder.MIN_DISTANCE)
+                    || Utils.IsCheckedRoom(room7, memory))
                 {
                     FinishWalking();
                     return;
@@ -457,7 +459,11 @@ public class Walking
                     memory.UpdateNodesBlockedByShooter();
                     break;
                 case Command.CHECK_ROOM:
-                    memory.ClearFoundRoom();
+                    if (memory.CurrentRoom?.Id == Utils.GetRoom(TaskToExecute)?.Id)
+                    {
+                        memory.ClearFoundRoom();
+                        memory.AddCheckedRoom(Utils.GetRoom(TaskToExecute));
+                    }
                     break;
                 default:
                     break;

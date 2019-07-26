@@ -10,7 +10,7 @@ public static class ShooterActions
         public GoToAnyRoom()
         {
             Task findRoom = new Task();
-            findRoom.Command = Command.FIND_ROOM;
+            findRoom.Command = Command.FIND_NOT_CHECKED_ROOM;
             findRoom.Limit = new Limit();
             findRoom.Type = TaskType.FINDER;
             findRoom.RequiredTasks = new List<Task>();
@@ -19,31 +19,31 @@ public static class ShooterActions
             goToRoom.Command = Command.GO_TO_ROOM;
             goToRoom.Limit = new Limit();
             goToRoom.Type = TaskType.MOVEMENT;
-            goToRoom.RequiredTasks = new List<Task>() { findRoom };
+            goToRoom.RequiredTasks = new List<Task>() {  };
 
             Task knockDoor = new Task();
             knockDoor.Command = Command.KNOCK;
             knockDoor.Limit = new Limit();
             knockDoor.Type = TaskType.DOOR;
-            knockDoor.RequiredTasks = new List<Task>() { goToRoom };
+            knockDoor.RequiredTasks = new List<Task>() {  };
 
             Task destroyDoor = new Task();
             destroyDoor.Command = Command.DESTROY_DOOR;
             destroyDoor.Limit = new Limit();
             destroyDoor.Type = TaskType.DESTROYER;
-            destroyDoor.RequiredTasks = new List<Task>() { knockDoor };
+            destroyDoor.RequiredTasks = new List<Task>() {  };
 
             Task enterRoom = new Task();
             enterRoom.Command = Command.ENTER_ROOM;
             enterRoom.Limit = new Limit();
             enterRoom.Type = TaskType.MOVEMENT;
-            enterRoom.RequiredTasks = new List<Task>() { destroyDoor };
+            enterRoom.RequiredTasks = new List<Task>() {  };
 
             Task checkRoom = new Task();
             checkRoom.Command = Command.CHECK_ROOM;
             checkRoom.Limit = new Limit();
             checkRoom.Type = TaskType.MOVEMENT;
-            checkRoom.RequiredTasks = new List<Task>() { enterRoom };
+            checkRoom.RequiredTasks = new List<Task>() {  };
 
             Tasks = new List<Task>(new Task[] { findRoom, goToRoom, knockDoor, destroyDoor, enterRoom, checkRoom });
 

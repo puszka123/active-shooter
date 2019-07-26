@@ -88,8 +88,8 @@ public class Fight : MonoBehaviour
         }
         if (DropGun())
         {
-            Debug.Log("Active shooter killed by fighters");
-            GetComponent<Fight>().enabled = false;
+            //Debug.Log("Active shooter killed by fighters"); //tests
+            //GetComponent<Fight>().enabled = false;
         }
     }
 

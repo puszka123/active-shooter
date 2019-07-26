@@ -43,6 +43,8 @@ public class RoomManager : MonoBehaviour {
     public void InitDoors()
     {
         Door = GetDoorForRoom();
+        GetComponent<PathLocation>().SetRoomDoor(Door);
+        Door.GetComponent<DoorController>().SetRoom(gameObject);
         Door.GetComponent<RoomLocation>().InitDoorNeighbours(RoomLocations, gameObject);
     }
 

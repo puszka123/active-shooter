@@ -77,8 +77,12 @@ public class DoorController : MonoBehaviour
             return;
         }
 
-        if (Obstacles > 0)
+        if (IsBarricaded())
         {
+            if (gObject != null)
+            {
+                UpdateBlockedNodes(gObject);
+            }
             return;
         }
 
@@ -261,5 +265,10 @@ public class DoorController : MonoBehaviour
     public void SetCloseColor()
     {
         GetComponent<Renderer>().material.color = Color.gray;
+    }
+
+    public bool IsBarricaded()
+    {
+        return Obstacles > 0;
     }
 }

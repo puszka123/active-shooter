@@ -33,6 +33,19 @@ public class Finder {
                 task.IsDone = true;
                 Executing = false;
                 break;
+            case Command.FIND_NOT_CHECKED_ROOM:
+                if (memory.FoundRoom != null)
+                {
+                    FinishFind();
+                    return;
+                }
+                Room room2 = FindNearestNotCheckedRoom(memory.CurrentFloor, transform);
+                //Debug.Log(room2.Id);
+                if (room2 == null) return;
+                SaveRoomInMemory(room2);
+                task.IsDone = true;
+                Executing = false;
+                break;
             case Command.FIND_ANY_ROOM:
                 if(Utils.IsInAnyRoom(memory))
                 {
@@ -87,6 +100,37 @@ public class Finder {
         foreach (Transform item in location.transform)
         {
             if (item.GetComponent<PathLocation>().IsRoom && !memory.InformedRoom(item.gameObject))
+            {
+                rooms.Add(item.gameObject);
+            }
+        }
+        if (rooms.Count == 0) return null;
+        GameObject nearestRoom = rooms[0];
+        foreach (var item in rooms)
+        {
+            if (Utils.Distance(transform.gameObject, nearestRoom)
+                >
+                Utils.Distance(transform.gameObject, item))
+            {
+                nearestRoom = item;
+            }
+        }
+        return new Room()
+        {
+            Id = nearestRoom.name,
+            Door = nearestRoom.GetComponent<PathLocation>().RoomDoor,
+            Employees = nearestRoom.GetComponent<PathLocation>().RoomEmployees.ToArray(),
+            Reference = nearestRoom,
+        };
+    }
+
+    public Room FindNearestNotCheckedRoom(int floor, Transform transform)
+    {
+        GameObject location = GameObject.Find("Checkpoints " + floor);
+        List<GameObject> rooms = new List<GameObject>();
+        foreach (Transform item in location.transform)
+        {
+            if (item.GetComponent<PathLocation>().IsRoom && !memory.CheckedRoom(item.gameObject))
             {
                 rooms.Add(item.gameObject);
             }
