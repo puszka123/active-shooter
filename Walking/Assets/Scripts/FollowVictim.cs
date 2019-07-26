@@ -10,12 +10,14 @@ public class VictimInfo
 
 public class FollowVictim : MonoBehaviour {
     public float Speed;
+    public float TargetSpeed;
     private Rigidbody m_Rigidbody;
     public float RotationSpeed;
     public VictimInfo LastVictim;
     public Pathfinder Pathfinder;
     public List<Node> Path;
     public int CurrentIndex;
+    public bool Executing;
 
     public static float MIN_DISTANCE = 0.2f;
 
@@ -23,8 +25,10 @@ public class FollowVictim : MonoBehaviour {
     {
         Pathfinder = new Pathfinder();
         m_Rigidbody = GetComponent<Rigidbody>();
-        Speed = Resources.Run;
+        Speed = Resources.Stay;
+        TargetSpeed = Resources.Run;
         RotationSpeed = 10f;
+        Executing = false;
     }
 
     private void FixedUpdate()
@@ -40,14 +44,25 @@ public class FollowVictim : MonoBehaviour {
 
         if(LastVictim != null && CurrentIndex < Path.Count)
         {
-            Speed = Resources.Sprint;
+            if(Speed < TargetSpeed)
+            {
+                Speed += 0.03f;
+            }
+            else
+            {
+                Speed -= 0.1f;
+            }
             GotoLastVictimPosition();
+        }
+        else
+        {
+            Executing = false;
         }
     }
 
     public void GotoLastVictimPosition()
     {
-        LayerMask layerMask = LayerMask.GetMask("Wall");
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Door");
         if(!Physics.Linecast(transform.position, LastVictim.Position, layerMask))
         {
             InitPath(LastVictim.Position);
@@ -58,6 +73,7 @@ public class FollowVictim : MonoBehaviour {
         }
         if(CurrentIndex >= Path.Count)
         {
+            Executing = false;
             return;
         }
         RotateToVictim();
@@ -82,6 +98,7 @@ public class FollowVictim : MonoBehaviour {
 
         LastVictim = new VictimInfo { Transform = lastVictim, Position = lastVictim.position };
         InitPath();
+        Executing = true;
     }
 
     public bool IsInLastSeenPosition()

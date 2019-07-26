@@ -124,7 +124,7 @@ public class Walking
         TaskToExecute = task;
         if (Me.CompareTag("ActiveShooter"))
         {
-            //Debug.Log(task.Command);
+            Debug.Log(task.Command);
         }
         switch (task.Command)
         {
@@ -245,7 +245,8 @@ public class Walking
                     || room2.Id == memory.CurrentRoom?.Id
                     || Utils.DoorIsLocked(room2.Door)
                     || !Utils.ToFar(Me, room2.Reference, Pathfinder.MIN_DISTANCE_ROOM)
-                    || Utils.ToFar(Me, room2.Door, Pathfinder.MIN_DISTANCE_DOOR))
+                    || Utils.ToFar(Me, room2.Door, Pathfinder.MIN_DISTANCE_DOOR)
+                    || Utils.IsInAnyRoom(memory))
                 {
                     //if (Me.CompareTag("ActiveShooter"))
                     //{
@@ -293,6 +294,7 @@ public class Walking
                     return;
                 }
                 if (!Utils.IsInAnyRoom(memory)
+                    || hide == null
                     || !Utils.ToFar(transform.gameObject, hide, Pathfinder.MIN_DISTANCE)
                     || Utils.IsCheckedRoom(room7, memory))
                 {
@@ -526,7 +528,16 @@ public class Walking
         if (Physics.Linecast(transform.position, Path[currentNodeIndex].Position, out hit, layerMask) && blockedWayTimeout >= 2f)
         {
             blockedWayTimeout = 0f;
-            InitPath(memory);
+            if (Utils.IsInAnyRoom(memory))
+            {
+                InitRoomPath(memory.CurrentRoom, Me.transform, memory, memory.CurrentRoom.Door);
+                InitPathWithRoomPath(memory);
+            }
+            else
+            {
+                InitPath(memory);
+            }
+            //InitPath(memory);
             return false;
         }
         else

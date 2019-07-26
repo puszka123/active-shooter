@@ -102,7 +102,7 @@ public class Person : MonoBehaviour
             }
         }
 
-        if (ImActiveShooter() && (FoundVictim() || Fighting()))
+        if (ImActiveShooter() && (FoundVictim() || Fighting() || FollowVictim()))
         {
             //simulationTime += Time.deltaTime;
             timer += Time.deltaTime;
@@ -140,7 +140,6 @@ public class Person : MonoBehaviour
                 else
                 {
                     Task task = waitingTasks.GetTaskToExecute();
-                    Debug.Log(task.Command);
                     actionExecutor.ExecuteSingleTask(task);
                 }
             }
@@ -181,6 +180,11 @@ public class Person : MonoBehaviour
     public bool Fighting()
     {
         return GetComponent<Fight>().FightIsStarted;
+    }
+
+    public bool FollowVictim()
+    {
+        return GetComponent<FollowVictim>().Executing;
     }
 
     public void SelectBehaviour()

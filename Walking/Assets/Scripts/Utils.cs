@@ -509,4 +509,10 @@ public static class Utils
     {
         return memory.CheckedRoom(room.Reference);
     }
+
+    public static bool BlockedByWall(GameObject a, GameObject b)
+    {
+        LayerMask layerMask = LayerMask.GetMask("Wall");
+        return Physics.Linecast(a.transform.position, b.transform.position, layerMask);
+    }
 }

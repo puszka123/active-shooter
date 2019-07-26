@@ -11,6 +11,7 @@ public class Pathfinder {
     public const float MIN_DISTANCE_DOOR = 0.3f;
     public const float MIN_DISTANCE_HIDE = 0.1f;
     public const float MIN_DISTANCE_ROOM = 0.1f;
+    public const float MIN_DISTANCE_ROOM_WALK = 0.15f;
     public const float MIN_DISTANCE_OBSTACLE = 0.1f;
     public const float MIN_DISTANCE_STAIRS = 0.1f;
     public const float MIN_DISTANCE_WORKPLACE = 0.025f;
@@ -27,6 +28,10 @@ public class Pathfinder {
 
     public bool CheckDistance(GameObject agent, Node target)
     {
+        if (Utils.IsInAnyRoom(agent.GetComponent<Person>().PersonMemory))
+        {
+            return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_ROOM_WALK;
+        }
         return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE;
     }
 
