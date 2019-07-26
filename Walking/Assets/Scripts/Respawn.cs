@@ -25,8 +25,8 @@ public class Respawn : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        door = GetDoorForRespawn();
         room = GetRoomForRespawn();
+        door = room.GetComponent<RoomManager>().Door;
         room.GetComponent<PathLocation>().SetRoomDoor(door);
         door.GetComponent<DoorController>().SetRoom(room);
     }

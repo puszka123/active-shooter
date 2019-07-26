@@ -13,7 +13,7 @@ public enum Command {
     FIND_ANY_ROOM, PICK_NEAREST_OBSTACLE,
     BLOCK_DOOR, DESTROY_DOOR,
     RUN_TO_ENEMY, FIGHT, BARRICADE_DOOR,
-    RUN_AWAY, GO_TO_WORKPLACE
+    RUN_AWAY, GO_TO_WORKPLACE, CHECK_ROOM
 }
 
 //lock_door close and lock doors

@@ -45,6 +45,8 @@ public class Pathfinder {
             case Command.GO_DOWN:
             case Command.GO_UP:
                 return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_STAIRS;
+            case Command.ENTER_ROOM:
+                return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_ROOM;
             default:
                 return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE;
         }

@@ -31,7 +31,7 @@ public class SimulationManager : MonoBehaviour {
                 item.AddComponent<RoomManager>();
                 item.GetComponent<RoomManager>().Init(itemPathlocation.Floor);
             }
-            item.GetComponent<Renderer>().enabled = false;
+            //item.GetComponent<Renderer>().enabled = false; //test
         }
         foreach (var item in GameObject.FindGameObjectsWithTag("Door"))
         {

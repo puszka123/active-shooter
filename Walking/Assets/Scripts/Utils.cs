@@ -145,6 +145,7 @@ public static class Utils
     {
         GameObject[] roomLocations = room.GetComponent<RoomManager>().RoomLocations.ToArray();
         GameObject[] hidingPlaces = roomLocations.Where(rl => rl.GetComponent<RoomLocation>().HidingPlace).ToArray();
+        if (hidingPlaces.Length == 0) return null;
         GameObject nearestHidingPlace = hidingPlaces[0];
         float nearestDistance = Distance(nearestHidingPlace, person);
         foreach (var hidingPlace in hidingPlaces)
@@ -205,6 +206,9 @@ public static class Utils
                 task.Limit.DoorToOpen = memory.CurrentRoom?.Door;
                 break;
             case Command.ENTER_ROOM:
+                task.Limit.FoundRoom = memory.FoundRoom;
+                break;
+            case Command.CHECK_ROOM:
                 task.Limit.FoundRoom = memory.FoundRoom;
                 break;
             case Command.ASK_CLOSE_DOOR:
@@ -328,8 +332,42 @@ public static class Utils
 
     public static bool CanSee(GameObject a, GameObject b)
     {
+        Vector3 aHead;
+        Vector3 bHead;
+        if (a.CompareTag("ActiveShooter"))
+        {
+            aHead = a.transform.GetChild(0).position;
+        }
+        else
+        {
+            if (a.GetComponent<Person>().MyState.IsHiding)
+            {
+                aHead = a.transform.GetChild(2).position;
+            }
+            else
+            {
+                aHead = a.transform.GetChild(1).position;
+            }
+        }
+
+        if (b.CompareTag("ActiveShooter"))
+        {
+            bHead = b.transform.GetChild(0).position;
+        }
+        else
+        {
+            if (b.GetComponent<Person>().MyState.IsHiding)
+            {
+                bHead = b.transform.GetChild(2).position;
+            }
+            else
+            {
+                bHead = b.transform.GetChild(1).position;
+            }
+        }
+
         LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "ObstacleCollider");
-        return !Physics.Linecast(a.transform.position, b.transform.position, layerMask);
+        return !Physics.Linecast(aHead, bHead, layerMask);
     }
 
     public static bool AlreadyBarricaded(GameObject door)
@@ -414,7 +452,7 @@ public static class Utils
                 }
             }
         }
-        if(node == null)
+        if (node == null)
         {
             return null;
         }

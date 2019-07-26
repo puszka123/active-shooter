@@ -61,7 +61,7 @@ public class ShooterAwarness : MonoBehaviour
         {
             angleHorizontal = Mathf.Deg2Rad * i;
             direction = new Vector3(-Mathf.Cos(angleHorizontal), 0, Mathf.Sin(angleHorizontal));
-            if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
+            if (Physics.Raycast(transform.GetChild(0).position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
             {
                 //Debug.DrawRay(transform.position, transform.TransformDirection(direction) * hit.distance, Color.yellow);
                 if (hit.transform.CompareTag("Employee")

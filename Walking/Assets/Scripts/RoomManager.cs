@@ -6,6 +6,7 @@ using System.Linq;
 public class RoomManager : MonoBehaviour {
     public List<GameObject> RoomLocations;
     public int Floor;
+    public GameObject Door;
 
     public void Init(int floor)
     {
@@ -41,8 +42,8 @@ public class RoomManager : MonoBehaviour {
 
     public void InitDoors()
     {
-        GameObject door = GetDoorForRoom();
-        door.GetComponent<RoomLocation>().InitDoorNeighbours(RoomLocations, gameObject);
+        Door = GetDoorForRoom();
+        Door.GetComponent<RoomLocation>().InitDoorNeighbours(RoomLocations, gameObject);
     }
 
     public GameObject GetDoorForRoom()

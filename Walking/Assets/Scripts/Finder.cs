@@ -22,6 +22,11 @@ public class Finder {
         switch (task.Command)
         {
             case Command.FIND_ROOM:
+                if(memory.FoundRoom != null)
+                {
+                    FinishFind();
+                    return;
+                }
                 Room room = FindNearestNotInformedRoom(memory.CurrentFloor, transform);
                 if (room == null) return;
                 SaveRoomInMemory(room);

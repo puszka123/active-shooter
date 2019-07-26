@@ -122,6 +122,10 @@ public class Walking
     {
         if (IsTaskExecuting(task)) return; //don't do that again!s 
         TaskToExecute = task;
+        if (Me.CompareTag("ActiveShooter"))
+        {
+            //Debug.Log(task.Command);
+        }
         switch (task.Command)
         {
             case Command.GO_UP:
@@ -240,8 +244,18 @@ public class Walking
                 if (room2 == null
                     || room2.Id == memory.CurrentRoom?.Id
                     || Utils.DoorIsLocked(room2.Door)
-                    || Utils.ToFar(Me, room2.Reference, Pathfinder.MIN_DISTANCE))
+                    || !Utils.ToFar(Me, room2.Reference, Pathfinder.MIN_DISTANCE_ROOM)
+                    || Utils.ToFar(Me, room2.Door, Pathfinder.MIN_DISTANCE_DOOR))
                 {
+                    //if (Me.CompareTag("ActiveShooter"))
+                    //{
+                    //    Debug.Log(String.Format("{0} {1} {2} {3} {4}",
+                    //        room2 == null,
+                    //        room2.Id == memory.CurrentRoom?.Id,
+                    //        Utils.DoorIsLocked(room2.Door),
+                    //        !Utils.ToFar(Me, room2.Reference, Pathfinder.MIN_DISTANCE_ROOM),
+                    //        Utils.ToFar(Me, room2.Door, Pathfinder.MIN_DISTANCE_DOOR)));
+                    //}
                     FinishWalking();
                     return;
                 }
@@ -260,6 +274,30 @@ public class Walking
                 }
                 InitRoomPath(room3, transform, memory,
                     Utils.NearestHidingPlaceInRoom(transform.gameObject, room3.Reference));
+                CurrentSpeed = Resources.Walk;
+                Executing = true;
+                break;
+            case Command.CHECK_ROOM:
+                Room room7 = Utils.GetRoom(task);
+                if (room7 == null)
+                {
+                    FinishWalking();
+                    return;
+                }
+                GameObject hide = Utils.NearestHidingPlaceInRoom(transform.gameObject, room7.Reference);
+                if (hide == null)
+                {
+                    memory.ClearFoundRoom();
+                    FinishWalking();
+                    return;
+                }
+                if (!Utils.IsInAnyRoom(memory)
+                    || !Utils.ToFar(transform.gameObject, hide, Pathfinder.MIN_DISTANCE))
+                {
+                    FinishWalking();
+                    return;
+                }
+                InitRoomPath(room7, transform, memory, hide);
                 CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
@@ -335,7 +373,7 @@ public class Walking
                 FinishWalking();
                 break;
         }
-        if(task.Command != Command.HIDE_IN_CURRENT_ROOM 
+        if (task.Command != Command.HIDE_IN_CURRENT_ROOM
             && Path != null && Path.Count > 0
             && Me.GetComponent<Person>().MyState.IsHiding)
         {
@@ -418,6 +456,9 @@ public class Walking
                 case Command.RUN_AWAY:
                     memory.UpdateNodesBlockedByShooter();
                     break;
+                case Command.CHECK_ROOM:
+                    memory.ClearFoundRoom();
+                    break;
                 default:
                     break;
             }
@@ -486,9 +527,9 @@ public class Walking
         {
             blockedWayTimeout += Time.deltaTime + 0.1f;
         }
-        if (currentNodeIndex < Path.Count - 1)
+        if (currentNodeIndex == Path.Count - 1)
         {
-            if (pathfinder.CheckDistance(transform.gameObject, Path[currentNodeIndex]))
+            if (pathfinder.CheckDistance(transform.gameObject, Path[currentNodeIndex], TaskToExecute.Command))
             {
                 if (++currentNodeIndex >= Path.Count) return true;
                 else return false;
@@ -496,7 +537,7 @@ public class Walking
         }
         else
         {
-            if (pathfinder.CheckDistance(transform.gameObject, Path[currentNodeIndex], TaskToExecute.Command))
+            if (pathfinder.CheckDistance(transform.gameObject, Path[currentNodeIndex]))
             {
                 if (++currentNodeIndex >= Path.Count) return true;
                 else return false;
