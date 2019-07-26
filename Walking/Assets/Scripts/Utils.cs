@@ -79,9 +79,9 @@ public static class Utils
         GameObject nearestExits = exits[0];
         foreach (var item in exits)
         {
-            if (Vector3.Distance(transform.position, nearestExits.transform.position)
+            if (Utils.Distance(transform.position, nearestExits.transform.position)
                 >
-                Vector3.Distance(transform.position, item.transform.position))
+                Utils.Distance(transform.position, item.transform.position))
             {
                 nearestExits = item;
             }
@@ -91,7 +91,7 @@ public static class Utils
 
     public static bool ToFar(GameObject a, GameObject b, float threshold = 0.25f)
     {
-        return Vector3.Distance(a.transform.position, b.transform.position) > threshold;
+        return Utils.Distance(a.transform.position, b.transform.position) > threshold;
     }
 
     public static bool DoorIsOpened(GameObject door)
@@ -161,7 +161,18 @@ public static class Utils
 
     public static float Distance(GameObject a, GameObject b)
     {
-        return Vector3.Distance(a.transform.position, b.transform.position);
+        Vector3 vecA = a.transform.position;
+        Vector3 vecB = b.transform.position;
+        vecA.y = 0;
+        vecB.y = 0;
+        return Vector3.Distance(vecA, vecB);
+    }
+
+    public static float Distance(Vector3 a, Vector3 b)
+    {
+        a.y = 0;
+        b.y = 0;
+        return Vector3.Distance(a, b);
     }
 
     public static void UpdateLimitForTask(PersonMemory memory, Command cmd, List<Task> Tasks)
@@ -317,7 +328,7 @@ public static class Utils
 
     public static bool CanSee(GameObject a, GameObject b)
     {
-        LayerMask layerMask = LayerMask.GetMask("Wall", "Door");
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "ObstacleCollider");
         return !Physics.Linecast(a.transform.position, b.transform.position, layerMask);
     }
 
@@ -359,7 +370,7 @@ public static class Utils
                 float angleBetween = Vector3.Angle(nodePerson, personShooter);
                 if (node == null) node = entry.Value;
                 else if (angleBetween > 60f &&
-                    Vector3.Distance(entry.Value.Position, shooter.transform.position) > Vector3.Distance(shooter.transform.position, node.Position))
+                    Utils.Distance(entry.Value.Position, shooter.transform.position) > Utils.Distance(shooter.transform.position, node.Position))
                 {
                     if (memory.GetBlockedNodes().Length == 0)
                     {
@@ -389,7 +400,7 @@ public static class Utils
                 float angleBetween = Vector3.Angle(nodePerson, personShooter);
                 if (node == null) node = entry.Value;
                 else if (angleBetween > 60f &&
-                    Vector3.Distance(entry.Value.Position, shooter.transform.position) > Vector3.Distance(shooter.transform.position, node.Position))
+                    Utils.Distance(entry.Value.Position, shooter.transform.position) > Utils.Distance(shooter.transform.position, node.Position))
                 {
                     if (memory.GetBlockedNodes().Length == 0)
                     {
@@ -446,7 +457,7 @@ public static class Utils
         GameObject nearestEmployee = null;
         foreach (Transform employee in GameObject.Find("Employees " + floor).transform)
         {
-            float distance = Vector3.Distance(respawn.transform.position, employee.transform.position);
+            float distance = Utils.Distance(respawn.transform.position, employee.transform.position);
             if (distance < nearestDist)
             {
                 nearestDist = distance;

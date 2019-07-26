@@ -54,7 +54,7 @@ public class ShooterAwarness : MonoBehaviour
         Vector3 direction;
         RaycastHit hit;
 
-        LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Employee"); //test add obstacle
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Employee", "ObstacleCollider"); //test add obstacle
         float distance = 999f;
         bool noOneInSight = true;
         for (float i = 180; i < 360f; i += 1f)

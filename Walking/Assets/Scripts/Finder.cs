@@ -61,9 +61,9 @@ public class Finder {
         GameObject nearestRoom = rooms[0];
         foreach (var item in rooms)
         {
-            if (Vector3.Distance(transform.position, nearestRoom.transform.position)
+            if (Utils.Distance(transform.gameObject, nearestRoom)
                 >
-                Vector3.Distance(transform.position, item.transform.position))
+                Utils.Distance(transform.gameObject, item))
             {
                 nearestRoom = item;
             }
@@ -90,9 +90,9 @@ public class Finder {
         GameObject nearestRoom = rooms[0];
         foreach (var item in rooms)
         {
-            if (Vector3.Distance(transform.position, nearestRoom.transform.position)
+            if (Utils.Distance(transform.gameObject, nearestRoom)
                 >
-                Vector3.Distance(transform.position, item.transform.position))
+                Utils.Distance(transform.gameObject, item))
             {
                 nearestRoom = item;
             }

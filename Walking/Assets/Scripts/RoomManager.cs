@@ -51,7 +51,7 @@ public class RoomManager : MonoBehaviour {
         float distance = 9999999f;
         foreach (Transform item in GameObject.Find("Doors " + Floor).transform)
         {
-            float dist = Vector3.Distance(transform.position, item.position);
+            float dist = Utils.Distance(transform.position, item.position);
             int layerMask = 1 << 9;
             bool blocked = Physics.Linecast(transform.position, item.position, layerMask);
             if (dist < distance && !blocked)

@@ -90,7 +90,7 @@ public class Shooting : MonoBehaviour
         }
 
 
-        LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Employee"); //test add obstacle
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Employee", "ObstacleCollider"); //test add obstacle
         float distance = 999f;
         bool noOneInSight = true;
         for (float i = start; i < stop; i += increase)
@@ -175,7 +175,7 @@ public class Shooting : MonoBehaviour
         Vector3 direction;
         angleHorizontal = Mathf.Deg2Rad * Random.Range(ShooterHorizontalAccuracy[0], ShooterHorizontalAccuracy[1]);
         angleVertical = Mathf.Deg2Rad * Random.Range(ShooterVerticalAccuracy[0], ShooterVerticalAccuracy[1]);
-        LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Employee"); //test add obstacle
+        LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Employee", "ObstacleCollider"); //test add obstacle
         direction = new Vector3(-Mathf.Cos(angleHorizontal), Mathf.Cos(angleVertical), Mathf.Sin(angleHorizontal));
         if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
         {
@@ -199,7 +199,7 @@ public class Shooting : MonoBehaviour
             firingRate = 1f;
             return;
         }
-        float distance = Vector3.Distance(victim.position, transform.position);
+        float distance = Utils.Distance(victim.position, transform.position);
         if (distance > 20f*Resources.scale)
         {
             firingRate = 1f;
@@ -221,7 +221,7 @@ public class Shooting : MonoBehaviour
             verticalUpDeviation = 1f;
             return;
         }
-        float distance = Vector3.Distance(victim.position, transform.position);
+        float distance = Utils.Distance(victim.position, transform.position);
         if (distance > 20f * Resources.scale)
         {
             verticalUpDeviation = 1f;

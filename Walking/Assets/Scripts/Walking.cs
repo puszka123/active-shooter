@@ -253,7 +253,7 @@ public class Walking
                 Room room3 = Utils.GetRoom(task);
                 if (room3 == null
                     || !Utils.IsInAnyRoom(memory)
-                    || !Utils.ToFar(transform.gameObject, Utils.NearestHidingPlaceInRoom(transform.gameObject, room3.Reference), 0.15f))
+                    || !Utils.ToFar(transform.gameObject, Utils.NearestHidingPlaceInRoom(transform.gameObject, room3.Reference), Pathfinder.MIN_DISTANCE_HIDE))
                 {
                     FinishWalking();
                     return;
@@ -334,6 +334,12 @@ public class Walking
                 CurrentSpeed = Resources.Stay;
                 FinishWalking();
                 break;
+        }
+        if(task.Command != Command.HIDE_IN_CURRENT_ROOM 
+            && Path != null && Path.Count > 0
+            && Me.GetComponent<Person>().MyState.IsHiding)
+        {
+            Me.GetComponent<PersonHide>().GetUp();
         }
     }
 
@@ -480,7 +486,7 @@ public class Walking
         {
             blockedWayTimeout += Time.deltaTime + 0.1f;
         }
-        if(currentNodeIndex < Path.Count - 1)
+        if (currentNodeIndex < Path.Count - 1)
         {
             if (pathfinder.CheckDistance(transform.gameObject, Path[currentNodeIndex]))
             {
@@ -568,8 +574,7 @@ public class Walking
         Person person = Me.GetComponent<Person>();
         if (TaskToExecute.Command == Command.HIDE_IN_CURRENT_ROOM && Utils.IsHiding(Me, person.PersonMemory))
         {
-            person.MyState.IsHiding = true;
-            //person.SelectAction();
+            person.GetComponent<PersonHide>().Hide();
         }
         if (TaskToExecute.Command == Command.BLOCK_DOOR)
         {

@@ -88,7 +88,7 @@ public class Respawn : MonoBehaviour
 
         foreach (Transform item in GameObject.Find("Doors " + transform.parent.name.Split(' ')[1]).transform)
         {
-            float dist = Vector3.Distance(this.transform.position, item.transform.position);
+            float dist = Utils.Distance(this.transform.position, item.transform.position);
             int layerMask = 1 << 9;
             bool blocked = Physics.Linecast(transform.position, item.transform.position, layerMask);
             if (dist < distance && !blocked)
@@ -112,7 +112,7 @@ public class Respawn : MonoBehaviour
                 continue;
             }
 
-            float dist = Vector3.Distance(this.transform.position, item.transform.position);
+            float dist = Utils.Distance(this.transform.position, item.transform.position);
             int layerMask = 1 << 9;
             bool blocked = Physics.Linecast(transform.position, item.transform.position, layerMask);
             if (dist < distance && !blocked)

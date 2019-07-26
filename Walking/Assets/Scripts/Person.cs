@@ -74,7 +74,7 @@ public class Person : MonoBehaviour
         CurrentAction = ActionSelector.SelectAction(this);
         actionExecutor.ExecuteAction(ref CurrentAction);
 
-
+        
         init = true;
     }
 

@@ -87,7 +87,7 @@ public class FollowVictim : MonoBehaviour {
     public bool IsInLastSeenPosition()
     {
         if (LastVictim == null) return true;
-        return Vector3.Distance(transform.position, LastVictim.Position) < MIN_DISTANCE;
+        return Utils.Distance(transform.position, LastVictim.Position) < MIN_DISTANCE;
     }
 
     public bool IsDead()

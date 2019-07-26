@@ -28,8 +28,8 @@ TagManager:
   - Employee
   - Obstacle
   - ActiveShooter
-  - 
-  - 
+  - ObstacleTrigger
+  - ObstacleCollider
   - 
   - 
   - 

@@ -78,7 +78,7 @@ public class PersonMemory
             if (!Physics.Linecast(position, entry.Value.Position, layerMask))
             {
                 if (node == null) node = entry.Value;
-                else if (Vector3.Distance(entry.Value.Position, position) < Vector3.Distance(position, node.Position))
+                else if (Utils.Distance(entry.Value.Position, position) < Utils.Distance(position, node.Position))
                 {
                     if (blockedByDoor == null)
                     {

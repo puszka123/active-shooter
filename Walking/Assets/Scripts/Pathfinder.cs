@@ -9,7 +9,7 @@ public class Pathfinder {
     public const int MAX_NODES_IN_QUEUE = 100;
     public const float MIN_DISTANCE = 0.2f;
     public const float MIN_DISTANCE_DOOR = 0.3f;
-    public const float MIN_DISTANCE_HIDE = 0.15f;
+    public const float MIN_DISTANCE_HIDE = 0.1f;
     public const float MIN_DISTANCE_ROOM = 0.1f;
     public const float MIN_DISTANCE_OBSTACLE = 0.1f;
     public const float MIN_DISTANCE_STAIRS = 0.1f;
@@ -22,13 +22,12 @@ public class Pathfinder {
 
     private float Heuristic(Node a, Node b)
     {
-        return Vector3.Distance(a.Position, b.Position);
+        return Utils.Distance(a.Position, b.Position);
     }
 
     public bool CheckDistance(GameObject agent, Node target)
     {
-        //Debug.Log(Vector3.Distance(agent.transform.position, target.Position));
-        return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE;
+        return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE;
     }
 
     public bool CheckDistance(GameObject agent, Node target, Command cmd)
@@ -36,25 +35,24 @@ public class Pathfinder {
         switch (cmd)
         {
             case Command.PICK_NEAREST_OBSTACLE:
-                return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_OBSTACLE;
+                return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_OBSTACLE;
             case Command.GO_TO_WORKPLACE:
-                return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_WORKPLACE;
+                return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_WORKPLACE;
             case Command.HIDE_IN_CURRENT_ROOM:
-                return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_HIDE;
+                return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_HIDE;
             case Command.GO_TO_DOOR:
-                return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_DOOR;
+                return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_DOOR;
             case Command.GO_DOWN:
             case Command.GO_UP:
-                return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_STAIRS;
+                return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_STAIRS;
             default:
-                return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE;
+                return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE;
         }
     }
 
     public bool CheckDistanceRoom(GameObject agent, Node target)
     {
-        //Debug.Log(Vector3.Distance(agent.transform.position, target.Position));
-        return Vector3.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_ROOM;
+        return Utils.Distance(agent.transform.position, target.Position) <= MIN_DISTANCE_ROOM;
     }
 
     FastPriorityQueue<Node> frontier = new FastPriorityQueue<Node>(MAX_NODES_IN_QUEUE);
@@ -87,7 +85,7 @@ public class Pathfinder {
                     //Debug.Log("Pathfinder: " + next.Name + " " + startPosition.Name);
                     continue;
                 }
-                float newCost = costSoFar[current.Name] + Vector3.Distance(current.Position, next.Position);
+                float newCost = costSoFar[current.Name] + Utils.Distance(current.Position, next.Position);
                 if (!costSoFar.ContainsKey(next.Name) || newCost < costSoFar[next.Name])
                 {
                     costSoFar[next.Name] = newCost;
@@ -165,7 +163,7 @@ public class Pathfinder {
             }
             foreach (Node next in neighbours)
             {
-                float newCost = costSoFar[current.Name] + Vector3.Distance(current.Position, next.Position);
+                float newCost = costSoFar[current.Name] + Utils.Distance(current.Position, next.Position);
                 if (!costSoFar.ContainsKey(next.Name) || newCost < costSoFar[next.Name])
                 {
                     costSoFar[next.Name] = newCost;
@@ -233,7 +231,7 @@ public class Pathfinder {
                 {
                     continue;
                 }
-                float newCost = costSoFar[current.Name] + Vector3.Distance(current.Position, next.Position);
+                float newCost = costSoFar[current.Name] + Utils.Distance(current.Position, next.Position);
                 if (!costSoFar.ContainsKey(next.Name) || newCost < costSoFar[next.Name])
                 {
                     costSoFar[next.Name] = newCost;

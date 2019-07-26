@@ -24,6 +24,6 @@ public class Negotiation
 
     public float GetDistance(GameObject a, GameObject b)
     {
-        return Vector3.Distance(a.transform.position, b.transform.position);
+        return Utils.Distance(a.transform.position, b.transform.position);
     }
 }
