@@ -13,6 +13,7 @@ TagManager:
   - Obstacle
   - RoomLocation
   - ActiveShooter
+  - InformManager
   layers:
   - Default
   - TransparentFX

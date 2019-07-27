@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PanicMode
+{
+    LOW, MEDIUM, HIGH
+}
+
 public class PersonStats : MonoBehaviour {
     public float Health;
     public float Strength;
@@ -10,6 +15,7 @@ public class PersonStats : MonoBehaviour {
     public float HideChance;
     public float ShotDetection;
     public float FirstDecisionTime;
+    public PanicMode Panic;
 
     private void Start()
     {
@@ -20,6 +26,7 @@ public class PersonStats : MonoBehaviour {
         HideChance = 0.9f;
         ShotDetection = Random.Range(0.5f, 1f);
         FirstDecisionTime = Random.Range(2f, 10f);
+        Panic = PanicMode.LOW;
     }
 
     public void GetDamage(float damage, Transform activeShooter, Vector3 hitPoint)

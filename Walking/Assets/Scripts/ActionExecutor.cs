@@ -85,6 +85,8 @@ public class ActionExecutor
                     movementExecutor.ExecuteTask(task, memory, transform);
                     break;
                 case TaskType.TALK:
+                    talkExecutor.CheckTalking();
+                    talkExecutor.ExecuteTask(task);
                     break;
                 case TaskType.OTHER:
                     break;

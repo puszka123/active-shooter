@@ -38,7 +38,6 @@ public class FollowVictim : MonoBehaviour {
             || GetComponent<ShooterAwarness>().FoundVictim != null
             || GetComponent<Shooting>().ShootToVictim())
         {
-            Speed = Resources.Stay;
             LastVictim = null;
         }
 

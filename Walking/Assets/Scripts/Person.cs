@@ -30,8 +30,13 @@ public class Person : MonoBehaviour
     public float seeShooterTimer = 0f;
     public bool FirstDecision;
 
+    public float talkTime;
+    public float talk;
+
     bool init = false;
     bool test = false;
+
+    Action informAboutShooter;
 
     Renderer rend;
 
@@ -74,7 +79,8 @@ public class Person : MonoBehaviour
         CurrentAction = ActionSelector.SelectAction(this);
         actionExecutor.ExecuteAction(ref CurrentAction);
 
-        
+        informAboutShooter = new InformActions.TellAboutShooter();
+        talk = 1f;
         init = true;
     }
 
@@ -101,13 +107,14 @@ public class Person : MonoBehaviour
                 }
             }
         }
-
+        talkTime += Time.deltaTime;
         if (ImActiveShooter() && (FoundVictim() || Fighting() || FollowVictim()))
         {
             //simulationTime += Time.deltaTime;
             timer += Time.deltaTime;
             actionTime += Time.deltaTime;
             CurrentAction.ResetTasks();
+            SelectBehaviour();
             return;
         }
 
@@ -149,12 +156,15 @@ public class Person : MonoBehaviour
             }
             else if (waitingTasks.Tasks.Count == 0 && waitingTasks.WaitingTaskIsExecuted()) //if single task is done and queue is empty
             {
-                if (gameObject.name == "Informer" && PersonMemory.GetInformedRooms().Count >= 29)
-                {
-                    Debug.Log(simulationTime);
-                }
                 actionExecutor.ExecuteAction(ref CurrentAction);
             }
+        }
+
+        if(talkTime >= talk && !CompareTag("ActiveShooter"))
+        {
+            talkTime = 0f;
+            informAboutShooter.Tasks[0].IsDone = false;
+            actionExecutor.ExecuteSingleTask(informAboutShooter.Tasks[0]);
         }
     }
 

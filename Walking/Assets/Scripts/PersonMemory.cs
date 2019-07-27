@@ -437,6 +437,21 @@ public class PersonMemory
         };
     }
 
+    public void UpdateActiveShooterInfo(ShooterInfo activeShooter)
+    {
+        if (ShooterInfo == null)
+        {
+            ShooterInfo = new ShooterInfo
+            {
+                Position = activeShooter.Position,
+                Name = activeShooter.Name,
+                Floor = activeShooter.Floor
+            };
+            transform.GetComponent<Person>().FirstDecision = true;
+            transform.GetComponent<Person>().SelectBehaviour();
+        }
+    }
+
     public void ClearBlockedNodesByShooter()
     {
         blockedByShooter = null;

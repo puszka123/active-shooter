@@ -16,4 +16,6 @@ public static class Resources {
 
     public static readonly float[] Near = { 0f, 10f };
     public static readonly float[] Far = { 10f, 100f };
+
+    public const int MAX_FLOOR = 3;
 }

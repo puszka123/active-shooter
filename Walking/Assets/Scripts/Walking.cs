@@ -11,7 +11,7 @@ public class Walking
     public int currentNodeIndex;
     public float Speed;
     public float RotationSpeed;
-    public float CurrentSpeed;
+    public float TargetSpeed;
 
     AvoidanceSystem avoidanceSystem;
 
@@ -35,10 +35,10 @@ public class Walking
     {
         RotationSpeed = 10f;
         Speed = 0f;
-        CurrentSpeed = 0f;
+        TargetSpeed = 0f;
         m_Rigidbody = rigidbody;
         collisionDetection = new CollisionDetection();
-        CurrentSpeed = Resources.Run;
+        TargetSpeed = Resources.Run;
         pathfinder = new Pathfinder();
         avoidanceSystem = new AvoidanceSystem();
         avoidanceSystem.initAvoidanceSystem();
@@ -122,10 +122,10 @@ public class Walking
     {
         if (IsTaskExecuting(task)) return; //don't do that again!s 
         TaskToExecute = task;
-        if (Me.CompareTag("ActiveShooter"))
-        {
-            Debug.Log(task.Command);
-        }
+        //if (Me.CompareTag("ActiveShooter"))
+        //{
+        //    Debug.Log(task.Command);
+        //}
         switch (task.Command)
         {
             case Command.GO_UP:
@@ -153,7 +153,7 @@ public class Walking
                 {
                     InitPath(memory);
                 }
-                CurrentSpeed = Resources.Walk; //test
+                //CurrentSpeed = Resources.Walk; //test
                 Executing = true;
                 break;
             case Command.GO_DOWN:
@@ -186,7 +186,7 @@ public class Walking
                 {
                     InitPath(memory);
                 }
-                CurrentSpeed = Resources.Walk; //test
+                //CurrentSpeed = Resources.Walk; //test
                 Executing = true;
                 break;
             case Command.EXIT_BUILDING:
@@ -197,7 +197,7 @@ public class Walking
                 }
                 memory.setTargetPosition(Utils.NearestExit(transform, memory));
                 InitPath(memory);
-                CurrentSpeed = Resources.Walk; //test
+                //CurrentSpeed = Resources.Walk; //test
                 Executing = true;
                 break;
             case Command.GO_TO_ROOM:
@@ -218,7 +218,7 @@ public class Walking
                     Me.SendMessage("SelectBehaviour");
                     return;
                 }
-                CurrentSpeed = Resources.Walk; //test
+                //CurrentSpeed = Resources.Walk; //test
                 Executing = true;
                 break;
             case Command.GO_TO_DOOR:
@@ -236,7 +236,7 @@ public class Walking
                 {
                     InitPath(doorToOpen);
                 }
-                CurrentSpeed = Resources.Walk;
+                //CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
             case Command.ENTER_ROOM:
@@ -261,7 +261,7 @@ public class Walking
                     return;
                 }
                 InitPath(room2);
-                CurrentSpeed = Resources.Walk;
+                //CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
             case Command.HIDE_IN_CURRENT_ROOM:
@@ -275,7 +275,7 @@ public class Walking
                 }
                 InitRoomPath(room3, transform, memory,
                     Utils.NearestHidingPlaceInRoom(transform.gameObject, room3.Reference));
-                CurrentSpeed = Resources.Walk;
+                //CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
             case Command.CHECK_ROOM:
@@ -302,7 +302,7 @@ public class Walking
                     return;
                 }
                 InitRoomPath(room7, transform, memory, hide);
-                CurrentSpeed = Resources.Walk;
+                //CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
             case Command.PICK_NEAREST_OBSTACLE:
@@ -312,7 +312,7 @@ public class Walking
                     return;
                 }
                 InitPathToNearestObstacle(transform.gameObject, memory);
-                CurrentSpeed = Resources.Walk;
+                //CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
             case Command.BLOCK_DOOR:
@@ -331,7 +331,7 @@ public class Walking
                     return;
                 }
                 InitPathToEnemy(memory);
-                CurrentSpeed = Resources.Sprint;
+                //CurrentSpeed = Resources.Sprint;
                 Executing = true;
                 break;
             case Command.RUN_AWAY:
@@ -344,7 +344,7 @@ public class Walking
                 memory.ClearBlockedNodesByShooter(); //if we see shooter then previous locations are clear probably
                 memory.setTargetPosition(Utils.GetNodeToRunAway(Me, Shooter).Name);
                 InitPath(memory);
-                CurrentSpeed = Resources.Sprint;
+                //CurrentSpeed = Resources.Sprint;
                 Executing = true;
                 break;
             case Command.GO_TO_WORKPLACE:
@@ -359,7 +359,7 @@ public class Walking
                     return;
                 }
                 InitRoomPath(room5, transform, memory, Utils.GetMyWorkplace(memory));
-                CurrentSpeed = Resources.Walk;
+                //CurrentSpeed = Resources.Walk;
                 Executing = true;
                 break;
             case Command.WORK:
@@ -373,7 +373,7 @@ public class Walking
                 Path = new List<Node>();
                 memory.setStartPosition("");
                 memory.setTargetPosition("");
-                CurrentSpeed = Resources.Stay;
+                //CurrentSpeed = Resources.Stay;
                 FinishWalking();
                 break;
         }
@@ -383,6 +383,7 @@ public class Walking
         {
             Me.GetComponent<PersonHide>().GetUp();
         }
+        Utils.SetTargetSpeed(task, Me);
     }
 
     public bool IsTaskExecuting(Task task)
@@ -483,7 +484,7 @@ public class Walking
             collisionDetection.UpdateCollisions(transform, Path[currentNodeIndex].Position);
 
             avoidanceSystem.Calculate(collisionDetection.rightDist, collisionDetection.veryRightDist, collisionDetection.leftDist,
-            collisionDetection.veryLeftDist, collisionDetection.frontDist, Speed, CurrentSpeed, collisionDetection.isStatic);
+            collisionDetection.veryLeftDist, collisionDetection.frontDist, Speed, TargetSpeed, collisionDetection.isStatic);
             float aCS = avoidanceSystem.GetOutputValue("SpeedChange");
             if (aCS != -999.0f)
             {
@@ -506,11 +507,11 @@ public class Walking
             float goalAngle = pathfinder.GetGoalAngle(transform.gameObject, Path[currentNodeIndex].Position);
             float goalWeight = 1f;
             _finalAngle = goalWeight * goalAngle;
-            if (Speed < CurrentSpeed)
+            if (Speed < TargetSpeed)
             {
                 Speed += 0.03f;
             }
-            if (Speed > CurrentSpeed)
+            if (Speed > TargetSpeed)
             {
                 Speed -= 0.05f;
             }
@@ -603,7 +604,7 @@ public class Walking
             person.GetComponent<Person>().PersonMemory.CurrentRoom.Reference.SendMessage("PickedObstacle",
                 person.GetComponent<Person>().PersonMemory.PickedObstacle);
             InitPath(person.GetComponent<Person>().PersonMemory.CurrentRoom.Door);
-            CurrentSpeed = obstacle.GetComponent<Obstacle>().TargetSpeed;
+            TargetSpeed = obstacle.GetComponent<Obstacle>().TargetSpeed;
         }
     }
 
@@ -666,5 +667,10 @@ public class Walking
 
         float res = a * currentSpeed + b;
         return res;
+    }
+
+    public void SetTargetSpeed(float targetSpeed)
+    {
+        TargetSpeed = targetSpeed;
     }
 }

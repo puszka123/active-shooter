@@ -31,7 +31,16 @@ public class TalkExecutor {
             case Command.TELL_ABOUT_SHOOTER:
                 InitChat();
                 break;
-        }
+            case Command.SAY_ACTIVE_SHOOTER:
+                if(Person.PersonMemory.ShooterInfo == null)
+                {
+                    FinishTalk();
+                    return;
+                }
+                InformNeighbours();
+                FinishTalk();
+                break;
+        } 
     }
 
     public void UpdateTalkingTimer(float deltaTime)
@@ -148,5 +157,15 @@ public class TalkExecutor {
     public bool AlreadyInformed(GameObject[] members, PersonMemory memory)
     {
         return memory.AreInformed(members);
+    }
+
+    public void InformNeighbours()
+    {
+        float radius = 15f;
+        List<MyChat> neighbours = Utils.GetNeighbours(Person, radius);
+        foreach (var neighbour in neighbours)
+        {
+            neighbour.InformAboutShooter(Person.PersonMemory.ShooterInfo);
+        }
     }
 }

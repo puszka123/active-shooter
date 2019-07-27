@@ -515,4 +515,64 @@ public static class Utils
         LayerMask layerMask = LayerMask.GetMask("Wall");
         return Physics.Linecast(a.transform.position, b.transform.position, layerMask);
     }
+
+    public static void SetTargetSpeed(Task task, GameObject person)
+    {
+        Person p = person.GetComponent<Person>();
+        Walking walking = p.walkingModule;
+        float targetSpeed = Resources.Stay;
+        if (p.CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Evacuate))
+        {
+            if (task.Command == Command.RUN_AWAY)
+            {
+                targetSpeed = Resources.Sprint;
+            }
+            else
+            {
+                targetSpeed = Resources.Run;
+            }
+        }
+        else if (p.CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Hide))
+        {
+            targetSpeed = Resources.Walk;
+        }
+        else if (p.CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Fight))
+        {
+            targetSpeed = Resources.Sprint;
+        }
+        else if (p.CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Work))
+        {
+            if (task.Command == Command.WORK)
+            {
+                targetSpeed = Resources.Stay;
+            }
+            else
+            {
+                targetSpeed = Resources.Walk;
+            }
+        }
+        else if (p.CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.FindAndKill))
+        {
+            targetSpeed = Resources.Walk;
+        }
+        else
+        {
+            Debug.Log("Error");
+        }
+        walking.SetTargetSpeed(targetSpeed);
+    }
+
+    public static List<MyChat> GetNeighbours(Person person, float radius)
+    {
+        int floor = person.PersonMemory.CurrentFloor;
+        InformManager manager = GameObject.FindGameObjectWithTag("InformManager").GetComponent<InformManager>();
+        List<MyChat> floorEmployees = manager.GetFloorEmployees(floor);
+        List<MyChat> neighbours = FilteredNeighboursfloor(floorEmployees, person);
+        return neighbours;
+    }
+
+    private static List<MyChat> FilteredNeighboursfloor(List<MyChat> employees, Person person)
+    {
+        return employees.FindAll(e => CanSee(e.gameObject, person.gameObject));
+    }
 }

@@ -93,4 +93,9 @@ public class MyChat : MonoBehaviour {
                 break;
         }
     }
+
+    public void InformAboutShooter(ShooterInfo shooterInfo)
+    {
+        GetComponent<Person>().PersonMemory.UpdateActiveShooterInfo(shooterInfo);
+    }
 }
