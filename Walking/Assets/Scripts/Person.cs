@@ -213,10 +213,6 @@ public class Person : MonoBehaviour
         {
             CurrentAction = action;
         }
-        if (name == "employee 11")
-        {
-            //Debug.Log(name + " " + CurrentBehaviour + " " + CurrentAction);
-        }
     }
 
     public void SeeShooterCheck()

@@ -52,7 +52,17 @@ public static class ShooterActions
 
         public override float ActionHappenProbability(Person person)
         {
-            return 1f;
+            ShooterStaircase shooterStaircase = person.GetComponent<ShooterStaircase>();
+            float myFloor = person.PersonMemory.CurrentFloor;
+
+            float victimStairs = shooterStaircase.PotentialVictim != null ? 1f : 0f;
+            float chances = 0.8f;
+
+            float victimStairsWeight = 0.7f;
+            
+            chances -= victimStairs * victimStairsWeight;
+
+            return chances;
         }
 
         public override void TasksCleaner(PersonMemory memory)
@@ -88,7 +98,29 @@ public static class ShooterActions
 
         public override float ActionHappenProbability(Person person)
         {
-            return 0f;
+            ShooterStaircase shooterStaircase = person.GetComponent<ShooterStaircase>();
+            float myFloor = person.PersonMemory.CurrentFloor;
+            if (myFloor == Resources.MAX_FLOOR) return 0f;
+
+            float victimStairs = shooterStaircase.PotentialVictim != null ? 1f : 0f;
+            float chances = 0.1f;
+
+            float victimStairsWeight = 0.8f;
+
+            if (victimStairs == 1f)
+            {
+                int victimFloor = shooterStaircase.PotentialVictim.PersonMemory.CurrentFloor;
+                if (victimFloor > myFloor)
+                {
+                    chances += victimStairs * victimStairsWeight;
+                }
+                else
+                {
+                    chances = 0f;
+                }
+            }
+
+            return chances;
         }
 
         public override void TasksCleaner(PersonMemory memory)
@@ -119,7 +151,29 @@ public static class ShooterActions
 
         public override float ActionHappenProbability(Person person)
         {
-            return 0f;
+            ShooterStaircase shooterStaircase = person.GetComponent<ShooterStaircase>();
+            float myFloor = person.PersonMemory.CurrentFloor;
+            if (myFloor == 0) return 0f;
+
+            float victimStairs = shooterStaircase.PotentialVictim != null ? 1f : 0f;
+            float chances = 0.1f;
+
+            float victimStairsWeight = 0.8f;
+
+            if (victimStairs == 1f)
+            {
+                int victimFloor = shooterStaircase.PotentialVictim.PersonMemory.CurrentFloor;
+                if (victimFloor < myFloor)
+                {
+                    chances += victimStairs * victimStairsWeight;
+                }
+                else
+                {
+                    chances = 0f;
+                }
+            }
+
+            return chances;
         }
 
         public override void TasksCleaner(PersonMemory memory)
