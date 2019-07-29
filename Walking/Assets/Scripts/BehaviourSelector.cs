@@ -29,10 +29,6 @@ public class BehaviourSelector
 
             start = end;
             end += behavioursProbabilities[i];
-            if (person.gameObject.name == "employee 32")
-            {
-                ///Debug.Log(AvailableBehaviours[i].GetType() + " " + behavioursProbabilities[i] + " [" + start + ", " + end + "] " + luckyNumber);
-            }
             if (start <= luckyNumber && luckyNumber < end)
             {
                 return AvailableBehaviours[i];

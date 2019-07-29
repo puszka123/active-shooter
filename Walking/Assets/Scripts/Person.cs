@@ -232,7 +232,6 @@ public class Person : MonoBehaviour
                 seeShooterTimer = 0f;
                 if (Utils.CanSee(gameObject, Shooter))
                 {
-                    PersonMemory.UpdateActiveShooterInfo(Shooter);
                     if (!MyState.SeeShooter)
                     {
                         MyState.SeeShooter = true;
@@ -243,6 +242,7 @@ public class Person : MonoBehaviour
                 {
                     if (MyState.SeeShooter)
                     {
+                        PersonMemory.UpdateActiveShooterInfo(Shooter, true);
                         MyState.SeeShooter = false;
                         SelectBehaviour();
                     }
@@ -268,7 +268,9 @@ public class Person : MonoBehaviour
             {
                 FirstDecision = true;
             }
-            PersonMemory.UpdateActiveShooterInfo(Shooter);
+            PersonMemory.UpdateActiveShooterInfo(Shooter, 
+                Utils.CanSee(gameObject, Shooter) || !Utils.ToFar(gameObject, Shooter, 15f*Resources.scale));
+            PersonMemory.UpdateNodesBlockedByShooter();
         }
     }
 

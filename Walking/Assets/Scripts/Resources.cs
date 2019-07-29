@@ -18,4 +18,6 @@ public static class Resources {
     public static readonly float[] Far = { 10f, 100f };
 
     public const int MAX_FLOOR = 3;
+
+    public static readonly Vector3 NullVector = new Vector3 (-999f, -999f, -999f);
 }

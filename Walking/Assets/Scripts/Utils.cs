@@ -575,4 +575,9 @@ public static class Utils
     {
         return employees.FindAll(e => CanSee(e.gameObject, person.gameObject));
     }
+
+    public static bool IsNullVector(Vector3 vector)
+    {
+        return (int)Resources.NullVector.x == (int)vector.x;
+    }
 }

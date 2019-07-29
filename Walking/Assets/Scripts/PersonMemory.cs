@@ -286,6 +286,16 @@ public class PersonMemory
         }
     }
 
+    public void ClearRoomBlockedNode(GameObject door)
+    {
+        string key = door.name;
+        string roomName = door.GetComponent<DoorController>().MyRoom.name;
+        if (blockedByDoor != null && blockedByDoor.ContainsKey(key))
+        {
+            blockedByDoor[key] = blockedByDoor[key].Where(n => n.Name != roomName).ToList();
+        }
+    }
+
     public void UpdateBlockedNodes()
     {
         if (blockedByDoor == null) return;
@@ -394,7 +404,11 @@ public class PersonMemory
 
     public void UpdateNodesBlockedByShooter()
     {
-        if (ShooterInfo == null) return;
+        if (transform.CompareTag("ActiveShooter") 
+            || ShooterInfo == null 
+            || Utils.IsNullVector(ShooterInfo.Position)) return;
+        ClearBlockedNodesByShooter();
+
 
         Vector3 shooterPosition = ShooterInfo.Position;
         int shooterFloor = ShooterInfo.Floor;
@@ -421,7 +435,7 @@ public class PersonMemory
         }
     }
 
-    public void UpdateActiveShooterInfo(GameObject activeShooter)
+    public void UpdateActiveShooterInfo(GameObject activeShooter, bool canSee)
     {
         bool shooterNull = false;
         if (ShooterInfo == null)
@@ -431,14 +445,15 @@ public class PersonMemory
         Vector3 shooterPos = activeShooter.transform.position;
         ShooterInfo = new ShooterInfo
         {
-            Position = new Vector3(shooterPos.x, shooterPos.y, shooterPos.z),
+            Position = canSee ? new Vector3(shooterPos.x, shooterPos.y, shooterPos.z) : Resources.NullVector,
             Name = activeShooter.name,
             Floor = activeShooter.GetComponent<Person>().PersonMemory.CurrentFloor
         };
     }
 
-    public void UpdateActiveShooterInfo(ShooterInfo activeShooter)
+    public bool UpdateActiveShooterInfo(ShooterInfo activeShooter)
     {
+        bool firstTime = false;
         if (ShooterInfo == null)
         {
             ShooterInfo = new ShooterInfo
@@ -447,9 +462,9 @@ public class PersonMemory
                 Name = activeShooter.Name,
                 Floor = activeShooter.Floor
             };
-            transform.GetComponent<Person>().FirstDecision = true;
-            transform.GetComponent<Person>().SelectBehaviour();
+            firstTime = true;
         }
+        return firstTime;
     }
 
     public void ClearBlockedNodesByShooter()

@@ -96,6 +96,13 @@ public class MyChat : MonoBehaviour {
 
     public void InformAboutShooter(ShooterInfo shooterInfo)
     {
-        GetComponent<Person>().PersonMemory.UpdateActiveShooterInfo(shooterInfo);
+        PersonMemory memory = GetComponent<Person>().PersonMemory;
+        if (memory.UpdateActiveShooterInfo(shooterInfo)) //the employee has currently known about shooter 
+        {
+            Person person = transform.GetComponent<Person>();
+            person.FirstDecision = true;
+            memory.UpdateNodesBlockedByShooter();
+            person.SelectBehaviour();
+        }
     }
 }

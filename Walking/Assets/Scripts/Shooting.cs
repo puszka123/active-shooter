@@ -46,7 +46,7 @@ public class Shooting : MonoBehaviour
         ShooterVerticalAccuracy = new float[] { (90f - verticalUpDeviation), (90f + verticalDownDeviation) };
     }
 
-    Transform victim = null;
+    public Transform victim = null;
     Transform lastVictim = null;
     float start = 10f;
     float stop = 170f;
@@ -75,7 +75,14 @@ public class Shooting : MonoBehaviour
         }
         else if (DoorToDestroy != null)
         {
-            RotateTo(DoorToDestroy.transform);
+            if (!Utils.ToFar(DoorToDestroy, gameObject, 0.5f))
+            {
+                RotateTo(DoorToDestroy.transform);
+            }
+            else
+            {
+                DoorDestroyed(DoorToDestroy);
+            }
         }
 
         timer += Time.deltaTime;

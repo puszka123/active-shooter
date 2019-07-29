@@ -42,6 +42,7 @@ public class DestroyerExecutor  {
 
     public void OnDoorDestroyed(GameObject door)
     {
+        Me.GetComponent<Person>().PersonMemory.ClearRoomBlockedNode(door);
         FinishDestroyDoor();
     }
 

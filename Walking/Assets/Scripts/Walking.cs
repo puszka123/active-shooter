@@ -202,6 +202,13 @@ public class Walking
                 break;
             case Command.GO_TO_ROOM:
                 Room room1 = Utils.GetRoom(task);
+                if (Me.CompareTag("ActiveShooter")
+                && memory.CurrentRoom != null
+                && Utils.ToFar(Me, memory.CurrentRoom.Reference, 1.4f))
+                {
+                    memory.ClearCurrentRoom();
+                }
+
                 if (room1 == null
                     || room1.Id == memory.CurrentRoom?.Id
                     || !Utils.RoomIsAtMyLevel(room1, memory))
@@ -218,7 +225,6 @@ public class Walking
                     Me.SendMessage("SelectBehaviour");
                     return;
                 }
-                //CurrentSpeed = Resources.Walk; //test
                 Executing = true;
                 break;
             case Command.GO_TO_DOOR:
@@ -340,7 +346,7 @@ public class Walking
                     FinishWalking();
                     return;
                 }
-                memory.UpdateActiveShooterInfo(Shooter);
+                memory.UpdateActiveShooterInfo(Shooter, true);
                 memory.ClearBlockedNodesByShooter(); //if we see shooter then previous locations are clear probably
                 memory.setTargetPosition(Utils.GetNodeToRunAway(Me, Shooter).Name);
                 InitPath(memory);
