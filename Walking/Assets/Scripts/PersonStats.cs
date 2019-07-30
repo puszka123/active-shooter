@@ -17,6 +17,7 @@ public class PersonStats : MonoBehaviour {
     public float FirstDecisionTime;
     public PanicMode Panic;
     public float ShooterLocationDistance;
+    public float ForceDoorOpen;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class PersonStats : MonoBehaviour {
         FirstDecisionTime = Random.Range(2f, 10f);
         Panic = PanicMode.LOW;
         ShooterLocationDistance = 15f * Resources.scale;
+        ForceDoorOpen = 0.1f;
     }
 
     public void GetDamage(float damage, Transform activeShooter, Vector3 hitPoint)

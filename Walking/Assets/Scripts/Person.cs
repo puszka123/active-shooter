@@ -114,6 +114,8 @@ public class Person : MonoBehaviour
             //simulationTime += Time.deltaTime;
             timer += Time.deltaTime;
             actionTime += Time.deltaTime;
+            PersonMemory.clearBlockedByDoors();
+            PersonMemory.ClearFoundRoom();
             CurrentAction.ResetTasks();
             SelectBehaviour();
             return;

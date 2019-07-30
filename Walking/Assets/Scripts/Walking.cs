@@ -129,6 +129,10 @@ public class Walking
         switch (task.Command)
         {
             case Command.GO_UP:
+                if (Me.CompareTag("ActiveShooter"))
+                {
+                    memory.ClearFoundRoom();
+                }
                 Room upRoom = Utils.GetRoom(task);
                 if (upRoom != null && !Utils.RoomIsAbove(upRoom, memory))
                 {
@@ -157,6 +161,10 @@ public class Walking
                 Executing = true;
                 break;
             case Command.GO_DOWN:
+                if (Me.CompareTag("ActiveShooter"))
+                {
+                    memory.ClearFoundRoom();
+                }
                 Room downRoom = Utils.GetRoom(task);
                 if (downRoom != null && !Utils.RoomIsBelow(downRoom, memory))
                 {
@@ -472,6 +480,10 @@ public class Walking
                     {
                         memory.ClearFoundRoom();
                         memory.AddCheckedRoom(Utils.GetRoom(TaskToExecute));
+                        if (Me.CompareTag("ActiveShooter"))
+                        {
+                            Me.SendMessage("SelectAction");
+                        }
                     }
                     break;
                 default:

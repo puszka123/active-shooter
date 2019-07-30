@@ -8,6 +8,7 @@ public class ShooterStaircase : MonoBehaviour
     public Person PotentialVictim;
     public Person Shooter;
     public StaircaseManager StaircaseManager;
+    public string staircase;
 
     private void Start()
     {
@@ -26,15 +27,16 @@ public class ShooterStaircase : MonoBehaviour
 
     public void StaircaseLeave(Person person)
     {
-        PotentialVictim = null;
         if (PotentialVictim != null && PotentialVictim.name == person.name && Shooter.PersonMemory.IsAtStaircase)
         {
+            PotentialVictim = null;
             transform.SendMessage("SelectAction");
         }
     }
 
-    public void OnStaircaseEnter()
+    public void OnStaircaseEnter(string staircase)
     {
+        this.staircase = staircase;
         Person victim = GetFirstPotentialVictim();
         if(victim != null)
         {
@@ -46,12 +48,13 @@ public class ShooterStaircase : MonoBehaviour
 
     public Person GetFirstPotentialVictim()
     {
-        Person victim = StaircaseManager.People.FirstOrDefault();
+        Person victim = StaircaseManager.People[staircase].FirstOrDefault();
         return victim;
     }
 
     public void OnStaircaseLeave()
     {
         PotentialVictim = null;
+        staircase = null;
     }
 }

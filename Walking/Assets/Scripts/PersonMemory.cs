@@ -22,6 +22,9 @@ public class PersonMemory
     public GameObject CurrentStaircase;
     public bool IsAtStaircase;
 
+    //Active shooter
+    public int BlockedRooms;
+
     Dictionary<string, List<Node>> blockedByDoor;
     List<Node> blockedByShooter;
     public List<Node> BlockedByShooter { get { return blockedByShooter != null ? new List<Node>(blockedByShooter) : null; } }
@@ -31,7 +34,7 @@ public class PersonMemory
         rand = new System.Random();
         Graph = new Dictionary<int, Graph>();
         CurrentFloor = 1;
-
+        BlockedRooms = 0;
         StartPosition = TargetPosition = null;
     }
 
@@ -266,7 +269,7 @@ public class PersonMemory
             Reference = room,
         };
         ClearRoomBlockedNode(CurrentRoom);
-        if (wasNull)
+        if (wasNull && !transform.CompareTag("ActiveShooter"))
         {
             transform.SendMessage("SelectBehaviour");
         }
@@ -425,6 +428,10 @@ public class PersonMemory
 
     public void AddNodeBlockedByShooter(Node node)
     {
+        if(transform.CompareTag("ActiveShooter"))
+        {
+            return;
+        }
         if (blockedByShooter == null)
         {
             blockedByShooter = new List<Node> { node };
@@ -485,6 +492,25 @@ public class PersonMemory
         else if (!CheckedRooms.Select(r => r.Id).Contains(room.Id))
         {
             CheckedRooms.Add(room);
+        }
+    }
+
+    public void ClearBlockedRooms()
+    {
+        BlockedRooms = 0;
+    }
+
+    public void AddBlockedRoom()
+    {
+        BlockedRooms++;
+    }
+
+    public void SetCurrentFloor(int value)
+    {
+        CurrentFloor = value;
+        if(transform.CompareTag("ActiveShooter"))
+        {
+            transform.SendMessage("SelectAction");
         }
     }
 }

@@ -1,30 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class StaircaseManager : MonoBehaviour {
-    public List<Person> People;
+    public Dictionary<string, List<Person>> People;
 
 
 	// Use this for initialization
 	void Start () {
-        People = new List<Person>();
+        People = new Dictionary<string, List<Person>>();
 	}
 	
-	public void Join(Person person)
+	public void Join(object[] args)
     {
+        Person person = (Person)args[0];
+        string staircase = (string)args[1];
         if(person.CompareTag("Employee"))
         {
-            People.Add(person);
+            AddPerson(staircase, person);
         }
     }
 
-    public void Leave(Person person)
+    public void Leave(object[] args)
     {
-        Person found = People.Find(p => p.name == person.name);
+        Person person = (Person)args[0];
+        string staircase = (string)args[1];
+        Person found = People[staircase].Find(p => p.name == person.name);
         if(found != null)
         {
-            People.Remove(found);
+            People[staircase].Remove(found);
+        }
+    }
+
+    public void AddPerson(string key, Person value)
+    {
+        if(People.ContainsKey(key))
+        {
+            People[key].Add(value);
+        }
+        else
+        {
+            People.Add(key, new List<Person> { value });
         }
     }
 }

@@ -40,7 +40,7 @@ public class Shooting : MonoBehaviour
         ReactionSpeed = 0.1f;
         myRigidBody = GetComponent<Rigidbody>();
         horizontalDeviation = 1f;
-        verticalUpDeviation =1f;
+        verticalUpDeviation = 1f;
         verticalDownDeviation = 0.5f;
         ShooterHorizontalAccuracy = new float[] { (90f - horizontalDeviation), (90f + horizontalDeviation) };
         ShooterVerticalAccuracy = new float[] { (90f - verticalUpDeviation), (90f + verticalDownDeviation) };
@@ -62,7 +62,7 @@ public class Shooting : MonoBehaviour
         RaycastHit hit;
         shootTimer += Time.deltaTime;
         soundTimer += Time.deltaTime;
-        if(soundTimer >= soundMax && numberOfShots > 0)
+        if (soundTimer >= soundMax && numberOfShots > 0)
         {
             ShotSound(numberOfShots);
             soundTimer = 0f;
@@ -106,7 +106,7 @@ public class Shooting : MonoBehaviour
             if (Physics.Raycast(transform.GetChild(0).position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
             {
                 //Debug.DrawRay(transform.GetChild(0).position, transform.TransformDirection(direction) * hit.distance, Color.red);
-                if (hit.transform.CompareTag("Employee") 
+                if (hit.transform.CompareTag("Employee")
                     && hit.transform.GetComponent<PersonStats>().GetHealth() > 0)
                 {
                     hit.transform.SendMessage("ISeeYou");
@@ -142,7 +142,7 @@ public class Shooting : MonoBehaviour
             }
             victim = null;
 
-            if(DoorToDestroy != null)
+            if (DoorToDestroy != null)
             {
                 if (shootTimer >= firingRate)
                 {
@@ -207,11 +207,11 @@ public class Shooting : MonoBehaviour
             return;
         }
         float distance = Utils.Distance(victim.position, transform.position);
-        if (distance > 20f*Resources.scale)
+        if (distance > 20f * Resources.scale)
         {
             firingRate = 1f;
         }
-        else if(distance > 15f * Resources.scale)
+        else if (distance > 15f * Resources.scale)
         {
             firingRate = 0.75f;
         }
@@ -267,8 +267,35 @@ public class Shooting : MonoBehaviour
         DoorController doorController = doorToDestroy.GetComponent<DoorController>();
         DoorToDestroy = doorToDestroy;
         RotateTo(doorToDestroy.transform);
-        if (doorController.Destroyed() 
-            || (!doorController.IsLocked && !doorController.IsBarricaded()))
+
+        bool doorBlocked = !doorController.Destroyed() && (doorController.IsLocked || doorController.IsBarricaded());
+
+        if (!doorBlocked)
+        {
+            GetComponent<Person>().PersonMemory.ClearBlockedRooms();
+        }
+        else
+        {
+            GetComponent<Person>().PersonMemory.AddBlockedRoom();
+            if(!WantDestroyDoor())
+            {
+                GameObject room = doorToDestroy.GetComponent<DoorController>().MyRoom;
+                Room checkedRoom = new Room
+                {
+                    Id = room.name,
+                    Door = doorToDestroy,
+                    Employees = room.GetComponent<PathLocation>().RoomEmployees.ToArray(),
+                    Reference = room,
+                };
+                GetComponent<Person>().PersonMemory.AddCheckedRoom(checkedRoom);
+                GetComponent<Person>().PersonMemory.ClearFoundRoom();
+                gameObject.SendMessage("SelectAction");
+                DoorDestroyed(doorToDestroy);
+                return;
+            }
+        }
+
+        if (doorController.Destroyed() || !doorBlocked)
         {
             DoorDestroyed(doorToDestroy);
         }
@@ -276,7 +303,7 @@ public class Shooting : MonoBehaviour
 
     public void DoorDestroyed(GameObject door)
     {
-        if(DoorToDestroy == null)
+        if (DoorToDestroy == null)
         {
             return;
         }
@@ -298,5 +325,13 @@ public class Shooting : MonoBehaviour
         {
             item.SendMessage("ShotSound", numberOfShots);
         }
+    }
+
+    public bool WantDestroyDoor()
+    {
+        PersonStats stats = GetComponent<PersonStats>();
+        PersonMemory memory = GetComponent<Person>().PersonMemory;
+        float random = Random.Range(0f, 1f);
+        return stats.ForceDoorOpen * memory.BlockedRooms > random;
     }
 }

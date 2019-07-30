@@ -27,12 +27,19 @@ public class StairsEntry : MonoBehaviour
             person.PersonMemory.ToggleIsAtStaircase();
             if (person.PersonMemory.IsAtStaircase)
             {
-                StaircaseManager.Join(person);
-                Shooter.SendMessage("StaircaseEnter", person);
+                StaircaseManager.Join(new object[] { person, name });
+                if (Shooter.GetComponent<ShooterStaircase>().staircase == name)
+                {
+                    Shooter.SendMessage("StaircaseEnter", person);
+                }
             }
             else
             {
-                StaircaseManager.Leave(person);
+                StaircaseManager.Leave(new object[] { person, name });
+                if (Shooter.GetComponent<ShooterStaircase>().staircase == name)
+                {
+                    Shooter.SendMessage("StaircaseLeave", person);
+                }
             }
         }
 
@@ -40,7 +47,7 @@ public class StairsEntry : MonoBehaviour
         {
             if (person.PersonMemory.IsAtStaircase)
             {
-                person.GetComponent<ShooterStaircase>().OnStaircaseEnter();
+                person.GetComponent<ShooterStaircase>().OnStaircaseEnter(name);
             }
             else
             {

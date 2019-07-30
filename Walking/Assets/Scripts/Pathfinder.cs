@@ -7,7 +7,7 @@ using System.Linq;
 public class Pathfinder {
 
     public const int MAX_NODES_IN_QUEUE = 100;
-    public const float MIN_DISTANCE = 0.2f;
+    public const float MIN_DISTANCE = 0.175f;
     public const float MIN_DISTANCE_DOOR = 0.3f;
     public const float MIN_DISTANCE_HIDE = 0.05f;
     public const float MIN_DISTANCE_ROOM = 0.1f;
