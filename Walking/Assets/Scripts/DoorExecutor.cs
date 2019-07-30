@@ -73,7 +73,6 @@ public class DoorExecutor
                     FinishDoorOpenTask();
                     return;
                 }
-                Debug.Log(transform.name + " executing " + task.Command);
                 PersonDoor.TryToOpenDoor(door2);
                 break;
             case Command.CLOSE_DOOR:

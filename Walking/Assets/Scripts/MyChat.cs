@@ -101,8 +101,8 @@ public class MyChat : MonoBehaviour {
         {
             Person person = transform.GetComponent<Person>();
             person.FirstDecision = true;
-            memory.UpdateNodesBlockedByShooter();
-            person.SelectBehaviour();
+            //memory.UpdateNodesBlockedByShooter();
+            //person.SelectBehaviour();
         }
     }
 }

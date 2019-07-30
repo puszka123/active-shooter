@@ -103,6 +103,7 @@ public class Person : MonoBehaviour
                 if (GetComponent<PersonStats>().FirstDecisionTime <= 0f)
                 {
                     FirstDecision = false;
+                    PersonMemory.UpdateNodesBlockedByShooter();
                     SelectBehaviour();
                 }
             }
@@ -260,13 +261,26 @@ public class Person : MonoBehaviour
         }
         if (RecognizedShots(numberOfShots))
         {
-            if(PersonMemory.ShooterInfo == null)
+            if (PersonMemory.ShooterInfo == null)
             {
+                PersonMemory.UpdateActiveShooterInfo(Shooter,
+                Utils.CanSee(gameObject, Shooter)
+                || (PersonMemory.CurrentFloor == Shooter.GetComponent<Person>().PersonMemory.CurrentFloor
+                &&
+                !Utils.ToFar(gameObject, Shooter, GetComponent<PersonStats>().ShooterLocationDistance)));
+
                 FirstDecision = true;
             }
-            PersonMemory.UpdateActiveShooterInfo(Shooter, 
-                Utils.CanSee(gameObject, Shooter) || !Utils.ToFar(gameObject, Shooter, 15f*Resources.scale));
-            PersonMemory.UpdateNodesBlockedByShooter();
+            else
+            {
+                PersonMemory.UpdateActiveShooterInfo(Shooter,
+                Utils.CanSee(gameObject, Shooter)
+                || (PersonMemory.CurrentFloor == Shooter.GetComponent<Person>().PersonMemory.CurrentFloor
+                &&
+                !Utils.ToFar(gameObject, Shooter, GetComponent<PersonStats>().ShooterLocationDistance)));
+
+                PersonMemory.UpdateNodesBlockedByShooter();
+            }
         }
     }
 
