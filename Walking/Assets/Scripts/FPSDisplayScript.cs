@@ -22,6 +22,10 @@ public class FPSDisplayScript : MonoBehaviour
 
     void OnGUI()
     {
+        if(GetComponent<Menu>().MenuOpened)
+        {
+            return;
+        }
         int w = Screen.width, h = Screen.height;
 
         GUIStyle style = new GUIStyle();

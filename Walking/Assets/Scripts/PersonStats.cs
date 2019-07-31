@@ -27,25 +27,12 @@ public class PersonStats : MonoBehaviour {
     public float floorWeight = 0.5f;
     public float familiarityWeight = 0.3f;
 
+    public ParameterSetter setter;
+
     private void Start()
     {
-        Health = 100f;
-        Strength = 1f;
-        LockDoorChance = 0.9f;
-        BarricadeDoorChance = 0.1f;
-        HideChance = 0.9f;
-        ShotDetection = Random.Range(0.5f, 1f);
-        FirstDecisionTime = Random.Range(2f, 10f);
-        ShooterLocationDistance = 15f * Resources.scale;
-        ForceDoorOpen = 0.1f;
-        Altruism = 0.5f;
-
-        aboveMeWeight = 0.9f;
-        distanceWeight = 0.3f;
-        notAboveMeWeight = 0.9f;
-        altruismWeight = 1f;
-        floorWeight = 0.5f;
-        familiarityWeight = 0.3f;
+        setter = GameObject.FindGameObjectWithTag("ParameterSetter").GetComponent<ParameterSetter>();
+        UpdateStats();
     }
 
     public void GetDamage(float damage, Transform activeShooter, Vector3 hitPoint)
@@ -60,5 +47,25 @@ public class PersonStats : MonoBehaviour {
     public float GetHealth()
     {
         return Health;
+    }
+
+    public void UpdateStats()
+    {
+        Health = 100f;
+        Strength = Random.Range(setter.StrengthStart, setter.StrengthStop);
+        LockDoorChance = Random.Range(setter.LockDoorChanceStart, setter.LockDoorChanceStop);
+        BarricadeDoorChance = Random.Range(setter.BarricadeDoorChanceStart, setter.BarricadeDoorChanceStop);
+        HideChance = Random.Range(setter.HideChanceStart, setter.HideChanceStop);
+        ShotDetection = Random.Range(setter.ShotDetectionStart, setter.ShotDetectionStop);
+        FirstDecisionTime = Random.Range(setter.FirstDecisionTimeStart, setter.FirstDecisionTimeStop);
+        ShooterLocationDistance = Random.Range(setter.ShooterLocationDistanceStart, setter.ShooterLocationDistanceStop) * Resources.scale;
+        ForceDoorOpen = setter.ForceDoorOpenStart;
+        Altruism = Random.Range(setter.AltruismStart, setter.AltruismStop);
+        aboveMeWeight = setter.aboveMeWeight;
+        notAboveMeWeight = setter.notAboveMeWeight;
+        distanceWeight = setter.distanceWeight;
+        altruismWeight = setter.altruismWeight;
+        floorWeight = setter.floorWeight;
+        familiarityWeight = setter.familiarityWeight;
     }
 }

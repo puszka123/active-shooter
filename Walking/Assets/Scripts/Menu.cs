@@ -5,6 +5,8 @@ using UnityEngine;
 public class Menu : MonoBehaviour {
     public GameObject SimulationManager;
     public List<GameObject> Workplaces;
+    public Canvas GUICanvas;
+    public bool MenuOpened = true;
 
     public void InitEmployees()
     {
@@ -14,6 +16,11 @@ public class Menu : MonoBehaviour {
         }
         GameObject.FindGameObjectWithTag("InformManager").GetComponent<InformManager>().StartInitialization();
         SimulationManager.GetComponent<SimulationManager>().InitActiveShooter();
+        foreach (Transform item in GUICanvas.transform)
+        {
+            item.gameObject.SetActive(false);
+        }
+        MenuOpened = false;
     }
 
     public void InitWorkplaces()

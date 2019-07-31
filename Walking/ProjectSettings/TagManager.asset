@@ -15,6 +15,7 @@ TagManager:
   - ActiveShooter
   - InformManager
   - StaircaseManager
+  - ParameterSetter
   layers:
   - Default
   - TransparentFX

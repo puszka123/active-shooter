@@ -26,6 +26,10 @@ public class Staircase : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        
+        Person person = other.GetComponent<Person>();
+        if (person != null)
+        {
+            person.PersonMemory.ClearCurrentStaircase();
+        }
     }
 }

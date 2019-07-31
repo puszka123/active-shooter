@@ -29,17 +29,16 @@ public class Shooting : MonoBehaviour
     float soundMax = 1f;
     float numberOfShots = 0f;
 
+    public ParameterSetter setter;
+
     private void Start()
     {
-        ShootStrength = 10f;
+        setter = GameObject.FindGameObjectWithTag("ParameterSetter").GetComponent<ParameterSetter>();
+        UpdateStats();
         CanShoot = true;
-        firingRate = 1f;
         timer = 0f;
         RotationSpeed = 30f;
         myRigidBody = GetComponent<Rigidbody>();
-        horizontalDeviation = 1f;
-        verticalUpDeviation = 1f;
-        verticalDownDeviation = 0.5f;
         ShooterHorizontalAccuracy = new float[] { (90f - horizontalDeviation), (90f + horizontalDeviation) };
         ShooterVerticalAccuracy = new float[] { (90f - verticalUpDeviation), (90f + verticalDownDeviation) };
     }
@@ -323,5 +322,15 @@ public class Shooting : MonoBehaviour
         PersonMemory memory = GetComponent<Person>().PersonMemory;
         float random = Random.Range(0f, 1f);
         return stats.ForceDoorOpen * memory.BlockedRooms > random;
+    }
+
+    public void UpdateStats()
+    {
+        setter = GameObject.FindGameObjectWithTag("ParameterSetter").GetComponent<ParameterSetter>();
+        ShootStrength = setter.ShootStrength;
+        firingRate = setter.firingRate;
+        horizontalDeviation = setter.horizontalDeviation;
+        verticalUpDeviation = setter.verticalUpDeviation;
+        verticalDownDeviation = setter.verticalDownDeviation;
     }
 }
