@@ -16,7 +16,7 @@ public class Respawn : MonoBehaviour
     public string RoomId;
     public GameObject room;
     public GameObject door;
-
+    public GameObject employee;
 
     float timer = 0.0f;
     float testTimer = 0.0f;
@@ -45,7 +45,7 @@ public class Respawn : MonoBehaviour
         testTimer += Time.deltaTime;
         if (timer >= 1f && numberOfSlots > 0) //test
         {
-            GameObject employee = Utils.GetNearestEmployee(gameObject, int.Parse(transform.parent.name.Split(' ')[1]));
+            employee = Utils.GetNearestEmployee(gameObject, int.Parse(transform.parent.name.Split(' ')[1]));
             room.GetComponent<PathLocation>().AddRoomEmployee(employee);
             employee.name = "employee " + nameGenerator++;
             DoorKey = door.name;
@@ -54,7 +54,6 @@ public class Respawn : MonoBehaviour
             {
                 GetComponent<RoomLocation>().WorkEmployee = employee;
             }
-            employee.GetComponent<Person>().Init(int.Parse(transform.parent.name.Split(' ')[1]), room.name);
 
             //start work 
             //int rand = random.Next(0, 100);
@@ -68,14 +67,6 @@ public class Respawn : MonoBehaviour
             //}
             timer = 0f;
             --numberOfSlots;
-        }
-
-        //test
-        if (testOnly && testTimer >= 3f)
-        {
-            testOnly = false;
-            //GameObject informer = GameObject.Find("Informer");
-            //informer.GetComponent<Person>().Init(3, GetRoomForRespawn().name);
         }
     }
 
@@ -120,5 +111,10 @@ public class Respawn : MonoBehaviour
             }
         }
         return roomId;
+    }
+
+    public void InitEmployee()
+    {
+        employee.GetComponent<Person>().Init(int.Parse(transform.parent.name.Split(' ')[1]), room.name);
     }
 }

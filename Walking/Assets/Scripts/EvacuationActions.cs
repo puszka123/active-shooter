@@ -26,6 +26,7 @@ public static class EvacuationActions
 
         public override float ActionHappenProbability(Person person)
         {
+            PersonStats stats = person.GetComponent<PersonStats>();
             if (person.MyState.SeeShooter)
             {
                 return 0f;
@@ -36,18 +37,17 @@ public static class EvacuationActions
             bool isOnMyFloor = shooterFloor == myFloor;
             bool isAboveMe = shooterFloor > myFloor;
 
-            float chances = 0.3f;
+            float chances = stats.familiarityWeight;
             if (myFloor == 0)
             {
-                chances += 0.8f;
+                chances += 0.7f;
                 return chances;
             }
 
-            float floorWeight = 0.5f;
 
             if (isAboveMe || isOnMyFloor)
             {
-                chances += floorWeight;
+                chances += stats.floorWeight;
             }
 
             return chances;
@@ -98,6 +98,7 @@ public static class EvacuationActions
 
         public override float ActionHappenProbability(Person person)
         {
+            PersonStats stats = person.GetComponent<PersonStats>();
             if (person.MyState.SeeShooter)
             {
                 return 0f;
@@ -112,18 +113,16 @@ public static class EvacuationActions
             bool isOnMyFloor = shooterFloor == myFloor;
             bool isAboveMe = shooterFloor > myFloor;
 
-            float chances = 0.0f;
+            float chances = stats.familiarityWeight;
             if (myFloor == person.PersonMemory.GetRoomFloor(person.PersonMemory.MyRoom.Id))
             {
-                chances += 0.8f;
+                chances += 0.7f;
                 return chances;
             }
 
-            float floorWeight = 0.7f;
-
             if (isBelowMe || isOnMyFloor)
             {
-                chances += floorWeight;
+                chances += stats.floorWeight;
             }
 
             return chances;
@@ -175,6 +174,7 @@ public static class EvacuationActions
 
         public override float ActionHappenProbability(Person person)
         {
+            PersonStats stats = person.GetComponent<PersonStats>();
             if (person.MyState.SeeShooter)
             {
                 return 0f;
@@ -191,11 +191,10 @@ public static class EvacuationActions
 
             float chances = 0.0f;
 
-            float floorWeight = 0.3f;
 
             if (isBelowMe || isOnMyFloor)
             {
-                chances += floorWeight;
+                chances += stats.floorWeight;
             }
 
             return chances;

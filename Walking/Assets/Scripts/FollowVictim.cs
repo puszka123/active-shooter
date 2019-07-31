@@ -25,7 +25,7 @@ public class FollowVictim : MonoBehaviour {
     {
         Pathfinder = new Pathfinder();
         m_Rigidbody = GetComponent<Rigidbody>();
-        Speed = Resources.Stay;
+        Speed = Resources.Walk;
         TargetSpeed = Resources.Run;
         RotationSpeed = 10f;
         Executing = false;

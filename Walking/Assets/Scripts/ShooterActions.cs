@@ -53,7 +53,10 @@ public static class ShooterActions
         public override float ActionHappenProbability(Person person)
         {
             ShooterStaircase shooterStaircase = person.GetComponent<ShooterStaircase>();
-            float myFloor = person.PersonMemory.CurrentFloor;
+            int myFloor = person.PersonMemory.CurrentFloor;
+            bool allChecked = Utils.AllRoomsChecked(person, myFloor);
+
+            if (allChecked) return 0f;
 
             float victimStairs = shooterStaircase.PotentialVictim != null ? 1f : 0f;
             float chances = 0.8f;

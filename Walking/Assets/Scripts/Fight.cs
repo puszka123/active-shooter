@@ -9,8 +9,8 @@ public class Fight : MonoBehaviour
     public bool FightIsStarted;
     float roundTime = 0.5f;
     float time = 0f;
-    public const float DropGunProbability = 10f;
-    public const float ShootProbability = 75f;
+    public const float DropGunProbability = 5f;
+    public const float ShootProbability = 85f;
 
     public float DropGunChance { get { return DropGunProbability * (ShooterEnemies.Count * ShooterEnemies.Count); } }
     public float ShootChance { get { return ShootProbability / (ShooterEnemies.Count); } }

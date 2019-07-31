@@ -7,15 +7,23 @@ public class InformManager : MonoBehaviour {
 
     public float time = 0.0f;
     public bool initied;
+    public bool CanInit;
 
     // Use this for initialization
     void Start () {
         initied = false;
-	}
+        CanInit = false;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {    
-		if(!initied && time >= 1.5f)
+        if(CanInit && !initied)
+        {
+            time += Time.deltaTime;
+        }
+
+		if(!initied && CanInit && time >= 1.5f)
         {
             initied = true;
             notInformed = new Dictionary<int, List<MyChat>>();
@@ -56,5 +64,10 @@ public class InformManager : MonoBehaviour {
     public List<MyChat> GetFloorEmployees(int floor)
     {
         return notInformed[floor];
+    }
+
+    public void StartInitialization()
+    {
+        CanInit = true;
     }
 }

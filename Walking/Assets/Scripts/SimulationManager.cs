@@ -8,8 +8,14 @@ public class SimulationManager : MonoBehaviour {
     int doorNameGenerator = 1;
     int pathLocationNameGenerator = 1;
 
+    public List<GameObject> workplaces;
+
+    public Dictionary<int, Graph> graphs;
+
     bool shootersInitied = false;
     float time = 0f;
+
+    public bool StartShooterInitiation = false;
 
 	// Use this for initialization
 	void Start () {
@@ -42,13 +48,22 @@ public class SimulationManager : MonoBehaviour {
                 item.GetComponent<RoomLocation>().UpdateNode(item.name);
             }
         }
+        workplaces = new List<GameObject>();
         foreach (var item in roomLocations)
         {
             if (item.GetComponent<RoomLocation>().Workplace)
             {
                 //item.name = "RoomLocationWorkplace " + respawnNameGenerator++;
+                workplaces.Add(item);
                 item.AddComponent<Respawn>();
             }
+        }
+        GetComponent<Menu>().InitWorkplaces();
+        graphs = new Dictionary<int, Graph>();
+        foreach (var item in GameObject.FindGameObjectsWithTag("Floor"))
+        {
+            int f = int.Parse(item.name.Split(' ')[1]);
+            graphs.Add(f, new Graph(f));
         }
     }
 
@@ -63,12 +78,13 @@ public class SimulationManager : MonoBehaviour {
             Time.timeScale -= 1f;
         }
 
-        if (!shootersInitied)
+        if (!shootersInitied && StartShooterInitiation)
         {
             time += Time.deltaTime;
         }
-        if (!shootersInitied && time >= 3f)
+        if (!shootersInitied && time >= 3f && StartShooterInitiation)
         {
+            GetComponent<FPSDisplayScript>().simulationTime = 0f;
             shootersInitied = true;
             GameObject[] activeShooters = GameObject.FindGameObjectsWithTag("ActiveShooter");
 
@@ -81,4 +97,9 @@ public class SimulationManager : MonoBehaviour {
             }
         }
 	}
+
+    public void InitActiveShooter()
+    {
+        StartShooterInitiation = true;
+    }
 }

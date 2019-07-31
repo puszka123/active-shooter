@@ -4,7 +4,7 @@ using System.Collections;
 public class FPSDisplayScript : MonoBehaviour
 {
     float deltaTime = 0.0f;
-    float simulationTime = 0.0f;
+    public float simulationTime = 0.0f;
     int numberOfEmployees = 0;
     int numberOfActiveShooters = 1;
     bool initiated = false;

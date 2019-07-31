@@ -14,7 +14,7 @@ public class PersonMemory
     public Room MyRoom;
     public Room FoundRoom;
     private List<Room> InformedRooms;
-    private List<Room> CheckedRooms;
+    public List<Room> CheckedRooms;
     public Transform transform;
     public ShooterInfo ShooterInfo;
     public List<GameObject> InformedPeople;
@@ -42,10 +42,15 @@ public class PersonMemory
     {
         this.transform = transform;
         CurrentFloor = floor;
-        foreach (var item in GameObject.FindGameObjectsWithTag("Floor"))
+        //foreach (var item in GameObject.FindGameObjectsWithTag("Floor"))
+        //{
+        //    int f = int.Parse(item.name.Split(' ')[1]);
+        //    Graph.Add(f, new Graph(f));
+        //}
+
+        foreach (var item in GameObject.FindGameObjectWithTag("SimulationManager").GetComponent<SimulationManager>().graphs)
         {
-            int f = int.Parse(item.name.Split(' ')[1]);
-            Graph.Add(f, new Graph(f));
+            Graph.Add(item.Key, item.Value);
         }
         FindNearestLocation(transform.position);
         setTargetPosition(RandomTarget().Name);

@@ -580,4 +580,22 @@ public static class Utils
     {
         return (int)Resources.NullVector.x == (int)vector.x;
     }
+
+
+    public static int[] roomsCount = new int[Resources.MAX_FLOOR+1];
+    public static bool AllRoomsChecked(Person person, int floor)
+    {
+        if (person.PersonMemory.CheckedRooms == null) return false;
+        if (roomsCount[floor] > 0) return roomsCount[floor] == person.PersonMemory.CheckedRooms.Count;
+        GameObject location = GameObject.Find("Checkpoints " + floor);
+        int rooms = 0;
+        foreach (Transform item in location.transform)
+        {
+            if (item.GetComponent<PathLocation>().IsRoom)
+            {
+                ++rooms;
+            }
+        }
+        return rooms == person.PersonMemory.CheckedRooms.Count;
+    }
 }

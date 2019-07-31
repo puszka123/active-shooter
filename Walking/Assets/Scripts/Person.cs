@@ -25,7 +25,6 @@ public class Person : MonoBehaviour
     public float simulationTime = 0f;
     public BehaviourSelector BehaviourSelector;
     public ActionSelector ActionSelector;
-    public PersonPersonalAttributes PersonalAttributes;
     public GameObject Shooter;
     public float seeShooterTimer = 0f;
     public bool FirstDecision;
@@ -70,7 +69,6 @@ public class Person : MonoBehaviour
         {
             behaviours.Add(new ImplementedBehaviours.FindAndKill());
         }
-        PersonalAttributes = new PersonPersonalAttributes();
 
         BehaviourSelector = new BehaviourSelector(behaviours);
         CurrentBehaviour = BehaviourSelector.SelectBehaviour(this);
@@ -117,7 +115,7 @@ public class Person : MonoBehaviour
             PersonMemory.clearBlockedByDoors();
             PersonMemory.ClearFoundRoom();
             CurrentAction.ResetTasks();
-            SelectBehaviour();
+            //SelectBehaviour();
             return;
         }
 
@@ -166,8 +164,8 @@ public class Person : MonoBehaviour
         if(talkTime >= talk && !CompareTag("ActiveShooter"))
         {
             talkTime = 0f;
-            informAboutShooter.Tasks[0].IsDone = false;
-            actionExecutor.ExecuteSingleTask(informAboutShooter.Tasks[0]);
+            //informAboutShooter.Tasks[0].IsDone = false;
+           // actionExecutor.ExecuteSingleTask(informAboutShooter.Tasks[0]);
         }
     }
 

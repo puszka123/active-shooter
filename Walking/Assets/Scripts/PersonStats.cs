@@ -15,9 +15,17 @@ public class PersonStats : MonoBehaviour {
     public float HideChance;
     public float ShotDetection;
     public float FirstDecisionTime;
-    public PanicMode Panic;
     public float ShooterLocationDistance;
     public float ForceDoorOpen;
+    public float Altruism;
+
+    //selection hebaviour
+    public float aboveMeWeight = 0.9f;
+    public float distanceWeight = 0.3f;
+    public float notAboveMeWeight = 0.9f;
+    public float altruismWeight = 1f;
+    public float floorWeight = 0.5f;
+    public float familiarityWeight = 0.3f;
 
     private void Start()
     {
@@ -28,9 +36,16 @@ public class PersonStats : MonoBehaviour {
         HideChance = 0.9f;
         ShotDetection = Random.Range(0.5f, 1f);
         FirstDecisionTime = Random.Range(2f, 10f);
-        Panic = PanicMode.LOW;
         ShooterLocationDistance = 15f * Resources.scale;
         ForceDoorOpen = 0.1f;
+        Altruism = 0.5f;
+
+        aboveMeWeight = 0.9f;
+        distanceWeight = 0.3f;
+        notAboveMeWeight = 0.9f;
+        altruismWeight = 1f;
+        floorWeight = 0.5f;
+        familiarityWeight = 0.3f;
     }
 
     public void GetDamage(float damage, Transform activeShooter, Vector3 hitPoint)

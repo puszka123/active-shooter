@@ -13,7 +13,6 @@ public class Shooting : MonoBehaviour
     Rigidbody myRigidBody;
 
     public float RotationSpeed;
-    public float ReactionSpeed;
     public float firingRate;
     public float ShootStrength;
     public bool CanShoot;
@@ -37,7 +36,6 @@ public class Shooting : MonoBehaviour
         firingRate = 1f;
         timer = 0f;
         RotationSpeed = 30f;
-        ReactionSpeed = 0.1f;
         myRigidBody = GetComponent<Rigidbody>();
         horizontalDeviation = 1f;
         verticalUpDeviation = 1f;
@@ -85,15 +83,7 @@ public class Shooting : MonoBehaviour
             }
         }
 
-        timer += Time.deltaTime;
-        if (timer >= ReactionSpeed)
-        {
-            timer = 0f;
-        }
-        else
-        {
-            //return;
-        }
+        //timer += Time.deltaTime;
 
 
         LayerMask layerMask = LayerMask.GetMask("Wall", "Door", "Employee", "ObstacleCollider"); //test add obstacle

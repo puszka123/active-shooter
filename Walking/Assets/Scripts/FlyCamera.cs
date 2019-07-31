@@ -36,7 +36,7 @@ public class FlyCamera : MonoBehaviour
         Vector3 p = GetBaseInput();
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            totalRun += Time.deltaTime;
+            totalRun += Time.deltaTime / Time.timeScale;
             p = p * totalRun * shiftAdd;
             p.x = Mathf.Clamp(p.x, -maxShift, maxShift);
             p.y = Mathf.Clamp(p.y, -maxShift, maxShift);
@@ -48,7 +48,7 @@ public class FlyCamera : MonoBehaviour
             p = p * mainSpeed;
         }
 
-        p = p * Time.deltaTime;
+        p = p * (Time.deltaTime / Time.timeScale);
         Vector3 newPosition = transform.position;
         if (Input.GetKey(KeyCode.Space))
         { //If player wants to move on X and Z axis only
