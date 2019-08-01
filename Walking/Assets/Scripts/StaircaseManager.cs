@@ -44,4 +44,9 @@ public class StaircaseManager : MonoBehaviour {
             People.Add(key, new List<Person> { value });
         }
     }
+
+    public void ResetManager()
+    {
+        People = new Dictionary<string, List<Person>>();
+    }
 }

@@ -198,20 +198,6 @@ public class DoorController : MonoBehaviour
         }
     }
 
-    public void AddObstacle(GameObject obstacle)
-    {
-        if (!obstacle.GetComponent<Obstacle>().InBlock)
-        {
-            if (VisibleObstacles.Length > Obstacles)
-            {
-                VisibleObstacles[Obstacles].GetComponent<Renderer>().enabled = true;
-                VisibleObstacles[Obstacles].GetComponent<BoxCollider>().enabled = true;
-                obstacle.GetComponent<Obstacle>().InBlock = true;
-                ++Obstacles;
-            }
-        }
-    }
-
     public void AddFirstObstacle()
     {
         VisibleObstacles[0].GetComponent<Renderer>().enabled = true;
@@ -270,5 +256,20 @@ public class DoorController : MonoBehaviour
     public bool IsBarricaded()
     {
         return Obstacles > 0;
+    }
+
+    public void ResetDoorController()
+    {
+        GetComponent<DoorBarricade>().FinishBarricading();
+        foreach (var item in VisibleObstacles)
+        {
+            item.GetComponent<Renderer>().enabled = false;
+        }
+        Obstacles = 0;
+        Resistance = 100f;
+        IsLocked = false; //TEST
+        SetCloseColor();
+        myCollider.enabled = true;
+        m_renderer.enabled = true;
     }
 }

@@ -44,8 +44,6 @@ public class Walking
         avoidanceSystem.initAvoidanceSystem();
         TaskToExecute = null;
         Me = rigidbody.gameObject;
-
-        Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
     }
 
     public void InitPath(PersonMemory memory)
@@ -122,10 +120,10 @@ public class Walking
     {
         if (IsTaskExecuting(task)) return; //don't do that again!s 
         TaskToExecute = task;
-        //if (Me.CompareTag("ActiveShooter"))
-        //{
-        //    Debug.Log(task.Command);
-        //}
+        if(Shooter == null)
+        {
+            Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
+        }
         switch (task.Command)
         {
             case Command.GO_UP:
@@ -461,6 +459,7 @@ public class Walking
                     if (Utils.NearestExit(transform, memory) != null
                         && pathfinder.CheckDistance(transform.gameObject, memory.TargetPosition))
                     {
+                        GameObject.FindGameObjectWithTag("Evacuated").GetComponent<Evacuated>().Add(transform.gameObject);
                         transform.gameObject.SetActive(false);
                     }
                     break;

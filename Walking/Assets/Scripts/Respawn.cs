@@ -45,7 +45,8 @@ public class Respawn : MonoBehaviour
         testTimer += Time.deltaTime;
         if (timer >= 1f && numberOfSlots > 0) //test
         {
-            employee = Utils.GetNearestEmployee(gameObject, int.Parse(transform.parent.name.Split(' ')[1]));
+            //employee = Utils.GetNearestEmployee(gameObject, int.Parse(transform.parent.name.Split(' ')[1]));
+            employee = Instantiate(objectToInstantiate, transform.position, transform.rotation);
             room.GetComponent<PathLocation>().AddRoomEmployee(employee);
             employee.name = "employee " + nameGenerator++;
             DoorKey = door.name;
@@ -116,5 +117,18 @@ public class Respawn : MonoBehaviour
     public void InitEmployee()
     {
         employee.GetComponent<Person>().Init(int.Parse(transform.parent.name.Split(' ')[1]), room.name);
+    }
+
+    public void ResetRespawn()
+    {
+        employee = Instantiate(objectToInstantiate, transform.position, transform.rotation);
+        room.GetComponent<PathLocation>().AddRoomEmployee(employee);
+        employee.name = "employee " + nameGenerator++;
+        DoorKey = door.name;
+        employee.GetComponent<PersonDoor>().AddKey(DoorKey);
+        if (GetComponent<RoomLocation>().Workplace)
+        {
+            GetComponent<RoomLocation>().WorkEmployee = employee;
+        }
     }
 }

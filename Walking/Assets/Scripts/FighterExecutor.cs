@@ -11,7 +11,6 @@ public class FighterExecutor {
     public FighterExecutor(GameObject me)
     {
         Me = me;
-        Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
     }
 
     public void ExecuteTask(Task task)
@@ -20,6 +19,12 @@ public class FighterExecutor {
         if (task.IsDone) return;
         Executing = true;
         TaskToExecute = task;
+
+        if (Shooter == null)
+        {
+            Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
+        }
+
         switch (task.Command)
         {
             case Command.FIGHT:

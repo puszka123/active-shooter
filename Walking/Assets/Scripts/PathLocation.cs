@@ -69,4 +69,9 @@ public class PathLocation : MonoBehaviour {
     {
         Obstacles.Remove(Obstacles.Where(o => o.name == obstacle.name).ToArray().ElementAtOrDefault(0));
     }
+
+    public void ClearRoomEmployees()
+    {
+        RoomEmployees = new List<GameObject>();
+    }
 }

@@ -21,6 +21,7 @@ public class DoorBarricade : MonoBehaviour {
 	void Update () {
 		if(isBarricading)
         {
+            Members = Members.Where(m => m != null).ToList();
             List<GameObject> membersToRemove = new List<GameObject>();
             foreach (var member in Members)
             {
@@ -32,6 +33,11 @@ public class DoorBarricade : MonoBehaviour {
             foreach (var item in membersToRemove)
             {
                 Members.Remove(item);
+            }
+            if(Members.Count == 0)
+            {
+                FinishBarricading();
+                return;
             }
             time += Time.deltaTime;
             if(time >= GetBarricadeTime()/2)

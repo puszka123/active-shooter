@@ -85,13 +85,16 @@ public class Person : MonoBehaviour
     private void FixedUpdate()
     {
         if (!init) return;
+        if(Shooter == null)
+        {
+            Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
+        }
         if (GetComponent<PersonStats>() != null && GetComponent<PersonStats>().GetHealth() <= 0f) return;
 
         if (transform.name.StartsWith("Employee Origin"))
         {
             return;
         }
-
         if (!CompareTag("ActiveShooter"))
         {
             SeeShooterCheck();

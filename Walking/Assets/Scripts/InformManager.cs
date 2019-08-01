@@ -69,5 +69,6 @@ public class InformManager : MonoBehaviour {
     public void StartInitialization()
     {
         CanInit = true;
+        time = 0f;
     }
 }

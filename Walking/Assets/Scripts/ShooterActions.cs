@@ -45,7 +45,7 @@ public static class ShooterActions
             checkRoom.Type = TaskType.MOVEMENT;
             checkRoom.RequiredTasks = new List<Task>() {  };
 
-            Tasks = new List<Task>(new Task[] { findRoom, goToRoom, knockDoor, destroyDoor, enterRoom, checkRoom });
+            Tasks = new List<Task>(new Task[] { findRoom, goToRoom, destroyDoor, enterRoom, checkRoom });
 
             Type = ActionType.FIND_AND_KILL;
         }
@@ -76,7 +76,7 @@ public static class ShooterActions
         public override void UpdateLimit(PersonMemory memory)
         {
             Utils.UpdateLimitForTask(memory, Command.GO_TO_ROOM, Tasks);
-            Utils.UpdateLimitForTask(memory, Command.KNOCK, Tasks);
+            //Utils.UpdateLimitForTask(memory, Command.KNOCK, Tasks);
             Utils.UpdateLimitForTask(memory, Command.DESTROY_DOOR, Tasks);
             Utils.UpdateLimitForTask(memory, Command.ENTER_ROOM, Tasks);
             Utils.UpdateLimitForTask(memory, Command.CHECK_ROOM, Tasks);

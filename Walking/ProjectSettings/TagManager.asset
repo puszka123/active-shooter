@@ -16,6 +16,7 @@ TagManager:
   - InformManager
   - StaircaseManager
   - ParameterSetter
+  - Evacuated
   layers:
   - Default
   - TransparentFX

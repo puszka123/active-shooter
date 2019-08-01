@@ -10,17 +10,14 @@ public class StairsEntry : MonoBehaviour
     void Start()
     {
         StaircaseManager = GameObject.FindGameObjectWithTag("StaircaseManager").GetComponent<StaircaseManager>();
-        Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (Shooter == null)
+        {
+            Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
+        }
         Person person = other.GetComponent<Person>();
         if (person != null && person.CompareTag("Employee"))
         {

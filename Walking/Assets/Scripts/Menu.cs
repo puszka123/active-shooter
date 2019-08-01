@@ -18,7 +18,10 @@ public class Menu : MonoBehaviour {
         SimulationManager.GetComponent<SimulationManager>().InitActiveShooter();
         foreach (Transform item in GUICanvas.transform)
         {
-            item.gameObject.SetActive(false);
+            if (item.name != "Reset")
+            {
+                item.gameObject.SetActive(false);
+            }
         }
         MenuOpened = false;
     }
