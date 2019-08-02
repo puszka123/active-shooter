@@ -7,6 +7,7 @@ public class Shooting : MonoBehaviour
     //public static System.Random Random = new System.Random();
     public float horizontalDeviation;
     public float verticalUpDeviation;
+    public float verticalUpDeviationBasic;
     public float verticalDownDeviation;
     public float[] ShooterHorizontalAccuracy;
     public float[] ShooterVerticalAccuracy;
@@ -14,6 +15,7 @@ public class Shooting : MonoBehaviour
 
     public float RotationSpeed;
     public float firingRate;
+    public float basicFiringRate;
     public float ShootStrength;
     public bool CanShoot;
 
@@ -192,21 +194,27 @@ public class Shooting : MonoBehaviour
     {
         if (victim == null)
         {
-            firingRate = 1f;
+            firingRate = basicFiringRate;
             return;
         }
+
+        if(!setter.FiringRateSpeedUpEnabled)
+        {
+            return;
+        }
+
         float distance = Utils.Distance(victim.position, transform.position);
         if (distance > 20f * Resources.scale)
         {
-            firingRate = 1f;
+            firingRate = basicFiringRate;
         }
-        else if (distance > 15f * Resources.scale)
+        else if (distance > 10f * Resources.scale)
         {
-            firingRate = 0.75f;
+            firingRate = 0.75f * firingRate;
         }
         else
         {
-            firingRate = 0.5f;
+            firingRate = 0.5f * firingRate;
         }
     }
 
@@ -214,13 +222,13 @@ public class Shooting : MonoBehaviour
     {
         if (victim == null)
         {
-            verticalUpDeviation = 1f;
+            verticalUpDeviation = verticalUpDeviationBasic;
             return;
         }
         float distance = Utils.Distance(victim.position, transform.position);
         if (distance > 20f * Resources.scale)
         {
-            verticalUpDeviation = 1f;
+            verticalUpDeviation = verticalUpDeviationBasic;
         }
         else if (distance > 5f * Resources.scale)
         {
@@ -329,8 +337,10 @@ public class Shooting : MonoBehaviour
         setter = GameObject.FindGameObjectWithTag("ParameterSetter").GetComponent<ParameterSetter>();
         ShootStrength = setter.ShootStrength;
         firingRate = setter.firingRate;
+        basicFiringRate = setter.firingRate;
         horizontalDeviation = setter.horizontalDeviation;
         verticalUpDeviation = setter.verticalUpDeviation;
+        verticalUpDeviationBasic = setter.verticalUpDeviation;
         verticalDownDeviation = setter.verticalDownDeviation;
     }
 }

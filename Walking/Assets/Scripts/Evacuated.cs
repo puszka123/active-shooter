@@ -19,6 +19,7 @@ public class Evacuated : MonoBehaviour {
 
     public void DestroyEvacuated()
     {
+        if (EvacuatedPeople == null) return;
         foreach (var item in EvacuatedPeople)
         {
             Destroy(item);

@@ -15,6 +15,7 @@ public class PersonMemory
     public Room FoundRoom;
     private List<Room> InformedRooms;
     public List<Room> CheckedRooms;
+    public Dictionary<int, List<Room>> CheckedRoomsByFloor;
     public Transform transform;
     public ShooterInfo ShooterInfo;
     public List<GameObject> InformedPeople;
@@ -42,18 +43,14 @@ public class PersonMemory
     {
         this.transform = transform;
         CurrentFloor = floor;
-        //foreach (var item in GameObject.FindGameObjectsWithTag("Floor"))
-        //{
-        //    int f = int.Parse(item.name.Split(' ')[1]);
-        //    Graph.Add(f, new Graph(f));
-        //}
 
+        CheckedRoomsByFloor = new Dictionary<int, List<Room>>();
         foreach (var item in GameObject.FindGameObjectWithTag("SimulationManager").GetComponent<SimulationManager>().graphs)
         {
             Graph.Add(item.Key, item.Value);
         }
-        FindNearestLocation(transform.position);
-        setTargetPosition(RandomTarget().Name);
+        //FindNearestLocation(transform.position);
+        //setTargetPosition(RandomTarget().Name);
     }
 
     public void setStartPosition(string name)
@@ -497,6 +494,15 @@ public class PersonMemory
         else if (!CheckedRooms.Select(r => r.Id).Contains(room.Id))
         {
             CheckedRooms.Add(room);
+        }
+        
+        if(CheckedRoomsByFloor.ContainsKey(CurrentFloor))
+        {
+            CheckedRoomsByFloor[CurrentFloor].Add(room);
+        }
+        else
+        {
+            CheckedRoomsByFloor.Add(CurrentFloor, new List<Room> { room });
         }
     }
 

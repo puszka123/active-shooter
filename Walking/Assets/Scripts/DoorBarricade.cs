@@ -96,4 +96,10 @@ public class DoorBarricade : MonoBehaviour {
     {
         Members.ForEach(m => m.SendMessage("FinishBarricade", gameObject));
     }
+
+    public void UpdateParams()
+    {
+        ParameterSetter setter = GameObject.FindGameObjectWithTag("ParameterSetter").GetComponent<ParameterSetter>();
+        barricadeTime = setter.BarricadingTime;
+    }
 }

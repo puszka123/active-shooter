@@ -146,7 +146,7 @@ public class Finder {
                 nearestRoom = item;
             }
         }
-        Debug.Log(nearestRoom.name);
+        //Debug.Log(nearestRoom.name);
         return new Room()
         {
             Id = nearestRoom.name,

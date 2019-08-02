@@ -12,8 +12,8 @@ public class Fight : MonoBehaviour
     public const float DropGunProbability = 5f;
     public const float ShootProbability = 85f;
 
-    public float DropGunChance { get { return DropGunProbability * (ShooterEnemies.Count * ShooterEnemies.Count); } }
-    public float ShootChance { get { return ShootProbability / (ShooterEnemies.Count); } }
+    public float DropGunChance { get { return DropGunProbability * (EnemiesStrength() * EnemiesStrength()); } }
+    public float ShootChance { get { return ShootProbability / (EnemiesStrength()); } }
 
     // Use this for initialization
     void Start()
@@ -127,5 +127,13 @@ public class Fight : MonoBehaviour
     public bool DropGun()
     {
         return DropGunChance >= Random.Range(0f, 100f);
+    }
+
+    public float EnemiesStrength()
+    {
+        float strengthSum = 0f;
+        ShooterEnemies.ForEach(e => strengthSum += e.GetComponent<PersonStats>().Strength);
+        if (strengthSum == 0f) return 1f;
+        else return strengthSum;
     }
 }

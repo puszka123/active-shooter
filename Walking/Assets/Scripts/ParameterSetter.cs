@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ParameterSetter : MonoBehaviour {
     public float HealthStart;
@@ -37,6 +38,10 @@ public class ParameterSetter : MonoBehaviour {
     public float altruismWeight;
     public float floorWeight;
     public float familiarityWeight;
+
+    public float LawEnforcementArrival;
+    public float BarricadingTime;
+    public bool FiringRateSpeedUpEnabled;
 
     public void SetStrengthStart(string value)
     {
@@ -212,6 +217,23 @@ public class ParameterSetter : MonoBehaviour {
         ShootStrength = float.Parse(value);
     }
 
+    public void SetLawEnforcementArrival(string value)
+    {
+        value = value.Trim();
+        LawEnforcementArrival = float.Parse(value);
+    }
+
+    public void SetBarricadingTime(string value)
+    {
+        value = value.Trim();
+        BarricadingTime = float.Parse(value);
+    }
+
+    public void SetFiringRateSpeedUp(bool value)
+    {
+        FiringRateSpeedUpEnabled = GameObject.Find("FiringRateToggle").GetComponent<Toggle>().isOn;
+    }
+
     public void SaveChanges()
     {
         foreach (var item in GameObject.FindGameObjectsWithTag("Employee"))
@@ -220,5 +242,9 @@ public class ParameterSetter : MonoBehaviour {
         }
 
         GameObject.FindGameObjectWithTag("ActiveShooter").GetComponent<Shooting>().UpdateStats();
+        foreach (var item in GameObject.FindGameObjectsWithTag("Door")) 
+        {
+            item.GetComponent<DoorBarricade>().UpdateParams();
+        }
     }
 }

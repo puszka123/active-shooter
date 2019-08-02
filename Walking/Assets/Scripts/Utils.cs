@@ -585,8 +585,8 @@ public static class Utils
     public static int[] roomsCount = new int[Resources.MAX_FLOOR+1];
     public static bool AllRoomsChecked(Person person, int floor)
     {
-        if (person.PersonMemory.CheckedRooms == null) return false;
-        if (roomsCount[floor] > 0) return roomsCount[floor] == person.PersonMemory.CheckedRooms.Count;
+        if (!person.PersonMemory.CheckedRoomsByFloor.ContainsKey(floor)) return false;
+        if (roomsCount[floor] > 0) return roomsCount[floor] == person.PersonMemory.CheckedRoomsByFloor[floor].Count;
         GameObject location = GameObject.Find("Checkpoints " + floor);
         int rooms = 0;
         foreach (Transform item in location.transform)
@@ -596,6 +596,6 @@ public static class Utils
                 ++rooms;
             }
         }
-        return rooms == person.PersonMemory.CheckedRooms.Count;
+        return rooms == person.PersonMemory.CheckedRoomsByFloor[floor].Count;
     }
 }
