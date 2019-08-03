@@ -39,6 +39,11 @@ public class ParameterSetter : MonoBehaviour {
     public float floorWeight;
     public float familiarityWeight;
 
+    public float shooterSearchFloor;
+    public float shooterGoUp;
+    public float shooterGoDown;
+    public float victimStairsWeight;
+
     public float LawEnforcementArrival;
     public float BarricadingTime;
     public bool FiringRateSpeedUpEnabled;
@@ -232,6 +237,30 @@ public class ParameterSetter : MonoBehaviour {
     public void SetFiringRateSpeedUp(bool value)
     {
         FiringRateSpeedUpEnabled = GameObject.Find("FiringRateToggle").GetComponent<Toggle>().isOn;
+    }
+
+    public void SetShooterSearchFloor(string value)
+    {
+        value = value.Trim();
+        shooterSearchFloor = float.Parse(value);
+    }
+
+    public void SetShooterGoUp(string value)
+    {
+        value = value.Trim();
+        shooterGoUp = float.Parse(value);
+    }
+
+    public void SetShooterGoDown(string value)
+    {
+        value = value.Trim();
+        shooterGoUp = float.Parse(value);
+    }
+
+    public void SetVictimStairsWeight(string value)
+    {
+        value = value.Trim();
+        victimStairsWeight = float.Parse(value);
     }
 
     public void SaveChanges()

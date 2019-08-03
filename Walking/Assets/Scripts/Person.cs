@@ -176,9 +176,13 @@ public class Person : MonoBehaviour
     {
         init = false;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        Vector3 direction = transform.position - activeShooter.position;
-        GetComponent<Rigidbody>().AddForceAtPosition(direction.normalized * 1000f, hitPoint);
-        GetComponent<Rigidbody>().useGravity = true;
+        //Vector3 direction = transform.position - activeShooter.position;
+        //GetComponent<Rigidbody>().AddForceAtPosition(direction.normalized * 1000f, hitPoint);
+        //GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<Person>().enabled = false;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        rend.material.color = Color.white;
     }
 
     public bool ImActiveShooter()

@@ -27,6 +27,11 @@ public class PersonStats : MonoBehaviour {
     public float floorWeight = 0.5f;
     public float familiarityWeight = 0.3f;
 
+    public float victimStairsWeight = 0.7f;
+    public float shooterSearchFloorChance = 0.8f;
+    public float shooterGoUpChance = 0.1f;
+    public float shooterGoDownChance = 0.1f;
+
     public ParameterSetter setter;
 
     private void Start()
@@ -67,5 +72,8 @@ public class PersonStats : MonoBehaviour {
         altruismWeight = setter.altruismWeight;
         floorWeight = setter.floorWeight;
         familiarityWeight = setter.familiarityWeight;
+        shooterGoDownChance = setter.shooterGoDown;
+        shooterGoUpChance = setter.shooterGoUp;
+        shooterSearchFloorChance = setter.shooterSearchFloor;
     }
 }

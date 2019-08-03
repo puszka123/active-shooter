@@ -52,6 +52,7 @@ public static class ShooterActions
 
         public override float ActionHappenProbability(Person person)
         {
+            PersonStats stats = person.GetComponent<PersonStats>();
             ShooterStaircase shooterStaircase = person.GetComponent<ShooterStaircase>();
             int myFloor = person.PersonMemory.CurrentFloor;
             bool allChecked = Utils.AllRoomsChecked(person, myFloor);
@@ -59,11 +60,10 @@ public static class ShooterActions
             if (allChecked) return 0f;
 
             float victimStairs = shooterStaircase.PotentialVictim != null ? 1f : 0f;
-            float chances = 0.8f;
+            float chances = stats.shooterSearchFloorChance;
 
-            float victimStairsWeight = 0.7f;
             
-            chances -= victimStairs * victimStairsWeight;
+            chances -= victimStairs * stats.victimStairsWeight;
 
             return chances;
         }
@@ -101,21 +101,21 @@ public static class ShooterActions
 
         public override float ActionHappenProbability(Person person)
         {
+            PersonStats stats = person.GetComponent<PersonStats>();
             ShooterStaircase shooterStaircase = person.GetComponent<ShooterStaircase>();
             float myFloor = person.PersonMemory.CurrentFloor;
             if (myFloor == Resources.MAX_FLOOR) return 0f;
 
             float victimStairs = shooterStaircase.PotentialVictim != null ? 1f : 0f;
-            float chances = 0.1f;
+            float chances = stats.shooterGoUpChance;
 
-            float victimStairsWeight = 0.8f;
 
             if (victimStairs == 1f)
             {
                 int victimFloor = shooterStaircase.PotentialVictim.PersonMemory.CurrentFloor;
                 if (victimFloor > myFloor)
                 {
-                    chances += victimStairs * victimStairsWeight;
+                    chances += victimStairs * stats.victimStairsWeight;
                 }
                 else
                 {
@@ -154,21 +154,20 @@ public static class ShooterActions
 
         public override float ActionHappenProbability(Person person)
         {
+            PersonStats stats = person.GetComponent<PersonStats>();
             ShooterStaircase shooterStaircase = person.GetComponent<ShooterStaircase>();
             float myFloor = person.PersonMemory.CurrentFloor;
             if (myFloor == 0) return 0f;
 
             float victimStairs = shooterStaircase.PotentialVictim != null ? 1f : 0f;
-            float chances = 0.1f;
-
-            float victimStairsWeight = 0.8f;
+            float chances = stats.shooterGoDownChance;
 
             if (victimStairs == 1f)
             {
                 int victimFloor = shooterStaircase.PotentialVictim.PersonMemory.CurrentFloor;
                 if (victimFloor < myFloor)
                 {
-                    chances += victimStairs * victimStairsWeight;
+                    chances += victimStairs * stats.victimStairsWeight;
                 }
                 else
                 {

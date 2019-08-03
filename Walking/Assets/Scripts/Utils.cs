@@ -551,6 +551,11 @@ public static class Utils
                 targetSpeed = Resources.Walk;
             }
         }
+        else if (p.CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.FindAndKill)
+            && person.GetComponent<ShooterStaircase>().PotentialVictim != null)
+        {
+            targetSpeed = Resources.Run;
+        }
         else if (p.CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.FindAndKill))
         {
             targetSpeed = Resources.Walk;

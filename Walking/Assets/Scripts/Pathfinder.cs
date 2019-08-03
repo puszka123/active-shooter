@@ -9,7 +9,7 @@ public class Pathfinder {
     public const int MAX_NODES_IN_QUEUE = 100;
     public const float MIN_DISTANCE = 0.175f;
     public const float MIN_DISTANCE_DOOR = 0.3f;
-    public const float MIN_DISTANCE_HIDE = 0.05f;
+    public const float MIN_DISTANCE_HIDE = 0.1f;
     public const float MIN_DISTANCE_ROOM = 0.1f;
     public const float MIN_DISTANCE_ROOM_WALK = 0.15f;
     public const float MIN_DISTANCE_OBSTACLE = 0.1f;
