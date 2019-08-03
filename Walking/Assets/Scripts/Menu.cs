@@ -14,7 +14,7 @@ public class Menu : MonoBehaviour {
         {
             workplace.GetComponent<Respawn>().InitEmployee();
         }
-        GameObject.FindGameObjectWithTag("InformManager").GetComponent<InformManager>().StartInitialization();
+        //GameObject.FindGameObjectWithTag("InformManager").GetComponent<InformManager>().StartInitialization();
         SimulationManager.GetComponent<SimulationManager>().InitActiveShooter();
         foreach (Transform item in GUICanvas.transform)
         {

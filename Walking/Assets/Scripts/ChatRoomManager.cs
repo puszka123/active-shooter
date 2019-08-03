@@ -37,4 +37,9 @@ public class ChatRoomManager : MonoBehaviour {
         }
     }
 
+    public void ResetManager()
+    {
+        ChatRooms = null;
+    }
+
 }

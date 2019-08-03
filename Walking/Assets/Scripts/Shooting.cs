@@ -17,6 +17,8 @@ public class Shooting : MonoBehaviour
     public float firingRate;
     public float basicFiringRate;
     public float ShootStrength;
+    public float ReloadTime;
+    float reloadTimer;
     public bool CanShoot;
 
     public GameObject DoorToDestroy;
@@ -39,6 +41,7 @@ public class Shooting : MonoBehaviour
         UpdateStats();
         CanShoot = true;
         timer = 0f;
+        reloadTimer = 0f;
         RotationSpeed = 30f;
         myRigidBody = GetComponent<Rigidbody>();
         ShooterHorizontalAccuracy = new float[] { (90f - horizontalDeviation), (90f + horizontalDeviation) };
@@ -286,8 +289,8 @@ public class Shooting : MonoBehaviour
                 };
                 GetComponent<Person>().PersonMemory.AddCheckedRoom(checkedRoom);
                 GetComponent<Person>().PersonMemory.ClearFoundRoom();
-                gameObject.SendMessage("SelectAction");
                 DoorDestroyed(doorToDestroy);
+                gameObject.SendMessage("SelectAction");
                 return;
             }
         }

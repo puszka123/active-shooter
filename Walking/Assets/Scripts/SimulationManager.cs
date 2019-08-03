@@ -20,10 +20,19 @@ public class SimulationManager : MonoBehaviour
     float time = 0f;
 
     public bool StartShooterInitiation = false;
+    public int SimulationsCount = 10;
+    public int SimulationsCounter;
 
+    public Dictionary<int, List<DeathInfo>> VictimsStatistics;
+
+    public bool end;
     // Use this for initialization
     void Start()
     {
+        end = false;
+        SimulationsCounter = 1;
+        VictimsStatistics = new Dictionary<int, List<DeathInfo>>();
+        VictimsStatistics.Add(SimulationsCounter, new List<DeathInfo>());
         InstantiateShooter();
         GameObject[] roomLocations = GameObject.FindGameObjectsWithTag("RoomLocation");
         foreach (var item in roomLocations)
@@ -101,6 +110,7 @@ public class SimulationManager : MonoBehaviour
             shooter.GetComponent<FollowVictim>().enabled = true;
             shooter.GetComponent<MyChat>().enabled = true;
             shooter.GetComponent<Fight>().enabled = true;
+            shooter.GetComponent<ShooterStaircase>().enabled = true;
             shooter.GetComponent<Person>().Init(3, ""); //test floor
 
         }
@@ -135,6 +145,7 @@ public class SimulationManager : MonoBehaviour
         {
             Destroy(item);
         }
+        GameObject.FindGameObjectWithTag("InformManager").GetComponent<InformManager>().notInformed = null;
         InstantiateShooter();
         InitActiveShooter();
         foreach (var item in GameObject.FindGameObjectsWithTag("Door"))
@@ -154,7 +165,69 @@ public class SimulationManager : MonoBehaviour
         }
         GetComponent<Menu>().InitEmployees();
 
-        GameObject.FindGameObjectWithTag("InformManager").GetComponent<InformManager>().StartInitialization();
+        //GameObject.FindGameObjectWithTag("InformManager").GetComponent<InformManager>().StartInitialization();
         GameObject.FindGameObjectWithTag("StaircaseManager").GetComponent<StaircaseManager>().ResetManager();
+        GameObject.FindGameObjectWithTag("ChatRoomManager").GetComponent<ChatRoomManager>().ResetManager();
     }
+
+    public void ResetSimulationRequest()
+    {
+        if (SimulationsCounter < SimulationsCount)
+        {
+            SimulationsCounter++;
+            VictimsStatistics.Add(SimulationsCounter, new List<DeathInfo>());
+            ResetSimulation();
+        }
+        else
+        {
+            end = true;
+            SaveStatistics();
+            //end = true;
+            //Application.Quit();
+        }
+    }
+
+    public void UpdateParams()
+    {
+        ParameterSetter setter = GameObject.FindGameObjectWithTag("ParameterSetter").GetComponent<ParameterSetter>();
+        SimulationsCount = setter.SimulationsCount;
+    }
+
+    int jsonscount = -1;
+    public void SaveStatistics()
+    {
+        List<string> jsons = new List<string>();
+        foreach (var key in VictimsStatistics.Keys)
+        {
+            foreach (var deathInfo in VictimsStatistics[key])
+            {
+                jsons.Add(deathInfo.SaveToString());
+            }
+        }
+        jsonscount = jsons.Count;
+        Save.SaveJsons(jsons.ToArray());
+    }
+
+    public void UpdateDeathInfo(Person deadPerson)
+    {
+        DeathInfo deathInfo = new DeathInfo {
+            DeathTime = GetComponent<FPSDisplayScript>().simulationTime,
+            BehaviourName = deadPerson.CurrentBehaviour.GetType().ToString(),
+            ActionName = deadPerson.CurrentAction.GetType().ToString(),
+            Floor = deadPerson.PersonMemory.CurrentFloor,
+            InRoom = deadPerson.PersonMemory.CurrentRoom != null,
+            SimulationId = SimulationsCounter,
+        };
+
+        VictimsStatistics[SimulationsCounter].Add(deathInfo);
+    }
+
+    private void OnGUI()
+    {
+        if (end)
+        {
+            GUI.Box(new Rect(0, 0, Screen.width / 2, Screen.height / 2), jsonscount.ToString());
+        }
+    }
+
 }

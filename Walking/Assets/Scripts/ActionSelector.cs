@@ -23,6 +23,13 @@ public class ActionSelector
         float luckyNumber = Random.Range(0f, probabilitiesSum);
         float start = 0f;
         float end = 0f;
+
+        //if(person.CompareTag("ActiveShooter"))
+        //for (int i = 0; i < actionsProbabilities.Count; i++)
+        //{
+        //    Debug.Log(actionsProbabilities[i] + " " + AvailableActions[i]);
+        //}
+
         for (int i = 0; i < actionsProbabilities.Count; i++)
         {
             if (actionsProbabilities[i] == 0) continue;
@@ -31,10 +38,6 @@ public class ActionSelector
             end += actionsProbabilities[i];
             if (start <= luckyNumber && luckyNumber < end)
             {
-                //if (person.gameObject.name == "employee 19")
-                //{
-                //    Debug.Log(AvailableActions[i].GetType() + " " + actionsProbabilities[i] + " [" + start + ", " + end + "] " + luckyNumber);
-                //}
                 return AvailableActions[i];
             }
         }

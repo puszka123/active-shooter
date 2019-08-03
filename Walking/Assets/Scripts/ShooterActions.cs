@@ -55,8 +55,8 @@ public static class ShooterActions
             PersonStats stats = person.GetComponent<PersonStats>();
             ShooterStaircase shooterStaircase = person.GetComponent<ShooterStaircase>();
             int myFloor = person.PersonMemory.CurrentFloor;
-            bool allChecked = Utils.AllRoomsChecked(person, myFloor);
-
+            bool allChecked = Utils.AllChecked(person, myFloor);
+            //bool allChecked = Utils.AllRoomsChecked(person, myFloor);
             if (allChecked) return 0f;
 
             float victimStairs = shooterStaircase.PotentialVictim != null ? 1f : 0f;
@@ -64,7 +64,6 @@ public static class ShooterActions
 
             
             chances -= victimStairs * stats.victimStairsWeight;
-
             return chances;
         }
 
@@ -122,7 +121,7 @@ public static class ShooterActions
                     chances = 0f;
                 }
             }
-
+            //Debug.Log(string.Format("{0} {1}", person.simulationTime, chances));
             return chances;
         }
 
@@ -157,7 +156,10 @@ public static class ShooterActions
             PersonStats stats = person.GetComponent<PersonStats>();
             ShooterStaircase shooterStaircase = person.GetComponent<ShooterStaircase>();
             float myFloor = person.PersonMemory.CurrentFloor;
-            if (myFloor == 0) return 0f;
+            if (myFloor == 0)
+            {
+                return 0f;
+            }
 
             float victimStairs = shooterStaircase.PotentialVictim != null ? 1f : 0f;
             float chances = stats.shooterGoDownChance;
@@ -174,7 +176,6 @@ public static class ShooterActions
                     chances = 0f;
                 }
             }
-
             return chances;
         }
 

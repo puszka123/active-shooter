@@ -1,0 +1,7 @@
+{"SimulationId":2,"DeathTime":7.800000190734863,"BehaviourName":"ImplementedBehaviours+Work","ActionName":"WorkActions+GoToWork","Floor":3,"InRoom":true}
+{"SimulationId":2,"DeathTime":7.800000190734863,"BehaviourName":"ImplementedBehaviours+Fight","ActionName":"FightActions+Fight","Floor":3,"InRoom":true}
+{"SimulationId":2,"DeathTime":12.300000190734864,"BehaviourName":"ImplementedBehaviours+Work","ActionName":"WorkActions+GoToWork","Floor":3,"InRoom":true}
+{"SimulationId":2,"DeathTime":25.000001907348634,"BehaviourName":"ImplementedBehaviours+Evacuate","ActionName":"EvacuationActions+RunAway","Floor":3,"InRoom":false}
+{"SimulationId":2,"DeathTime":60.20000457763672,"BehaviourName":"ImplementedBehaviours+Fight","ActionName":"FightActions+Fight","Floor":3,"InRoom":true}
+{"SimulationId":2,"DeathTime":69.20000457763672,"BehaviourName":"ImplementedBehaviours+Fight","ActionName":"FightActions+Fight","Floor":3,"InRoom":true}
+{"SimulationId":2,"DeathTime":114.20000457763672,"BehaviourName":"ImplementedBehaviours+Fight","ActionName":"FightActions+Fight","Floor":3,"InRoom":true}

@@ -167,14 +167,15 @@ public class Person : MonoBehaviour
         if(talkTime >= talk && !CompareTag("ActiveShooter"))
         {
             talkTime = 0f;
-            //informAboutShooter.Tasks[0].IsDone = false;
-           // actionExecutor.ExecuteSingleTask(informAboutShooter.Tasks[0]);
+            informAboutShooter.Tasks[0].IsDone = false;
+            actionExecutor.ExecuteSingleTask(informAboutShooter.Tasks[0]);
         }
     }
 
     public void Die(Transform activeShooter, Vector3 hitPoint)
     {
         init = false;
+        GameObject.FindGameObjectWithTag("SimulationManager").SendMessage("UpdateDeathInfo", this);
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         //Vector3 direction = transform.position - activeShooter.position;
         //GetComponent<Rigidbody>().AddForceAtPosition(direction.normalized * 1000f, hitPoint);

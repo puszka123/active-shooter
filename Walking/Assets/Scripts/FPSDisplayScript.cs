@@ -8,6 +8,7 @@ public class FPSDisplayScript : MonoBehaviour
     int numberOfEmployees = 0;
     int numberOfActiveShooters = 1;
     bool initiated = false;
+    public float MaxSimulationTime = 15f * 60f;
 
     void Update()
     {
@@ -17,6 +18,13 @@ public class FPSDisplayScript : MonoBehaviour
         {
             numberOfEmployees = GameObject.FindGameObjectsWithTag("Employee").Length;
             initiated = true;
+            UpdateParams();
+        }
+
+        if(simulationTime >= MaxSimulationTime && MaxSimulationTime > 0)
+        {
+            simulationTime = 0;
+            GetComponent<SimulationManager>().SendMessage("ResetSimulationRequest");
         }
     }
 
@@ -59,6 +67,12 @@ public class FPSDisplayScript : MonoBehaviour
         style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
         text = string.Format("All employees: {0} ", numberOfEmployees);
         GUI.Label(rect, text, style);
+    }
+
+    public void UpdateParams()
+    {
+        ParameterSetter setter = GameObject.FindGameObjectWithTag("ParameterSetter").GetComponent<ParameterSetter>();
+        MaxSimulationTime = setter.LawEnforcementArrival * 60f;
     }
 }
 

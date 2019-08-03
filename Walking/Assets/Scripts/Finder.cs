@@ -41,7 +41,13 @@ public class Finder {
                 }
                 Room room2 = FindNearestNotCheckedRoom(memory.CurrentFloor, transform);
                 //Debug.Log(room2.Id);
-                if (room2 == null) return;
+                if (room2 == null)
+                {
+                    memory.SetAllChecked();
+                    FinishFind();
+                    transform.SendMessage("SelectAction");
+                    return;
+                }
                 SaveRoomInMemory(room2);
                 task.IsDone = true;
                 Executing = false;

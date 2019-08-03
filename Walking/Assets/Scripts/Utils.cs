@@ -571,13 +571,24 @@ public static class Utils
     {
         int floor = person.PersonMemory.CurrentFloor;
         InformManager manager = GameObject.FindGameObjectWithTag("InformManager").GetComponent<InformManager>();
+        if (GameObject.FindGameObjectWithTag("InformManager").GetComponent<InformManager>().notInformed == null
+            || GameObject.FindGameObjectWithTag("InformManager").GetComponent<InformManager>().notInformed.Count == 0)
+        {
+            GameObject.FindGameObjectWithTag("InformManager").GetComponent<InformManager>().StartInitialization();
+        }
         List<MyChat> floorEmployees = manager.GetFloorEmployees(floor);
+        if (floorEmployees == null) return new List<MyChat>();
         List<MyChat> neighbours = FilteredNeighboursfloor(floorEmployees, person);
         return neighbours;
     }
 
     private static List<MyChat> FilteredNeighboursfloor(List<MyChat> employees, Person person)
     {
+        if(employees == null || person == null) return new List<MyChat>();
+        foreach (var item in employees)
+        {
+            if (item == null) return new List<MyChat>();
+        }
         return employees.FindAll(e => CanSee(e.gameObject, person.gameObject));
     }
 
@@ -602,5 +613,17 @@ public static class Utils
             }
         }
         return rooms == person.PersonMemory.CheckedRoomsByFloor[floor].Count;
+    }
+
+    public static bool AllChecked(Person person, int floor)
+    {
+        if (person.PersonMemory.AreAllCheckedRooms == null) return false;
+
+        foreach (var item in person.PersonMemory.AreAllCheckedRooms)
+        {
+            if (item == floor) return true;
+        }
+
+        return false;
     }
 }

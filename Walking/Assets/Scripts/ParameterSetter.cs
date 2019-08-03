@@ -48,6 +48,8 @@ public class ParameterSetter : MonoBehaviour {
     public float BarricadingTime;
     public bool FiringRateSpeedUpEnabled;
 
+    public int SimulationsCount;
+
     public void SetStrengthStart(string value)
     {
         value = value.Trim();
@@ -254,13 +256,19 @@ public class ParameterSetter : MonoBehaviour {
     public void SetShooterGoDown(string value)
     {
         value = value.Trim();
-        shooterGoUp = float.Parse(value);
+        shooterGoDown = float.Parse(value);
     }
 
     public void SetVictimStairsWeight(string value)
     {
         value = value.Trim();
         victimStairsWeight = float.Parse(value);
+    }
+
+    public void SetSimulationsCount(string value)
+    {
+        value = value.Trim();
+        SimulationsCount = int.Parse(value);
     }
 
     public void SaveChanges()
@@ -275,5 +283,7 @@ public class ParameterSetter : MonoBehaviour {
         {
             item.GetComponent<DoorBarricade>().UpdateParams();
         }
+        GameObject.FindGameObjectWithTag("SimulationManager").GetComponent<FPSDisplayScript>().UpdateParams();
+        GameObject.FindGameObjectWithTag("SimulationManager").GetComponent<SimulationManager>().UpdateParams();
     }
 }

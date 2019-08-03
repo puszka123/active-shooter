@@ -88,7 +88,8 @@ public class Fight : MonoBehaviour
         }
         if (DropGun())
         {
-            Debug.Log("Active shooter killed by fighters"); 
+            Debug.Log("Active shooter killed by fighters");
+            GameObject.FindGameObjectWithTag("SimulationManager").SendMessage("ResetSimulationRequest");
             GetComponent<Fight>().enabled = false;
         }
     }

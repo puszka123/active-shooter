@@ -22,6 +22,7 @@ public class PersonMemory
     public GameObject PickedObstacle;
     public GameObject CurrentStaircase;
     public bool IsAtStaircase;
+    public List<int> AreAllCheckedRooms; //floor is an index
 
     //Active shooter
     public int BlockedRooms;
@@ -409,8 +410,8 @@ public class PersonMemory
 
     public void UpdateNodesBlockedByShooter()
     {
-        if (transform.CompareTag("ActiveShooter") 
-            || ShooterInfo == null 
+        if (transform.CompareTag("ActiveShooter")
+            || ShooterInfo == null
             || Utils.IsNullVector(ShooterInfo.Position)) return;
         ClearBlockedNodesByShooter();
 
@@ -430,7 +431,7 @@ public class PersonMemory
 
     public void AddNodeBlockedByShooter(Node node)
     {
-        if(transform.CompareTag("ActiveShooter"))
+        if (transform.CompareTag("ActiveShooter"))
         {
             return;
         }
@@ -495,8 +496,8 @@ public class PersonMemory
         {
             CheckedRooms.Add(room);
         }
-        
-        if(CheckedRoomsByFloor.ContainsKey(CurrentFloor))
+
+        if (CheckedRoomsByFloor.ContainsKey(CurrentFloor))
         {
             CheckedRoomsByFloor[CurrentFloor].Add(room);
         }
@@ -519,9 +520,21 @@ public class PersonMemory
     public void SetCurrentFloor(int value)
     {
         CurrentFloor = value;
-        if(transform.CompareTag("ActiveShooter"))
+        if (transform.CompareTag("ActiveShooter"))
         {
             transform.SendMessage("SelectAction");
+        }
+    }
+
+    public void SetAllChecked()
+    {
+        if (AreAllCheckedRooms == null)
+        {
+            AreAllCheckedRooms = new List<int> { CurrentFloor };
+        }
+        else
+        {
+            AreAllCheckedRooms.Add(CurrentFloor);
         }
     }
 }
