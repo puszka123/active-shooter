@@ -38,6 +38,7 @@ public class ParameterSetter : MonoBehaviour {
     public float altruismWeight;
     public float floorWeight;
     public float familiarityWeight;
+    public float shooterCheckRoomWeight;
 
     public float shooterSearchFloor;
     public float shooterGoUp;
@@ -271,6 +272,12 @@ public class ParameterSetter : MonoBehaviour {
         SimulationsCount = int.Parse(value);
     }
 
+    public void SetShooterCheckRoomWeight(string value)
+    {
+        value = value.Trim();
+        shooterCheckRoomWeight = float.Parse(value);
+    }
+
     public void SaveChanges()
     {
         foreach (var item in GameObject.FindGameObjectsWithTag("Employee"))
@@ -279,6 +286,7 @@ public class ParameterSetter : MonoBehaviour {
         }
 
         GameObject.FindGameObjectWithTag("ActiveShooter").GetComponent<Shooting>().UpdateStats();
+        GameObject.FindGameObjectWithTag("ActiveShooter").GetComponent<PersonStats>().UpdateStats();
         foreach (var item in GameObject.FindGameObjectsWithTag("Door")) 
         {
             item.GetComponent<DoorBarricade>().UpdateParams();

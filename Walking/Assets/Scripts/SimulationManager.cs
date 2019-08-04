@@ -52,7 +52,7 @@ public class SimulationManager : MonoBehaviour
                 item.AddComponent<RoomManager>();
                 item.GetComponent<RoomManager>().Init(itemPathlocation.Floor);
             }
-            item.GetComponent<Renderer>().enabled = true;
+            item.GetComponent<Renderer>().enabled = false;
         }
         foreach (var item in GameObject.FindGameObjectsWithTag("Door"))
         {
@@ -111,7 +111,7 @@ public class SimulationManager : MonoBehaviour
             shooter.GetComponent<MyChat>().enabled = true;
             shooter.GetComponent<Fight>().enabled = true;
             shooter.GetComponent<ShooterStaircase>().enabled = true;
-            shooter.GetComponent<Person>().Init(3, ""); //test floor
+            shooter.GetComponent<Person>().Init(int.Parse(ShooterRespawn.transform.parent.name.Split(' ')[1]), ""); //test floor
 
         }
     }

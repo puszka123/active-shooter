@@ -26,11 +26,13 @@ public class PersonStats : MonoBehaviour {
     public float altruismWeight = 1f;
     public float floorWeight = 0.5f;
     public float familiarityWeight = 0.3f;
+    public float shooterCheckRoomWeight = 0.02f;
 
     public float victimStairsWeight = 0.7f;
     public float shooterSearchFloorChance = 0.8f;
     public float shooterGoUpChance = 0.1f;
     public float shooterGoDownChance = 0.1f;
+    
 
     public ParameterSetter setter;
 
@@ -56,6 +58,7 @@ public class PersonStats : MonoBehaviour {
 
     public void UpdateStats()
     {
+        setter = GameObject.FindGameObjectWithTag("ParameterSetter").GetComponent<ParameterSetter>();
         Health = 100f;
         Strength = Random.Range(setter.StrengthStart, setter.StrengthStop);
         LockDoorChance = Random.Range(setter.LockDoorChanceStart, setter.LockDoorChanceStop);
@@ -75,5 +78,6 @@ public class PersonStats : MonoBehaviour {
         shooterGoDownChance = setter.shooterGoDown;
         shooterGoUpChance = setter.shooterGoUp;
         shooterSearchFloorChance = setter.shooterSearchFloor;
+        shooterCheckRoomWeight = setter.shooterCheckRoomWeight;
     }
 }

@@ -626,4 +626,16 @@ public static class Utils
 
         return false;
     }
+
+    public static int CheckedRooms(Person person, int floor)
+    {
+        PersonMemory memory = person.PersonMemory;
+        int res = 0;
+        if(memory.CheckedRoomsByFloor.ContainsKey(floor))
+        {
+            res = memory.CheckedRoomsByFloor[floor].Count;
+        }
+        return res;
+    }
 }
+
