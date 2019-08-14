@@ -69,7 +69,7 @@ public static class Utils
         List<GameObject> exits = new List<GameObject>();
         foreach (Transform item in location.transform)
         {
-            if (item.GetComponent<PathLocation>().IsExit)
+            if (item.GetComponent<PathLocation>().IsExit && !BlockedByShooter(item.gameObject, memory))
             {
                 exits.Add(item.gameObject);
             }

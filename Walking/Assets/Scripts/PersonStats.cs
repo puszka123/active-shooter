@@ -32,6 +32,10 @@ public class PersonStats : MonoBehaviour {
     public float shooterSearchFloorChance = 0.8f;
     public float shooterGoUpChance = 0.1f;
     public float shooterGoDownChance = 0.1f;
+
+    public float basicEvacuationChance = 1f;
+    public float basicHideChance = 1f;
+    public float basicFightChance = 1f;
     
 
     public ParameterSetter setter;
@@ -79,5 +83,8 @@ public class PersonStats : MonoBehaviour {
         shooterGoUpChance = setter.shooterGoUp;
         shooterSearchFloorChance = setter.shooterSearchFloor;
         shooterCheckRoomWeight = setter.shooterCheckRoomWeight;
+        basicEvacuationChance = Random.Range(setter.basicEvacuationChanceStart, setter.basicEvacuationChanceStop);
+        basicHideChance = Random.Range(setter.basicHideChanceStart, setter.basicHideChanceStop);
+        basicFightChance = Random.Range(setter.basicFightChanceStart, setter.basicFightChanceStop);
     }
 }

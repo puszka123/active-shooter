@@ -27,23 +27,22 @@ public static class ImplementedBehaviours
 
             float aboveMeValue = aboveMe ? 1f : 0f;
             float isInRoomValue = isInRoom ? 1f : 0f;
-            float altruism = person.GetComponent<PersonStats>().Altruism;
             float distanceToShooter = Utils.Distance(person.gameObject, shooter);
             float shooterFar = Resources.Far[0] < distanceToShooter ? 1f : 0f;
 
-            float chances;
+            float chances = stats.basicEvacuationChance;
 
             if (seeShooter && isInRoom)
             {
-                chances = 0f;
+                chances = 1 - stats.basicFightChance;
             }
             else if (!seeShooter && isInRoom)
             {
-                chances = aboveMeValue * stats.aboveMeWeight + (1 - stats.aboveMeWeight) * (1 - aboveMeValue);
+                chances += aboveMeValue * stats.aboveMeWeight;
             }
             else if (seeShooter && !isInRoom)
             {
-                chances = (1 - altruism) * stats.altruismWeight + shooterFar * stats.distanceWeight;
+                chances = (1 - stats.basicFightChance) + shooterFar * stats.distanceWeight;
             }
             else
             {
@@ -77,14 +76,14 @@ public static class ImplementedBehaviours
             float isInRoomValue = isInRoom ? 1f : 0f;
 
 
-            float chances = 0f;
+            float chances = stats.basicHideChance;
             if (seeShooter || !isInRoom)
             {
                 chances = 0f;
             }
             else if (isInRoom)
             {
-                chances = notAboveMeValue * stats.notAboveMeWeight + (1 - stats.notAboveMeWeight) * (1 - notAboveMeValue);
+                chances += notAboveMeValue * stats.notAboveMeWeight;
             }
 
             return chances;
@@ -109,18 +108,17 @@ public static class ImplementedBehaviours
             bool seeShooter = Utils.CanSee(person.gameObject, shooter);
             bool isInRoom = Utils.IsInAnyRoom(person.PersonMemory);
 
-            float altruism = person.GetComponent<PersonStats>().Altruism;
             float distanceToShooter = Utils.Distance(person.gameObject, shooter);
             float shooterNear = Resources.Near[1] >= distanceToShooter ? 1f : 0f;
 
             float chances;
             if (seeShooter && !isInRoom)
             {
-                chances = altruism * stats.altruismWeight + shooterNear * stats.distanceWeight;
+                chances = stats.basicFightChance + shooterNear * stats.distanceWeight;
             }
             else if (seeShooter && isInRoom)
             {
-                chances = 1f;
+                chances = stats.basicFightChance;
             }
             else
             {

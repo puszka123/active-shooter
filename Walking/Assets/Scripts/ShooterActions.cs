@@ -67,7 +67,7 @@ public static class ShooterActions
 
 
             chances -= victimStairs * stats.victimStairsWeight;
-            Debug.Log(chances + " " + floorCheckedRooms + " " + stats.shooterCheckRoomWeight);
+            //Debug.Log(chances + " " + floorCheckedRooms + " " + stats.shooterCheckRoomWeight);
             return chances;
         }
 

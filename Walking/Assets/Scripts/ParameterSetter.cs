@@ -51,6 +51,13 @@ public class ParameterSetter : MonoBehaviour {
 
     public int SimulationsCount;
 
+    public float basicEvacuationChanceStart;
+    public float basicEvacuationChanceStop;
+    public float basicHideChanceStart;
+    public float basicHideChanceStop;
+    public float basicFightChanceStart;
+    public float basicFightChanceStop;
+
     public void SetStrengthStart(string value)
     {
         value = value.Trim();
@@ -276,6 +283,43 @@ public class ParameterSetter : MonoBehaviour {
     {
         value = value.Trim();
         shooterCheckRoomWeight = float.Parse(value);
+    }
+
+    public void SetEvacuationChanceStart(string value)
+    {
+        value = value.Trim();
+        basicEvacuationChanceStart = float.Parse(value);
+    }
+
+    public void SetEvacuationChanceStop(string value)
+    {
+        value = value.Trim();
+        basicEvacuationChanceStop = float.Parse(value);
+    }
+
+    public void SetBasicHideChanceStart(string value)
+    {
+        value = value.Trim();
+        basicHideChanceStart = float.Parse(value);
+    }
+
+    public void SetBasicHideChanceStop(string value)
+    {
+        value = value.Trim();
+        basicHideChanceStop = float.Parse(value);
+    }
+
+
+    public void SetFightChanceStart(string value)
+    {
+        value = value.Trim();
+        basicFightChanceStart = float.Parse(value);
+    }
+
+    public void SetFightChanceStop(string value)
+    {
+        value = value.Trim();
+        basicFightChanceStop = float.Parse(value);
     }
 
     public void SaveChanges()
