@@ -200,17 +200,33 @@ public class DoorController : MonoBehaviour
 
     public void AddFirstObstacle()
     {
+        if (Obstacles >= 1) return;
         VisibleObstacles[0].GetComponent<Renderer>().enabled = true;
         //VisibleObstacles[0].GetComponent<BoxCollider>().enabled = true;
         Obstacles = 1;
+        AddObstacleResistance();
     }
 
     public void AddSecondObstacle()
     {
+        if (Obstacles >= 2) return;
         VisibleObstacles[1].GetComponent<Renderer>().enabled = true;
         //VisibleObstacles[1].GetComponent<BoxCollider>().enabled = true;
         Obstacles = 2;
+        AddObstacleResistance();
         InformRoomEmployees();
+    }
+
+    public void AddObstacleResistance()
+    {
+        if (Obstacles == 1)
+        {
+            Resistance += 200f;
+        }
+        else if(Obstacles > 1)
+        {
+            Resistance += 300f;
+        }
     }
 
 

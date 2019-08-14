@@ -4,18 +4,10 @@ using System.IO;
 using UnityEngine;
 
 public static class Save {
-    public static string fileName = "statistics.json";
+    //public static string fileName = "statistics.json";
 
-    public static void SaveJsons(string[] jsons)
+    public static void SaveJsons(string[] jsons, string file)
     {
-        File.WriteAllLines(fileName, jsons);
-        //using (System.IO.StreamWriter file =
-        //    new System.IO.StreamWriter(fileName, true))
-        //{
-        //    foreach (var item in jsons)
-        //    {
-        //        file.WriteLine(item);
-        //    }
-        //}
+        File.WriteAllLines(file, jsons);
     }
 }

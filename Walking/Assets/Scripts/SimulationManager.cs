@@ -24,6 +24,7 @@ public class SimulationManager : MonoBehaviour
     public int SimulationsCounter;
 
     public Dictionary<int, List<DeathInfo>> VictimsStatistics;
+    public Dictionary<int, string> Reasons;
 
     public bool end;
     // Use this for initialization
@@ -32,6 +33,7 @@ public class SimulationManager : MonoBehaviour
         end = false;
         SimulationsCounter = 1;
         VictimsStatistics = new Dictionary<int, List<DeathInfo>>();
+        Reasons = new Dictionary<int, string>();
         VictimsStatistics.Add(SimulationsCounter, new List<DeathInfo>());
         InstantiateShooter();
         GameObject[] roomLocations = GameObject.FindGameObjectsWithTag("RoomLocation");
@@ -170,8 +172,10 @@ public class SimulationManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("ChatRoomManager").GetComponent<ChatRoomManager>().ResetManager();
     }
 
-    public void ResetSimulationRequest()
+    public void ResetSimulationRequest(string reason)
     {
+        Reasons.Add(SimulationsCounter, reason);
+
         if (SimulationsCounter < SimulationsCount)
         {
             SimulationsCounter++;
@@ -205,7 +209,16 @@ public class SimulationManager : MonoBehaviour
             }
         }
         jsonscount = jsons.Count;
-        Save.SaveJsons(jsons.ToArray());
+        Save.SaveJsons(jsons.ToArray(), "statistics.json");
+
+        List<string> reasonsJsons = new List<string>();
+
+        foreach (var key in Reasons.Keys)
+        {
+            string json = "{" + "\"SimulationId\":" + key + "," + "\"Reason\":" +"\"" + Reasons[key] + "\"}";
+            reasonsJsons.Add(json);
+        }
+        Save.SaveJsons(reasonsJsons.ToArray(), "reasons.json");
     }
 
     public void UpdateDeathInfo(Person deadPerson)
