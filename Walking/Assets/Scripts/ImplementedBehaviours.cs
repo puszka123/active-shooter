@@ -31,10 +31,12 @@ public static class ImplementedBehaviours
             float shooterFar = Resources.Far[0] < distanceToShooter ? 1f : 0f;
 
             float chances = stats.basicEvacuationChance;
+            float lastResort = stats.basicFightChance / 2;
 
             if (seeShooter && isInRoom)
             {
-                chances = 1 - stats.basicFightChance;
+                chances = 1 - (stats.basicFightChance + lastResort);
+                if (chances < 0) chances = 0;
             }
             else if (!seeShooter && isInRoom)
             {

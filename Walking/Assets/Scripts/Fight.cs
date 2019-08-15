@@ -9,11 +9,9 @@ public class Fight : MonoBehaviour
     public bool FightIsStarted;
     float roundTime = 0.5f;
     float time = 0f;
-    public const float DropGunProbability = 5f;
-    public const float ShootProbability = 85f;
 
-    public float DropGunChance { get { return DropGunProbability * (EnemiesStrength() * EnemiesStrength()); } }
-    public float ShootChance { get { return ShootProbability / (EnemiesStrength()); } }
+    public float DropGunChance { get { return GetComponent<PersonStats>().DropGunProbability * EnemiesStrength(); } }
+    public float ShootChance { get { return GetComponent<PersonStats>().ShootProbability / EnemiesStrength(); } }
 
     // Use this for initialization
     void Start()
@@ -42,7 +40,7 @@ public class Fight : MonoBehaviour
         {
             ShooterEnemies.Add(enemy);
         }
-       // Debug.Log(enemy.name + " joined a fight");
+        // Debug.Log(enemy.name + " joined a fight");
         if (!FightIsStarted)
         {
             StartFight();

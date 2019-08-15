@@ -58,6 +58,16 @@ public class ParameterSetter : MonoBehaviour {
     public float basicFightChanceStart;
     public float basicFightChanceStop;
 
+    public float myRoomChanceStart;
+    public float myRoomChanceStop;
+    public float anyRoomChanceStart;
+    public float anyRoomChanceStop;
+    public float exitChanceStart;
+    public float exitChanceStop;
+
+    public float DropGunProbability;
+    public float ShootProbability;
+
     public void SetStrengthStart(string value)
     {
         value = value.Trim();
@@ -320,6 +330,42 @@ public class ParameterSetter : MonoBehaviour {
     {
         value = value.Trim();
         basicFightChanceStop = float.Parse(value);
+    }
+
+    public void SetMyRoomChanceStart(string value)
+    {
+        value = value.Trim();
+        myRoomChanceStart = float.Parse(value);
+    }
+
+    public void SetMyRoomChanceStop(string value)
+    {
+        value = value.Trim();
+        myRoomChanceStop = float.Parse(value);
+    }
+
+    public void SetAnyRoomChanceStart(string value)
+    {
+        value = value.Trim();
+        anyRoomChanceStart = float.Parse(value);
+    }
+
+    public void SetAnyRoomChanceStop(string value)
+    {
+        value = value.Trim();
+        anyRoomChanceStop = float.Parse(value);
+    }
+
+    public void SetDropGunProbability(string value)
+    {
+        value = value.Trim();
+        DropGunProbability = float.Parse(value);
+    }
+
+    public void SetShootProbability(string value)
+    {
+        value = value.Trim();
+        ShootProbability = float.Parse(value);
     }
 
     public void SaveChanges()

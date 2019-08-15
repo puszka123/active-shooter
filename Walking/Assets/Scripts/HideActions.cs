@@ -28,9 +28,18 @@ public static class HideActions {
                 chances = 0f;
                 return chances;
             }
+            else if(!person.PersonMemory.CurrentRoom.Door.GetComponent<DoorController>().IsLocked
+                && !person.PersonMemory.CurrentRoom.Door.GetComponent<DoorController>().IsBarricaded())
+            {
+                chances = 2f - (stats.LockDoorChance + stats.BarricadeDoorChance);
+            }
             else if(!person.PersonMemory.CurrentRoom.Door.GetComponent<DoorController>().IsLocked)
             {
                 chances = 1f - stats.LockDoorChance;
+            }
+            else if (!person.PersonMemory.CurrentRoom.Door.GetComponent<DoorController>().IsBarricaded())
+            {
+                chances = 1f - stats.BarricadeDoorChance;
             }
             return chances;
         }

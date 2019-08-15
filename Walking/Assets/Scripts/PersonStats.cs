@@ -36,7 +36,14 @@ public class PersonStats : MonoBehaviour {
     public float basicEvacuationChance = 1f;
     public float basicHideChance = 1f;
     public float basicFightChance = 1f;
-    
+
+    public float myRoomChance = 0f;
+    public float anyRoomChance = 0f;
+    public float exitChance = 0f;
+
+    public float DropGunProbability = 5f;
+    public float ShootProbability = 90f;
+
 
     public ParameterSetter setter;
 
@@ -86,5 +93,7 @@ public class PersonStats : MonoBehaviour {
         basicEvacuationChance = Random.Range(setter.basicEvacuationChanceStart, setter.basicEvacuationChanceStop);
         basicHideChance = Random.Range(setter.basicHideChanceStart, setter.basicHideChanceStop);
         basicFightChance = Random.Range(setter.basicFightChanceStart, setter.basicFightChanceStop);
+        DropGunProbability = setter.DropGunProbability;
+        ShootProbability = setter.ShootProbability;
     }
 }
