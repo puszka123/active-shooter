@@ -68,6 +68,12 @@ public class ParameterSetter : MonoBehaviour {
     public float DropGunProbability;
     public float ShootProbability;
 
+    public float freezeStart;
+    public float freezeStop;
+
+    public float freezeChanceStart;
+    public float freezeChanceStop;
+
     public void SetStrengthStart(string value)
     {
         value = value.Trim();
@@ -366,6 +372,30 @@ public class ParameterSetter : MonoBehaviour {
     {
         value = value.Trim();
         ShootProbability = float.Parse(value);
+    }
+
+    public void SetFreezeStart(string value)
+    {
+        value = value.Trim();
+        freezeStart = float.Parse(value);
+    }
+
+    public void SetFreezeStop(string value)
+    {
+        value = value.Trim();
+        freezeStop = float.Parse(value);
+    }
+
+    public void SetFreezeChanceStart(string value)
+    {
+        value = value.Trim();
+        freezeChanceStart = float.Parse(value);
+    }
+
+    public void SetFreezeChanceStop(string value)
+    {
+        value = value.Trim();
+        freezeChanceStop = float.Parse(value);
     }
 
     public void SaveChanges()

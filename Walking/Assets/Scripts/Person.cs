@@ -35,12 +35,19 @@ public class Person : MonoBehaviour
     bool init = false;
     bool test = false;
 
+    public float freezeTimer;
+    public bool ShouldFreeze;
+    public bool AlreadyFrozen;
+
     Action informAboutShooter;
 
     Renderer rend;
 
     public void Init(int floor, string myRoomId)
     {
+        freezeTimer = 0f;
+        ShouldFreeze = false;
+        AlreadyFrozen = false;
         FirstDecision = false;
         rend = GetComponent<Renderer>();
         Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
@@ -97,6 +104,19 @@ public class Person : MonoBehaviour
         }
         if (!CompareTag("ActiveShooter"))
         {
+            if(ShouldFreeze)
+            {
+                freezeTimer += Time.deltaTime;
+                if(freezeTimer >= GetComponent<PersonStats>().freeze)
+                {
+                    ShouldFreeze = false;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
             SeeShooterCheck();
             if(FirstDecision)
             {
@@ -221,6 +241,17 @@ public class Person : MonoBehaviour
         if (action != null)
         {
             CurrentAction = action;
+        }
+        if(!CompareTag("ActiveShooter"))
+        {
+            if (Utils.CanSee(gameObject, Shooter) 
+                && !AlreadyFrozen
+                && !Utils.IsInAnyRoom(PersonMemory)
+                && Random.Range(0f, 1f) < GetComponent<PersonStats>().freezeChance)
+            {
+                AlreadyFrozen = true;
+                ShouldFreeze = true;
+            }
         }
     }
 

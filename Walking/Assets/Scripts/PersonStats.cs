@@ -44,6 +44,9 @@ public class PersonStats : MonoBehaviour {
     public float DropGunProbability = 5f;
     public float ShootProbability = 90f;
 
+    public float freeze = 0f;
+    public float freezeChance = 0f;
+
 
     public ParameterSetter setter;
 
@@ -95,5 +98,7 @@ public class PersonStats : MonoBehaviour {
         basicFightChance = Random.Range(setter.basicFightChanceStart, setter.basicFightChanceStop);
         DropGunProbability = setter.DropGunProbability;
         ShootProbability = setter.ShootProbability;
+        freeze = Random.Range(setter.freezeStart, setter.freezeStop);
+        freezeChance = Random.Range(setter.freezeChanceStart, setter.freezeChanceStop);
     }
 }

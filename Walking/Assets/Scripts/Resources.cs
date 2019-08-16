@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Resources {
+public static class Resources
+{
     public const float scale = 1 / 3.33f;
 
     public const float Stay = 0.0f;
@@ -14,11 +15,11 @@ public static class Resources {
     public const float Sprint = 5.56f * scale;
     public const float MaxSprint = 6.94f * scale;
 
-    public static readonly float[] Near = { 0f, 10f };
-    public static readonly float[] Far = { 10f, 100f };
+    public static readonly float[] Near = { 0f, 5f * scale };
+    public static readonly float[] Far = { 5f * scale, 100f * scale };
 
     public const int MAX_FLOOR = 3;
 
-    public static readonly Vector3 NullVector = new Vector3 (-999f, -999f, -999f);
+    public static readonly Vector3 NullVector = new Vector3(-999f, -999f, -999f);
 
 }
