@@ -92,7 +92,7 @@ public class Person : MonoBehaviour
     private void FixedUpdate()
     {
         if (!init) return;
-        if(Shooter == null)
+        if (Shooter == null)
         {
             Shooter = GameObject.FindGameObjectWithTag("ActiveShooter");
         }
@@ -104,10 +104,10 @@ public class Person : MonoBehaviour
         }
         if (!CompareTag("ActiveShooter"))
         {
-            if(ShouldFreeze)
+            if (ShouldFreeze)
             {
                 freezeTimer += Time.deltaTime;
-                if(freezeTimer >= GetComponent<PersonStats>().freeze)
+                if (freezeTimer >= GetComponent<PersonStats>().freeze)
                 {
                     ShouldFreeze = false;
                 }
@@ -118,7 +118,7 @@ public class Person : MonoBehaviour
             }
 
             SeeShooterCheck();
-            if(FirstDecision)
+            if (FirstDecision)
             {
                 GetComponent<PersonStats>().FirstDecisionTime -= Time.deltaTime;
                 if (GetComponent<PersonStats>().FirstDecisionTime <= 0f)
@@ -184,7 +184,7 @@ public class Person : MonoBehaviour
             }
         }
 
-        if(talkTime >= talk && !CompareTag("ActiveShooter"))
+        if (talkTime >= talk && !CompareTag("ActiveShooter"))
         {
             talkTime = 0f;
             informAboutShooter.Tasks[0].IsDone = false;
@@ -228,7 +228,16 @@ public class Person : MonoBehaviour
 
     public void SelectBehaviour()
     {
+        bool wasHiding = false;
+        if (CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Hide))
+        {
+            wasHiding = true;
+        }
         CurrentBehaviour = BehaviourSelector.SelectBehaviour(this);
+        if (CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Fight) && wasHiding)
+        {
+            Utils.InviteOthersToFight(PersonMemory.CurrentRoom.Id);
+        }
         SelectColour();
         SelectAction();
     }
@@ -242,9 +251,9 @@ public class Person : MonoBehaviour
         {
             CurrentAction = action;
         }
-        if(!CompareTag("ActiveShooter"))
+        if (!CompareTag("ActiveShooter"))
         {
-            if (Utils.CanSee(gameObject, Shooter) 
+            if (Utils.CanSee(gameObject, Shooter)
                 && !AlreadyFrozen
                 && !Utils.IsInAnyRoom(PersonMemory)
                 && Random.Range(0f, 1f) < GetComponent<PersonStats>().freezeChance)
@@ -356,5 +365,24 @@ public class Person : MonoBehaviour
         }
         float random = Random.Range(0f, 1f);
         return random <= chance;
+    }
+
+    public void InviteToFight(string roomId)
+    {
+        if (CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Fight))
+        {
+            return;
+        }
+        PersonStats stats = GetComponent<PersonStats>();
+        float lastResort = stats.basicFightChance;
+        float chances = stats.basicFightChance + lastResort;
+        float random = Random.Range(0f, 1f);
+
+
+        if (random <= chances)
+        {
+            CurrentBehaviour = BehaviourSelector.AvailableBehaviours.Find(b => b.GetType() == typeof(ImplementedBehaviours.Fight));
+            SelectAction();
+        }
     }
 }

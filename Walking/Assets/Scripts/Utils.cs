@@ -584,7 +584,7 @@ public static class Utils
 
     private static List<MyChat> FilteredNeighboursfloor(List<MyChat> employees, Person person)
     {
-        if(employees == null || person == null) return new List<MyChat>();
+        if (employees == null || person == null) return new List<MyChat>();
         foreach (var item in employees)
         {
             if (item == null) return new List<MyChat>();
@@ -598,7 +598,7 @@ public static class Utils
     }
 
 
-    public static int[] roomsCount = new int[Resources.MAX_FLOOR+1];
+    public static int[] roomsCount = new int[Resources.MAX_FLOOR + 1];
     public static bool AllRoomsChecked(Person person, int floor)
     {
         if (!person.PersonMemory.CheckedRoomsByFloor.ContainsKey(floor)) return false;
@@ -631,11 +631,23 @@ public static class Utils
     {
         PersonMemory memory = person.PersonMemory;
         int res = 0;
-        if(memory.CheckedRoomsByFloor.ContainsKey(floor))
+        if (memory.CheckedRoomsByFloor.ContainsKey(floor))
         {
             res = memory.CheckedRoomsByFloor[floor].Count;
         }
         return res;
+    }
+
+    public static void InviteOthersToFight(string roomId)
+    {
+        GameObject[] employees = GameObject.FindGameObjectsWithTag("Employee");
+        employees = employees.Where(e => e.GetComponent<Person>().PersonMemory?.CurrentRoom != null 
+        && e.GetComponent<Person>().PersonMemory.CurrentRoom.Id == roomId).ToArray();
+        foreach (var item in employees)
+        {
+            item.SendMessage("InviteToFight", roomId);
+
+        }
     }
 }
 

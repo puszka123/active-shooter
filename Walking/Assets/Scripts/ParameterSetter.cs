@@ -414,4 +414,9 @@ public class ParameterSetter : MonoBehaviour {
         GameObject.FindGameObjectWithTag("SimulationManager").GetComponent<FPSDisplayScript>().UpdateParams();
         GameObject.FindGameObjectWithTag("SimulationManager").GetComponent<SimulationManager>().UpdateParams();
     }
+
+    public string SaveToString()
+    {
+        return JsonUtility.ToJson(this);
+    }
 }

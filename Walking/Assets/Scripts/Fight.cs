@@ -10,8 +10,25 @@ public class Fight : MonoBehaviour
     float roundTime = 0.5f;
     float time = 0f;
 
-    public float DropGunChance { get { return GetComponent<PersonStats>().DropGunProbability * EnemiesStrength(); } }
-    public float ShootChance { get { return GetComponent<PersonStats>().ShootProbability / EnemiesStrength(); } }
+    public float DropGunChance
+    {
+        get
+        {
+            float chance = 0f;
+            for (int i = 1; i <= ShooterEnemies.Count; i++)
+            {
+                chance += (GetComponent<PersonStats>().DropGunProbability * ShooterEnemies[i - 1].GetComponent<PersonStats>().Strength) / i;
+            }
+            return chance;
+        }
+    }
+    public float ShootChance
+    {
+        get
+        {
+            return GetComponent<PersonStats>().ShootProbability - DropGunChance;
+        }
+    }
 
     // Use this for initialization
     void Start()

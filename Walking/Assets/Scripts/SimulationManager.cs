@@ -187,7 +187,7 @@ public class SimulationManager : MonoBehaviour
             end = true;
             SaveStatistics();
             //end = true;
-            //Application.Quit();
+            Application.Quit();
         }
     }
 
@@ -219,6 +219,10 @@ public class SimulationManager : MonoBehaviour
             reasonsJsons.Add(json);
         }
         Save.SaveJsons(reasonsJsons.ToArray(), "reasons.json");
+
+        List<string> parameters = new List<string>();
+        parameters.Add(GameObject.FindGameObjectWithTag("ParameterSetter").GetComponent<ParameterSetter>().SaveToString());
+        Save.SaveJsons(parameters.ToArray(), "params.json");
     }
 
     public void UpdateDeathInfo(Person deadPerson)
