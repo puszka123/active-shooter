@@ -213,11 +213,11 @@ public class Shooting : MonoBehaviour
         }
         else if (distance > 10f * Resources.scale)
         {
-            firingRate = 0.75f * firingRate;
+            firingRate = 0.75f * basicFiringRate;
         }
         else
         {
-            firingRate = 0.5f * firingRate;
+            firingRate = 0.5f * basicFiringRate;
         }
     }
 
@@ -229,7 +229,7 @@ public class Shooting : MonoBehaviour
             return;
         }
         float distance = Utils.Distance(victim.position, transform.position);
-        if (distance > 20f * Resources.scale)
+        if (distance > 10f * Resources.scale)
         {
             verticalUpDeviation = verticalUpDeviationBasic;
         }
@@ -241,13 +241,9 @@ public class Shooting : MonoBehaviour
         {
             verticalUpDeviation = 4f;
         }
-        else if (distance > 2.0f * Resources.scale)
-        {
-            verticalUpDeviation = 8f;
-        }
         else
         {
-            verticalUpDeviation = 12f;
+            verticalUpDeviation = 6f;
         }
         ShooterVerticalAccuracy = new float[] { (90f - verticalUpDeviation), (90f + verticalDownDeviation) };
     }

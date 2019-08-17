@@ -24,7 +24,7 @@ public class FPSDisplayScript : MonoBehaviour
         if(simulationTime >= MaxSimulationTime && MaxSimulationTime > 0)
         {
             simulationTime = 0;
-            GetComponent<SimulationManager>().SendMessage("ResetSimulationRequest", "victims");
+            GetComponent<SimulationManager>().SendMessage("ResetSimulationRequest", "police");
         }
     }
 

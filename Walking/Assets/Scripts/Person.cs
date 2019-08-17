@@ -234,9 +234,12 @@ public class Person : MonoBehaviour
             wasHiding = true;
         }
         CurrentBehaviour = BehaviourSelector.SelectBehaviour(this);
-        if (CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Fight) && wasHiding)
+        if (CompareTag("Employee") && CurrentBehaviour.GetType() == typeof(ImplementedBehaviours.Fight) && wasHiding)
         {
-            Utils.InviteOthersToFight(PersonMemory.CurrentRoom.Id);
+            if (PersonMemory?.CurrentRoom != null)
+            {
+                Utils.InviteOthersToFight(PersonMemory.CurrentRoom.Id);
+            }
         }
         SelectColour();
         SelectAction();
