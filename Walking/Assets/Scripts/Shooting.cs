@@ -265,7 +265,6 @@ public class Shooting : MonoBehaviour
         RotateTo(doorToDestroy.transform);
 
         bool doorBlocked = !doorController.Destroyed() && (doorController.IsLocked || doorController.IsBarricaded());
-
         if (!doorBlocked)
         {
             GetComponent<Person>().PersonMemory.ClearBlockedRooms();

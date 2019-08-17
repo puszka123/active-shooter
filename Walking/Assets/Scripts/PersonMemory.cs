@@ -310,7 +310,8 @@ public class PersonMemory
         Dictionary<string, List<Node>> temp = new Dictionary<string, List<Node>>(blockedByDoor);
         foreach (var key in temp.Keys)
         {
-            if (!GameObject.Find(key).GetComponent<DoorController>().IsLocked)
+            DoorController doorController = GameObject.Find(key).GetComponent<DoorController>();
+            if (!doorController.IsLocked && !doorController.IsBarricaded())
             {
                 keysToClear.Add(key);
             }

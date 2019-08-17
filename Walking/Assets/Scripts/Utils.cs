@@ -106,6 +106,13 @@ public static class Utils
         return door.GetComponent<DoorController>().IsLocked;
     }
 
+    public static bool DoorIsBarricaded(GameObject door)
+    {
+        if (door == null) return true;
+        if (door.GetComponent<DoorController>().Destroyed()) return false;
+        return door.GetComponent<DoorController>().IsBarricaded();
+    }
+
     public static GameObject NearestRoomLocation(GameObject room, GameObject person)
     {
         GameObject[] roomLocations = room.GetComponent<RoomManager>().RoomLocations.ToArray();

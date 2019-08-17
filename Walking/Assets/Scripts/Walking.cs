@@ -256,16 +256,18 @@ public class Walking
                 if (room2 == null
                     || room2.Id == memory.CurrentRoom?.Id
                     || Utils.DoorIsLocked(room2.Door)
+                    || Utils.DoorIsBarricaded(room2.Door)
                     || !Utils.ToFar(Me, room2.Reference, Pathfinder.MIN_DISTANCE_ROOM)
                     || Utils.ToFar(Me, room2.Door, Pathfinder.MIN_DISTANCE_DOOR)
                     || Utils.IsInAnyRoom(memory))
                 {
                     //if (Me.CompareTag("ActiveShooter"))
                     //{
-                    //    Debug.Log(String.Format("{0} {1} {2} {3} {4}",
+                    //    Debug.Log(String.Format("{0} {1} {2} {3} {4} {5}",
                     //        room2 == null,
                     //        room2.Id == memory.CurrentRoom?.Id,
                     //        Utils.DoorIsLocked(room2.Door),
+                    //        Utils.DoorIsBarricaded(room2.Door),
                     //        !Utils.ToFar(Me, room2.Reference, Pathfinder.MIN_DISTANCE_ROOM),
                     //        Utils.ToFar(Me, room2.Door, Pathfinder.MIN_DISTANCE_DOOR)));
                     //}
