@@ -656,5 +656,14 @@ public static class Utils
 
         }
     }
+
+    public static bool UniqueRoomWorkplace(GameObject workplace, List<GameObject> workplaces)
+    {
+        if (workplaces == null || workplaces.Count <= 0) return true;
+
+        RoomLocation room = workplace.GetComponent<RoomLocation>();
+        string roomId = room.MyRoom.name;
+        return !workplaces.Select(w => w.GetComponent<RoomLocation>().MyRoom.name).Contains(roomId);
+    }
 }
 

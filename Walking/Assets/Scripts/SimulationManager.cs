@@ -70,6 +70,17 @@ public class SimulationManager : MonoBehaviour
         {
             if (item.GetComponent<RoomLocation>().Workplace)
             {
+                //if (Utils.UniqueRoomWorkplace(item, workplaces))
+                //{
+                //    //item.name = "RoomLocationWorkplace " + respawnNameGenerator++;
+                //    workplaces.Add(item);
+                //    item.AddComponent<Respawn>();
+                //}
+                //else
+                //{
+                //    item.GetComponent<RoomLocation>().Workplace = false;
+                //}
+
                 //item.name = "RoomLocationWorkplace " + respawnNameGenerator++;
                 workplaces.Add(item);
                 item.AddComponent<Respawn>();
